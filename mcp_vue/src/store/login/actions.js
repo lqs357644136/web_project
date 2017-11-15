@@ -11,7 +11,8 @@ export default {
         });
         axios.post(url.checkLogin, { userId, userPwd }).then(({ data }) => {
             commit('DOLOGIN', data)
-            router.push('/home')
+            router.push('/home');
+            Vue.$indicator.close()
         })
 
 

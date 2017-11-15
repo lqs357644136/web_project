@@ -6,7 +6,7 @@
     <div class="container login">
   
       <div class="loginBox">
-  
+
         <mt-field label="帐号" placeholder="请输入帐号" v-model="userId"></mt-field>
   
         <mt-field label="密码" placeholder="请输入密码" type="password"  v-model="userPwd" ></mt-field>

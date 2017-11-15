@@ -7,7 +7,8 @@ export default {
         return {
             userId: null,
             userPwd: null,
-            type: this.$store.getters.getLoginState
+            type: this.$store.getters.getLoginState,
+            email: null
         }
     },
     created() {},
@@ -16,7 +17,14 @@ export default {
             const userId = this.userId;
             const userPwd = this.userPwd;
             const self = this;
-            self.$store.dispatch('doLogin', { self, userId, userPwd })
+            if (userId && userPwd) {
+                self.$store.dispatch('doLogin', { self, userId, userPwd })
+            } else {
+                this.$toast({
+                    message: '帐号或者密码不能为空',
+                    position: 'bottom'
+                });
+            }
         }
     }
 }

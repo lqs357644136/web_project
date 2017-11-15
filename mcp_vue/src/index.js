@@ -10,9 +10,6 @@ Vue.config.productionTip = false
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);
-//引入表单验证插件
-import { Validate, Config } from 'js/validate.js'
-Vue.use(Validate, Config);
 
 /* eslint-disable no-new */
 new Vue({
@@ -22,8 +19,9 @@ new Vue({
 
     },
     methods: {
+
         checkLogin() {
-            if (false) {
+            if (this.$store.getters.getLoginState) {
                 router.push({ name: 'home' })
             } else {
                 router.push({ name: 'login' })
