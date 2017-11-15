@@ -1,0 +1,28 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+input {
+    border: 0px;
+    outline: 0px;
+    padding: 0px 10px;
+}
+
+#app,
+.appView {
+    height: 100%
+}
+
+.container {
+    padding: 55px 15px 15px 15px;
+    height: 100%;
+}

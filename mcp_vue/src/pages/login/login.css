@@ -1,0 +1,28 @@
+.mint-field {
+    margin-bottom: 15px;
+    .mint-cell-wrapper {
+        display: flex;
+        flex-direction: row;
+        height: 40px;
+        line-height: 40px;
+    }
+    .mint-cell-title {
+        width: initial;
+        flex-grow: 0.3;
+    }
+    .mint-cell-value {
+        flex-grow: 3;
+        display: block;
+        flex: none;
+        border-bottom: 1px solid #dfdfdf;
+        position: relative;
+        input {
+            padding-right: 20px;
+        }
+        .mint-field-clear {
+            position: absolute;
+            right: 5px;
+            top: 0;
+        }
+    }
+}

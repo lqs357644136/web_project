@@ -10,7 +10,7 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/index.js'
     },
     output: {
         path: config.build.assetsRoot,
@@ -24,11 +24,12 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
             'components': '@/components',
+            'router': '@/router',
             'pages': '@/pages',
             'js': '@/modules/js',
-            'css': '@/modules/css',
-            'sass': '@/modules/sass',
-            'imgs': '@/modules/imgs'
+            'css': '@/modules/style/css',
+            'sass': '@/modules/style/sass',
+            'imgs': '@/modules/images'
         }
     },
     module: {
@@ -57,10 +58,6 @@ module.exports = {
                     limit: 10000,
                     name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
-            },
-            {
-                test: /\.scss$/,
-                loaders: ['style', 'css', 'sass', 'scss']
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,

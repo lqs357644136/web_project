@@ -1,0 +1,57 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .groupInput {
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        label {
+            flex-grow: 0.1;
+            text-align: center;
+        }
+    }
+    .loginBtn {
+        background-color: #00b300;
+        color: white;
+        margin-top: 15px;
+    }
+}
+
+// 重写mint-ui样式
+.mint-field {
+    margin-bottom: 15px !important;
+    .mint-cell-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+    .mint-cell-title {
+        width: initial !important;
+        flex-grow: 0.3 !important;
+    }
+    .mint-cell-value {
+        flex-grow: 3 !important;
+        display: block!important;
+        flex: none!important;
+        border-bottom: 1px solid #dfdfdf!important;
+        position: relative!important;
+        input {
+            padding-right: 20px!important;
+        }
+        .mint-field-clear {
+            position: absolute!important;
+            right: 5px!important;
+            top: 0!important;
+        }
+    }
+}
