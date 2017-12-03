@@ -1,7 +1,5 @@
 .DS_Store
-vue-mcp/node_modules/
-vue-mcp/dist/
-/vuex-demo
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
