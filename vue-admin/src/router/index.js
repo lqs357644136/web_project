@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 Vue.use(Router)
 
 let routerOpt = [
@@ -17,5 +16,6 @@ let routerOpt = [
 ]
 
 export default new Router({
+  //mode: 'history',
   routes:routerOpt
 })

@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import request from 'js/request.js'
 import store from './store'
+import 'js/permission.js'
 
 //axios全局化
 Vue.prototype.$http = request
@@ -23,8 +24,6 @@ new Vue({
   router,
   store,
   created(){
-
-console.log(this.$lin)
     this.checkLogin()
   },
   methods:{
