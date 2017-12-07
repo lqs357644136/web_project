@@ -24,16 +24,10 @@ new Vue({
   router,
   store,
   created(){
-    this.checkLogin()
+    console.log(this.$router)
   },
   methods:{
-    checkLogin(){
-      if(true){
-        router.push({name:'login'})
-      }else{
-        router.push({name:'home'})
-      }
-    }
+    
   },
   render: h => h(App)
 })

@@ -1,0 +1,39 @@
+.home-layout {
+    display: flex;
+    flex-direction: row;
+    .left-menu {
+        background-color: #545c64;
+        transition: all 1s;
+        border-right: solid 1px #e6e6e6;
+        overflow: hidden;
+        .el-menu {
+            border-right: 0;
+        }
+    }
+    .rightMain {
+        flex-direction: column;
+        .left-menu-crl {
+            transition: all 1s;
+            width: initial !important;
+        }
+        .top-menu {
+            display: flex;
+            background-color: #d0d8e1;
+            padding-left:5px;
+            .menu-crl {
+                font-size: 26px;
+                line-height: 60px;
+                color: #878d99;
+            }
+        }
+        .menu-main {
+            padding: 0;
+            .main-tabs {
+                height:40px;
+                .el-tabs__header {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

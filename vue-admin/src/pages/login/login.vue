@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <el-container class="login-container">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="loginBox">
       <h3 class="title">系统登录</h3>
       <div class="loginGroup">
@@ -18,7 +18,7 @@
         <el-button class="loginBtn" :loading="loginBtnLoad" @click="submitForm('ruleForm')" type="primary">登录</el-button>
       </el-form-item>
     </el-form>
-  </div>
+  </el-container>
 </template>
 <script src="./login.js"></script>
 

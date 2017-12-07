@@ -6,9 +6,11 @@ import url from 'js/api.js'
 
 const user = {
   state: {
-    user: '',
+    user:null,
     token: getToken(),
-    roles: ''
+    roles:null,
+    roleMenu:[],
+    addRouter:[]
   },
   mutations: {
     SET_USER: (state, user) => {
@@ -19,18 +21,26 @@ const user = {
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
+    },
+    SET_ROLEMENU: (state, roleMenu) => {
+      state.roleMenu = state.roleMenu.concat( roleMenu );
     }
   },
   actions: {
+    //获取用户信息和token
     userLogin: ({ commit }, userInfo) => {
         return $http.post(url.checkLogin, {}).then(({ data }) => {
-          console.log("登录状态:")
-          console.log(data)
           commit('SET_TOKEN', data.token);
+          commite('SET_ROLES',data.userInfo.role);
+          commite('SET_USER',data.userInfo.user);
           //持久化token
           setToken(data.token);
         })
-    }
+    },
+    //整合用户对应角色的菜单与路由
+    upDateRoleMenu:({commit},roleMenu)=>{
+      commit('SET_ROLEMENU',roleMenu);
+    },
   }
 }
 

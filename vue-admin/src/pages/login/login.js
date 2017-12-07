@@ -37,7 +37,7 @@ export default {
                         type: 'success'
                       });
                       setTimeout(()=>{
-                        this.$router.push({name:'home'})
+                        this.$router.push('/home')
                       },1000)
                 }else{
                     this.$message({

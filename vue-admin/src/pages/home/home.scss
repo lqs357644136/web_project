@@ -1,0 +1,32 @@
+.home-layout {
+    display: flex;
+    flex-direction: row;
+    .left-menu {
+        background-color: #545c64;
+        transition: all 1s;
+        border-right: solid 1px #e6e6e6;
+        .el-menu {
+            border-right: 0;
+        }
+    }
+    .left-menu-crl{
+        transition: all 1s;
+        width: initial !important;
+    }
+    .top-menu{
+        display:flex;
+        background-color:#65aaed;
+        .menu-crl{
+            font-size:26px;
+            line-height: 60px;
+        }
+    }
+    .menu-main{
+        padding:0;
+        .main-tabs{
+            .el-tabs__header{
+                margin-bottom:0;
+            }
+        }
+    }
+}
