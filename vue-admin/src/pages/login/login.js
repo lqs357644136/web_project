@@ -28,8 +28,9 @@ export default {
             new Promise((resolve,reject)=>{
                 let userId = this.ruleForm.userId;
                 let userPwd = this.ruleForm.userPwd;
-                resolve(this.$store.dispatch('userLogin', {userId:userId,userPwd:userPwd}))
+                resolve(this.$store.dispatch('getToken', {userId:userId,userPwd:userPwd}))
             }).then(()=>{
+                this.$store.dispatch('getUserInfo', { token:this.$store.getters.token })
                 if(this.$store.getters.token.length>0){
                     this.$message({
                         showClose: true,
@@ -52,10 +53,11 @@ export default {
         //验证规则通过然后用户登录
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
+                this.loginBtnLoad = true;
                 if (valid) {
-                    this.loginBtnLoad = true;
                     this.userLogin();
                 } else {
+                    this.loginBtnLoad = false;
                     console.log('帐号或者密码格式有误');
                     return false;
                 }

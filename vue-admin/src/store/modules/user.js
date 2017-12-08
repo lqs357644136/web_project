@@ -6,41 +6,39 @@ import url from 'js/api.js'
 
 const user = {
   state: {
-    user:null,
     token: getToken(),
-    roles:null,
+    userInfo:{},
     roleMenu:[],
     addRouter:[]
   },
   mutations: {
-    SET_USER: (state, user) => {
-      state.user = user
-    },
     SET_TOKEN: (state, token) => {
       state.token = token
     },
-    SET_ROLES: (state, roles) => {
-      state.roles = roles
+    SET_USERINFO: (state, userInfo) => {
+      state.userInfo = userInfo
     },
     SET_ROLEMENU: (state, roleMenu) => {
       state.roleMenu = state.roleMenu.concat( roleMenu );
     }
   },
   actions: {
-    //获取用户信息和token
-    userLogin: ({ commit }, userInfo) => {
-        return $http.post(url.checkLogin, {}).then(({ data }) => {
+    //获取token
+    getToken: ({ commit }, { userId , userPwd }) => {
+        return $http.post(url.getToken).then(({ data }) => {
           commit('SET_TOKEN', data.token);
-          commite('SET_ROLES',data.userInfo.role);
-          commite('SET_USER',data.userInfo.user);
           //持久化token
           setToken(data.token);
         })
     },
-    //整合用户对应角色的菜单与路由
-    upDateRoleMenu:({commit},roleMenu)=>{
-      commit('SET_ROLEMENU',roleMenu);
-    },
+    //获取用户信息
+    getUserInfo: ({ commit , state}) => {
+      return $http.post(url.getUserInfo, {token:state.token}).then(({ data }) => {
+        
+      console.log(data.userInfo[0])
+        commit('SET_USERINFO', data.userInfo[0]);
+      })
+    }
   }
 }
 

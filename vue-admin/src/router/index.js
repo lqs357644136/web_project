@@ -9,7 +9,6 @@ Vue.use(Router)
 export const publicOpt = [
   {
     path: '/login',
-    name: 'login',
     component: resolve => require(['pages/login/login.vue'], resolve)
   },
   {
@@ -20,12 +19,44 @@ export const publicOpt = [
       path: '/home',
       component: resolve => require(['pages/home/home.vue'], resolve),
       meta: {
+        auth: true,
         title: 'home page',
         icon: 'icon-bell',
         role: ['admin', 'normal']
       }
     }]
   },
+  {
+    path: '/other01',
+    component: menu,
+    redirect: '/other01',
+    children: [{
+      path: '/other01',
+      component: resolve => require(['pages/other01/other01.vue'], resolve),
+      meta: {
+        auth: true,
+        title: 'other01 nav',
+        icon: 'sold-out',
+        role: ['admin']
+      }
+    }]
+  },
+  {
+    path: '/other02',
+    component: menu,
+    redirect: '/other02',
+    children: [{
+      path: '/other02',
+      component: resolve => require(['pages/other02/other02.vue'], resolve),
+      meta: {
+        auth: true,
+        title: 'other02 nav',
+        icon: 'sold-out',
+        role: ['admin']
+      }
+    }]
+  },
+
   {
     path: '/',
     redirect: '/home',
@@ -37,7 +68,7 @@ export const publicOpt = [
   {
     path: '*',
     redirect: '/404',
-  }
+  },
 ]
 
 export const roleOpt = [
@@ -49,6 +80,7 @@ export const roleOpt = [
       path: '/other01',
       component: resolve => require(['pages/other01/other01.vue'], resolve),
       meta: {
+        isCheck:true,
         title: 'other01 nav',
         icon: 'sold-out',
         role: ['admin']
@@ -68,7 +100,7 @@ export const roleOpt = [
         role: ['admin']
       }
     }]
-  }
+  },
 ]
 
 export default new Router({

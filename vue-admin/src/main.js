@@ -4,11 +4,12 @@ import router from './router'
 import request from 'js/request.js'
 import store from './store'
 import 'js/permission.js'
+import { addRoleRouter } from 'js/util.js'
 
 //axios全局化
 Vue.prototype.$http = request
 
-// Vue.config.productionTip = false
+Vue.config.productionTip = false
 
 //引入element-ui组件
 import ElementUI from 'element-ui'
@@ -24,7 +25,6 @@ new Vue({
   router,
   store,
   created(){
-    console.log(this.$router)
   },
   methods:{
     

@@ -1,13 +1,10 @@
 
 const getters = {
-    user: (state) => {
-        return state.user.token
+    userInfo: (state) => {
+        return state.user.userInfo
     },
     token: (state) => {
         return state.user.token
-    },
-    roles: (state) => {
-        return state.user.roles
     },
     roleMenu:(state)=>{
         return state.user.roleMenu

@@ -1,5 +1,6 @@
 let url ={
-    checkLogin : '/login/checkLogin'
+    getToken : '/login/getToken',
+    getUserInfo : '/login/getUserInfo'
 }
 
 //测试环境接口地址
