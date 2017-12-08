@@ -22,8 +22,14 @@
             padding-left:5px;
             .menu-crl {
                 font-size: 26px;
-                line-height: 60px;
                 color: #878d99;
+            }
+            .userSetting{
+                flex:1;
+                text-align: right;
+            }
+            >*{
+                line-height: 60px;
             }
         }
         .menu-main {

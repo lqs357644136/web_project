@@ -7,9 +7,7 @@ import url from 'js/api.js'
 const user = {
   state: {
     token: getToken(),
-    userInfo:{},
-    roleMenu:[],
-    addRouter:[]
+    userInfo:{}
   },
   mutations: {
     SET_TOKEN: (state, token) => {
@@ -34,7 +32,6 @@ const user = {
     //获取用户信息
     getUserInfo: ({ commit , state}) => {
       return $http.post(url.getUserInfo, {token:state.token}).then(({ data }) => {
-        
       console.log(data.userInfo[0])
         commit('SET_USERINFO', data.userInfo[0]);
       })

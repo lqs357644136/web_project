@@ -14,13 +14,12 @@ export const publicOpt = [
   {
     path: '/home',
     component: menu,
-    redirect: '/home',
     children: [{
       path: '/home',
       component: resolve => require(['pages/home/home.vue'], resolve),
       meta: {
         auth: true,
-        title: 'home page',
+        title: 'homepage',
         icon: 'icon-bell',
         role: ['admin', 'normal']
       }
@@ -35,7 +34,7 @@ export const publicOpt = [
       component: resolve => require(['pages/other01/other01.vue'], resolve),
       meta: {
         auth: true,
-        title: 'other01 nav',
+        title: 'other01',
         icon: 'sold-out',
         role: ['admin']
       }
@@ -50,7 +49,7 @@ export const publicOpt = [
       component: resolve => require(['pages/other02/other02.vue'], resolve),
       meta: {
         auth: true,
-        title: 'other02 nav',
+        title: 'other02',
         icon: 'sold-out',
         role: ['admin']
       }

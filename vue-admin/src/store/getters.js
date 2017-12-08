@@ -6,9 +6,6 @@ const getters = {
     token: (state) => {
         return state.user.token
     },
-    roleMenu:(state)=>{
-        return state.user.roleMenu
-    },
     leftMenu: (state) => {
         return state.menu.leftMenu
     }

@@ -9,17 +9,21 @@ router.beforeEach((to, from, next) => {
     // 开启Progress
     NProgress.start();
     //检测token是否存在或者没有过期
-    if(getToken()){
-        if (to.path === '/login') {
-            next({ path: '/' })
-            NProgress.done()
-        }
-    }else{
-        next()
-    }
+    next()
 })
 
-router.afterEach(() => {
+router.afterEach((to) => {
+    if(!getToken()){
+        if (to.path != '/login') {
+            if(to.meta.auth){
+                router.push({path: '/login'});
+            }
+        }
+    }else{
+        if (to.path === '/login') {
+            router.push({path: '/'});
+        }
+    }
     // 结束Progress
     NProgress.done();
 })
