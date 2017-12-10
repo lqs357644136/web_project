@@ -1,33 +1,54 @@
+/**
+ * Created by zzmhot on 2017/3/23.
+ *
+ * 主程序入口
+ *
+ * @author: zzmhot
+ * @github: https://github.com/zzmhot
+ * @email: zzmhot@163.com
+ * @Date: 2017/3/23 18:19
+ * @Copyright(©) 2017 by zzmhot.
+ *
+ */
+
+//导入样式
+import 'normalize.css'
+import 'font-awesome/scss/font-awesome.scss'
+import 'element-ui/lib/theme-default/index.css'
+//导入Vue框架
 import Vue from 'vue'
-import App from './App'
-import 'js/permission.js'
-import router from './router'
-import request from 'js/request.js'
-import store from './store'
-import { addRoleRouter } from 'js/util.js'
-
-//axios全局化
-Vue.prototype.$http = request
-
-Vue.config.productionTip = false
-
-//引入element-ui组件
+//导入element组件
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+//导入组件
+import router from './router'
+//导入状态管理器
+import store from 'store'
+//导入请求框架
+import api from './api'
+//导入自定义插件
+import Plugins from 'plugins'
+//导入主视图文件
+import App from './App'
+//导入mock数据
+import './mock'
+
+//使用element-ui
 Vue.use(ElementUI)
 
-//引入公共样式
-import 'sass/common.scss'
+//使用自定义插件
+Vue.use(Plugins)
 
-/* eslint-disable no-new */
+//使用api
+Vue.use(api)
+
+//发布后是否显示提示
+Vue.config.productionTip = false
+
+//是否开启工具调试
+Vue.config.devtools = process.env.NODE_ENV === 'development'
+
 new Vue({
-  el: '#app',
   router,
   store,
-  created(){
-  },
-  methods:{
-    
-  },
-  render: h => h(App)
-})
+  ...App
+}).$mount('mainbody')
