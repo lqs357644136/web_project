@@ -10,9 +10,9 @@
  */
 import * as type from 'store/mutations/type'
 import {cookieStorage} from 'common/storage'
+import i18n from 'common/i18n'
 
 export default {
-  //设置用户信息和是否登录
   [type.SET_USER_INFO](state, userinfo){
     state.user_info = userinfo || {}
     if (userinfo === null) {
@@ -20,5 +20,13 @@ export default {
     } else {
       cookieStorage.set('user_info', userinfo)
     }
+  },
+  [type.SET_LEFTSLIDE](state){
+    state.leftSilde = state.leftSilde?false:true
+  },
+  [type.SET_LANG](state,lang){
+    state.lang = lang;
+    i18n.locale = state.lang;
+    Window.prototype.$18n = i18n
   }
 }

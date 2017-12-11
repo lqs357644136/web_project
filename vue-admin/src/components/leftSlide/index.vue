@@ -1,75 +1,91 @@
 <template>
+  <!-- 左侧菜单 -->
   <div class="left-side">
-    <div class="left-side-inner">
-      <router-link to="/" class="logo block">
-        <img src="./images/logo.png" alt="AdminX">
-      </router-link>
-      <el-menu
-        class="menu-box"
-        theme="dark"
-        router
-        :default-active="$route.path">
-        <div
-          v-for="(item, index) in nav_menu_data"
-          :key="index">
-          <el-menu-item
-            class="menu-list"
-            v-if="typeof item.child === 'undefined'"
-            :index="item.path">
-            <i class="icon fa" :class="item.icon"></i>
-            <span v-text="item.title" class="text"></span>
+    <div></div>
+    <el-menu class="el-menu-vertical-demo" router @open="handleOpen" @close="handleClose" :collapse="isCollapse"
+    v-for="(menu,index) in menuList" :key="index">
+
+        <el-menu-item
+            v-if="typeof menu.child === 'undefined'"
+            :index="menu.path">
+            <i :class="menu.icon"></i>
+            <span slot="title">{{menu.title}}</span>
+        </el-menu-item>
+
+        <el-submenu index="menu.path" v-else>
+          <template slot="title">
+            <i :class="menu.icon"></i>
+            <span slot="title">{{menu.title}}</span>
+          </template>
+          <el-menu-item :index="sub_menu.path" v-for="(sub_menu,sub_index) in menu.child" :key="sub_index">
+            {{sub_menu.title}}
           </el-menu-item>
-          <el-submenu
-            :index="item.path"
-            v-else>
-            <template slot="title">
-              <i class="icon fa" :class="item.icon"></i>
-              <span v-text="item.title" class="text"></span>
-            </template>
-            <el-menu-item
-              class="menu-list"
-              v-for="(sub_item, sub_index) in item.child"
-              :index="sub_item.path"
-              :key="sub_index">
-              <!--<i class="icon fa" :class="sub_item.icon"></i>-->
-              <span v-text="sub_item.title" class="text"></span>
-            </el-menu-item>
-          </el-submenu>
-        </div>
-      </el-menu>
-    </div>
+        </el-submenu>
+
+    </el-menu>
+
+    <!-- <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span slot="title">导航一</span>
+        </template>
+      </el-submenu>
+    </el-menu> -->
   </div>
 </template>
+
+<style>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+}
+</style>
+
 <script type="text/javascript">
-  export default{
-    name: 'slide',
-    data(){
-      return {
-        nav_menu_data: [{
-          title: "主页",
-          path: "/home",
-          icon: "fa-home"
-        }, {
-          title: "表格管理",
+import { mapGetters } from "vuex";
+
+export default {
+  data() {
+    return {
+       menuList: [
+        {
+          title:this.$t('message.homePage'),
+          icon: "el-icon-menu",
+          path: "/home"
+        },
+        {
+          title:this.$t('message.table'),
           path: "/table",
-          icon: "fa-table",
-          child: [{
-            title: "基本表格",
-            path: "/table/base"
-          }, {
-            title: "排序表格",
-            path: "/table/sort"
-          }]
-        }, {
-          title: "图表管理",
-          path: "/charts",
-          icon: "fa-bar-chart-o",
-          child: [{
-            title: "柱状图表",
-            path: "/charts/bar"
-          }]
-        }]
-      }
+          icon: "el-icon-menu",
+          child: [
+            {
+              title:this.$t('message.tableBase'),
+              path: "/table/base"
+            },
+            {
+              title:this.$t('message.tableSort'),
+              path: "/table/sort"
+            }
+          ]
+        }
+      ]
+    };
+  },
+  computed: {
+    ...mapGetters({
+      isCollapse: "get_leftSlide_state"
+    }),
+   
+  },
+  created(){
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     }
   }
+};
 </script>

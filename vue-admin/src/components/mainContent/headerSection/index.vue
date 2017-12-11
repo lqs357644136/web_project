@@ -1,7 +1,7 @@
 <template>
   <div class="header-section">
-    <div class="search">
-      <search @search="submit_search"></search>
+    <div class="menu-left">
+      <i @click="leftSlideChange()" class="fa fa-bars fa-2x"></i>
     </div>
     <menu-right></menu-right>
   </div>
@@ -16,8 +16,8 @@
       search
     },
     methods: {
-      submit_search(value) {
-        this.$message.success(value)
+      leftSlideChange(){
+        this.$store.dispatch('set_leftslide')
       }
     }
   }

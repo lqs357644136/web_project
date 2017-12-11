@@ -13,5 +13,9 @@ import {cookieStorage} from 'common/storage'
 
 export default {
   //用户信息和是否登录
-  user_info: cookieStorage.get('user_info')
+  user_info: cookieStorage.get('user_info'),
+  //左侧菜单展开状态
+  leftSilde:false,
+  //系统语言  
+  lang:'zh'
 }

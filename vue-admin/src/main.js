@@ -31,6 +31,8 @@ import Plugins from 'plugins'
 import App from './App'
 //导入mock数据
 import './mock'
+//导入国际化设置
+import i18n from 'common/i18n'
 
 //使用element-ui
 Vue.use(ElementUI)
@@ -50,5 +52,6 @@ Vue.config.devtools = process.env.NODE_ENV === 'development'
 new Vue({
   router,
   store,
+  i18n,
   ...App
 }).$mount('mainbody')

@@ -1,69 +1,46 @@
 .body-warp {
   animation: fadeIn .5s ease;
-}
+  height:100%;
+  .view-page{
+    height:100%;
+    display:flex;
+    flex-direction:row;
+  }
 
+}
+// 左侧导航栏目 
 .left-side {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 220px;
-  height: 100%;
-  overflow-y: auto;
-  background-color: #424f63;
-  .logo {
-    margin: 10px auto;
-    text-align: center;
-  }
-  .menu-box {
-    background-color: #424f63;
-    .menu-list, .el-submenu__title {
-      height: 45px;
-      line-height: 45px;
-      color: #fff;
-      background-color: #424f63;
-      .icon {
-        width: 16px;
-        font-size: 14px;
-      }
-      .text {
-        margin-left: 10px;
-      }
-      &.is-active, &:hover {
-        background-color: #353f4f !important;
-        color: #65cea7;
-      }
-    }
-  }
+  height:100%;
+  border-right:1px solid #dfdfdf;
+  background-color: #eef1f6;
 }
 
 .main-content {
+  flex: 1;
   position: relative;
-  margin-left: 220px;
-  padding-top: 50px;
+  // display: flex;
+  // flex-direction: column;
   .header-section {
-    position: fixed;
-    top: 0;
-    left: inherit;
-    width: 100%;
+    padding:0px 10px;
     height: 50px;
     background-color: #fff;
     border-bottom: 1px solid #eff0f4;
-    z-index: 100;
-    .search {
-      margin: 6.5px 10px;
-      float: left;
-      width: 220px;
-      height: 35px;
-      font-size: 14px;
+    display: flex;
+    flex-direction:row;
+    width:100%;
+    position: absolute;;
+    top:0;
+    z-index: 2;
+    .menu-left{
+      i{
+        line-height: 50px;
+        color: #48576a;
+      }
     }
     .menu-right {
-      position: relative;
-      float: right;
-      margin-right: 235px;
+      flex:1;
       text-align: right;
       font-size: 0;
-      z-index: 999;
       .notification-list {
         position: relative;
         display: inline-block;
@@ -78,15 +55,6 @@
           color: #333;
           cursor: pointer;
           transition: background ease 0.2s;
-          &:hover {
-            color: #fff;
-            background: #424f63;
-            .icon {
-              border-color: #fff;
-              border-right: 4px solid #424f63;
-              border-left: 4px solid #424f63;
-            }
-          }
           img {
             vertical-align: middle;
             margin-right: 5px;
@@ -108,10 +76,14 @@
       }
     }
   }
-  .wrapper {
-    padding: 15px;
-  }
+   .pageContent{
+      height:100vh;
+      overflow-y: auto;
+      // flex: 1;
+      padding-top:50px;
+   }
   .panel {
+    margin:15px;
     margin-bottom: 20px;
     background-color: #fff;
     border-radius: 4px;
@@ -157,8 +129,8 @@
 .dropdown-menu {
   position: absolute;
   right: 0;
-  top: 100%;
-  width: 200px;
+  top: 100%;    
+  width: fit-content;
   padding: 5px;
   border-radius: 5px;
   background: #65cea7;
