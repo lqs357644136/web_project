@@ -21,5 +21,8 @@ export default {
   },
   [actions.SET_LANG]({commit},lang){
     commit(mutations.SET_LANG,lang)
+  },
+  [actions.SET_MENUS]({commit},menus){
+    commit(mutations.SET_MENUS,menus)
   }
 }

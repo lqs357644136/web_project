@@ -2,7 +2,9 @@
   <div class="view-page">
     <left-slide></left-slide>
     <main-content>
+      <keep-alive>
       <router-view></router-view>
+      </keep-alive>
     </main-content>
   </div>
 </template>

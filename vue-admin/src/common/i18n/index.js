@@ -6,20 +6,32 @@ Vue.use(VueI18n)
 const messages = {
     zh: {
       message: {
-        homePage: '主页',
         table:'表格',
         tableBase:'表格基础',
         tableSort:'排序表格',
-        firstEntity:'首检管理'
+        homePage: '主页',
+        firstEntity:'首检管理',
+        product:'产品履历',
+        productInfo:'产品履历查看',
+        productEnter:'产品履历录入',
+        attention:'注意事项',
+        selfInspection:'自检管理',
+        detection:'巡检管理'
       }
     },
     en: {
       message: {
-        homePage: 'homePage',
         table:'table',
         tableBase:'tableBase',
         tableSort:'tableSort',
-        firstEntity:'firstEntity'
+        homePage: 'homePage',
+        firstEntity:'firstEntity',
+        product:'productResume',
+        productInfo:'productInfo',
+        productEnter:'productEnter',
+        attention:'attention',
+        selfInspection:'selfInspection',
+        detection:'detection'
       }
     }
 }

@@ -1,0 +1,79 @@
+.checkView {
+    display: flex;
+    flex: row;
+    height: 100%;
+    .checkInfo {
+        width: 250px;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+        .infoItem {
+            .item {
+                height: 36px;
+                line-height: 36px;
+                display: flex;
+                flex-direction: row;
+                label {
+                    width: 60px;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+    .checkSpace {
+        .el-card__body {
+            height: 100%;
+        }
+        flex: 1;
+        .checkSelect {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            .selectGroup {
+                label {
+                    line-height: 36px;
+                }
+            }
+            .deviation {
+                line-height: 36px;
+            }
+        }
+        .checkMain {
+            margin-bottom: 20px;
+            .stepFrom {
+                display: flex;
+                flex-direction: column;
+                .stepInputs {
+                    display: flex;
+                    justify-content: space-around;
+                    margin-bottom: 20px;
+                    .stepInput {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .stepBtn {
+                margin-bottom: 0;
+                margin-right:0;
+                .el-form-item__content {
+                    display: flex;
+                    width:100%;
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .checkEnd {
+            height: calc(100% - 240px);
+            .success{
+                color:green;
+            }
+            .error{
+                color:red;
+            }
+        }
+    }
+}

@@ -55,10 +55,7 @@
           //登录提交
           this.$fetch.api_user.login(this.form)
             .then(({data, msg}) => {
-              this.set_user_info({
-                user: data,
-                login: true
-              })
+              this.$store.dispatch('set_user_info',{user: data,login: true})
               this.$message.success(msg)
               setTimeout(this.$router.push({path: '/'}), 500)
             })

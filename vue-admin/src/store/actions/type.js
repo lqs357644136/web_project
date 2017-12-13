@@ -12,3 +12,4 @@
 export const SET_USER_INFO = 'set_user_info'
 export const SET_LEFTSLIDE = 'set_leftslide'
 export const SET_LANG ='set_lang'
+export const SET_MENUS ='set_menus'

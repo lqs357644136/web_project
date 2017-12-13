@@ -49,6 +49,14 @@ Vue.config.productionTip = false
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'
 
+setInterval(()=>{
+  ElementUI.Notification.info({
+    title: '自检提醒',
+    message: '已到自检时间,请尽快检验',
+    duration: 0
+  });
+},300000)
+
 new Vue({
   router,
   store,

@@ -7,7 +7,7 @@
 
         <div class="stepGroup">
           <div class="stepName">首件管理</div>
-          <el-steps :space="230" :active="1" finish-status="success">
+          <el-steps :space="230" :active="2" finish-status="success">
             <el-step title="等待开发"></el-step>
             <el-step title="正在开发"></el-step>
             <el-step title="开发完毕"></el-step>
@@ -16,7 +16,7 @@
 
         <div class="stepGroup">
           <div class="stepName">产品履历</div>
-          <el-steps :space="230" :active="1" finish-status="success">
+          <el-steps :space="230" :active="2" finish-status="success">
             <el-step title="等待开发"></el-step>
             <el-step title="正在开发"></el-step>
             <el-step title="开发完毕"></el-step>
@@ -34,7 +34,7 @@
 
         <div class="stepGroup">
           <div class="stepName">自检管理</div>
-          <el-steps :space="230" :active="1" finish-status="success">
+          <el-steps :space="230" :active="2" finish-status="success">
             <el-step title="等待开发"></el-step>
             <el-step title="正在开发"></el-step>
             <el-step title="开发完毕"></el-step>
@@ -43,7 +43,7 @@
 
         <div class="stepGroup">
           <div class="stepName">巡检管理</div>
-          <el-steps :space="230" :active="1" finish-status="success">
+          <el-steps :space="230" :active="2" finish-status="success">
             <el-step title="等待开发"></el-step>
             <el-step title="正在开发"></el-step>
             <el-step title="开发完毕"></el-step>

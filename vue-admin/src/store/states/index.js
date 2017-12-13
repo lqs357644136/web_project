@@ -17,5 +17,7 @@ export default {
   //左侧菜单展开状态
   leftSilde:false,
   //系统语言  
-  lang:'zh'
+  lang:'zh',
+  //角色可以操作的菜单
+  menus:null
 }

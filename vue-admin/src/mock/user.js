@@ -10,10 +10,18 @@
  */
 
 import Mock from 'mockjs'
-import {port_code, port_user} from 'common/port_uri'
+import {
+  port_code,
+  port_user
+} from 'common/port_uri'
 
-Mock.mock(new RegExp(port_user.login), ({body}) => {
-  const {username, password} = JSON.parse(body)
+Mock.mock(new RegExp(port_user.login), ({
+  body
+}) => {
+  const {
+    username,
+    password
+  } = JSON.parse(body)
   if (username === 'admin' && password === 'admin') {
     return Mock.mock({
       code: port_code.success,
@@ -22,7 +30,38 @@ Mock.mock(new RegExp(port_user.login), ({body}) => {
         'name': '@cname',
         'avatar': 'https://avatars0.githubusercontent.com/u/16893554?v=3&s=240',
         'age|20-25': 20,
-        'desc': '@csentence()'
+        'desc': '@csentence()',
+        // 'menuOption':[
+        //   'homePage',
+        //   'firstEntity',
+        //   'productResume',
+        //   'attention',
+        //   'selfInspection',
+        //   'detection'
+        // ]
+        'menuOption': [{
+            name: 'homePage'
+          },
+          {
+            name: 'firstEntity'
+          },
+          {
+            name: 'product',
+            child:[
+              {name:'productInfo'},
+              {name:'productEnter'}
+            ]
+          },
+          {
+            name: 'attention'
+          },
+          {
+            name: 'selfInspection'
+          },
+          {
+            name: 'detection'
+          }
+        ]
       }
     })
   } else {

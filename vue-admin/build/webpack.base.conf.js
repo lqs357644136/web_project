@@ -26,6 +26,7 @@ module.exports = {
       'assets': resolve('src/assets'),
       'common': resolve('src/common'),
       'store': resolve('src/store'),
+      'router':resolve('src/router'),
       'pages': resolve('src/pages'),
       'plugins': resolve('src/plugins'),
       'components': resolve('src/components')
@@ -56,7 +57,7 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         loader: 'url-loader',
         query: {
-          limit: 1000,
+          limit: 90000,
           name: utils.assetsPath('fonts/[hash:8].[ext]')
         }
       }
