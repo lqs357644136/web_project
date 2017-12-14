@@ -21,7 +21,7 @@
 </template>
 <script type="text/javascript">
 import { mapGetters, mapActions } from "vuex";
-
+import { exitFullscreen } from "common/uitl.js";
 const USER_OUT = 0;
 const USER_INFO = 1;
 const USER_SETTING = 2;
@@ -48,6 +48,7 @@ export default {
             this.$message.success(msg);
             this.set_user_info(null);
             setTimeout(this.$router.replace({ name: "login" }), 500);
+            exitFullscreen();
           });
         })
         .catch(() => {});

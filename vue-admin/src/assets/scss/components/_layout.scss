@@ -138,7 +138,7 @@
         }
         .panel-body {
             padding: 15px;
-            overflow: hidden;
+            overflow-y: auto;
             font-weight: normal;
             position: relative;
             height: calc(100% - 45px);
@@ -196,5 +196,28 @@
     .edit {
         display: flex;
         flex-direction: row;
+    }
+}
+//卡片
+.el-card{
+    .el-card__header{
+        padding:0 15px;
+        height:42px;
+        line-height:42px;
+        span{
+            font-weight:800;
+        }
+    }
+    .el-card__body{
+        height:calc(100% - 42px);
+    }
+}
+//tab切换
+.el-tabs{
+    .el-tabs__header{
+
+    }
+    .el-tabs__content{
+        height:calc(100% - 42px);
     }
 }

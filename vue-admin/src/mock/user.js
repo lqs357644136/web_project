@@ -45,6 +45,15 @@ Mock.mock(new RegExp(port_user.login), ({
           {
             name: 'firstEntity'
           },
+          // {
+          //   name: 'attention'
+          // },
+          {
+            name: 'selfInspection'
+          },
+          {
+            name: 'detection'
+          },
           {
             name: 'product',
             child:[
@@ -53,13 +62,11 @@ Mock.mock(new RegExp(port_user.login), ({
             ]
           },
           {
-            name: 'attention'
-          },
-          {
-            name: 'selfInspection'
-          },
-          {
-            name: 'detection'
+            name: 'batchEnter',
+            child:[
+              {name:'batchEnterBlend'},
+              {name:'batchEnterRaw'}
+            ]
           }
         ]
       }

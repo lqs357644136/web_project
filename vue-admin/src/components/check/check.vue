@@ -2,72 +2,77 @@
 
     <div class="checkView">
 
-        <!-- 检测详细资料 -->
-        <el-card class="checkInfo">
-            <el-row class="infoItem">
+        <el-row class="checkViewRow" :gutter="10">
+            <!-- 检测详细资料 -->
+            <el-col class="checkInfo" :xs="24" :sm="24" :md="6" :lg="6">
 
-                <el-col class="item" :span="24" v-for="(info,index) in checkList.checkInfo" :key="index">
-                    <label for="">{{info.title}}: </label>
-                    <div>{{info.value}}</div>
-                </el-col>
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                        <span>检测资料</span>
+                    </div>
+                    <el-row class="infoItem">
+                        <el-col class="item" :span="24" v-for="(info,index) in checkList.checkInfo" :key="index">
+                            <label for="">{{info.title}}: </label>
+                            <div>{{info.value}}</div>
+                        </el-col>
 
-            </el-row>
-        </el-card>
+                    </el-row>
+                </el-card>
+            </el-col>
 
-        <el-card class="checkSpace">
+            <!-- 工作区域 -->
+            <el-col class="checkSpace" :xs="24" :sm="24" :md="18" :lg="18">
 
-            <!-- 下拉框与误差范围 -->
-            <div class="checkSelect">
+                <!-- 检测流程 -->
+                <el-card class="box-card checkMain">
+                    <div slot="header" class="clearfix">
+                        <span>检测流程</span>
+                    </div>
+                    <div class="checkMainBody">
+                        <el-tabs type="border-card">
+                            <!--  测试方式与误差范围 -->
+                            <div class="checkChioce">
+                                <div class="testType">检测方式:目测</div>
+                                <div class="deviation">
+                                    误差范围:{{checkList.deviation.min}}-{{checkList.deviation.max}}
+                                </div>
+                            </div>
+                            <el-tab-pane v-for="(check,index) in checkList.checkTypes" :key="index">
+                                <span slot="label">
+                                    <i class="fa fa-certificate"></i> {{check}}
+                                </span>
+                                <checkStep v-on:checkEndListen="checkEndView" :checkList="checkList"></checkStep>
+                            </el-tab-pane>
+                        </el-tabs>
+                    </div>
+                </el-card>
 
-                <div class="selectGroup">
+                <!-- 详细检测结果 -->
+                <el-card class="box-card checkEnd">
+                    <div slot="header" class="clearfix">
+                        <span>检测结果</span>
+                    </div>
+                    <div class="checkEndBody" v-loading="loading" element-loading-text="检测计算中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+                        <div class="success" v-if="msg=='success'">
+                            <p>高度:通过..........</p>
+                            <p>尺寸:通过..........</p>
+                            <p>精度:通过..........</p>
+                            <p>质量:通过..........</p>
+                            <p>..................</p>
+                        </div>
+                        <div class="error" v-else-if="msg=='error'">
+                            <p>高度:失败..........</p>
+                            <p>尺寸:失败..........</p>
+                            <p>精度:失败..........</p>
+                            <p>质量:失败..........</p>
+                            <p>..................</p>
+                        </div>
+                        <span v-else>等待检测</span>
+                    </div>
+                </el-card>
 
-                    <label for="">检测方法</label>
-
-                    <el-select v-model="selectValue" clearable placeholder="请选择">
-                        <el-option v-for="selectItem in checkList.selectOption" :key="selectItem.value" :label="selectItem.label" :value="selectItem.value">
-                        </el-option>
-                    </el-select>
-                </div>
-
-                <div class="deviation">
-                    误差范围:{{checkList.deviation.min}}-{{checkList.deviation.max}}
-                </div>
-            </div>
-
-            <!-- 检测流程 -->
-            <el-tabs class="checkMain" type="border-card">
-
-                <el-tab-pane v-for="(check,index) in checkList.checkTypes" :key="index">
-                    <span slot="label">
-                        <i class="fa fa-certificate"></i> {{check}}
-                    </span>
-                    <checkStep v-on:checkEndListen="checkEndView" :checkList="checkList"></checkStep>
-                </el-tab-pane>
-
-            </el-tabs>
-
-            <!-- 详细检测结果 -->
-            <el-card class="checkEnd box-card" v-loading="loading" element-loading-text="检测计算中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
-
-                <div class="success" v-if="msg=='success'">
-                    <p>高度:通过..........</p>
-                    <p>尺寸:通过..........</p>
-                    <p>精度:通过..........</p>
-                    <p>质量:通过..........</p>
-                    <p>..................</p>
-                </div>
-                <div class="error" v-else-if="msg=='error'">
-                    <p>高度:失败..........</p>
-                    <p>尺寸:失败..........</p>
-                    <p>精度:失败..........</p>
-                    <p>质量:失败..........</p>
-                    <p>..................</p>
-                </div>
-                <span v-else>等待检测</span>
-
-            </el-card>
-
-        </el-card>
+            </el-col>
+        </el-row>
 
     </div>
 
@@ -96,6 +101,18 @@ export default {
         setTimeout(() => {
           this.loading = false;
           this.msg = msg;
+          if (msg == "success") {
+            this.$notify({
+              title: "成功",
+              message: "首检成功",
+              type: "success"
+            });
+          } else {
+            this.$notify.error({
+              title: "错误",
+              message: "首检失败,有存在公差或者未填数值"
+            });
+          }
         }, 3000);
       });
     }

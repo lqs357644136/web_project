@@ -2,19 +2,20 @@
     display: flex;
     flex: row;
     height: 100%;
+    .checkViewRow {
+       height:100%;
+    }
     .checkInfo {
-        width: 250px;
-        margin-right: 10px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+        height:100%;
+        .el-card {
+            height: 100%;
+        }
         .infoItem {
             .item {
                 height: 36px;
                 line-height: 36px;
                 display: flex;
-                flex-direction: row;
+                -webkit-flex-direction: row;
                 label {
                     width: 60px;
                     font-weight: 800;
@@ -23,56 +24,79 @@
         }
     }
     .checkSpace {
-        .el-card__body {
-            height: 100%;
-        }
-        flex: 1;
-        .checkSelect {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            .selectGroup {
-                label {
-                    line-height: 36px;
-                }
-            }
-            .deviation {
-                line-height: 36px;
-            }
+        height:100%;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-justify-content: space-between;
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        &>.el-card {
         }
         .checkMain {
-            margin-bottom: 20px;
-            .stepFrom {
-                display: flex;
-                flex-direction: column;
-                .stepInputs {
+            height:calc(60% - 5px);
+            .el-card__body {
+                padding: 0;
+            }
+            .checkMainBody {
+                height: 100%;
+                &>.el-tabs {
+                    height: 100%;
+                    border: 0;
+                }
+                .el-tabs__content {
                     display: flex;
-                    justify-content: space-around;
+                    -webkit-flex-direction: column;
+                    flex-direction: column;
+                    -webkit-justify-content: space-evenly;
+                }
+                .checkChioce {
                     margin-bottom: 20px;
-                    .stepInput {
-                        margin-bottom: 0;
+                    display: flex;
+                    -webkit-justify-content: space-between;
+                    .testType {
+                        line-height: 36px;
+                    }
+                    .deviation {
+                        line-height: 36px;
                     }
                 }
-            }
-            .stepBtn {
-                margin-bottom: 0;
-                margin-right:0;
-                .el-form-item__content {
+                .stepFrom {
                     display: flex;
-                    width:100%;
-                    button {
+                    flex-direction: column;
+                    .stepInputs {
+                        display: flex;
+                        justify-content: space-around;
+                        margin-bottom: 20px;
+                        .stepInput {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                .stepBtn {
+                    margin-bottom: 0;
+                    margin-right: 0;
+                    .el-form-item__content {
+                        display: flex;
                         width: 100%;
+                        button {
+                            width: 100%;
+                        }
                     }
                 }
             }
         }
         .checkEnd {
-            height: calc(100% - 240px);
-            .success{
-                color:green;
-            }
-            .error{
-                color:red;
+            height:calc(40% - 5px);
+            .checkEndBody {
+                height: 100%;
+                .success {
+                    color: green;
+                }
+                .error {
+                    color: red;
+                }
             }
         }
     }

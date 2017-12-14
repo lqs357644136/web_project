@@ -12,7 +12,7 @@
           <span slot="title">{{menu.title}}</span>
         </el-menu-item>
 
-        <el-submenu index="menu.path" v-else>
+        <el-submenu :index="menu.path" v-else>
           <template slot="title">
             <i :class="menu.icon"></i>
             <span v-text="menu.title" class="text" ></span>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      console.log(keyPath);
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);

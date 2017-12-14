@@ -113,7 +113,7 @@ export const privateModule = [ //正式功能
     }
   },
   {
-    //巡检管理
+    //巡迴管理
     path: '/detection',
     name: 'detection',
     component: resolve => require(['pages/detection/detection'], resolve),
@@ -122,7 +122,52 @@ export const privateModule = [ //正式功能
       icon: 'fa fa-commenting',
       auth: true
     }
-  }
+  },
+  {
+    //录入管理
+    path: '/batchEnter',
+    name:'batchEnter',
+    meta: {
+      title: messages.batchEnter,
+      icon: 'fa fa-calendar-minus-o',
+      auth: true,
+      children:[
+        {
+          title: messages.batchEnterBlend,
+          path: '/batchEnter/batchEnterBlend',
+          name: 'batchEnterBlend',
+        },
+        {
+          title: messages.batchEnterRaw,
+          path: '/batchEnter/batchEnterRaw',
+          name: 'batchEnterBlend',
+        }
+      ]
+    }
+  },
+  {
+    //原来批次录入
+    path: '/batchEnter/batchEnterRaw',
+    name: 'batchEnterRaw',
+    component: resolve => require(['pages/batchEnter/batchEnterRaw'], resolve),
+    meta: {
+      title: messages.batchEnterRaw,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    }
+  },
+  {
+    //调合批次录入
+    path: '/batchEnter/batchEnterBlend',
+    name: 'batchEnterBlend',
+    component: resolve => require(['pages/batchEnter/batchEnterBlend'], resolve),
+    meta: {
+      title: messages.batchEnterBlend,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    }
+  },
+
 ]
 
 //使用AMD方式加载

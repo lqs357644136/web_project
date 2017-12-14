@@ -16,7 +16,10 @@ const messages = {
         productEnter:'产品履历录入',
         attention:'注意事项',
         selfInspection:'自检管理',
-        detection:'巡检管理'
+        detection:'巡迴管理',
+        batchEnter:'批次录入管理',
+        batchEnterBlend:'调合批次录入',
+        batchEnterRaw:'原料批次录入'
       }
     },
     en: {
@@ -31,7 +34,10 @@ const messages = {
         productEnter:'productEnter',
         attention:'attention',
         selfInspection:'selfInspection',
-        detection:'detection'
+        detection:'detection',
+        batchEnter:'batchEnter',
+        batchEnterBlend:'batchEnterBlend',
+        batchEnterRaw:'batchEnterRaw'
       }
     }
 }

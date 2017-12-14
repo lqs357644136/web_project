@@ -66,17 +66,8 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$notify({
-            title: "成功",
-            message: "首检成功",
-            type: "success"
-          });
           this.$emit("checkEndListen", "success");
         } else {
-          this.$notify.error({
-            title: "错误",
-            message: "首检失败,有存在公差或者未填数值"
-          });
           this.$emit("checkEndListen", "error");
           return false;
         }
