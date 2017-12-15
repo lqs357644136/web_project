@@ -14,6 +14,7 @@ import {
   port_code,
   port_user
 } from 'common/port_uri'
+import userLogo from 'assets/images/userLogo.png'
 
 Mock.mock(new RegExp(port_user.login), ({
   body
@@ -28,7 +29,7 @@ Mock.mock(new RegExp(port_user.login), ({
       msg: "登录成功",
       data: {
         'name': '@cname',
-        'avatar': 'https://avatars0.githubusercontent.com/u/16893554?v=3&s=240',
+        'avatar': userLogo,
         'age|20-25': 20,
         'desc': '@csentence()',
         // 'menuOption':[
@@ -39,9 +40,7 @@ Mock.mock(new RegExp(port_user.login), ({
         //   'selfInspection',
         //   'detection'
         // ]
-        'menuOption': [{
-            name: 'homePage'
-          },
+        'menuOption': [
           {
             name: 'firstEntity'
           },

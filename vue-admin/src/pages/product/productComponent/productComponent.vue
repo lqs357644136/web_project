@@ -149,7 +149,7 @@
                                     <span>不良写真</span>
                                 </div>
                                 <div>
-                                    <img @click="imgInfoShowfn()" src="https://picsum.photos/200/300/?random" alt="">
+                                    <img @click="imgInfoShowfn()" src="../img/testPicture.png" alt="">
                                 </div>
                             </el-card>
 
@@ -158,7 +158,7 @@
                                     <span>改善后写真</span>
                                 </div>
                                 <div>
-                                    <img @click="imgInfoShowfn()" src="https://picsum.photos/200/300/?random" alt="">
+                                    <img @click="imgInfoShowfn()" src="../img/testPicture.png" alt="">
                                 </div>
                             </el-card>
 
@@ -210,6 +210,7 @@
 
 <script>
 import imageView from "vue-imageview";
+import img from '../img/testPicture.png';
 export default {
   data() {
     return {
@@ -218,7 +219,7 @@ export default {
       timeRadio: 3,
       //图片查看
       imgInfoShow: false,
-      imgArr: ["https://picsum.photos/200/300/?random"],
+      imgArr: [img],
       imageIndex: 0,
       //图片上传
       imageUrl: ""

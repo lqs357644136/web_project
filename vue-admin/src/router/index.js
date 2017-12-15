@@ -184,7 +184,7 @@ const routes = [{
   component: resolve => require(['pages/user/login'], resolve)
 }, {
   path: '/',
-  redirect: '/home',
+  redirect: '/firstentity',
   component: resolve => require(['pages/App'], resolve),
   children: privateModule
 }]
