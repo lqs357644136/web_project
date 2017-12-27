@@ -12,16 +12,28 @@
 import * as type from 'store/getters/type'
 
 export default {
-  [type.GET_USER_INFO]: state => {
-    return state.user_info
+  [type.GET_TOKEN]:state =>{
+    return state.token;
+  },
+  [type.GET_USERINFO]:state =>{
+    return state.userInfo;
   },
   [type.GET_LEFTSLIDE_STATE]: state => {
-    return state.leftSilde
+    return state.leftSilde;
   },
   [type.GET_LANG]: state => {
-    return state.lang
+    return state.lang;
   },
   [type.GET_MENUS]: state => {
-    return state.menus
-  }
+    return state.menus;
+  },
+  [type.GET_PAGELOADING]: state => {
+    return state.pageloading;
+  },
+  [type.GET_FROMCHECKLIST]:state =>{
+    return state.fromCheckList;
+  },
+  [type.GET_CHECKLIST]:state =>{
+    return state.checkList;
+  },
 }

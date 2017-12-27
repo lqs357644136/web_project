@@ -2,7 +2,7 @@
     <div class="panel batchEnter">
         <panel-title :title="$route.meta.title"></panel-title>
         <div class="panel-body">
-            <batchEnterComponent></batchEnterComponent>
+            <batchEnterComponent :batchType="batchType"></batchEnterComponent>
         </div>
     </div>
 </template>
@@ -11,6 +11,11 @@
 import { panelTitle } from "components";
 import batchEnterComponent from "./batchEnterComponent/batchEnterComponent.vue";
 export default {
+  data() {
+    return {
+      batchType: 1
+    };
+  },
   components: {
     batchEnterComponent,
     panelTitle

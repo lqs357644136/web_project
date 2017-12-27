@@ -10,57 +10,85 @@
 
 //导入模块
 import axios from 'axios'
-import {port_code} from 'common/port_uri'
 import router from 'src/router'
-import {Message} from 'element-ui'
+import {
+  Message
+} from 'element-ui'
 import store from 'store'
-import {SET_USER_INFO} from 'store/actions/type'
-import {server_base_url} from 'common/config'
+import {
+  setToken
+} from 'common/cookie'
+import {
+  server_base_url
+} from 'common/config'
+import qs from "qs";
 
-//设置用户信息action
-const setUserInfo = function (user) {
-  store.dispatch(SET_USER_INFO, user)
-}
+export const $post = function (options) {
 
-export default function fetch(options) {
+  let url = options.url;
+  let data = options.data;
+  let token = store.getters.get_token ? store.getters.get_token : "";
+  axios.defaults.headers["Content-Type"] = 'application/json';
+  axios.defaults.headers["token"] = token;
+  let path = server_base_url + url;
   return new Promise((resolve, reject) => {
-    // https://github.com/mzabriskie/axios
+    axios.post(path, data).then((res) => {
 
-    //创建一个axios实例
-    const instance = axios.create({
-      //设置默认根地址
-      baseURL: server_base_url,
-      //设置请求超时设置
-      timeout: 2000,
-      //设置请求时的header
-      headers: {
-        'Github-url': 'https://github.com/zzmhot/vue-admin',
-        'X-Powered-By': 'zzmhot'
-      }
-    })
-    //请求处理
-    instance(options)
-      .then(({data: {code, msg, data}}) => {
         //请求成功时,根据业务判断状态
-        if (code === port_code.success) {
-          resolve({code, msg, data})
-          return false
-        } else if (code === port_code.unlogin) {
-          setUserInfo(null)
-          router.replace({name: "login"})
+        if (res.data.code != -1) {
+          resolve(res.data)
+        } else { //code等于-1表示token失效,跳转到登录
+          Message.error('token失效')
+          if (router.currentRoute.name != 'login') {
+            store.dispatch('login_out');
+            setTimeout(() => {
+              router.push('/user/login');
+            }, 500);
+          }
         }
-        Message.warning(msg)
-        reject({code, msg, data})
       })
       .catch((error) => {
-        //请求失败时,根据业务判断状态
-        if (error.response) {
-          let resError = error.response
-          let resCode = resError.status
-          let resMsg = error.message
-          Message.error('操作失败！错误原因 ' + resMsg)
-          reject({code: resCode, msg: resMsg})
+        console.log('错误信息')
+        console.log(error)
+        Message.error('服务器请求失败！')
+        reject(error);
+      });
+  })
+}
+
+export const $get = function (options) {
+
+  let url = options.url;
+  let params = options.params ? options.params : {};
+  let token = store.getters.get_token ? store.getters.get_token : "";
+  axios.defaults.headers["Content-Type"] = 'application/json';
+  axios.defaults.headers["token"] = token;
+  let path = server_base_url + url;
+  return new Promise((resolve, reject) => {
+
+    axios({
+      url: path,
+      method: 'get',
+      params: params
+    }).then((res) => {
+      //请求成功时,根据业务判断状态
+      if (res.data.code != -1) {
+        resolve(res.data)
+      } else { //code等于-1表示token失效,跳转到登录
+        Message.error('token失效')
+        if (router.currentRoute.name != 'login') {
+          store.dispatch('login_out');
+          setTimeout(() => {
+            router.push('/user/login');
+          }, 500);
         }
-      })
+      }
+    }).catch((error) => {
+      console.log('错误信息')
+      console.log(error)
+      Message.error('服务器请求失败！')
+      reject(error);
+    })
+    
   })
 }

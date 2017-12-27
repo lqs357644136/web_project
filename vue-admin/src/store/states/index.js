@@ -9,15 +9,23 @@
  *
  */
 
-import {cookieStorage} from 'common/storage'
+import { getToken } from 'common/cookie'
 
 export default {
-  //用户信息和是否登录
-  user_info: cookieStorage.get('user_info'),
+  //token
+  token:getToken(),
+  //用户信息
+  userInfo:null,
   //左侧菜单展开状态
-  leftSilde:false,
+  leftSilde:true,
   //系统语言  
   lang:'zh',
   //角色可以操作的菜单
-  menus:null
+  menus:null,
+  //页面加载状态
+  pageloading:false,
+  //来自检查清单页面的跳转
+  fromCheckList:false,
+  //暂时保存检查信息
+  checkList:null,
 }

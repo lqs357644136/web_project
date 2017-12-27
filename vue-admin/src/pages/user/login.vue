@@ -4,6 +4,9 @@
       <div class="login-title">
         <p class="name">INTELFOR</p>
         <p class="msg">management system</p>
+        <p class="msg">
+          <a href="http://192.168.1.10:8080/zq-admin/zq-admin.apk">下载本地安装包</a>
+        </p>
       </div>
       <div class="login-form">
         <el-form ref="form" :model="form" :rules="rules" label-width="0">
@@ -22,10 +25,7 @@
   </div>
 </template>
 <script type="text/javascript">
-import { mapActions } from "vuex";
-import { port_user, port_code } from "common/port_uri";
-import { launchFullscreen } from "common/uitl.js";
-import { SET_USER_INFO } from "store/actions/type";
+import url from "api";
 
 export default {
   data() {
@@ -43,32 +43,26 @@ export default {
     };
   },
   methods: {
-    ...mapActions({
-      set_user_info: SET_USER_INFO
-    }),
     //提交
     submit_form() {
       this.$refs.form.validate(valid => {
         if (!valid) return false;
         this.load_data = true;
         //登录提交
-        this.$fetch.api_user
-          .login(this.form)
-          .then(({ data, msg }) => {
-            this.$store.dispatch("set_user_info", { user: data, login: true });
-            this.$message.success(msg);
-            launchFullscreen(document.documentElement)
-            setTimeout(this.$router.push({ path: "/" }), 500);
-          })
-          .catch(({ code }) => {
-            this.load_data = false;
-            if (code === port_code.error) {
-              this.$notify.info({
-                title: "温馨提示",
-                message: "账号和密码都为：admin"
-              });
-            }
-          });
+        this.$post({
+          url: url.user_login,
+          data: this.from
+        }).then(res => {
+          if (res.code != 1) {
+            this.$notify.info({
+              title: "温馨提示",
+              message: "测试账号:admin , 密码:123456"
+            });
+          } else {
+            this.$store.commit("SET_TOKEN", res.data.token);
+            this.$router.push("/");
+          }
+        });
       });
     }
   }

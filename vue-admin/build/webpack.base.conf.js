@@ -29,7 +29,8 @@ module.exports = {
       'router':resolve('src/router'),
       'pages': resolve('src/pages'),
       'plugins': resolve('src/plugins'),
-      'components': resolve('src/components')
+      'components': resolve('src/components'),
+      'api':resolve('src/api')
     }
   },
   module: {

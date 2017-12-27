@@ -15,11 +15,12 @@ const messages = {
         productInfo:'产品履历查看',
         productEnter:'产品履历录入',
         attention:'注意事项',
-        selfInspection:'自检管理',
-        detection:'巡迴管理',
+        tourEntity:'巡迴检测',
+        checkList:'检查清单',
         batchEnter:'批次录入管理',
         batchEnterBlend:'调合批次录入',
-        batchEnterRaw:'原料批次录入'
+        batchEnterRaw:'原料批次录入',
+        xbar:'x-bar图',
       }
     },
     en: {
@@ -33,11 +34,12 @@ const messages = {
         productInfo:'productInfo',
         productEnter:'productEnter',
         attention:'attention',
-        selfInspection:'selfInspection',
-        detection:'detection',
+        tourEntity:'tourEntity',
+        checkList:'checkList',
         batchEnter:'batchEnter',
         batchEnterBlend:'batchEnterBlend',
-        batchEnterRaw:'batchEnterRaw'
+        batchEnterRaw:'batchEnterRaw',
+        xbar:'x-bar',
       }
     }
 }

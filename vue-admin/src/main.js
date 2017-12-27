@@ -1,15 +1,4 @@
-/**
- * Created by zzmhot on 2017/3/23.
- *
- * 主程序入口
- *
- * @author: zzmhot
- * @github: https://github.com/zzmhot
- * @email: zzmhot@163.com
- * @Date: 2017/3/23 18:19
- * @Copyright(©) 2017 by zzmhot.
- *
- */
+
 
 //导入样式
 import 'normalize.css'
@@ -25,26 +14,31 @@ import router from './router'
 import store from 'store'
 //导入请求框架
 import api from './api'
-//导入自定义插件
-import Plugins from 'plugins'
 //导入主视图文件
 import App from './App'
+//导入过滤器
+import 'common/filiter'
+//导入axios请求方法
+import { $get,$post } from 'common/fetch/index.js'
+
 //导入mock数据
-import './mock'
+//import './mock'
 //导入国际化设置
 import i18n from 'common/i18n'
+// //导入mock数据
+// import './mock'
 
 //使用element-ui
 Vue.use(ElementUI)
-
-//使用自定义插件
-Vue.use(Plugins)
 
 //使用api
 Vue.use(api)
 
 //发布后是否显示提示
 Vue.config.productionTip = false
+//注册全局请求方法
+Vue.prototype.$get = $get;
+Vue.prototype.$post = $post;
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'

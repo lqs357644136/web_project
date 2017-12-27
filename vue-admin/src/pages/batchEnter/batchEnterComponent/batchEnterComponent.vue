@@ -1,80 +1,77 @@
 <template>
-    <div class="batchEnter">
-        <!-- 巡迴管理 -->
-        <el-form :model="inputs" :inline="true" status-icon :rules="rules" ref="inputs" label-width="100px" class="detectionFrom">
-            <el-card class="box-card">
+  <div class="batchEnter">
+    <!-- 批次录入 -->
+    <el-form :model="inputs" :inline="true" status-icon :rules="rules" ref="inputs" label-width="100px" class="detectionFrom">
+      <el-card class="box-card">
 
-                <div slot="header" class="clearfix detectionFrom-header">
-                    <div class="name">批次录入</div>
-                    <el-form-item class="btn">
-                        <el-button type="primary" @click="submitForm('inputs')">提交</el-button>
-                    </el-form-item>
-                </div>
+        <div slot="header" class="clearfix detectionFrom-header">
+          <div class="name">批次录入</div>
+          <el-form-item class="btn">
+            <el-button type="primary" @click="submitForm('inputs')">提交</el-button>
+          </el-form-item>
+        </div>
 
-                <el-row :gutter="10">
-                    <el-col :xs="24" :sm="24" :md="10" :lg="8">
-                        <el-form-item label="粉号" class="" prop="input01">
-                            <el-input type="text" v-model="inputs.input01" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :xs="24" :sm="24" :md="10" :lg="8">
-                        <el-form-item label="批次号" class="" prop="input02">
-                            <el-input type="text" v-model="inputs.input02" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :xs="24" :sm="24" :md="10" :lg="8">
-                        <el-form-item label="数量" class="" prop="input03">
-                            <el-input type="text" v-model="inputs.input03" auto-complete="off"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
+        <el-row :gutter="10">
+          <el-col :xs="24" :sm="24" :md="10" :lg="8">
+            <el-form-item :label="materialNo" class="" prop="materialNo">
+              <el-input type="text" v-model="inputs.materialNo" auto-complete="off"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="10" :lg="8">
+            <el-form-item label="批次号" class="" prop="batchNo">
+              <el-input type="text" v-model="inputs.batchNo" auto-complete="off"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="10" :lg="8">
+            <el-form-item label="数量" class="" prop="quantity">
+              <el-input-number v-model="inputs.quantity" :min="1" label="请输入数量"></el-input-number>
+            </el-form-item>
+          </el-col>
+        </el-row>
 
-            </el-card>
-        </el-form>
+      </el-card>
+    </el-form>
 
-        <!-- 巡检列表 -->
-        <el-card class="tableBox">
-            <div slot="header" class="clearfix detectionFrom-header">
-                <span>批次录入清单</span>
+    <!-- 批次录入列表 -->
+    <el-card class="tableBox">
+      <div slot="header" class="clearfix detectionFrom-header">
+        <span>批次录入清单</span>
+      </div>
+
+      <el-table :stripe="true" :data="tableData" height="100%" border style="width: 100%">
+        <el-table-column prop="materialNo" :label="materialNo"></el-table-column>
+        <el-table-column prop="batchNo" label="批次号"></el-table-column>
+        <el-table-column prop="quantity" label="数量"></el-table-column>
+        <el-table-column prop="createDate" label="时间">
+          <template slot-scope="scope">
+            <i class="el-icon-time"></i>
+            <span style="margin-left: 10px">{{ scope.row.createDate | dataFormat('yyyy-MM-dd') }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <div class="edit">
+              <el-button @click="deteleBatchEnter(scope.$index,scope.row.id)" type="danger" size="mini">删除</el-button>
             </div>
-
-            <el-table :stripe="true" :data="tableData" height="100%" border style="width: 100%">
-                <el-table-column prop="fId" label="粉号"></el-table-column>
-                <el-table-column prop="pId" label="批次号"></el-table-column>
-                <el-table-column prop="num" label="数量"></el-table-column>
-                <el-table-column prop="date" label="时间"></el-table-column>
-                <el-table-column label="操作">
-                    <template slot-scope="scope">
-                        <div class="edit">
-                            <el-button @click="deteleBatchEnter(scope)" type="danger" size="mini">删除</el-button>
-                        </div>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </el-card>
-    </div>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-card>
+  </div>
 </template>
 
 
 <script>
 import check from "components/check/check.vue";
 import { panelTitle } from "components";
+import url from "api";
+import { server_base_url } from "common/config/index.js";
+import axios from "axios";
+import qs from "qs";
 
 export default {
+  props: ["batchType"],
   data() {
-    var mockData = function() {
-      let arr = [];
-      for (var i = 0; i < 4; i++) {
-        let obj = {
-          fId: "3243245",
-          pId: "4354353",
-          num: "12321",
-          date: "2016-01-01",
-        };
-        arr.push(obj);
-      }
-      return arr;
-    };
     var checkStep = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("请输入检测值"));
@@ -83,20 +80,26 @@ export default {
       }
     };
     return {
-      tableData: mockData(),
+      materialNo: null,
+      tableData: null,
       inputs: {
-        input01: "",
-        input02: "",
-        input03: ""
+        materialNo: "",
+        batchNo: "",
+        quantity: 1
       },
       rules: {
-        input01: [{ validator: checkStep, trigger: "blur" }],
-        input02: [{ validator: checkStep, trigger: "blur" }],
-        input03: [{ validator: checkStep, trigger: "blur" }]
-      },
+        materialNo: [{ validator: checkStep, trigger: "blur" }],
+        batchNo: [{ validator: checkStep, trigger: "blur" }],
+        quantity: [{ validator: checkStep, trigger: "blur" }]
+      }
     };
   },
-  created() {},
+  mounted() {
+    this.materialNo = this.batchType == 0 ? "粉号" : "批次号";
+  },
+  created() {
+    this.get_batchList();
+  },
   components: {
     check,
     panelTitle
@@ -108,18 +111,34 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      let self = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.tableData.push({
-            fId: this.inputs.input01,
-            pId: this.inputs.input02,
-            num: this.inputs.input03,
-            date: "2016-01-01"
-          });
-          this.$notify({
-            title: "成功",
-            message: "批次录入成功",
-            type: "success"
+          let params = {
+            batchNo: self.inputs.batchNo,
+            materialNo: self.inputs.materialNo,
+            quantity: self.inputs.quantity,
+            type: self.batchType
+          };
+
+          this.$post({
+            url: url.batch_List_add,
+            data: params
+          }).then(res => {
+            if (res.code == 1) {
+              this.get_batchList();
+              this.$notify({
+                title: "成功",
+                message: "批次录入成功",
+                type: "success"
+              });
+            } else {
+              this.$notify({
+                title: "失败",
+                message: "批次录入失败",
+                type: "error"
+              });
+            }
           });
         } else {
           this.$notify.error({
@@ -130,9 +149,37 @@ export default {
         }
       });
     },
-    deteleBatchEnter(scope){
-        let selectNum = scope.$index;
-        this.tableData.splice(selectNum,1)
+    //删除批次清单
+    deteleBatchEnter(index, id) {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(() => {
+          this.$get({
+            url: url.batch_List_delete,
+            params: { id: id }
+          }).then(res => {
+            if (res.code == 1) {
+              this.tableData.splice(index, 1);
+              this.$message({
+                type: "success",
+                message: "删除成功!"
+              });
+            }
+          });
+        })
+    },
+    //获取清单数据
+    get_batchList() {
+      this.$get({
+        url: url.batch_List,
+        params: { type: this.batchType }
+      }).then(res => {
+        if (res.code == 1) {
+          this.tableData = res.data;
+        }
+      });
     }
   }
 };
