@@ -47,25 +47,26 @@
 
                 <!-- 详细检测结果 -->
                 <el-card class="box-card checkEnd">
-                    <div slot="header" class="clearfix">
+                    <div slot="header" class="clearfix checkEnd-header">
                         <span>检测结果</span>
+                        <div class="edit">
+                          <el-button type="primary" size="mini" round @click="checkEnd_clear()">clear</el-button>
+                        </div>
                     </div>
                     <div class="checkEndBody" v-loading="loading" element-loading-text="检测计算中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
-                        <div class="success" v-if="msg=='success'">
-                            <p>高度:通过..........</p>
-                            <p>尺寸:通过..........</p>
-                            <p>精度:通过..........</p>
-                            <p>质量:通过..........</p>
-                            <p>..................</p>
+                        <div v-show="msg&&msg.length>0" >
+                          <div v-for="(msgItem,index) in msgItems" :key="index" :class="msgItem.class" >
+                            <p>-------------------------------------------------</p>
+                            <p>检测时间 : {{msgItem.time}}</p>
+                            <p>检测项目 : {{msgItem.name}}</p>
+                            <p>检测结果 : {{msgItem.result}}</p>
+                            <p v-for="(resultItem,resultIndex) in msgItem.resultInfo" :key="resultIndex">
+                              第{{resultIndex+1}}次检测:{{resultItem==1?'成功':'失败'}}
+                            </p>
+                            <p>-------------------------------------------------</p>
+                          </div>
                         </div>
-                        <div class="error" v-else-if="msg=='error'">
-                            <p>高度:失败..........</p>
-                            <p>尺寸:失败..........</p>
-                            <p>精度:失败..........</p>
-                            <p>质量:失败..........</p>
-                            <p>..................</p>
-                        </div>
-                        <span v-else>等待检测</span>
+                        <span v-show="msg==null">等待检测</span>
                     </div>
                 </el-card>
 
@@ -79,6 +80,7 @@
 <script>
 import checkStep from "./checkStep.vue";
 import { mapGetters } from "vuex";
+import { $dataFormat } from "common/filiter/index.js";
 
 export default {
   data() {
@@ -86,7 +88,9 @@ export default {
       loading: false,
       msg: null,
       checkInfo: null,
-      checkStep: []
+      checkStep: [],
+      finalObj:null,
+      msgItems:[],
     };
   },
   computed: {
@@ -148,9 +152,11 @@ export default {
       for (let spec of this.checkList.specList) {
         let specificationType = spec.specificationType;
         let project = {
+          code: spec.item.code, //项目代号
           itemDescription: spec.item.description, //项目名称
           methodDescription: spec.method.description, //检测方法
           specificationType: specificationType, //规格类型：0(范围),1(公差) ,
+          inspectSpecification:spec.inspectSpecification,//检验规格
           symbol:spec.symbol//符号
         };
         if (specificationType == 0) {
@@ -164,27 +170,42 @@ export default {
         this.checkStep.push(project);
       }
     },
-    checkEndView(msg) {
+    checkEndView(finalView) {
+      this.finalObj = finalView;
+      let type = finalView.type;
+      let name = finalView.name;
+      let time = $dataFormat(new Date(), "hh:mm:ss");
+      let result = finalView.result=="1"?"成功":"失败";
       new Promise((resolve, reject) => {
         resolve((this.loading = true));
       }).then(() => {
         setTimeout(() => {
           this.loading = false;
-          this.msg = msg;
-          if (msg == "success") {
+          this.msg = finalView.result=='1'?'success':'error';
+          if (this.msg == "success") {
             this.$notify({
               title: "成功",
-              message: "首检成功",
+              message: name+"检测成功",
               type: "success"
             });
           } else {
             this.$notify.error({
               title: "错误",
-              message: "首检失败,有存在公差或者未填数值"
+              message: name+"检测失败"
             });
           }
-        }, 3000);
+          this.msgItems.unshift({
+            time:time,
+            name:name,
+            class:finalView.result=="1"?"success":"error",
+            result:result,
+            resultInfo:finalView.resultArr
+          })
+        }, 1000);
       });
+    },
+    checkEnd_clear(){
+      this.msgItems = [];
     }
   }
 };

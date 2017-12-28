@@ -30,7 +30,7 @@ export default {
   },
   created(){
   },
-  name: "content",
+  name: "main-content",
   components: {
     hSection,
     vFooter

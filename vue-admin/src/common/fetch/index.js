@@ -24,7 +24,7 @@ import {
 import qs from "qs";
 
 export const $post = function (options) {
-
+  console.log(options);
   let url = options.url;
   let data = options.data;
   let token = store.getters.get_token ? store.getters.get_token : "";
@@ -57,7 +57,7 @@ export const $post = function (options) {
 }
 
 export const $get = function (options) {
-
+  console.log(options);
   let url = options.url;
   let params = options.params ? options.params : {};
   let token = store.getters.get_token ? store.getters.get_token : "";

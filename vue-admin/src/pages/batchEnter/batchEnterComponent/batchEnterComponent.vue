@@ -66,8 +66,6 @@ import check from "components/check/check.vue";
 import { panelTitle } from "components";
 import url from "api";
 import { server_base_url } from "common/config/index.js";
-import axios from "axios";
-import qs from "qs";
 
 export default {
   props: ["batchType"],

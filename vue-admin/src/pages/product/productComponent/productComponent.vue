@@ -225,8 +225,11 @@ export default {
       imageUrl: ""
     };
   },
-  props: ["productType"],
+  props: ["productType","productInfo"],
   created() {},
+  mounted(){
+      console.log(this.productInfo);
+  },
   computed: {
     type: function() {
       return this.productType == "enter" ? false : true;

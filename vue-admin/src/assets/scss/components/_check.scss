@@ -80,8 +80,8 @@
                         display: flex;
                         justify-content: space-between;
                         padding: 5px 10px;
-                        label{
-                            margin-right:10px;
+                        label {
+                            margin-right: 10px;
                         }
                         .testType {
                             line-height: 36px;
@@ -121,8 +121,20 @@
         }
         .checkEnd {
             flex: 1;
+            .checkEnd-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .edit{
+
+                }
+            }
+            .el-card__body{
+                background-color: #f0f0f0;
+            }
             .checkEndBody {
                 height: 100%;
+                overflow-y: auto;
                 .success {
                     color: green;
                 }

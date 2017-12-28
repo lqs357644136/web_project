@@ -1,7 +1,7 @@
 <template>
     <div class="panel">
       <panel-title :title="$route.meta.title"></panel-title>
-      <div class="panel-body">
+      <div class="panel-body" >
         <productComponent productType="enter"></productComponent>
       </div>
     </div>

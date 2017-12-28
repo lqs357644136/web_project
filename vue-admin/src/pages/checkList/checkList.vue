@@ -46,6 +46,7 @@ export default {
   methods: {
     //获取检查清单
     get_checklist() {
+      this.$store.dispatch("set_checklist", null);
       this.$get({
         url: url.check_list
       }).then(res => {
@@ -70,9 +71,38 @@ export default {
         }
       });
     },
+    //请求检查页面信息
+    get_checkInfo(params) {
+      console.log(params)
+      let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
+      let self = this;
+      self.$get({
+        url: url.check_info,
+        params: params
+      }).then(res => {
+        if (res.code == 1) {
+          self.$store.commit("SET_CHECKLIST", res.data);
+          setTimeout(res => {
+            self.$router.push({
+              path: path,
+              query: {
+                fromCheckList: true
+              }
+            });
+          }, 200);
+        } else {
+          let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
+          self.$message.error(res.msg);
+          if (!self.fromCheckList) {
+            setTimeout(res => {
+              self.$router.push(path);
+            }, 200);
+          }
+        }
+      });
+    },
     goDeteCheck(scope) {
       let path = scope.row.type == "0" ? "/firstEntity" : "/tourEntity";
-      this.$store.dispatch("set_fromchecklist", true);
       let info = {
         plant: scope.row.plant,
         line: scope.row.line,
@@ -82,13 +112,7 @@ export default {
       if (scope.row.type == "1") {
         info.ptno = scope.row.ptno;
       }
-      this.$router.push({
-        path: path,
-        query: {
-          fromCheckList: true,
-          info: info
-        }
-      });
+      this.get_checkInfo(info);
     }
   }
 };

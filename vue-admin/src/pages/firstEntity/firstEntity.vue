@@ -59,6 +59,7 @@
 <script>
 import check from "components/check/check.vue";
 import { panelTitle } from "components";
+import { mapGetters } from "vuex";
 import url from "api";
 
 export default {
@@ -85,8 +86,6 @@ export default {
         lineInput: "",
         processInput: ""
       },
-      //获取到的检查信息
-      checkList: null,
       //下拉验证规则
       rules: {
         plantInput: [{ validator: checkSelect, trigger: "blur" }],
@@ -95,9 +94,16 @@ export default {
       }
     };
   },
-  computed: {},
-  created() {
+  computed: {
+    ...mapGetters({
+      //获取到的检查信息
+      checkList: "get_checklist"
+    })
+  },
+  mounted() {
     this.isFromCheckList();
+  },
+  created() {
   },
   components: {
     panelTitle,
@@ -122,10 +128,11 @@ export default {
     },
     //检查是否由检查清单跳转过来
     isFromCheckList() {
-      if (this.$router.currentRoute.query.fromCheckList) {
-        this.fromCheckList = false;
-        this.get_checkInfo(this.$router.currentRoute.query.info);
-      } else {
+      this.$store.dispatch("set_fromchecklist", true);
+      if (this.$router.currentRoute.query.fromCheckList&&this.checkList!=null) {//是 
+          this.fromCheckList = false;
+      } else {//否
+        this.$store.dispatch("set_checklist", null);
         this.fromCheckList = true;
         this.getPlantSelect();
       }
@@ -133,17 +140,17 @@ export default {
     //请求检查页面信息
     get_checkInfo(params) {
       let self = this;
-      this.$get({
+      self.$get({
         url: url.check_info,
         params: params
       }).then(res => {
         if (res.code == 1) {
-          this.$store.dispatch("set_checklist", res.data);
+          self.$store.dispatch("set_checklist", res.data);
           self.fromCheckList = false;
         } else {
           let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
           self.$message.error("没有找到对应检测信息,请手动录入");
-          self.fromCheckList = true;
+          self.fromCheckList = false;
           if (!self.fromCheckList) {
             setTimeout(res => {
               self.$router.push(path);

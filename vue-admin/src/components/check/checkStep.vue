@@ -47,10 +47,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import url from "api";
+import { server_base_url } from "common/config/index.js";
 export default {
   props: ["tabCheck"],
   data() {
-
     var checkStep = (rule, value, callback) => {
       if (!value) {
         return callback(new Error("请输入检测值"));
@@ -88,7 +90,13 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapGetters({
+      checkList: "get_checklist"
+    })
+  },
   mounted() {
+    console.log(this.checkList);
     this.computRang_init();
   },
   methods: {
@@ -104,13 +112,90 @@ export default {
           this.tabCheck.stdValue + this.tabCheck.stdValuePlus;
       }
     },
-    
+    //最终检验结果
+    checkFinal() {
+      let inputs = this.inputs; //获取需要提交表单
+      let code = this.tabCheck.code; // 项目代号
+      let name = this.tabCheck.itemDescription; //项目名称
+      //每项结果
+      let r1 = this.checkType_input(this.inputs.input01) + "";
+      let r2 = this.checkType_input(this.inputs.input02) + "";
+      let r3 = this.checkType_input(this.inputs.input03) + "";
+      let r4 = this.checkType_input(this.inputs.input04) + "";
+      let r5 = this.checkType_input(this.inputs.input05) + "";
+      let rArr = [r1, r2, r3, r4, r5];
+      let result = this.checkType_allInput(rArr) + ""; //检验结果 0 不通过 1 通过
+      let obj = {
+        code: code,
+        name: name,
+        r1: r1,
+        r2: r2,
+        r3: r3,
+        r4: r4,
+        r5: r5,
+        result: result
+      };
+      return obj;
+    },
+    //按输入检测单个结果
+    checkType_input(val) {
+      let crVal = val*1;
+      let min = this.computRang.minVal*1;
+      let max = this.computRang.maxVal*1;
+      let flag = crVal>=min && max>=crVal;
+      return flag ? 1 : 0;
+    },
+    //按输入检测所有结果
+    checkType_allInput(arr) {
+      return arr.indexOf("0") != -1 ? 0 : 1;
+    },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$emit("checkEndListen", "success");
+          let inspect = this.checkList.inspect;
+          let itemObj = [this.checkFinal()];
+
+          console.log(itemObj);
+          let params = {
+            items: itemObj, //检验结果
+            line: inspect.line.line, //制程
+            method: this.tabCheck.methodDescription, //方法
+            operator: "no", //人员
+            orderNo: "", //inspect.orderNo,//工令单号
+            pdNo: inspect.ptno, //产品编号
+            pdNum: 0, // inspect.pdNum,//产品数目
+            plant: inspect.plant.plant, //车间
+            process: inspect.process.process, //机台
+            reconcile: "", // inspect.reconcile,//调合
+            specification: this.tabCheck.inspectSpecification, // 检验规格
+            type: inspect.type //类型：0（自检）,1（巡检）
+          };
+          this.$post({
+            url: url.check_add,
+            data: params
+          }).then(res => {
+            
+            let finalView = {
+              code:params.items[0].code,
+              name:params.items[0].name,
+              result:params.items[0].result,
+              resultArr:[
+                params.items[0].r1,
+                params.items[0].r2,
+                params.items[0].r3,
+                params.items[0].r4,
+                params.items[0].r5
+              ],
+              type:params.type
+            }
+            if (res.code == 1) {
+              this.$message.success(res.msg);
+            } else {
+              this.$message.error(res.msg);
+            }
+            this.$emit("checkEndListen", finalView);
+          });
         } else {
-          this.$emit("checkEndListen", "error");
           return false;
         }
       });

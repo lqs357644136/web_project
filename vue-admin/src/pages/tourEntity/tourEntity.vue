@@ -23,6 +23,15 @@
                 </el-row>
                 <el-row type="flex" justify="center" :gutter="30">
                   <el-col :xs="24" :sm="24" :md="24" :lg="24">
+                    <el-form-item label="产品编号" prop="ptnoInput">
+                      <el-select v-model="checkInfoInputs.ptnoInput" placeholder="请选择">
+                        <el-option v-for="item in selectOptions.ptnoOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row type="flex" justify="center" :gutter="30">
+                  <el-col :xs="24" :sm="24" :md="24" :lg="24">
                     <el-form-item label="制程" prop="lineInput">
                       <el-select @change="lineSelectChange()" v-model="checkInfoInputs.lineInput" placeholder="请选择">
                         <el-option v-for="item in selectOptions.lineOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -39,7 +48,6 @@
                     </el-form-item>
                   </el-col>
                 </el-row>
-
                 <el-row>
                   <el-form-item class="subBtn">
                     <el-button type="primary" @click="selectSuccess('checkInfoInputs')">确定</el-button>
@@ -59,6 +67,7 @@
 <script>
 import check from "components/check/check.vue";
 import { panelTitle } from "components";
+import { mapGetters } from "vuex";
 import url from "api";
 
 export default {
@@ -77,27 +86,35 @@ export default {
       selectOptions: {
         plantOption: [],
         lineOption: [],
-        processOption: []
+        processOption: [],
+        ptnoOption:[]
       },
       //下拉选择
       checkInfoInputs: {
         plantInput: "",
         lineInput: "",
-        processInput: ""
+        processInput: "",
+        ptnoInput:""
       },
-      //获取到的检查信息
-      checkList: null,
       //下拉验证规则
       rules: {
         plantInput: [{ validator: checkSelect, trigger: "blur" }],
         lineInput: [{ validator: checkSelect, trigger: "blur" }],
-        processInput: [{ validator: checkSelect, trigger: "blur" }]
+        processInput: [{ validator: checkSelect, trigger: "blur" }],
+        ptnoInput: [{ validator: checkSelect, trigger: "blur" }]
       }
     };
   },
-  computed: {},
-  created() {
+  computed: {
+    ...mapGetters({
+      //获取到的检查信息
+      checkList: "get_checklist"
+    })
+  },
+  mounted() {
     this.isFromCheckList();
+  },
+  created() {
   },
   components: {
     panelTitle,
@@ -112,6 +129,7 @@ export default {
             plant: this.checkInfoInputs.plantInput,
             line: this.checkInfoInputs.lineInput,
             process: this.checkInfoInputs.processInput,
+            ptno: this.checkInfoInputs.ptnoInput,
             type: this.$router.currentRoute.name == "firstEntity" ? "0" : "1"
           };
           this.get_checkInfo(params);
@@ -122,10 +140,11 @@ export default {
     },
     //检查是否由检查清单跳转过来
     isFromCheckList() {
-      if (this.$router.currentRoute.query.fromCheckList) {
-        this.fromCheckList = false;
-        this.get_checkInfo(this.$router.currentRoute.query.info);
-      } else {
+      this.$store.dispatch("set_fromchecklist", true);
+      if (this.$router.currentRoute.query.fromCheckList&&this.checkList!=null) {//是
+          this.fromCheckList = false;
+      } else {//否
+        this.$store.dispatch("set_checklist", null);
         this.fromCheckList = true;
         this.getPlantSelect();
       }
@@ -133,17 +152,17 @@ export default {
     //请求检查页面信息
     get_checkInfo(params) {
       let self = this;
-      this.$get({
+      self.$get({
         url: url.check_info,
         params: params
       }).then(res => {
         if (res.code == 1) {
-          this.$store.dispatch("set_checklist", res.data);
+          self.$store.dispatch("set_checklist", res.data);
           self.fromCheckList = false;
         } else {
           let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
           self.$message.error("没有找到对应检测信息,请手动录入");
-          self.fromCheckList = true;
+          self.fromCheckList = false;
           if (!self.fromCheckList) {
             setTimeout(res => {
               self.$router.push(path);
@@ -167,6 +186,9 @@ export default {
         } else if (type == "process") {
           label = opt.processdesc;
           value = opt.process;
+        }else if (type == "ptno") {
+          label = opt.ptnodesc;
+          value = opt.ptno;
         }
         let option = {
           label: label,
@@ -180,7 +202,9 @@ export default {
       let plant = this.checkInfoInputs.plantInput;
       this.checkInfoInputs.lineInput = "";
       this.checkInfoInputs.processInput = "";
+      this.checkInfoInputs.ptnoInput = "";
       this.getLineSelect(plant);
+      this.getPtnoSelect(plant)
     },
     //制程发生选择
     lineSelectChange() {
@@ -199,6 +223,18 @@ export default {
       }).then(res => {
         if (res.code == 1) {
           this.set_optionFam("plant", this.selectOptions.plantOption, res.data);
+        }
+      });
+    },
+    //查询产品编号下拉信息
+    getPtnoSelect(plant) {
+      this.selectOptions.pynoOption = [];
+      this.$get({
+        url: url.check_getPartno,
+        params: { plant: plant }
+      }).then(res => {
+        if (res.code == 1) {
+          this.set_optionFam("ptno", this.selectOptions.ptnoOption, res.data);
         }
       });
     },

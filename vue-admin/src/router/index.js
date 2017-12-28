@@ -218,7 +218,7 @@ const routes = [{
   //component: login
 }, {
   path: '/',
-  redirect: '/firstentity',
+  redirect: '/checkList',
   component: resolve => require(['pages/App.vue'], resolve),
   //component: layout,
   children: privateModule

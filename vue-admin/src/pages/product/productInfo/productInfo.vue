@@ -1,9 +1,9 @@
 <template>
     <div class="panel">
       <panel-title :title="$route.meta.title"></panel-title>
-      <div class="panel-body">
+      <div class="panel-body" style="padding:0">
         <productListComponent v-on:chioceListen="chioceList" v-if="chioce"></productListComponent>
-        <productComponent v-on:chioceListen="chioceList" v-else productType="Info"></productComponent>
+        <productComponent v-on:chioceListen="chioceList" :productInfo="pInfo" v-else productType="Info"></productComponent>
       </div>
     </div>
 </template>
@@ -15,7 +15,8 @@ import productComponent from "../productComponent/productComponent.vue";
 export default {
   data(){
     return {
-      chioce:true
+      chioce:true,
+      pInfo:null,
     }
   },
   components: {
@@ -26,8 +27,9 @@ export default {
   created(){
   },
   methods:{
-    chioceList(type){
-      this.chioce = type=='edit'?false:true
+    chioceList({type,pInfo}){
+      this.chioce = type=='edit'?false:true;
+      this.pInfo=pInfo;
       return 
     }
   }
