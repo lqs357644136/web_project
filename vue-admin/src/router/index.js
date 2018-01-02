@@ -30,7 +30,12 @@ import i18n from 'common/i18n'
 // import checkList from 'pages/checkList/checkList.vue'
 // import batchEnterRaw from 'pages/batchEnter/batchEnterRaw.vue'
 // import batchEnterBlend from 'pages/batchEnter/batchEnterBlend.vue'
-//import xbar from 'pages/x-bar/x-bar.vue'
+//import xbar from 'pages/x-bar/x-bar.vue'testNoLogin
+//import testNoLogin from 'pages/testNoLogin/testNoLogin.vue'
+//
+//手机版
+//import phoneLayout from 'pages/phonePages/App.vue'
+//import phoneHome from 'pages/phonePages/home/home.vue'
 
 Vue.use(VueRouter)
 //获取当前语言
@@ -97,7 +102,7 @@ export const privateModule = [ //正式功能
       icon: 'fa fa-bookmark',
       auth: true
     }
-  }, 
+  },
   {
     //产品履历
     path: '/product',
@@ -203,26 +208,86 @@ export const privateModule = [ //正式功能
 
 ]
 
+//手机模块
+const phoneModule = [{
+    //手机主页
+    path: '/phone/home',
+    name: 'phoneHome',
+    component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: '主页',
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
+  {
+    //手机用户页
+    path: '/phone/user',
+    name: 'phoneUser',
+    component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: '用户',
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
+  {
+    //手机消息页
+    path: '/phone/news',
+    name: 'phoneNews',
+    component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: '消息',
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
+  {
+    //电子看板
+    path: '/phone/signage',
+    name: 'signage',
+    component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: '电子看板',
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  }
+]
+
+
 //使用AMD方式加载
 const routes = [{
-  path: '/404',
-  name: 'notPage',
-  component: resolve => require(['pages/error/404'], resolve)
-}, {
-  path: '*',
-  redirect: '/404'
-}, {
-  path: '/user/login',
-  name: 'login',
-  component: resolve => require(['pages/user/login.vue'], resolve)
-  //component: login
-}, {
-  path: '/',
-  redirect: '/checkList',
-  component: resolve => require(['pages/App.vue'], resolve),
-  //component: layout,
-  children: privateModule
-}]
+    path: '/404',
+    name: 'notPage',
+    component: resolve => require(['pages/error/404'], resolve)
+  }, {
+    path: '*',
+    redirect: '/404'
+  }, {
+    path: '/user/login',
+    name: 'login',
+    component: resolve => require(['pages/user/login.vue'], resolve)
+    //component: login
+  }, {
+    path: '/pad',
+    redirect: '/checkList',
+    component: resolve => require(['pages/App.vue'], resolve),
+    //component: layout,
+    children: privateModule
+  }, {
+    path: '/phone',
+    redirect: '/phone/home',
+    component: resolve => require(['pages/phonePages/App.vue'], resolve),
+    //component: phoneLayout,
+    children: phoneModule
+  },
+
+]
 
 const router = new VueRouter({
   routes,
@@ -239,10 +304,16 @@ const router = new VueRouter({
   }
 })
 
+//免登陆页面集合
+const noLoginPages = ['testNoLogin'];
+
+
+
+
 //全局路由配置
 //路由开始之前的操作
 router.beforeEach((to, from, next) => {
-  //NProgress.done().start();
+  NProgress.done().start();
   let toName = to.name
   // let fromName = from.name
   let token = store.state.token
@@ -252,9 +323,15 @@ router.beforeEach((to, from, next) => {
     })
   } else {
     if (token && toName === 'login') {
-      next({
-        path: '/'
-      })
+      if (document.body.offsetWidth < 480) {
+        next({
+          path: '/phone/home'
+        })
+      } else {
+        next({
+          path: '/pad'
+        })
+      }
     } else {
       next()
     }
@@ -266,7 +343,7 @@ router.afterEach(route => {
   setTimeout(() => {
     store.commit('CLOSE_PAGELOADING');
   }, 1000);
-  //NProgress.done()
+  NProgress.done()
 })
 
 export default router

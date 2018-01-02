@@ -1,6 +1,6 @@
 <template>
 
-    <el-form label-position="right" label-width="85px" class="product">
+    <el-form label-position="right" class="product">
 
          <div class="formImg">
 
@@ -14,65 +14,56 @@
                             <span slot="label">履历信息</span>
                             <div class="productFromsItem-body">
 
-                                <el-row :gutter="30">
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                <el-row class="norm" :gutter="30">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="案号">
                                             <el-input placeholder="案号"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="客户">
                                             <el-input placeholder="客户"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="品名">
                                             <el-input placeholder="品名"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="不良数">
                                             <el-input placeholder="不良数"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="履历类型">
                                             <el-input placeholder="履历类型"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="发生源原因">
                                             <el-input placeholder="发生源原因"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="流出源原因">
                                             <el-input placeholder="流出源原因"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="发生频度">
                                             <el-input placeholder="发生频度"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="发生频度">
                                             <el-input placeholder="发生频度"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="发生日期">
-                                            <el-date-picker v-model="happenDate" type="date" placeholder="发生日期">
+                                            <el-date-picker :editable="false" v-model="happenDate" type="date" placeholder="发生日期">
                                             </el-date-picker>
-                                        </el-form-item>
-                                    </el-col>
-                                </el-row>
-
-                                <el-row>
-                                    <el-col :span="24">
-                                        <el-form-item label="不良内容">
-                                            <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容">
-                                            </el-input>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
@@ -121,6 +112,15 @@
 
                                 <el-row>
                                     <el-col :span="24">
+                                        <el-form-item label="不良内容">
+                                            <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容">
+                                            </el-input>
+                                        </el-form-item>
+                                    </el-col>
+                                </el-row>
+
+                                <el-row>
+                                    <el-col :span="24">
                                         <el-form-item label="有效时间">
                                             <el-radio-group v-model="timeRadio">
                                                 <el-radio :label="3">30天</el-radio>
@@ -140,6 +140,8 @@
                 <el-col class="productImg" :xs="24" :sm="24" :md="8" :lg="8">
                     <!-- 产品图片 -->
                     <div >
+
+                        
 
                         <!-- 查看 -->
                         <div class="imgInfo" v-if="type">

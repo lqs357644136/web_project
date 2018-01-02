@@ -1,13 +1,13 @@
 ::-webkit-scrollbar-track-piece {
-  width: 6px;
+  width: pxTorem(6px);
   background: #424f63;
   border: 0;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: pxTorem(6px);
+  height: pxTorem(6px);
   border: 0;
   background: #424f63;
   border-radius: 3px;

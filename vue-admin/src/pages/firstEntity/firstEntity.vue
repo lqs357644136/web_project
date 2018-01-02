@@ -6,7 +6,7 @@
       <!-- 不从检查清单跳转过来,都需要填写信息 -->
       <div class="esop-pageloading checkInfoInput" v-if="fromCheckList">
         <div class="msg inputBox">
-          <el-form :model="checkInfoInputs" :rules="rules" ref="checkInfoInputs" label-position="right" label-width="80px">
+          <el-form :model="checkInfoInputs" :rules="rules" ref="checkInfoInputs" label-position="right" label-width="50px">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
                 <span>请先录入信息</span>
@@ -150,12 +150,12 @@ export default {
         } else {
           let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
           self.$message.error("没有找到对应检测信息,请手动录入");
-          self.fromCheckList = false;
-          if (!self.fromCheckList) {
-            setTimeout(res => {
-              self.$router.push(path);
-            }, 200);
-          }
+          self.fromCheckList = true;
+          // if (!self.fromCheckList) {
+          //   setTimeout(res => {
+          //     self.$router.push(path);
+          //   }, 200);
+          // }
         }
       });
     },

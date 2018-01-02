@@ -11,6 +11,7 @@
         <el-table-column align="center" prop="ptno" label="产品编码"></el-table-column>
         <el-table-column align="center" prop="startTime" label="发出时间"></el-table-column>
         <el-table-column align="center" width="120px" prop="duration" label="时长(分钟)"></el-table-column>
+        <el-table-column align="center" prop="typeName" label="  类型"></el-table-column>
         <el-table-column align="center" label="操作" width="70px">
           <template slot-scope="scope">
             <div class="edit">
@@ -63,6 +64,7 @@ export default {
               startTime: $dataFormat(item.startTime, 'yyyy-MM-dd') , //发出时间 
               duration: item.duration, //时长
               type: item.type, //类型:0首检，1巡检
+              typeName:item.type=='0'?'首检':'巡检',
               line: item.line.line, //制程代号
               linedesc: item.line.linedesc //制程
             };
@@ -73,7 +75,6 @@ export default {
     },
     //请求检查页面信息
     get_checkInfo(params) {
-      console.log(params)
       let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
       let self = this;
       self.$get({

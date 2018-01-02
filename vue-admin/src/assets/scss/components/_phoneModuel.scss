@@ -1,0 +1,70 @@
+.phoneView{
+    height:100%;
+}
+.phone .home {
+    .menus {
+        display: flex;
+        flex-direction: row;
+        .menuBox {
+            height: pxTorem(100px);
+            width: pxTorem(100px);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            .icon {
+                height: pxTorem(60px);
+                line-height: pxTorem(60px);
+                width: pxTorem(60px);
+                text-align: center;
+                margin: auto;
+                background-color: #1a9dd4;
+                color: white;
+                font-size: pxTorem(40px);
+                border-radius: pxTorem(10px);
+            }
+            .text {}
+        }
+    }
+}
+
+.phone .user{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .userInfo{
+        display: flex;
+        flex-direction: row;
+        padding:pxTorem(10px);
+        background-color:white;
+        margin-bottom:pxTorem(10px);
+        .users{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            >div{
+                padding:pxTorem(5px);
+            }
+        }
+        .userLogo{
+            width:pxTorem(60px);
+            height:pxTorem(60px);
+            overflow: hidden;
+            border-radius:999px;
+            border:1px solid #dfdfdf;
+            margin-left:pxTorem(5px);
+        }
+    }
+    .userBtn{
+        height:60px;
+        padding:0 pxTorem(10px);
+        padding-bottom:pxTorem(30px);
+        button{
+            width:100%;
+        }
+    }
+}
+
+.phone .signage{
+    height:100%;
+} 

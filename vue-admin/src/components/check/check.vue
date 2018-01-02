@@ -1,79 +1,94 @@
 <template>
 
-    <div class="checkView">
+  <div class="checkView">
 
-        <el-row class="checkViewRow" :gutter="10">
-            <!-- 检测详细资料 -->
-            <el-col class="checkInfo" :xs="24" :sm="24" :md="8" :lg="8">
+    <el-row class="checkViewRow" :gutter="10">
+      <!-- 检测详细资料 -->
+      <el-col class="checkInfo" :xs="24" :sm="24" :md="8" :lg="8">
 
-                <el-card class="box-card">
-                    <div slot="header" class="clearfix">
-                        <span>检测资料</span>
-                    </div>
-                    <el-row class="infoItem">
-                        <el-col class="item" :span="24" v-for="(info,index) in checkInfo" :key="index">
-                            <label for="">{{info.title}}
-                                <span></span>
-                            </label>
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>检测资料</span>
+          </div>
+          <el-row class="infoItem">
+            <el-col class="item" :span="24" v-for="(info,index) in checkInfo" :key="index">
+              <label for="">{{info.title}}
+                <span></span>
+              </label>
 
-                            <el-tooltip effect="dark" :content="info.value" placement="top-start">
-                                <div class="value">: {{info.value}}</div>
-                            </el-tooltip>
-                        </el-col>
-
-                    </el-row>
-                </el-card>
+              <el-tooltip effect="dark" :content="info.value" placement="top-start">
+                <div class="value">: {{info.value}}</div>
+              </el-tooltip>
             </el-col>
 
-            <!-- 工作区域 -->
-            <el-col class="checkSpace" :xs="24" :sm="24" :md="16" :lg="16">
+          </el-row>
+        </el-card>
+      </el-col>
 
-                <!-- 检测流程 -->
-                <el-card class="box-card checkMain">
-                    <div slot="header" class="clearfix">
-                        <span>检测流程</span>
-                    </div>
-                    <div class="checkMainBody">
-                        <el-tabs type="border-card">
-                            <el-tab-pane v-for="(check,index) in checkStep" :key="index">
-                                <span slot="label">
-                                    <i class="fa fa-certificate"></i> {{check.itemDescription}}
-                                </span>
-                                <checkStep v-on:checkEndListen="checkEndView" :tabCheck="check"></checkStep>
-                            </el-tab-pane>
-                        </el-tabs>
-                    </div>
-                </el-card>
+      <!-- 工作区域 -->
+      <el-col class="checkSpace" :xs="24" :sm="24" :md="16" :lg="16">
 
-                <!-- 详细检测结果 -->
-                <el-card class="box-card checkEnd">
-                    <div slot="header" class="clearfix checkEnd-header">
-                        <span>检测结果</span>
-                        <div class="edit">
-                          <el-button type="primary" size="mini" round @click="checkEnd_clear()">clear</el-button>
-                        </div>
-                    </div>
-                    <div class="checkEndBody" v-loading="loading" element-loading-text="检测计算中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
-                        <div v-show="msg&&msg.length>0" >
-                          <div v-for="(msgItem,index) in msgItems" :key="index" :class="msgItem.class" >
-                            <p>-------------------------------------------------</p>
-                            <p>检测时间 : {{msgItem.time}}</p>
-                            <p>检测项目 : {{msgItem.name}}</p>
-                            <p>检测结果 : {{msgItem.result}}</p>
-                            <p v-for="(resultItem,resultIndex) in msgItem.resultInfo" :key="resultIndex">
-                              第{{resultIndex+1}}次检测:{{resultItem==1?'成功':'失败'}}
-                            </p>
-                            <p>-------------------------------------------------</p>
-                          </div>
-                        </div>
-                        <span v-show="msg==null">等待检测</span>
-                    </div>
-                </el-card>
+        <!-- 检测流程 -->
+        <el-card class="box-card checkMain">
+          <div slot="header" class="clearfix">
+            <span>检测流程</span>
+          </div>
+          <div class="checkMainBody">
+            <el-tabs type="border-card">
+              <el-tab-pane v-for="(check,index) in checkStep" :key="index">
+                <span slot="label">
+                  <i v-if="check.noPass" class="fa fa-wrench"></i>
+                  <i v-else class="isPassIcon fa fa-check"></i>
+                  {{check.itemDescription}}
+                </span>
+                <checkStep v-if="check.noPass" v-on:checkEndListen="checkEndView" :tabCheck="check"></checkStep>
+                <div class="isPass" v-else>
+                  <div class="icon fa fa-check"></div>
+                  <div class="text">此项目已经通过检测</div>
+                </div>
+              </el-tab-pane>
+            </el-tabs>
+          </div>
+        </el-card>
 
-            </el-col>
-        </el-row>
+        <!-- 详细检测结果 -->
+        <el-card class="box-card checkEnd">
+          <div slot="header" class="clearfix checkEnd-header">
+            <span>检测结果</span>
+            <div class="edit">
+              <el-button type="primary" size="mini" round @click="checkEnd_clear()">clear</el-button>
+            </div>
+          </div>
 
-    </div>
+          <div class="checkEndBody">
+
+            <div v-show="msg&&msg.length>0">
+              <div v-for="(msgItem,index) in msgItems" :key="index" :class="msgItem.class">
+                <p>-------------------------------------------------</p>
+                <p>检测时间 : {{msgItem.time}}</p>
+                <p>检测项目 : {{msgItem.name}}</p>
+                <p>检测结果 : {{msgItem.result}}</p>
+                <p v-for="(resultItem,resultIndex) in msgItem.resultInfo" :key="resultIndex">
+                  第{{resultIndex+1}}次检测:{{resultItem}}
+                </p>
+                <p>-------------------------------------------------</p>
+              </div>
+            </div>
+            <span v-show="msg==null">等待检测</span>
+
+          </div>
+          <div class="esop-pageloading" v-if="loading">
+            <div class="msg">
+              <i class="icon fa fa-circle-o-notch fa-spin"></i>
+              <span class="title">结果计算中</span>
+            </div>
+          </div>
+        </el-card>
+
+      </el-col>
+    </el-row>
+
+  </div>
 
 </template>
 
@@ -89,8 +104,9 @@ export default {
       msg: null,
       checkInfo: null,
       checkStep: [],
-      finalObj:null,
-      msgItems:[],
+      finalObj: null,
+      msgItems: [],
+      allPass: false
     };
   },
   computed: {
@@ -149,62 +165,113 @@ export default {
     },
     //初始化检测流程
     checkStep_init() {
-      for (let spec of this.checkList.specList) {
+      let index = 0;
+      for (const spec of this.checkList.specList) {
         let specificationType = spec.specificationType;
+        let noPass = true;
+        if (spec.result) {
+          if (spec.result) {
+            noPass = false;
+          }
+        }
         let project = {
+          bpmStatus: spec.bpmStatus, //流程状态
+          createBy: spec.bpmStatus, //创建人名称
+          createDate: spec.createDate, //创建日期
+          createName: spec.createName, //创建人名称
+          specId: spec.id, //检验规范ID
+          sysCompanyCode: spec.item.sysCompanyCode, //所属公司
+          sysOrgCode: spec.item.sysOrgCode, //所属部门
+          updateBy: spec.item.updateBy, //更新人登录名称
+          updateDate: spec.item.updateDate, //更新日期
+          updateDate: spec.item.updateDate, //更新人名
+
           code: spec.item.code, //项目代号
           itemDescription: spec.item.description, //项目名称
           methodDescription: spec.method.description, //检测方法
           specificationType: specificationType, //规格类型：0(范围),1(公差) ,
-          inspectSpecification:spec.inspectSpecification,//检验规格
-          symbol:spec.symbol//符号
+          inspectSpecification: spec.inspectSpecification, //检验规格
+          symbol: spec.symbol, //符号
+          noPass: noPass, //没有通过检测
+          index: index
         };
         if (specificationType == 0) {
-            project.lowerLimit = spec.lowerLimit;//范围最小值
-            project.upperLimit = spec.upperLimit;//范围最大值
+          project.lowerLimit = spec.lowerLimit; //范围最小值
+          project.upperLimit = spec.upperLimit; //范围最大值
         } else if (specificationType == 1) {
-            project.stdValue = spec.stdValue;//标准值
-            project.stdValueMinus = spec.stdValueMinus;//标准值-
-            project.stdValuePlus = spec.stdValuePlus;//标准值+
+          project.stdValue = spec.stdValue; //标准值
+          project.stdValueMinus = spec.stdValueMinus; //标准值-
+          project.stdValuePlus = spec.stdValuePlus; //标准值+
         }
         this.checkStep.push(project);
+        index++;
+      }
+      this.isAllPass(this.checkList.inspect.type);
+    },
+    //检测成功后改变样式
+    isPass_change(index) {
+      this.checkStep[index].noPass = false;
+    },
+    //判断是否全部项目通过
+    isAllPass(type) {
+      if (type == "0") {
+        let flag = true;
+        this.checkStep.forEach((val, index) => {
+          if (val.noPass) {
+            //判断是否检测成功
+            flag = false;
+          }
+        });
+        if (flag) {
+          this.$notify({
+            title: "成功",
+            message: name + "所有项目检测通过,可以量产",
+            type: "success"
+          });
+          this.allPass = true;
+        }
       }
     },
+    //检测结果
     checkEndView(finalView) {
       this.finalObj = finalView;
       let type = finalView.type;
       let name = finalView.name;
       let time = $dataFormat(new Date(), "hh:mm:ss");
-      let result = finalView.result=="1"?"成功":"失败";
+      let result = finalView.result == "1" ? "成功" : "失败";
+      if (finalView.result == "1") {
+        this.isPass_change(finalView.index);
+      }
       new Promise((resolve, reject) => {
         resolve((this.loading = true));
       }).then(() => {
         setTimeout(() => {
           this.loading = false;
-          this.msg = finalView.result=='1'?'success':'error';
+          this.msg = finalView.result == "1" ? "success" : "error";
           if (this.msg == "success") {
             this.$notify({
               title: "成功",
-              message: name+"检测成功",
+              message: name + "检测成功",
               type: "success"
             });
+            this.isAllPass(this.checkList.inspect.type);
           } else {
             this.$notify.error({
               title: "错误",
-              message: name+"检测失败"
+              message: name + "检测失败"
             });
           }
           this.msgItems.unshift({
-            time:time,
-            name:name,
-            class:finalView.result=="1"?"success":"error",
-            result:result,
-            resultInfo:finalView.resultArr
-          })
+            time: time,
+            name: name,
+            class: finalView.result == "1" ? "success" : "error",
+            result: result,
+            resultInfo: finalView.resultArr
+          });
         }, 1000);
       });
     },
-    checkEnd_clear(){
+    checkEnd_clear() {
       this.msgItems = [];
     }
   }

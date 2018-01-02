@@ -24,7 +24,6 @@ import {
 import qs from "qs";
 
 export const $post = function (options) {
-  console.log(options);
   let url = options.url;
   let data = options.data;
   let token = store.getters.get_token ? store.getters.get_token : "";
@@ -33,7 +32,6 @@ export const $post = function (options) {
   let path = server_base_url + url;
   return new Promise((resolve, reject) => {
     axios.post(path, data).then((res) => {
-
         //请求成功时,根据业务判断状态
         if (res.data.code != -1) {
           resolve(res.data)
@@ -49,7 +47,6 @@ export const $post = function (options) {
       })
       .catch((error) => {
         console.log('错误信息')
-        console.log(error)
         Message.error('服务器请求失败！')
         reject(error);
       });
@@ -57,7 +54,6 @@ export const $post = function (options) {
 }
 
 export const $get = function (options) {
-  console.log(options);
   let url = options.url;
   let params = options.params ? options.params : {};
   let token = store.getters.get_token ? store.getters.get_token : "";
@@ -89,6 +85,6 @@ export const $get = function (options) {
       Message.error('服务器请求失败！')
       reject(error);
     })
-    
+
   })
 }

@@ -57,7 +57,11 @@ export default {
       if (!value) {
         return callback(new Error("请输入检测值"));
       } else {
-        if (value < this.computRang.minVal || value > this.computRang.maxVal) {
+        let crVal = value * 1;
+        let min = this.computRang.minVal * 1;
+        let max = this.computRang.maxVal * 1;
+        let flag = crVal >= min && max >= crVal;
+        if (flag) {
           callback();
         } else {
           this.$message({
@@ -96,7 +100,6 @@ export default {
     })
   },
   mounted() {
-    console.log(this.checkList);
     this.computRang_init();
   },
   methods: {
@@ -128,21 +131,16 @@ export default {
       let obj = {
         code: code,
         name: name,
-        r1: r1,
-        r2: r2,
-        r3: r3,
-        r4: r4,
-        r5: r5,
         result: result
       };
       return obj;
     },
     //按输入检测单个结果
     checkType_input(val) {
-      let crVal = val*1;
-      let min = this.computRang.minVal*1;
-      let max = this.computRang.maxVal*1;
-      let flag = crVal>=min && max>=crVal;
+      let crVal = val * 1;
+      let min = this.computRang.minVal * 1;
+      let max = this.computRang.maxVal * 1;
+      let flag = crVal >= min && max >= crVal;
       return flag ? 1 : 0;
     },
     //按输入检测所有结果
@@ -153,41 +151,47 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let inspect = this.checkList.inspect;
-          let itemObj = [this.checkFinal()];
-
-          console.log(itemObj);
+          let spec = this.tabCheck;
+          let itemObj = this.checkFinal();
           let params = {
-            items: itemObj, //检验结果
-            line: inspect.line.line, //制程
-            method: this.tabCheck.methodDescription, //方法
-            operator: "no", //人员
-            orderNo: "", //inspect.orderNo,//工令单号
-            pdNo: inspect.ptno, //产品编号
-            pdNum: 0, // inspect.pdNum,//产品数目
-            plant: inspect.plant.plant, //车间
-            process: inspect.process.process, //机台
-            reconcile: "", // inspect.reconcile,//调合
-            specification: this.tabCheck.inspectSpecification, // 检验规格
-            type: inspect.type //类型：0（自检）,1（巡检）
+
+            bpmStatus:spec.bpmStatus,//流程状态
+            createBy :spec.createBy ,//创建人登录名称
+            createDate :spec.createBy ,//创建日期
+            createName :spec.createBy ,//创建人名称
+            inspectListId : inspect.id,//检验规范ID 
+            r1 : this.inputs.input01,
+            r2 : this.inputs.input02,
+            r3 : this.inputs.input03,
+            r4 : this.inputs.input04,
+            r5 : this.inputs.input05,
+            result : itemObj.result,//检验结论 ,
+            specId : spec.specId ,//检验规范ID 
+            sysCompanyCode : spec.sysCompanyCode,//所属公司
+            sysOrgCode : spec.sysOrgCode ,//所属部门
+            updateBy : spec.updateBy ,//更新人登录名称
+            updateDate  : spec.updateDate ,//更新日期
+            updateDate  : spec.updateDate  ,//更新人名
+
           };
           this.$post({
             url: url.check_add,
             data: params
           }).then(res => {
-            
             let finalView = {
-              code:params.items[0].code,
-              name:params.items[0].name,
-              result:params.items[0].result,
-              resultArr:[
-                params.items[0].r1,
-                params.items[0].r2,
-                params.items[0].r3,
-                params.items[0].r4,
-                params.items[0].r5
+              code: spec.code,
+              name: spec.itemDescription,
+              result: itemObj.result,
+              resultArr: [
+                this.inputs.input01,
+                this.inputs.input02,
+                this.inputs.input03,
+                this.inputs.input04,
+                this.inputs.input05,
               ],
-              type:params.type
-            }
+              type: spec.type,
+              index:spec.index
+            };
             if (res.code == 1) {
               this.$message.success(res.msg);
             } else {

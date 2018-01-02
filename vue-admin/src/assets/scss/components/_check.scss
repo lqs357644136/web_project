@@ -12,13 +12,13 @@
         }
         .infoItem {
             .item {
-                height: 36px;
-                line-height: 36px;
+                height: pxTorem(36px);
+                line-height: pxTorem(36px);
                 display: flex;
                 -webkit-flex-direction: row;
                 label {
                     text-align: justify;
-                    width: 70px;
+                    width: pxTorem(70px);
                     font-weight: 800;
                     span {
                         padding-left: 100%;
@@ -30,7 +30,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     flex: 1;
-                    margin-left: 5px;
+                    margin-left: pxTorem(5px);
                 }
             }
         }
@@ -46,7 +46,8 @@
         flex-direction: column;
         &>.el-card {}
         .checkMain {
-            margin-bottom: 10px;
+            height:calc(60% - #{pxTorem(10px)});
+            margin-bottom: pxTorem(10px);
             .el-card__body {
                 padding: 0;
             }
@@ -56,7 +57,27 @@
                     height: 100%;
                     border: 0;
                 }
+                .isPassIcon {
+                    color: green !important;
+                }
+                .isPass {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    color: green;
+                    height: 100%;
+                    justify-content: center;
+                    .icon {
+                        font-size: pxTorem(120px)
+                    }
+                    .text {
+                        font-size: pxTorem(24px)
+                    }
+                }
                 .el-tabs__content {
+                    .el-tab-pane {
+                        height: 100%;
+                    }
                     display: flex;
                     -webkit-flex-direction: column;
                     flex-direction: column;
@@ -65,29 +86,31 @@
                     justify-content: space-between;
                 }
                 .stepFrom {
+                    height: 100%;
                     display: flex;
                     flex-direction: column;
+                    justify-content: space-around;
                     .stepInputs {
                         display: flex;
                         justify-content: space-around;
-                        margin-bottom: 20px;
+                        margin-bottom: pxTorem(20px);
                         .stepInput {
                             margin-bottom: 0;
                         }
                     }
                     .checkChioce {
-                        margin-bottom: 20px;
+                        //margin-bottom: pxTorem(20px);
                         display: flex;
                         justify-content: space-between;
-                        padding: 5px 10px;
+                        padding: pxTorem(5px) pxTorem(10px);
                         label {
-                            margin-right: 10px;
+                            margin-right: pxTorem(10px);
                         }
                         .testType {
-                            line-height: 36px;
+                            line-height: pxTorem(36px);
                         }
                         .deviation {
-                            line-height: 36px;
+                            line-height: pxTorem(36px);
                             .range {}
                             .tolerance {
                                 display: flex;
@@ -98,8 +121,8 @@
                                     flex-direction: column;
                                     .stdValueMinus,
                                     .stdValuePlus {
-                                        line-height: 10px;
-                                        font-size: 12px;
+                                        line-height: pxTorem(10px);
+                                        font-size: pxTorem(12px);
                                     }
                                 }
                             }
@@ -120,29 +143,39 @@
             }
         }
         .checkEnd {
-            flex: 1;
+            height: 40%; //flex: 1;
             .checkEnd-header {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                .edit{
-
-                }
+                .edit {}
             }
-            .el-card__body{
-                background-color: #f0f0f0;
-            }
-            .checkEndBody {
-                height: 100%;
-                overflow-y: auto;
-                .success {
-                    color: green;
-                }
-                .error {
-                    color: red;
+            .el-card__body {
+                position: relative;
+                background-color: #d5d5d5;
+                display: block;
+                padding: 0;
+                .checkEndBody {
+                    overflow-y: auto;
+                    padding: pxTorem(10px);
+                    height: 100%;
+                    .success {
+                        color: green;
+                    }
+                    .error {
+                        color: red;
+                    }
                 }
             }
         }
+    }
+    .checkEndBodyLoading {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(84, 83, 83, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 }
 
@@ -150,7 +183,7 @@
     z-index: 2000;
     .inputBox {
         width: 50%;
-        max-width: 500px;
+        max-width: pxTorem(500px);
     }
     .box-card {
         .el-card__header {
@@ -163,7 +196,14 @@
         flex-direction: row;
         justify-content: center;
         .el-form-item__content {
+            display: flex;
+            justify-content: center;
             margin-left: 0 !important;
+        }
+    }
+    .el-form-item {
+        .el-form-item__content {
+            margin-left: 10px !important;
         }
     }
 }

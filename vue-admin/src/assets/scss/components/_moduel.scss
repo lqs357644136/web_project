@@ -1,17 +1,18 @@
+//登录
 // 检查清单
 .checkList {
-    .deteTable,.deteCheck{
-        height:100%;
+    .deteTable,
+    .deteCheck {
+        height: 100%;
     }
-
     .tableBox {
-        height: calc(100% - 205px);
-        .el-card__body{
-            padding:0;
+        height: calc(100% - #{pxTorem(205px)});
+        .el-card__body {
+            padding: 0;
         }
         .el-table {
             height: 100%;
-            border:0;
+            border: 0;
         }
         .el-form-item:last-child {
             margin-bottom: 0;
@@ -25,12 +26,12 @@
         }
     }
     .detectionBtn {
-        height: 40px;
+        height: pxTorem(40px);
         display: flex;
         align-items: flex-end;
         justify-content: center;
         button {
-            width: 150px;
+            width: pxTorem(150px);
         }
     }
 }
@@ -43,8 +44,8 @@
     .formImg {
         display: flex;
         flex-direction: row;
-        height: calc(100% - 60px);
-        margin-bottom: 10px;
+        height: calc(100% - #{pxTorem(60px)});
+        margin-bottom: pxTorem(10px);
         &>.el-row {
             height: 100%;
             width: 100%;
@@ -55,7 +56,17 @@
                 height: 100%;
             }
             .productFromsItem {
-                .productFromsItem-body {}
+                .productFromsItem-body {
+                    .norm {
+                        .el-form-item {
+                            margin-bottom: pxTorem(22px);
+                            display: flex;
+                            .el-form-item__label {
+                                width: pxTorem(100px);
+                            }
+                        }
+                    }
+                }
             }
         }
         .productImg {
@@ -70,13 +81,13 @@
                 height: 100%;
                 justify-content: space-between;
                 .el-card__header {
-                    height: 42px;
-                    line-height: 42px;
+                    height: pxTorem(42px);
+                    line-height: pxTorem(42px);
                     text-align: center;
                     padding: 0;
                 }
                 .el-card__body {
-                    height: calc(100% - 42px);
+                    height: calc(100% - #{pxTorem(42px)});
                     padding: 0;
                     img {
                         height: 100%;
@@ -97,7 +108,7 @@
                     flex-direction: column;
                 }
                 .avatar-uploader .el-upload {
-                    border-radius: 6px;
+                    border-radius: pxTorem(6px);
                     cursor: pointer;
                     position: relative;
                     overflow: hidden;
@@ -114,13 +125,13 @@
                     border-color: #409EFF;
                 }
                 .avatar-uploader-icon {
-                    font-size: 28px;
+                    font-size: pxTorem(28px);
                     color: #8c939d;
                     text-align: center;
                 }
                 .avatar {
-                    width: 178px;
-                    height: 178px;
+                    width: pxTorem(178px);
+                    height: pxTorem(178px);
                     display: block;
                 }
                 .el-card__body,
@@ -130,12 +141,12 @@
                 }
             }
             .imgItem {
-                height: calc(50% - 10px);
+                height: calc(50% - #{pxTorem(10px)});
             }
         }
     }
     .subBtn {
-        height: 50px;
+        height: pxTorem(50px);
         margin-bottom: 0;
         display: flex;
         align-items: center;
@@ -144,10 +155,10 @@
             width: 100%;
             justify-content: center;
             button {
-                padding: 10px 60px;
+                padding: pxTorem(10px) pxTorem(60px);
             }
             .el-button+.el-button {
-                margin-left: 20px;
+                margin-left: pxTorem(20px);
             }
         }
     }
@@ -158,14 +169,15 @@
 
 //批次录入
 .batchEnter {
-    height:100%;
-    display:flex;
+    height: 100%;
+    display: flex;
     flex-direction: column;
-    .deteTable,.deteCheck{
-        height:100%;
+    .deteTable,
+    .deteCheck {
+        height: 100%;
     }
     .detectionFrom {
-        margin-bottom: 20px;
+        margin-bottom: pxTorem(20px);
         .detectionFrom-header {
             height: 100%;
             display: flex;
@@ -182,25 +194,28 @@
         }
         .el-card__body {
             .el-col {
-                margin-bottom: 20px;
+                margin-bottom: pxTorem(20px);
             }
             .el-col:last-child {
-                margin-bottom: 0px;
+                margin-bottom: 0;
             }
         }
         .el-form-item {
+            .el-form-item__label {
+                width: pxTorem(70px) !important;
+            }
             margin-right: 0;
             margin-bottom: 0;
         }
     }
     .tableBox {
-        flex:1;
-        .el-card__body{
-            padding:0;
+        flex: 1;
+        .el-card__body {
+            padding: 0;
         }
         .el-table {
             height: 100%;
-            border:0;
+            border: 0;
         }
         .el-form-item:last-child {
             margin-bottom: 0;
@@ -214,12 +229,12 @@
         }
     }
     .detectionBtn {
-        height: 40px;
+        height: pxTorem(40px);
         display: flex;
         align-items: flex-end;
         justify-content: center;
         button {
-            width: 150px;
+            width: pxTorem(150px);
         }
     }
 }

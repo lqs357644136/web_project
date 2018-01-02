@@ -17,7 +17,6 @@
                 flex-direction: column;
                 .icon {
                     text-align: center;
-                    
                     margin-bottom: pxTorem(10px);
                     font-size: pxTorem(26px);
                 }
@@ -25,9 +24,13 @@
             }
         }
         .mainPage {
-            height: 100%;
-            display: flex;
-            flex-direction: row;
+            height:100%;
+            .pad {
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+            //.phone.scss......
         }
     }
 }
@@ -111,7 +114,8 @@
             li {
                 padding-left: pxTorem(20px);
                 padding-right: pxTorem(10px);
-                height: pxTorem(40px);;
+                height: pxTorem(40px);
+                ;
                 line-height: pxTorem(40px);
                 border-bottom: 1px solid #dfdfdf;
             }
@@ -206,7 +210,7 @@
         }
     }
     .pageContent {
-        height: calc(100% - pxTorem(51px));
+        height: calc(100% - #{pxTorem(51px)});
         flex: 1;
         overflow-x: hidden;
         overflow-y: auto;
@@ -242,7 +246,7 @@
             overflow-y: auto;
             font-weight: normal;
             position: relative;
-            $panelBodyHeight : pxTorem(45px);
+            $panelBodyHeight: pxTorem(45px);
             height: calc(100% - 2.8125rem);
             .bottom-toolbar {
                 margin-top: pxTorem(15px);
@@ -294,14 +298,15 @@
 
 // 列表
 .el-table {
-    height: 100%;
-    td{
+    height: 100% !important;
+    td {
         text-align: center;
     }
-    thead .cell{
+    thead .cell {
         text-align: center;
     }
-    .cell,th>div {
+    .cell,
+    th>div {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
@@ -309,6 +314,9 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+    }
+    .el-table__body-wrapper {
+        height:calc(100% - #{pxTorem(40px)}) !important;
     }
 }
 
@@ -323,7 +331,7 @@
         }
     }
     .el-card__body {
-        height: calc(100% - pxTorem(42px));
+        height: calc(100% - #{pxTorem(42px)});
     }
 }
 
@@ -331,7 +339,7 @@
 .el-tabs {
     .el-tabs__header {}
     .el-tabs__content {
-        height: calc(100% - pxTorem(42px));
+        height: calc(100% - #{pxTorem(42px)});
     }
 }
 
@@ -373,4 +381,54 @@
         }
         .title {}
     }
+}
+
+//下拉框
+.el-select {
+    .el-input {
+        .el-input__icon {
+            transition: transform .3s;
+            -ms-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotateZ(180deg);
+        }
+    }
+}
+
+//输入框-number
+.el-input-number {
+    >* {
+        height: 100%;
+    }
+    .el-input__inner {
+        overflow: hidden;
+    }
+}
+
+.el-input__inner {
+    height: pxTorem(36px)
+}
+
+//用户下拉
+.el-dropdown-menu {
+    min-width: pxTorem(100px);
+}
+
+.el-form-item {
+    display: flex;
+    .el-form-item__label {
+        width: pxTorem(100px);
+    }
+    .el-form-item__content {
+        .el-date-editor.el-input {
+            width: inherit;
+        }
+        flex:1;
+    }
+}
+
+.el-message{
+    transform: translateX(-50%);
+}
+.el-loading-spinner .circular{
+    animation: loading-rotate 2s linear infinite;
 }

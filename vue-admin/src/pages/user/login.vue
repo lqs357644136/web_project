@@ -1,6 +1,12 @@
 <template>
   <div class="login-body">
-    <div class="loginWarp" v-loading="load_data" element-loading-text="正在登陆中..." @keyup.enter="submit_form">
+    <div class="loginWarp" @keyup.enter="submit_form">
+      <div class="esop-pageloading" v-if="load_data">
+        <div class="msg">
+          <div class="icon fa fa-spinner fa-spin"></div>
+          <div class="title">登录中</div>
+        </div>
+      </div>
       <div class="login-title">
         <p class="name">INTELFOR</p>
         <p class="msg">management system</p>
@@ -58,9 +64,14 @@ export default {
               title: "温馨提示",
               message: "测试账号:admin , 密码:123456"
             });
+            this.load_data = false;
           } else {
             this.$store.commit("SET_TOKEN", res.data.token);
-            this.$router.push("/");
+            if (document.body.offsetWidth < 480) {
+              this.$router.push("/phone/home");
+            }else{
+              this.$router.push("/pad");
+            }
           }
         });
       });

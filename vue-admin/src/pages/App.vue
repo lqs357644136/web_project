@@ -7,10 +7,12 @@
       </div>
     </div>
     <div class="mainPage" v-else>
-      <left-slide></left-slide>
-      <main-content>
+      <div class="pad">
+        <left-slide></left-slide>
+        <main-content>
           <router-view></router-view>
-      </main-content>
+        </main-content>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +24,7 @@ export default {
   name: "page",
   data() {
     return {
-      mainLoading: true
+      mainLoading: true,
     };
   },
   created() {
@@ -30,10 +32,10 @@ export default {
   },
   components: {
     mainContent,
-    leftSlide
+    leftSlide,
   },
   methods: {
-    //获取系统所需资源
+    //获取系统所需资源,判断是平板还是手机
     get_sys() {
       this.$get({
         url: url.user_info
@@ -44,17 +46,26 @@ export default {
             realName: res.data.realName,
             menuList: res.data.menuList
           };
-          
+
           this.$store.commit("SET_USERINFO", userInfo);
           //获取菜单
           //let menus =this.$store.getters.get_menus
 
+          //模拟检测提醒
+          setInterval(() => {
+            ElementUI.Notification.info({
+              title: "自检提醒",
+              message: "已到自检时间,请尽快检验",
+              duration: 5000
+            });
+          }, 300000);
+
           //菜单暂时写死
           let menus = [
-            {name: "firstEntity"},
+            { name: "firstEntity" },
             //{name: 'attention'},
-            {name: "tourEntity"},
-            {name: "checkList"},
+            { name: "tourEntity" },
+            { name: "checkList" },
             {
               name: "product",
               child: [{ name: "productInfo" }, { name: "productEnter" }]
@@ -66,7 +77,6 @@ export default {
           ];
 
           this.$store.dispatch("set_menus", menus);
-
           this.mainLoading = false;
         }
       });
