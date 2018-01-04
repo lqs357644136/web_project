@@ -28,4 +28,10 @@ export default {
   [actions.SET_CHECKLIST]({commit},checkList){
     commit(mutations.SET_CHECKLIST,checkList)
   },
+  [actions.SET_OTHERLINK]({commit},otherLink){
+    commit(mutations.SET_OTHERLINK,otherLink)
+  },
+  [actions.SET_PRODUCTINFO]({commit},product){
+    commit(mutations.SET_PRODUCTINFO,product)
+  },
 }

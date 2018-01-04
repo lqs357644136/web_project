@@ -1,5 +1,5 @@
 <template>
-  <div class="view-page">
+  <div class="padView">
     <div class="mainLoading" v-if="mainLoading">
       <div class="msg">
         <i class="icon fa fa-circle-o-notch fa-spin"></i>
@@ -21,7 +21,7 @@ import url from "api";
 import { mainContent, leftSlide } from "components";
 
 export default {
-  name: "page",
+  name: "padView",
   data() {
     return {
       mainLoading: true,
@@ -53,7 +53,7 @@ export default {
 
           //模拟检测提醒
           setInterval(() => {
-            ElementUI.Notification.info({
+            this.$notify({
               title: "自检提醒",
               message: "已到自检时间,请尽快检验",
               duration: 5000

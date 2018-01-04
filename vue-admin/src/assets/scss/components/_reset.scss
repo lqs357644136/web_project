@@ -1,42 +1,201 @@
 * {
-  word-break: break-all;
-  word-wrap: break-word;
-  padding: 0;
-  margin: 0;
-  outline: 0;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 a {
-  font-weight: 300;
-  text-decoration: none;
-  &:active, &:hover {
-    outline: 0;
-  }
+    font-weight: 300;
+    text-decoration: none;
+    &:active,
+    &:hover {
+        outline: 0;
+    }
 }
 
 i {
-  font-style: normal;
+    font-style: normal;
 }
 
 img {
-  width: auto;
-  height: auto;
-  max-width: 100% !important;
-  vertical-align: middle;
-  -ms-interpolation-mode: bicubic;
-  &:not([src*="/"]) {
-    display: none !important;
-  }
+    width: auto;
+    height: auto;
+    max-width: 100% !important;
+    vertical-align: middle;
+    -ms-interpolation-mode: bicubic;
+    &:not([src*="/"]) {
+        display: none !important;
+    }
 }
 
-ol, ul, li {
-  list-style-type: none;
-  list-style: none;
+ol,
+ul,
+li {
+    list-style-type: none;
+    list-style: none;
 }
 
-input, textarea, button {
-  border: 0;
-  border-radius: 0;
-  appearance: none;
+input,
+textarea,
+button {
+    border: 0;
+    border-radius: 0;
+    appearance: none;
+}
+
+//重写样式与公共样式
+//平板版本头部用户退出按钮
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: fit-content;
+    padding: pxTorem(5px);
+    border-radius: pxTorem(5px);
+    background: #65cea7;
+    .dropdown-list {
+        padding: 0;
+        line-height: normal;
+    }
+    .dropdown-btn {
+        display: block;
+        color: #fff;
+        font-size: pxTorem(13px);
+        padding: pxTorem(7px) pxTorem(7px);
+        text-align: left;
+        border-radius: pxTorem(3px);
+        cursor: pointer;
+        &:hover {
+            background: #2a323f;
+            color: #fff;
+        }
+        .icon {
+            margin-right: pxTorem(5px);
+        }
+    }
+} // 列表
+.el-table {
+    height: 100% !important;
+    td {
+        text-align: center;
+    }
+    thead .cell {
+        text-align: center;
+    }
+    .cell,
+    th>div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .edit {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .el-table__body-wrapper {
+        height:calc(100% - #{pxTorem(40px)}) !important;
+    }
+} //卡片
+.el-card {
+    .el-card__header {
+        padding: 0 pxTorem(15px);
+        height: pxTorem(42px);
+        line-height: pxTorem(42px);
+        span {
+            font-weight: 800;
+        }
+    }
+    .el-card__body {
+        height: calc(100% - #{pxTorem(42px)});
+    }
+} //tab切换
+.el-tabs {
+    .el-tabs__header {}
+    .el-tabs__content {
+        height: calc(100% - #{pxTorem(42px)});
+    }
+} //用户信息选择
+.dropdown-btn {
+    display: flex !important;
+    flex-direction: row;
+    i {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    span {
+        flex: 1;
+        white-space: nowrap;
+    }
+} //页面加载中
+.esop-pageloading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(31, 45, 61, 0.52);
+    color: white;
+    display: flex;
+    justify-content: center;
+    z-index: 99999;
+    .msg {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .icon {
+            text-align: center;
+            margin-bottom: pxTorem(10px);
+            font-size: pxTorem(26px);
+        }
+        .title {}
+    }
+} //下拉框
+.el-select {
+    .el-input {
+        .el-input__icon {
+            transition: transform .3s;
+            -ms-transform: translateY(-50%) rotate(180deg);
+            transform: translateY(-50%) rotateZ(180deg);
+        }
+    }
+} //输入框-number
+.el-input-number {
+    >* {
+        height: 100%;
+    }
+    .el-input__inner {
+        overflow: hidden;
+    }
+}
+
+.el-input__inner {
+    height: pxTorem(36px)
+} //用户下拉
+.el-dropdown-menu {
+    min-width: pxTorem(100px);
+}
+
+.el-form-item {
+    display: flex;
+    .el-form-item__label {
+        width: pxTorem(100px);
+    }
+    .el-form-item__content {
+        .el-date-editor.el-input {
+            width: inherit;
+        }
+        flex:1;
+    }
+}
+
+.el-message {
+    transform: translateX(-50%);
+}
+
+.el-loading-spinner .circular {
+    animation: loading-rotate 2s linear infinite;
 }

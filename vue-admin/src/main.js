@@ -19,7 +19,7 @@ import App from './App'
 //导入过滤器
 import 'common/filiter'
 //导入axios请求方法
-import { $get,$post } from 'common/fetch/index.js'
+import { $get,$post,$get_file } from 'common/fetch/index.js'
 
 //导入mock数据
 //import './mock'
@@ -39,6 +39,7 @@ Vue.config.productionTip = false
 //注册全局请求方法
 Vue.prototype.$get = $get;
 Vue.prototype.$post = $post;
+Vue.prototype.$get_file = $get_file
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'

@@ -57,6 +57,12 @@ export default {
   },
   [type.SET_CHECKLIST](state, checkList) {
     state.checkList = checkList;
+  }, 
+  [type.SET_OTHERLINK](state, otherLink) {
+    state.otherLink = otherLink;
+  },
+  [type.SET_PRODUCTINFO](state, productInfo) {
+    state.productInfo = productInfo;
   },
 }
 

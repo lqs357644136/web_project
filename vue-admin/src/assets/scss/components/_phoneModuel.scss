@@ -1,70 +1,86 @@
-.phoneView{
-    height:100%;
-}
-.phone .home {
-    .menus {
-        display: flex;
-        flex-direction: row;
-        .menuBox {
-            height: pxTorem(100px);
-            width: pxTorem(100px);
+.phoneView {
+    .home {
+        .slide {
+            height: pxTorem(150px);
+            border-bottom: 1px solid #dfdfdf;
+            .slide-item {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                p {
+                    text-align: center;
+                }
+            }
+        }
+        .menus {
             display: flex;
-            flex-direction: column;
-            text-align: center;
-            justify-content: center;
-            .icon {
-                height: pxTorem(60px);
-                line-height: pxTorem(60px);
-                width: pxTorem(60px);
+            flex-direction: row;
+            .menuBox {
+                height: pxTorem(100px);
+                width: pxTorem(100px);
+                display: flex;
+                flex-direction: column;
                 text-align: center;
-                margin: auto;
-                background-color: #1a9dd4;
-                color: white;
-                font-size: pxTorem(40px);
-                border-radius: pxTorem(10px);
+                justify-content: center;
+                .icon {
+                    height: pxTorem(50px);
+                    line-height: pxTorem(50px);
+                    width: pxTorem(50px);
+                    text-align: center;
+                    margin: auto;
+                    margin-bottom: pxTorem(10px);
+                    background-color: #1a9dd4;
+                    color: white;
+                    font-size: pxTorem(36px);
+                    border-radius: pxTorem(10px);
+                    box-shadow: pxTorem(3px) pxTorem(3px) pxTorem(5px) #a2a1a1;
+                }
+                .text {
+                    font-size: pxTorem(14px);
+                    color: #5a5a5a;
+                }
             }
-            .text {}
         }
     }
-}
-
-.phone .user{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .userInfo{
+    .user {
         display: flex;
-        flex-direction: row;
-        padding:pxTorem(10px);
-        background-color:white;
-        margin-bottom:pxTorem(10px);
-        .users{
-            flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        .userInfo {
             display: flex;
-            flex-direction: column;
-            >div{
-                padding:pxTorem(5px);
+            flex-direction: row;
+            padding: pxTorem(10px);
+            background-color: white;
+            margin-bottom: pxTorem(10px);
+            .users {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                >div {
+                    padding: pxTorem(5px);
+                }
+            }
+            .userLogo {
+                width: pxTorem(60px);
+                height: pxTorem(60px);
+                overflow: hidden;
+                border-radius: 999px;
+                border: 1px solid #dfdfdf;
+                margin-left: pxTorem(5px);
             }
         }
-        .userLogo{
-            width:pxTorem(60px);
-            height:pxTorem(60px);
-            overflow: hidden;
-            border-radius:999px;
-            border:1px solid #dfdfdf;
-            margin-left:pxTorem(5px);
+        .userBtn {
+            height: 60px;
+            padding: 0 pxTorem(10px);
+            padding-bottom: pxTorem(30px);
+            button {
+                width: 100%;
+            }
         }
     }
-    .userBtn{
-        height:60px;
-        padding:0 pxTorem(10px);
-        padding-bottom:pxTorem(30px);
-        button{
-            width:100%;
-        }
+    .signage {
+        height: 100%;
     }
 }
-
-.phone .signage{
-    height:100%;
-} 

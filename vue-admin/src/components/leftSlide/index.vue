@@ -49,7 +49,8 @@ export default {
       isCollapse: "get_leftSlide_state",
       menus: "get_menus",
       pageLoading: "get_pageloading",
-      fromCheckList: "get_fromchecklist"
+      fromCheckList: "get_fromchecklist",
+      otherLink: "get_otherlink"
     })
   },
   methods: {
@@ -69,11 +70,12 @@ export default {
     gopagefn(path, name) {
       if (this.$router.currentRoute.name != name) {
         this.menuItemActive(name);
-        this.$store.commit("SET_PAGELOADING", path);
+        this.$store.dispatch("set_pageloading", path);
       }
     },
     //选中样式处理
     menuItemActive(name) {
+
       let menuItems = this.$refs["esopLeftSlide"].querySelectorAll(".menuItem");
       for (let item of menuItems) {
         item.classList.remove("active");
@@ -89,6 +91,9 @@ export default {
   },
   watch: {
     fromCheckList: function(a, b) {
+      this.menuItemActive(this.$router.currentRoute.name);
+    },
+    otherLink: function(a, b) {
       this.menuItemActive(this.$router.currentRoute.name);
     }
   }

@@ -12,6 +12,10 @@ let url = {
   check_info:'/rest/qc/getInspectInfo',//GET 获取检验信息
   check_add:'/rest/qc/addInspectResult',//POST 提交检测结果
   product_list:'/rest/qc/getProductResumeList',//GET 获取产品履历列表
+  product_info:'/rest/qc/getProductResumeInfo',//GET 获取产品履历下拉框数据
+  product_add:'/rest/qc/addProductResume',//POST 获取产品履历信息录入
+  file_get:'/rest/file/download',//GET 获取文件
+  file_POST:'/rest/file/upload',//POST 上传文件
 }
 
 //测试环境接口地址

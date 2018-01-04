@@ -19,19 +19,23 @@ import 'nprogress/nprogress.css'
 import i18n from 'common/i18n'
 
 //预加载
-// import layout from 'pages/App.vue'
+//
+//公共
 // import login from 'pages/user/login.vue'
-// import homePage from 'pages/home/index.vue'
-// import firstEntity from 'pages/firstEntity/firstEntity.vue'
-// import productInfo from 'pages/product/productInfo/productInfo.vue'
-// import productEnter from 'pages/product/productEnter/productEnter.vue'
-// import attention from 'pages/attention/attention.vue'
-// import tourEntity from 'pages/tourEntity/tourEntity.vue'
-// import checkList from 'pages/checkList/checkList.vue'
-// import batchEnterRaw from 'pages/batchEnter/batchEnterRaw.vue'
-// import batchEnterBlend from 'pages/batchEnter/batchEnterBlend.vue'
-//import xbar from 'pages/x-bar/x-bar.vue'testNoLogin
-//import testNoLogin from 'pages/testNoLogin/testNoLogin.vue'
+//
+//平板端
+// import layout from 'pages/padPages/App.vue'
+// import homePage from 'pages/padPages/home/index.vue'
+// import firstEntity from 'pages/padPages/firstEntity/firstEntity.vue'
+// import productInfo from 'pages/padPages/product/productInfo/productInfo.vue'
+// import productEnter from 'pages/padPages/product/productEnter/productEnter.vue'
+// import attention from 'pages/padPages/attention/attention.vue'
+// import tourEntity from 'pages/padPages/tourEntity/tourEntity.vue'
+// import checkList from 'pages/padPages/checkList/checkList.vue'
+// import batchEnterRaw from 'pages/padPages/batchEnter/batchEnterRaw.vue'
+// import batchEnterBlend from 'pages/padPages/batchEnter/batchEnterBlend.vue'
+// import xbar from 'pages/padPages/x-bar/x-bar.vue'testNoLogin
+// import testNoLogin from 'pages/padPages/testNoLogin/testNoLogin.vue'
 //
 //手机版
 //import phoneLayout from 'pages/phonePages/App.vue'
@@ -42,12 +46,13 @@ Vue.use(VueRouter)
 let lang = store.getters.get_lang;
 let messages = i18n.getLocaleMessage(lang).message;
 
-export const privateModule = [ //正式功能
+//平板页面功能
+export const privateModule = [
   //首页
   {
     path: '/home',
     name: 'homePage',
-    component: resolve => require(['pages/home/index.vue'], resolve),
+    component: resolve => require(['pages/padPages/home/index.vue'], resolve),
     //component: homePage,
     meta: {
       title: messages.homePage,
@@ -59,7 +64,7 @@ export const privateModule = [ //正式功能
     //检查清单
     path: '/checkList',
     name: 'checkList',
-    component: resolve => require(['pages/checkList/checkList.vue'], resolve),
+    component: resolve => require(['pages/padPages/checkList/checkList.vue'], resolve),
     //component: checkList,
     meta: {
       title: messages.checkList,
@@ -71,7 +76,7 @@ export const privateModule = [ //正式功能
     //首检管理
     path: '/firstentity',
     name: 'firstEntity',
-    component: resolve => require(['pages/firstEntity/firstEntity.vue'], resolve),
+    component: resolve => require(['pages/padPages/firstEntity/firstEntity.vue'], resolve),
     //component: firstEntity,
     meta: {
       title: messages.firstEntity,
@@ -83,7 +88,7 @@ export const privateModule = [ //正式功能
     //注意事项
     path: '/attention',
     name: 'attention',
-    component: resolve => require(['pages/attention/attention.vue'], resolve),
+    component: resolve => require(['pages/padPages/attention/attention.vue'], resolve),
     //component: attention,
     meta: {
       title: messages.attention,
@@ -95,7 +100,7 @@ export const privateModule = [ //正式功能
     //巡迴检查
     path: '/tourEntity',
     name: 'tourEntity',
-    component: resolve => require(['pages/tourEntity/tourEntity.vue'], resolve),
+    component: resolve => require(['pages/padPages/tourEntity/tourEntity.vue'], resolve),
     //component: tourEntity,
     meta: {
       title: messages.tourEntity,
@@ -128,7 +133,7 @@ export const privateModule = [ //正式功能
     //产品履历查看
     path: '/product/productInfo',
     name: 'productInfo',
-    component: resolve => require(['pages/product/productInfo/productInfo.vue'], resolve),
+    component: resolve => require(['pages/padPages/product/productInfo/productInfo.vue'], resolve),
     //component: productInfo,
     meta: {
       title: messages.productInfo,
@@ -140,7 +145,7 @@ export const privateModule = [ //正式功能
     //产品履历录入
     path: '/product/productEnter',
     name: 'productEnter',
-    component: resolve => require(['pages/product/productEnter/productEnter.vue'], resolve),
+    component: resolve => require(['pages/padPages/product/productEnter/productEnter.vue'], resolve),
     //component: productEnter,
     meta: {
       title: messages.productEnter,
@@ -173,7 +178,7 @@ export const privateModule = [ //正式功能
     //原来批次录入
     path: '/batchEnter/batchEnterRaw',
     name: 'batchEnterRaw',
-    component: resolve => require(['pages/batchEnter/batchEnterRaw.vue'], resolve),
+    component: resolve => require(['pages/padPages/batchEnter/batchEnterRaw.vue'], resolve),
     //component: batchEnterRaw,
     meta: {
       title: messages.batchEnterRaw,
@@ -185,7 +190,7 @@ export const privateModule = [ //正式功能
     //调合批次录入
     path: '/batchEnter/batchEnterBlend',
     name: 'batchEnterBlend',
-    component: resolve => require(['pages/batchEnter/batchEnterBlend.vue'], resolve),
+    component: resolve => require(['pages/padPages/batchEnter/batchEnterBlend.vue'], resolve),
     //component: batchEnterBlend,
     meta: {
       title: messages.batchEnterBlend,
@@ -197,7 +202,7 @@ export const privateModule = [ //正式功能
   //   //调合批次录入
   //   path: '/x-bar',
   //   name: 'x-bar',
-  //   //component: resolve => require(['pages/x-bar/x-bar.vue'], resolve),
+  //   //component: resolve => require(['pages/padPages/x-bar/x-bar.vue'], resolve),
   //   component: xbar,
   //   meta: {
   //     title: messages.xbar,
@@ -208,8 +213,8 @@ export const privateModule = [ //正式功能
 
 ]
 
-//手机模块
-const phoneModule = [{
+//手机页面功能
+export const phoneModule = [{
     //手机主页
     path: '/phone/home',
     name: 'phoneHome',
@@ -259,35 +264,59 @@ const phoneModule = [{
   }
 ]
 
-
-//使用AMD方式加载
-const routes = [{
-    path: '/404',
-    name: 'notPage',
-    component: resolve => require(['pages/error/404'], resolve)
-  }, {
-    path: '*',
-    redirect: '/404'
-  }, {
-    path: '/user/login',
-    name: 'login',
-    component: resolve => require(['pages/user/login.vue'], resolve)
-    //component: login
-  }, {
-    path: '/pad',
-    redirect: '/checkList',
-    component: resolve => require(['pages/App.vue'], resolve),
-    //component: layout,
-    children: privateModule
-  }, {
-    path: '/phone',
-    redirect: '/phone/home',
-    component: resolve => require(['pages/phonePages/App.vue'], resolve),
-    //component: phoneLayout,
-    children: phoneModule
+//终端页面功能
+export const terModule = [{
+  //终端主页
+  path: '/ter/home',
+  name: 'terHome',
+  component: resolve => require(['pages/terPages/home/home.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: '终端主页',
+    icon: 'fa fa-asl-interpreting',
+    auth: false
   },
+}, ]
 
-]
+
+//公共模块
+const routes = [{
+  path: '/404',
+  name: 'notPage',
+  component: resolve => require(['pages/error/404'], resolve)
+}, {
+  path: '*',
+  redirect: '/404'
+}, {
+  path: '/user/login',
+  name: 'login',
+  component: resolve => require(['pages/user/login.vue'], resolve),
+  //component: login
+  meta:{
+    auth:true
+  }
+}, {
+  path: '/',
+  redirect: '/user/login',
+}, {
+  path: '/pad',
+  redirect: '/checkList',
+  component: resolve => require(['pages/padPages/App.vue'], resolve),
+  //component: layout,
+  children: privateModule
+}, {
+  path: '/phone',
+  redirect: '/phone/home',
+  component: resolve => require(['pages/phonePages/App.vue'], resolve),
+  //component: phoneLayout,
+  children: phoneModule
+}, {
+  path: '/ter',
+  redirect: '/ter/home',
+  component: resolve => require(['pages/terPages/App.vue'], resolve),
+  //component: phoneLayout,
+  children: terModule
+}]
 
 const router = new VueRouter({
   routes,
@@ -304,38 +333,39 @@ const router = new VueRouter({
   }
 })
 
-//免登陆页面集合
-const noLoginPages = ['testNoLogin'];
-
-
 
 
 //全局路由配置
 //路由开始之前的操作
 router.beforeEach((to, from, next) => {
   NProgress.done().start();
-  let toName = to.name
-  // let fromName = from.name
+  let isLogin = to.meta.auth; //是否需要登录
+  let toName = to.name //当前页面name
   let token = store.state.token
-  if (!token && toName !== 'login') {
-    next({
-      name: 'login'
-    })
-  } else {
-    if (token && toName === 'login') {
-      if (document.body.offsetWidth < 480) {
-        next({
-          path: '/phone/home'
-        })
-      } else {
-        next({
-          path: '/pad'
-        })
-      }
+  if (isLogin) {
+    if (!token && toName !== 'login') {
+      next({
+        name: 'login'
+      })
     } else {
-      next()
+      if (token && toName === 'login') {
+        if (document.body.offsetWidth < 480) {
+          next({
+            path: '/phone/home'
+          })
+        } else {
+          next({
+            path: '/pad'
+          })
+        }
+      } else {
+        next();
+      }
     }
+  }else{
+    next();
   }
+
 })
 
 //路由完成之后的操作
@@ -347,48 +377,3 @@ router.afterEach(route => {
 })
 
 export default router
-
-
-
-//demo原来的模块
-//  {
-//     path: '/table/base',
-//     name: 'tableBase',
-//     component: resolve => require(['pages/table/base'],resolve), 
-//     meta: {
-//       title: messages.tableBase,
-//       auth: true
-//     }
-//   }, {
-//     path: '/table/sort',
-//     name: 'tableSort',
-//     component: resolve => require(['pages/table/sort'],resolve), 
-//     meta: {
-//       title: messages.tableSort,
-//       auth: true
-//     }
-//   }, {
-//     path: '/table/update/:id',
-//     name: 'tableUpdate',
-//     component: resolve => require(['pages/table/save'],resolve), 
-//     meta: {
-//       title: "数据修改",
-//       auth: true
-//     }
-//   }, {
-//     path: '/table/add',
-//     name: 'tableAdd',
-//     component: resolve => require(['pages/table/save'],resolve), 
-//     meta: {
-//       title: "添加数据",
-//       auth: true
-//     }
-//   }, {
-//     path: '/charts/bar',
-//     name: 'chartsBar',
-//     component: resolve => require(['pages/charts/bar'],resolve), 
-//     meta: {
-//       title: "柱状图表",
-//       auth: true
-//     }
-//   },

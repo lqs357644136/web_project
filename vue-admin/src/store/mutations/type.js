@@ -20,3 +20,7 @@ export const CLOSE_PAGELOADING ='CLOSE_PAGELOADING'
 export const SET_FROMCHECKLIST ='SET_FROMCHECKLIST'
 //设置检查信息
 export const SET_CHECKLIST ='SET_CHECKLIST'
+//来其他页面跳转
+export const SET_OTHERLINK ='SET_OTHERLINK'
+//存储履历列表选中的单个履历信息
+export const SET_PRODUCTINFO ='SET_PRODUCTINFO'

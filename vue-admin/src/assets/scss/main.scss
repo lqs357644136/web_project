@@ -1,9 +1,9 @@
 @charset "utf-8";
 
-//reset
-@import "./components/_reset";
 //base
 @import "./components/_base";
+//reset
+@import "./components/_reset";
 //animation
 @import "./components/_animation";
 //start_loading
@@ -12,15 +12,19 @@
 @import "./components/_dialog";
 //scroll
 @import "./components/_scroll-bar";
-//Layout 布局
-@import "./components/_layout";
 //素材布局
 @import "./components/_media";
 //检查
 @import "./components/_check";
-//功能模块
-@import "./components/_moduel";
+//平板版本
+@import "./components/_padLayout";
+//平板版本模块
+@import "./components/_padModuel";
 //手机版本
-@import "./components/_phoneLayout.scss";
+@import "./components/_phoneLayout";
 //手机版本模块
-@import "./components/_phoneModuel.scss";
+@import "./components/_phoneModuel";
+//终端版本
+@import "./components/_terLayout";
+//终端版本模块
+@import "./components/_terModuel";

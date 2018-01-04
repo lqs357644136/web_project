@@ -37,10 +37,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       sourceMap: true
     }),
-    // extract css into its own file
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[contenthash:8].css')
-    }),
+    // extract css into its own file 尝试解决打包css加载问题
+    // new ExtractTextPlugin({
+    //   filename: utils.assetsPath('css/[contenthash:8].css')
+    // }),
+    new ExtractTextPlugin('[name].[contenthash].css'),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({

@@ -27,4 +27,10 @@ export default {
   [type.GET_CHECKLIST]:state =>{
     return state.checkList;
   },
+  [type.GET_OTHERLINK]:state =>{
+    return state.otherLink;
+  },
+  [type.GET_PRODUCTINFO]:state =>{
+    return state.productInfo;
+  },
 }

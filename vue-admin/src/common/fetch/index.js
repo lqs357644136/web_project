@@ -88,3 +88,18 @@ export const $get = function (options) {
 
   })
 }
+
+export const $get_file = function (options) {
+  let url = options.url;
+  let params = options.params ? options.params : {};
+  let token = store.getters.get_token ? store.getters.get_token : "";
+  let path = server_base_url + url;
+
+  return new Promise((resolve, reject) => {
+
+    let data = path+"?path="+params.path+"&token="+token;
+
+    resolve(data)
+
+  })
+}

@@ -51,6 +51,7 @@ export default {
       this.$get({
         url: url.check_list
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
           this.tableData = [];
           for (let item of res.data) {
@@ -58,8 +59,8 @@ export default {
               company: item.company, //公司
               plant: item.plant.plant, //车间代号
               plantdesc: item.plant.plantdesc, //车间
-              process: item.process.process, //机台代号
-              processname: item.process.processname, //机台
+              process: item.process.process?item.process.process:'', //机台代号
+              processname: item.process.processname?item.process.processname:'', //机台
               ptno: item.ptno, //产品编码
               startTime: $dataFormat(item.startTime, 'yyyy-MM-dd') , //发出时间 
               duration: item.duration, //时长

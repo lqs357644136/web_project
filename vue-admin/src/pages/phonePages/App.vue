@@ -22,6 +22,7 @@ import url from "api";
 Vue.use(MintUI);
 
 export default {
+  name:'phoneView',
   data() {
     return {
       mainLoading: true

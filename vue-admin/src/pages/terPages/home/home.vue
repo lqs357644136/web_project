@@ -1,24 +1,5 @@
 <template>
     <div class="home">
-        <div class="slide">
-            <mt-swipe :auto="4000">
-                <mt-swipe-item>
-                    <div class="slide-item">
-                        <p>intelfor 2018</p> 
-                    </div>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <div class="slide-item">
-                        <p>intelfor 2018</p> 
-                    </div>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <div class="slide-item">
-                        <p>intelfor 2018</p> 
-                    </div>
-                </mt-swipe-item>
-            </mt-swipe>
-        </div>
         <div class="menus">
             <div class="menuBox" @click="goPage(item.path)" v-for="(item,index) in menus" :key="index">
                 <i :class="item.icon"></i>
@@ -35,7 +16,7 @@ export default {
       menus: [
         {
           path: "/phone/signage",
-          title: "电子看板",
+          title: "异常报工",
           icon: "icon fa fa-bandcamp"
         },
         {
