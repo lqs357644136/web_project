@@ -250,4 +250,16 @@
             }
         }
     }
+    //上岗纪录
+    .workonoff{
+        display: flex;
+        flex-direction: column;
+        padding:0;
+        .workonoff-list{
+            flex:1;
+        }
+        .workonoff-list-goPage{
+            height:pxTorem(60px);
+        }
+    }
 }
