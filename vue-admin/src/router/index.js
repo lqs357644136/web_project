@@ -276,6 +276,28 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
+},{
+  //异常报工
+  path: '/ter/dailywork/adnDailywork',
+  name: 'adnDailywork',
+  component: resolve => require(['pages/terPages/dailywork/adnDailywork.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: '异常报工',
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  },
+},{
+  //生产报工
+  path: '/ter/dailywork/proDailywork',
+  name: 'adnDailywork',
+  component: resolve => require(['pages/terPages/dailywork/proDailywork.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: '生产报工',
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  },
 }, ]
 
 

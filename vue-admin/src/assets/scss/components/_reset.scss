@@ -47,6 +47,56 @@ button {
 }
 
 //重写样式与公共样式
+//面包屑
+.panel {
+    background-color: #fff;
+    border-radius: pxTorem(4px);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    .panel-title {
+        border-top-left-radius: pxTorem(4px);
+        border-top-right-radius: pxTorem(4px);
+        color: white;
+        background-color: #1d90e6;
+        padding: 0 pxTorem(15px);
+        height: pxTorem(45px);
+        line-height: pxTorem(45px);
+        font-size: pxTorem(14px);
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+        .panel_title_select {
+            display: inline-block;
+            .el-input__inner {
+                height: pxTorem(28px);
+            }
+        }
+    }
+    .panel-body {
+        padding: pxTorem(15px);
+        overflow-y: auto;
+        font-weight: normal;
+        position: relative;
+        $panelBodyHeight: pxTorem(45px);
+        height: calc(100% - 2.8125rem);
+        .bottom-toolbar {
+            margin-top: pxTorem(15px);
+            padding: pxTorem(15px) 0;
+        }
+    }
+}
+
+.footer {
+    background: #fff;
+    padding: pxTorem(15px);
+    color: #7A7676;
+    font-size: pxTorem(12px);
+    position: static;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #eff0f4;
+}
+
 //平板版本头部用户退出按钮
 .dropdown-menu {
     position: absolute;
@@ -109,6 +159,8 @@ button {
         }
     }
     .el-card__body {
+        height: -webkit-calc(100% - #{pxTorem(42px)});
+        height: -moz-calc(100% - #{pxTorem(42px)});
         height: calc(100% - #{pxTorem(42px)});
     }
 } //tab切换

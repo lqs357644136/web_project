@@ -15,24 +15,34 @@ export default {
     return {
       menus: [
         {
-          path: "/phone/signage",
+          path: "/ter/dailywork/adnDailywork",
           title: "异常报工",
           icon: "icon fa fa-bandcamp"
         },
         {
-          path: "/phone/signage",
-          title: "首件录入",
+          path: "/ter/dailywork/proDailywork",
+          title: "生产报工",
           icon: "icon fa fa-snowflake-o"
         },
         {
-          path: "/phone/signage",
-          title: "安灯报表",
+          path: "/ter/selfEntity/selfEntity.vue",
+          title: "自主检验",
           icon: "icon fa fa-id-card-o"
         },
         {
-          path: "/phone/signage",
-          title: "履历录入",
+          path: "/batchEntity/batchEntityBlend.vue",
+          title: "原料批次录入",
           icon: "icon fa fa-address-book-o"
+        },
+        {
+          path: "/batchEntity/batchEntityRaw.vue",
+          title: "调合批次录入",
+          icon: "icon fa fa-area-chart"
+        },
+        {
+          path: "/producInfo/producInfo.vue",
+          title: "产品履历查看",
+          icon: "icon fa fa-balance-scale"
         }
       ]
     };

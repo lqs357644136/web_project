@@ -19,7 +19,9 @@ import App from './App'
 //导入过滤器
 import 'common/filiter'
 //导入axios请求方法
-import { $get,$post,$get_file } from 'common/fetch/index.js'
+import { $get,$post,$get_file,$post_noToken,$get_noToken } from 'common/fetch/index.js'
+//导入工具
+import { getMacINfo } from 'common/uitl.js'
 
 //导入mock数据
 //import './mock'
@@ -30,16 +32,18 @@ import i18n from 'common/i18n'
 
 //使用element-ui
 Vue.use(ElementUI)
-
 //使用api
 Vue.use(api)
-
 //发布后是否显示提示
 Vue.config.productionTip = false
 //注册全局请求方法
 Vue.prototype.$get = $get;
 Vue.prototype.$post = $post;
+Vue.prototype.$get_noToken = $get_noToken;
+Vue.prototype.$post_noToken = $post_noToken;
 Vue.prototype.$get_file = $get_file
+//终端获取机器信息注册到全局
+Window.GETMACINFO = getMacINfo
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'

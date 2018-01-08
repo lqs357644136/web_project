@@ -4,8 +4,8 @@
             display: flex;
             flex-direction: row;
             .menuBox {
-                height: pxTorem(300px);
-                width: pxTorem(300px);
+                height: pxTorem(200px);
+                width: pxTorem(200px);
                 display: flex;
                 flex-direction: column;
                 text-align: center;
@@ -15,11 +15,11 @@
                     line-height: pxTorem(100px);
                     width: pxTorem(100px);
                     text-align: center;
-                    margin: auto;
+                    margin: 0 auto;
                     margin-bottom: pxTorem(10px);
                     background-color: #1a9dd4;
                     color: white;
-                    font-size: pxTorem(36px);
+                    font-size: pxTorem(60px);
                     border-radius: pxTorem(10px);
                     box-shadow: pxTorem(3px) pxTorem(3px) pxTorem(5px) #a2a1a1;
                 }
@@ -28,6 +28,76 @@
                     color: #5a5a5a;
                 }
             }
+        }
+    } //报工
+    .dailywork {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .dailywork-INfo {
+            margin-bottom: pxTorem(20px);
+            .dailywork-body {
+                display: flex;
+                flex-direction: row;
+                .dailyFrom {
+                    flex: 1;
+                }
+                .dailyBtn {
+                    width: pxTorem(150px);
+                    margin-left: pxTorem(20px);
+                    height: pxTorem(96px);
+                    margin-bottom: 0;
+                    .subBtn {
+                        height: 100%;
+                        .el-form-item__content {
+                            height: 100%;
+                            button {
+                                height: 100%;
+                                width: 100%;
+                                font-size: pxTorem(20px);
+                            }
+                        }
+                    }
+                }
+            }
+            .el-form-item__label {
+                width: pxTorem(85px);
+            }
+            .el-form-item__content {
+                .el-select {
+                    width: 100%;
+                }
+                .el-input.is-disabled .el-input__inner {
+                    background-color: inherit;
+                    color: inherit;
+                    border: 1px solid #bfcbd9;
+                }
+            }
+            .el-card__body {
+                padding-bottom: 0;
+            }
+        }
+        .dailywork-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .el-card__header {}
+            .el-card__body {
+                overflow:auto;
+                padding: 0;
+                flex: 1;
+                .list {
+                    overflow:hidden;
+                }
+                .el-table__body-wrapper {}
+            }
+        }
+        .isDaily {
+            background-color: #cff7de;
+        }
+        .noDaily {
+            background-color: #f3d3d3;
+            ;
         }
     }
 }
