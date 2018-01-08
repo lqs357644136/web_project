@@ -54,6 +54,7 @@ button {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     height: 100%;
     .panel-title {
+        position: relative;
         border-top-left-radius: pxTorem(4px);
         border-top-right-radius: pxTorem(4px);
         color: white;
@@ -65,12 +66,26 @@ button {
         font-weight: bold;
         text-transform: uppercase;
         border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
-        .panel_title_select {
-            display: inline-block;
-            .el-input__inner {
-                height: pxTorem(28px);
+        .back {
+            position: absolute;
+            left: pxTorem(10px);
+            line-height: pxTorem(45px);
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            .icon {
+                margin-right: pxTorem(5px);
+                line-height: pxTorem(45px);
+                font-size: pxTorem(26px);
+            }
+            .text {
+                line-height: pxTorem(48px);
+                font-size: pxTorem(14px);
             }
         }
+    }
+    .textCenter {
+        text-align: center;
     }
     .panel-body {
         padding: pxTorem(15px);

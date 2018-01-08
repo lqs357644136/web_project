@@ -198,18 +198,18 @@ export const privateModule = [
       auth: true
     }
   },
-  // {
-  //   //调合批次录入
-  //   path: '/x-bar',
-  //   name: 'x-bar',
-  //   //component: resolve => require(['pages/padPages/x-bar/x-bar.vue'], resolve),
-  //   component: xbar,
-  //   meta: {
-  //     title: messages.xbar,
-  //     icon: 'fa fa-asl-interpreting',
-  //     auth: true
-  //   }
-  // },
+  {
+    //上岗纪录
+    path: '/workonoff',
+    name: 'workonoff',
+    component: resolve => require(['pages/padPages/workonoff/workonoff.vue'], resolve),
+    //component: workonoff,
+    meta: {
+      title: messages.workonoff,
+      icon: 'fa fa-codiepie',
+      auth: true
+    }
+  },
 
 ]
 
@@ -298,6 +298,28 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
+},{
+  //原料批次录入
+  path: '/ter/batch/batchEnterRaw',
+  name: 'batchEnterRaw',
+  component: resolve => require(['pages/terPages/batchEnter/batchEnterRaw.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: '原料批次录入',
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  },
+},{
+  //调合批次录入
+  path: '/ter/batch/batchEnterBlend',
+  name: 'batchEnterBlend',
+  component: resolve => require(['pages/terPages/batchEnter/batchEnterBlend.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: '调合批次录入',
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  },
 }, ]
 
 
@@ -354,8 +376,6 @@ const router = new VueRouter({
     }
   }
 })
-
-
 
 //全局路由配置
 //路由开始之前的操作

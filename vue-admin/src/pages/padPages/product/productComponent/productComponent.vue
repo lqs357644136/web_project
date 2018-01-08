@@ -172,7 +172,7 @@
                                 <div slot="header" class="clearfix">
                                     <span>不良写真</span>
                                 </div>
-                                <div>
+                                <div class="imgItemBody">
                                     <img @click="imgInfoShowfn()" :src="imgInfo.badPicture_imageUrl" alt="">
                                 </div>
                             </el-card>
@@ -181,7 +181,7 @@
                                 <div slot="header" class="clearfix">
                                     <span>改善后写真</span>
                                 </div>
-                                <div>
+                                <div class="imgItemBody">
                                     <img @click="imgInfoShowfn()" :src="imgInfo.improvePicture_imageUrl" alt="">
                                 </div>
                             </el-card>
@@ -199,7 +199,7 @@
                                 <div slot="header" class="clearfix">
                                     <span>不良写真</span>
                                 </div>
-                                <el-upload class="avatar-uploader" :action="imgUpload.uploadUrl" :headers="imgUpload.headers" :show-file-list="false" :on-success="badPicture_Success" :on-error="handleAvatarError" :before-upload="beforeAvatarUpload">
+                                <el-upload class="avatar-uploader imgItemBody" :action="imgUpload.uploadUrl" :headers="imgUpload.headers" :show-file-list="false" :on-success="badPicture_Success" :on-error="handleAvatarError" :before-upload="beforeAvatarUpload">
                                     <img v-if="imgUpload.badPicture_imageUrl" :src="imgUpload.badPicture_imageUrl" class="avatar">
                                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                                 </el-upload>
@@ -209,7 +209,7 @@
                                 <div slot="header" class="clearfix">
                                     <span>改善后写真</span>
                                 </div>
-                                <el-upload class="avatar-uploader" :action="imgUpload.uploadUrl" :headers="imgUpload.headers" :show-file-list="false" :on-success="improvePicture__Success" :on-error="handleAvatarError" :before-upload="beforeAvatarUpload">
+                                <el-upload class="avatar-uploader imgItemBody" :action="imgUpload.uploadUrl" :headers="imgUpload.headers" :show-file-list="false" :on-success="improvePicture__Success" :on-error="handleAvatarError" :before-upload="beforeAvatarUpload">
                                     <img v-if="imgUpload.improvePicture_imageUrl" :src="imgUpload.improvePicture_imageUrl" class="avatar">
                                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                                 </el-upload>

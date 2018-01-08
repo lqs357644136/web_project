@@ -21,6 +21,7 @@ const messages = {
         batchEnterBlend:'调合批次录入',
         batchEnterRaw:'原料批次录入',
         xbar:'x-bar图',
+        workonoff:'上岗纪录',
       }
     },
     en: {
@@ -40,6 +41,7 @@ const messages = {
         batchEnterBlend:'batchEnterBlend',
         batchEnterRaw:'batchEnterRaw',
         xbar:'x-bar',
+        workonoff:'workonoff',
       }
     }
 }

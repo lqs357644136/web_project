@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-        <panel-title :title="$route.meta.title"></panel-title>
+        <panel-title :back="true" :title="$route.meta.title"></panel-title>
         <div class="panel-body">
 
             <el-form :model="macInfo" :rules="rules" ref="macInfo" class="dailywork">

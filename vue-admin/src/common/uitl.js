@@ -24,10 +24,25 @@ export const exitFullscreen = function () {
 
 //终端获取机器信息方法
 export const getMacINfo = function () {
-  let equipNo = Window.android.getProcess();
-  let empNo = Window.android.getJobNumber();
+  // let equipNo = Window.android.getProcess();
+  // let empNo = Window.android.getJobNumber();
+  // let line = Window.android.getLine();
+  // let plant = Window.android.getPlant();
+  // let backUp = Window.android.finish();
+  // return {
+  //   backUp:backUp,
+  //   equipNo: equipNo,
+  //   empNo: empNo,
+  //   line: line,
+  //   plant: line,
+  // }
   return {
+    backUp:function(){
+      console.log("返回上一页(只能在终端上生效)");
+    },
     equipNo: 'C01',
-    empNo: 30031
+    empNo: 30031,
+    line:'BC1',
+    plant:'1000',
   }
 }

@@ -3,23 +3,25 @@
         .menus {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
             .menuBox {
-                height: pxTorem(200px);
-                width: pxTorem(200px);
+                height: pxTorem(300px);
+                width: pxTorem(300px);
                 display: flex;
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
                 .icon {
-                    height: pxTorem(100px);
-                    line-height: pxTorem(100px);
-                    width: pxTorem(100px);
+                    height: pxTorem(150px);
+                    line-height: pxTorem(150px);
+                    width: pxTorem(150px);
                     text-align: center;
                     margin: 0 auto;
                     margin-bottom: pxTorem(10px);
                     background-color: #1a9dd4;
                     color: white;
-                    font-size: pxTorem(60px);
+                    font-size: pxTorem(80px);
                     border-radius: pxTorem(10px);
                     box-shadow: pxTorem(3px) pxTorem(3px) pxTorem(5px) #a2a1a1;
                 }
@@ -68,7 +70,7 @@
                     width: 100%;
                 }
                 .el-input.is-disabled .el-input__inner {
-                    background-color: inherit;
+                    //background-color: inherit;
                     color: inherit;
                     border: 1px solid #bfcbd9;
                 }
@@ -83,11 +85,11 @@
             flex-direction: column;
             .el-card__header {}
             .el-card__body {
-                overflow:auto;
+                overflow: auto;
                 padding: 0;
                 flex: 1;
                 .list {
-                    overflow:hidden;
+                    overflow: hidden;
                 }
                 .el-table__body-wrapper {}
             }
@@ -98,6 +100,81 @@
         .noDaily {
             background-color: #f3d3d3;
             ;
+        }
+    } //批次录入
+    .batchEnter {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .deteTable,
+        .deteCheck {
+            height: 100%;
+        }
+        .detectionFrom {
+            margin-bottom: pxTorem(20px);
+            .detectionFrom-header {
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                .name {
+                    font-weight: 800;
+                }
+                .btn {
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .el-form-item__content {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+        .el-card__body {
+            .el-col {
+                margin-bottom: pxTorem(20px);
+            }
+            .el-col:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .el-form-item {
+            .el-form-item__label {
+                width: pxTorem(70px) !important;
+            }
+            margin-right: 0;
+            margin-bottom: 0;
+        }
+    }
+    .tableBox {
+        flex: 1;
+        .el-card__body {
+            padding: 0;
+        }
+        .el-table {
+            height: 100%;
+            border: 0;
+        }
+        .el-form-item:last-child {
+            margin-bottom: 0;
+        }
+        .edit {
+            display: flex;
+            justify-content: center;
+        }
+        .cell {
+            text-align: center;
+        }
+    }
+    .detectionBtn {
+        height: pxTorem(40px);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        button {
+            width: pxTorem(150px);
         }
     }
 }

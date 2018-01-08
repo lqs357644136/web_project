@@ -94,6 +94,9 @@
                     .el-card__body {
                         height: calc(100% - #{pxTorem(42px)}) !important;
                         padding: 0;
+                        .imgItemBody{
+                            height:100%;
+                        }
                         img {
                             height: 100%;
                             width: 100%;
@@ -170,7 +173,8 @@
         .subBtn .el-form-item__content {
             margin-left: 0 !important;
         }
-    } //批次录入
+    } 
+    //批次录入
     .batchEnter {
         height: 100%;
         display: flex;
@@ -193,6 +197,11 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+                    .el-form-item__content {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
                 }
             }
             .el-card__body {

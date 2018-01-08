@@ -73,6 +73,9 @@ export default {
             {
               name: "batchEnter",
               child: [{ name: "batchEnterBlend" }, { name: "batchEnterRaw" }]
+            },
+            {
+              name:"workonoff"
             }
           ];
 

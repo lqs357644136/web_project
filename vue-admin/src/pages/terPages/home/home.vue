@@ -1,12 +1,12 @@
 <template>
-    <div class="home">
-        <div class="menus">
-            <div class="menuBox" @click="goPage(item.path)" v-for="(item,index) in menus" :key="index">
-                <i :class="item.icon"></i>
-                <span class="text">{{item.title}}</span>
-            </div>
-        </div>
+  <div class="home">
+    <div class="menus">
+      <div class="menuBox" @click="goPage(item.path)" v-for="(item,index) in menus" :key="index">
+        <i :class="item.icon"></i>
+        <span class="text">{{item.title}}</span>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -25,22 +25,22 @@ export default {
           icon: "icon fa fa-snowflake-o"
         },
         {
-          path: "/ter/selfEntity/selfEntity.vue",
+          path: false,
           title: "自主检验",
           icon: "icon fa fa-id-card-o"
         },
         {
-          path: "/batchEntity/batchEntityBlend.vue",
+          path: "/ter/batch/batchEnterRaw",
           title: "原料批次录入",
           icon: "icon fa fa-address-book-o"
         },
         {
-          path: "/batchEntity/batchEntityRaw.vue",
+          path: "/ter/batch/batchEnterBlend",
           title: "调合批次录入",
           icon: "icon fa fa-area-chart"
         },
         {
-          path: "/producInfo/producInfo.vue",
+          path: false,
           title: "产品履历查看",
           icon: "icon fa fa-balance-scale"
         }
@@ -49,7 +49,14 @@ export default {
   },
   methods: {
     goPage(path) {
-      this.$router.push(path);
+      if (path) {
+        this.$router.push(path);
+      } else {
+        this.$notify.info({
+          title: "消息",
+          message: "功能尚未开发完成"
+        });
+      }
     }
   }
 };

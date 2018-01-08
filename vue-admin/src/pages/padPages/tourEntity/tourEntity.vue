@@ -187,7 +187,7 @@ export default {
           label = opt.processdesc;
           value = opt.process;
         }else if (type == "ptno") {
-          label = opt.ptnodesc;
+          label = opt.ptnm;
           value = opt.ptno;
         }
         let option = {
