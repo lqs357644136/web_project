@@ -1,9 +1,12 @@
- vue-admin [Live Demo](http://vueadmin.hinplay.com/)
+
+```
+里面包含一个桌面版后台管理系统和手机版本系统
+```
 
 ### 项目技术架构
 ***
 *  vue-cli
-*  vue
+*  vue2.0
 *  axios
 *  vue-router
 *  vuex
@@ -13,6 +16,8 @@
 *  webpack
 *  mock
 *  echarts
+*  mint-ui
+*  i18n
 
 ### 安装
 
@@ -36,6 +41,11 @@ npm run dev
 ```
 npm run build
 ```
+
+```
+暂时数据用的是我自己后台数据,需要项目跑起来要麻烦去mock自己造点数据,不好意思啊`````````
+```
+
 ***
 ### 目录结构
 <pre>
@@ -46,6 +56,7 @@ npm run build
 │   ├── assets                // 一些资源文件
 │   ├── common                // 通用文件、如工具类、状态码
 │   ├── components            // 各种组件
+│   ├── mock                  // mock数据
 │   ├── pages                 // 各种页面
 │   ├── plugins               // 各种插件
 │   ├── router                // 路由配置及map
@@ -62,15 +73,7 @@ npm run build
 ├── package.json              // 项目配置文件
 </pre>
 
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_1.jpg)
-<br />
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_2.jpg)
-<br />
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_3.jpg)
-***
-### 捐赠
-![image](https://raw.githubusercontent.com/zzmhot/vue-admin/images/images_4.jpg)
-***
+
 ### 结束
 
-有什么想交流的请联系我：[zzmhot@163.com](mailto:zzmhot@163.com)，QQ群：[307914534](https://jq.qq.com/?_wv=1027&k=46l9UkQ)
+有什么想交流的请联系我：QQ:357644136

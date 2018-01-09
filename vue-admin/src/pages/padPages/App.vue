@@ -51,15 +51,6 @@ export default {
           //获取菜单
           //let menus =this.$store.getters.get_menus
 
-          //模拟检测提醒
-          setInterval(() => {
-            this.$notify({
-              title: "自检提醒",
-              message: "已到自检时间,请尽快检验",
-              duration: 5000
-            });
-          }, 300000);
-
           //菜单暂时写死
           let menus = [
             { name: "firstEntity" },

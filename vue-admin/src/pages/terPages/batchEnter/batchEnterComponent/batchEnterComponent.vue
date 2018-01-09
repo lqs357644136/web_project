@@ -12,17 +12,17 @@
         </div>
 
         <el-row :gutter="10">
-          <el-col :xs="24" :sm="24" :md="10" :lg="8">
+          <el-col :xs="24" :sm="24" :md="8" :lg="8">
             <el-form-item :label="materialNo" class="" prop="materialNo">
               <el-input type="text" v-model="inputs.materialNo" auto-complete="off"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :xs="24" :sm="24" :md="10" :lg="8">
+          <el-col :xs="24" :sm="24" :md="8" :lg="8">
             <el-form-item label="批次号" class="" prop="batchNo">
               <el-input type="text" v-model="inputs.batchNo" auto-complete="off"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :xs="24" :sm="24" :md="10" :lg="8">
+          <el-col :xs="24" :sm="24" :md="8" :lg="8">
             <el-form-item label="数量" class="" prop="quantity">
               <el-input-number v-model="inputs.quantity" :min="1" label="请输入数量"></el-input-number>
             </el-form-item>

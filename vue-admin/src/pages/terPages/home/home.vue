@@ -25,11 +25,6 @@ export default {
           icon: "icon fa fa-snowflake-o"
         },
         {
-          path: false,
-          title: "自主检验",
-          icon: "icon fa fa-id-card-o"
-        },
-        {
           path: "/ter/batch/batchEnterRaw",
           title: "原料批次录入",
           icon: "icon fa fa-address-book-o"
@@ -38,6 +33,11 @@ export default {
           path: "/ter/batch/batchEnterBlend",
           title: "调合批次录入",
           icon: "icon fa fa-area-chart"
+        },
+        {
+          path: "/ter/selfEntity",
+          title: "自主检验",
+          icon: "icon fa fa-id-card-o"
         },
         {
           path: false,

@@ -276,7 +276,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
-},{
+}, {
   //异常报工
   path: '/ter/dailywork/adnDailywork',
   name: 'adnDailywork',
@@ -287,7 +287,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
-},{
+}, {
   //生产报工
   path: '/ter/dailywork/proDailywork',
   name: 'adnDailywork',
@@ -298,7 +298,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
-},{
+}, {
   //原料批次录入
   path: '/ter/batch/batchEnterRaw',
   name: 'batchEnterRaw',
@@ -309,7 +309,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
-},{
+}, {
   //调合批次录入
   path: '/ter/batch/batchEnterBlend',
   name: 'batchEnterBlend',
@@ -320,7 +320,18 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
-}, ]
+}, {
+  //自检录入
+  path: '/ter/selfEntity',
+  name: 'selfEntity',
+  component: resolve => require(['pages/terPages/selfEntity/selfEntity.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: '自检录入',
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  }
+}]
 
 
 //公共模块
@@ -336,8 +347,8 @@ const routes = [{
   name: 'login',
   component: resolve => require(['pages/user/login.vue'], resolve),
   //component: login
-  meta:{
-    auth:true
+  meta: {
+    auth: true
   }
 }, {
   path: '/',
@@ -404,7 +415,7 @@ router.beforeEach((to, from, next) => {
         next();
       }
     }
-  }else{
+  } else {
     next();
   }
 

@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-        <panel-title :title="$route.meta.title"></panel-title>
+        <panel-title :back="true" :title="$route.meta.title"></panel-title>
         <div class="panel-body">
             <check></check>
         </div>
@@ -69,8 +69,7 @@ export default {
       this.get_checkInfo();
     },
     //请求检查页面信息
-    get_checkInfo(params) {
-      let self = this;
+    get_checkInfo() {
       let params = {
           equipNo:this.this.macInfo.equipNo,
           empNo:this.macInfo.empNo

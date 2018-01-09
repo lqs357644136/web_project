@@ -13,6 +13,8 @@ function dataFormat(date, fmt) {
     date = new Date(date)
   } else if (typeof date === 'string') {
     date = new Date(parseInt(date))
+  } else if (!date){
+    return '-';
   }
 
   let o = {

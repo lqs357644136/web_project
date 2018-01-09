@@ -147,34 +147,35 @@
             margin-right: 0;
             margin-bottom: 0;
         }
-    }
-    .tableBox {
-        flex: 1;
-        .el-card__body {
-            padding: 0;
+        .tableBox {
+            flex: 1;
+            .el-card__body {
+                padding: 0;
+            }
+            .el-table {
+                height: 100%;
+                border: 0;
+            }
+            .el-form-item:last-child {
+                margin-bottom: 0;
+            }
+            .edit {
+                display: flex;
+                justify-content: center;
+            }
+            .cell {
+                text-align: center;
+            }
         }
-        .el-table {
-            height: 100%;
-            border: 0;
-        }
-        .el-form-item:last-child {
-            margin-bottom: 0;
-        }
-        .edit {
+        .detectionBtn {
+            height: pxTorem(40px);
             display: flex;
+            align-items: flex-end;
             justify-content: center;
-        }
-        .cell {
-            text-align: center;
-        }
-    }
-    .detectionBtn {
-        height: pxTorem(40px);
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        button {
-            width: pxTorem(150px);
+            button {
+                width: pxTorem(150px);
+            }
         }
     }
+    
 }

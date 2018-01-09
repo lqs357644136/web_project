@@ -266,3 +266,10 @@ button {
 .el-loading-spinner .circular {
     animation: loading-rotate 2s linear infinite;
 }
+
+//分页
+.esop-goPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
