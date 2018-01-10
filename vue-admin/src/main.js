@@ -41,9 +41,9 @@ Vue.prototype.$get = $get;
 Vue.prototype.$post = $post;
 Vue.prototype.$get_noToken = $get_noToken;
 Vue.prototype.$post_noToken = $post_noToken;
-Vue.prototype.$get_file = $get_file
+Vue.prototype.$get_file = $get_file;
 //终端获取机器信息注册到全局
-Window.GETMACINFO = getMacINfo
+Window.GETMACINFO = getMacINfo;
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'

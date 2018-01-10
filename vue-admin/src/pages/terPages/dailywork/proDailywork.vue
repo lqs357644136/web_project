@@ -237,6 +237,7 @@ export default {
         url: url.proDailywork_list,
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
           this.$message.success(res.msg);
           this.dailyworkList = [];
@@ -434,6 +435,7 @@ export default {
         badReason: this.macInfo.badReason,
         orderNo: this.macInfo.orderNo
       };
+      console.log(data)
       this.$post_noToken({
         url: url.proDailywork_add,
         data

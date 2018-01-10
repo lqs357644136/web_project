@@ -19,7 +19,7 @@ export default {
   },
   methods:{
     terBack(){
-      Window.GETMACINFO().backUp();
+      window.android.finish()
     }
   }
 };

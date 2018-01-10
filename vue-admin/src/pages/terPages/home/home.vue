@@ -40,7 +40,7 @@ export default {
           icon: "icon fa fa-id-card-o"
         },
         {
-          path: false,
+          path: '/ter/productInfo',
           title: "产品履历查看",
           icon: "icon fa fa-balance-scale"
         }

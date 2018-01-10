@@ -101,7 +101,6 @@ import { panelTitle } from "components";
 import { mapGetters } from "vuex";
 import url from "api";
 import { $dataFormat } from "common/filiter/index.js";
-
 export default {
   name: "adnDailywork",
   data() {

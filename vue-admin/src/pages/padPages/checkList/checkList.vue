@@ -51,7 +51,7 @@ export default {
       this.$get({
         url: url.check_list
       }).then(res => {
-        console.log(res)
+        console.log(res);
         if (res.code == 1) {
           this.tableData = [];
           for (let item of res.data) {
@@ -59,13 +59,16 @@ export default {
               company: item.company, //公司
               plant: item.plant.plant, //车间代号
               plantdesc: item.plant.plantdesc, //车间
-              process: item.process.process?item.process.process:'', //机台代号
-              processname: item.process.processname?item.process.processname:'', //机台
+              process: item.process.process ? item.process.process : "", //机台代号
+              processname: item.process.processname
+                ? item.process.processname
+                : "", //机台
               ptno: item.ptno, //产品编码
-              startTime: $dataFormat(item.startTime, 'yyyy-MM-dd') , //发出时间 
+              startTime: $dataFormat(item.startTime, "yyyy-MM-dd"), //发出时间
               duration: item.duration, //时长
               type: item.type, //类型:0首检，1巡检
-              typeName:item.type=='0'?'首检':'巡检',
+              typeName:
+                item.type == "0" ? "首检" : item.type == "1" ? "巡检" : "自检",
               line: item.line.line, //制程代号
               linedesc: item.line.linedesc //制程
             };
@@ -78,43 +81,53 @@ export default {
     get_checkInfo(params) {
       let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
       let self = this;
-      self.$get({
-        url: url.check_info,
-        params: params
-      }).then(res => {
-        if (res.code == 1) {
-          self.$store.commit("SET_CHECKLIST", res.data);
-          setTimeout(res => {
-            self.$router.push({
-              path: path,
-              query: {
-                fromCheckList: true
-              }
-            });
-          }, 200);
-        } else {
-          let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
-          self.$message.error(res.msg);
-          if (!self.fromCheckList) {
+      self
+        .$get({
+          url: url.check_info,
+          params: params
+        })
+        .then(res => {
+          if (res.code == 1) {
+            self.$store.commit("SET_CHECKLIST", res.data);
             setTimeout(res => {
-              self.$router.push(path);
+              self.$router.push({
+                path: path,
+                query: {
+                  fromCheckList: true
+                }
+              });
             }, 200);
+          } else {
+            let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
+            self.$message.error(res.msg);
+            if (!self.fromCheckList) {
+              setTimeout(res => {
+                self.$router.push(path);
+              }, 200);
+            }
           }
-        }
-      });
+        });
     },
     goDeteCheck(scope) {
-      let path = scope.row.type == "0" ? "/firstEntity" : "/tourEntity";
-      let info = {
-        plant: scope.row.plant,
-        line: scope.row.line,
-        process: scope.row.process,
-        type: scope.row.type
-      };
-      if (scope.row.type == "1") {
-        info.ptno = scope.row.ptno;
+      if (scope.row.type != "0" && scope.row.type != "1") {
+        this.$notify({
+          title: "警告",
+          message: "自检类型只能在终端进行",
+          type: "warning"
+        });
+      } else {
+        let path = scope.row.type == "0" ? "/firstEntity" : "/tourEntity";
+        let info = {
+          plant: scope.row.plant,
+          line: scope.row.line,
+          process: scope.row.process,
+          type: scope.row.type
+        };
+        if (scope.row.type == "1") {
+          info.ptno = scope.row.ptno;
+        }
+        this.get_checkInfo(info);
       }
-      this.get_checkInfo(info);
     }
   }
 };

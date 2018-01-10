@@ -145,12 +145,17 @@ export default {
         params: params
       }).then(res => {
         if (res.code == 1) {
+          this.$message.success(res.msg);
           self.$store.dispatch("set_checklist", res.data);
           self.fromCheckList = false;
         } else {
-          let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
-          self.$message.error("没有找到对应检测信息,请手动录入");
-          self.fromCheckList = true;
+          this.$message.error(res.msg);
+          this.getPlantSelect();
+          this.fromCheckList = true;
+          this.$store.dispatch("set_checklist", null);
+          // let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
+          // self.$message.error("没有找到对应检测信息,请手动录入");
+          // self.fromCheckList = true;
           // if (!self.fromCheckList) {
           //   setTimeout(res => {
           //     self.$router.push(path);

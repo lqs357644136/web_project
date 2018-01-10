@@ -87,14 +87,14 @@ export default {
         plantOption: [],
         lineOption: [],
         processOption: [],
-        ptnoOption:[]
+        ptnoOption: []
       },
       //下拉选择
       checkInfoInputs: {
         plantInput: "",
         lineInput: "",
         processInput: "",
-        ptnoInput:""
+        ptnoInput: ""
       },
       //下拉验证规则
       rules: {
@@ -114,8 +114,7 @@ export default {
   mounted() {
     this.isFromCheckList();
   },
-  created() {
-  },
+  created() {},
   components: {
     panelTitle,
     check
@@ -141,9 +140,14 @@ export default {
     //检查是否由检查清单跳转过来
     isFromCheckList() {
       this.$store.dispatch("set_fromchecklist", true);
-      if (this.$router.currentRoute.query.fromCheckList&&this.checkList!=null) {//是
-          this.fromCheckList = false;
-      } else {//否
+      if (
+        this.$router.currentRoute.query.fromCheckList &&
+        this.checkList != null
+      ) {
+        //是
+        this.fromCheckList = false;
+      } else {
+        //否
         this.$store.dispatch("set_checklist", null);
         this.fromCheckList = true;
         this.getPlantSelect();
@@ -151,23 +155,26 @@ export default {
     },
     //请求检查页面信息
     get_checkInfo(params) {
-      let self = this;
-      self.$get({
+      this.$get({
         url: url.check_info,
         params: params
       }).then(res => {
         if (res.code == 1) {
-          self.$store.dispatch("set_checklist", res.data);
-          self.fromCheckList = false;
+          this.$message.success(res.msg);
+          this.$store.dispatch("set_checklist", res.data);
+          this.fromCheckList = false;
         } else {
-          let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
-          self.$message.error("没有找到对应检测信息,请手动录入");
-          self.fromCheckList = false;
-          if (!self.fromCheckList) {
-            setTimeout(res => {
-              self.$router.push(path);
-            }, 200);
-          }
+          this.$message.error(res.msg);
+          this.getPlantSelect();
+          this.fromCheckList = true;
+          this.$store.dispatch("set_checklist", null);
+          //let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
+          // self.fromCheckList = false;
+          // if (!self.fromCheckList) {
+          //   setTimeout(res => {
+          //     self.$router.push(path);
+          //   }, 200);
+          // }
         }
       });
     },
@@ -186,7 +193,7 @@ export default {
         } else if (type == "process") {
           label = opt.processdesc;
           value = opt.process;
-        }else if (type == "ptno") {
+        } else if (type == "ptno") {
           label = opt.ptnm;
           value = opt.ptno;
         }
@@ -204,7 +211,7 @@ export default {
       this.checkInfoInputs.processInput = "";
       this.checkInfoInputs.ptnoInput = "";
       this.getLineSelect(plant);
-      this.getPtnoSelect(plant)
+      this.getPtnoSelect(plant);
     },
     //制程发生选择
     lineSelectChange() {
@@ -228,7 +235,7 @@ export default {
     },
     //查询产品编号下拉信息
     getPtnoSelect(plant) {
-      this.selectOptions.pynoOption = [];
+      this.selectOptions.ptnoOption = [];
       this.$get({
         url: url.check_getPartno,
         params: { plant: plant }

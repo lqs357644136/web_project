@@ -1,15 +1,3 @@
-/**
- * Created by zzmhot on 2017/3/23.
- *
- * 路由Map
- *
- * @author: zzmhot
- * @github: https://github.com/zzmhot
- * @email: zzmhot@163.com
- * @Date: 2017/3/23 18:30
- * @Copyright(©) 2017 by zzmhot.
- *
- */
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -44,7 +32,7 @@ import i18n from 'common/i18n'
 Vue.use(VueRouter)
 //获取当前语言
 let lang = store.getters.get_lang;
-let messages = i18n.getLocaleMessage(lang).message;
+let messages = i18n.getLocaleMessage(lang).message.menu;
 
 //平板页面功能
 export const privateModule = [
@@ -221,7 +209,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: '主页',
+      title: messages.homePage,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -233,7 +221,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: '用户',
+      title: messages.user,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -245,7 +233,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: '消息',
+      title: messages.msg,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -257,7 +245,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: '电子看板',
+      title: messages.signage,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -272,7 +260,7 @@ export const terModule = [{
   component: resolve => require(['pages/terPages/home/home.vue'], resolve),
   //component: phoneHome,
   meta: {
-    title: '终端主页',
+    title: messages.homePage,
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
@@ -283,18 +271,18 @@ export const terModule = [{
   component: resolve => require(['pages/terPages/dailywork/adnDailywork.vue'], resolve),
   //component: phoneHome,
   meta: {
-    title: '异常报工',
+    title: messages.adnDailywork,
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
 }, {
   //生产报工
   path: '/ter/dailywork/proDailywork',
-  name: 'adnDailywork',
+  name: 'proDailywork',
   component: resolve => require(['pages/terPages/dailywork/proDailywork.vue'], resolve),
   //component: phoneHome,
   meta: {
-    title: '生产报工',
+    title: messages.proDailywork,
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
@@ -305,7 +293,7 @@ export const terModule = [{
   component: resolve => require(['pages/terPages/batchEnter/batchEnterRaw.vue'], resolve),
   //component: phoneHome,
   meta: {
-    title: '原料批次录入',
+    title: messages.batchEnterRaw,
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
@@ -316,7 +304,7 @@ export const terModule = [{
   component: resolve => require(['pages/terPages/batchEnter/batchEnterBlend.vue'], resolve),
   //component: phoneHome,
   meta: {
-    title: '调合批次录入',
+    title: messages.batchEnterBlend,
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
@@ -327,7 +315,18 @@ export const terModule = [{
   component: resolve => require(['pages/terPages/selfEntity/selfEntity.vue'], resolve),
   //component: phoneHome,
   meta: {
-    title: '自检录入',
+    title: messages.selfEntity,
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  }
+},{
+  //产品履历查看
+  path: '/ter/productInfo',
+  name: 'productInfo',
+  component: resolve => require(['pages/terPages/product/productInfo/productInfo.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: messages.productInfo,
     icon: 'fa fa-asl-interpreting',
     auth: false
   }
@@ -393,9 +392,9 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   NProgress.done().start();
   let isLogin = to.meta.auth; //是否需要登录
-  let toName = to.name //当前页面name
-  let token = store.state.token
   if (isLogin) {
+    let toName = to.name //当前页面name
+    let token = store.state.token
     if (!token && toName !== 'login') {
       next({
         name: 'login'

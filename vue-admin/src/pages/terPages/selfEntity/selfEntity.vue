@@ -7,7 +7,7 @@
     </div>
 </template>
 <script>
-import check from "components/check/check.vue";
+import check from "./check/check.vue";
 import { panelTitle } from "components";
 import { mapGetters } from "vuex";
 import url from "api";
@@ -25,19 +25,14 @@ export default {
         macInfo:{
             equipNo:'',
             empNo:'',
+            plant:'',
+            line:''
         }
     };
   },
-  computed: {
-    ...mapGetters({
-      //获取到的检查信息
-      checkList: "get_checklist"
-    })
-  },
-  mounted() {
+  created() {
     this.check_init();
   },
-  created() {},
   components: {
     panelTitle,
     check
@@ -65,23 +60,28 @@ export default {
       let macInfo = Window.GETMACINFO();
       this.macInfo.equipNo = macInfo.equipNo;
       this.macInfo.empNo = macInfo.empNo;
+      this.macInfo.plant = macInfo.plant;
+      this.macInfo.line = macInfo.line;
       //请求检查信息
       this.get_checkInfo();
     },
     //请求检查页面信息
     get_checkInfo() {
       let params = {
-          equipNo:this.this.macInfo.equipNo,
-          empNo:this.macInfo.empNo
+          process:this.macInfo.equipNo,
+          plant:this.macInfo.plant,
+          line:this.macInfo.line,
       };
       this.$get_noToken({
-          url: url.check_info,
+          url: url.terCheck_info,
           params: params
         }).then(res =>{
+          console.log(res)
           if (res.code == 1) {
+            this.$message.success(res.msg);
             this.$store.dispatch("set_checklist", res.data);
           } else {
-            this.$message.error("没有找到对应检测信息,请手动录入");
+            this.$message.error(res.msg);
           }
         });
     },
