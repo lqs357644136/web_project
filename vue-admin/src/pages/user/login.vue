@@ -11,7 +11,7 @@
         <p class="name">INTELFOR</p>
         <p class="msg">management system</p>
         <p class="msg">
-          <a href="http://192.168.1.10:8080/zq-admin/zq-admin.apk">下载本地安装包</a>
+          <a href="http://192.168.1.10:8080/esop-mobile-apk/esop-mobile.apk">下载本地APP</a>
         </p>
       </div>
       <div class="login-form">
