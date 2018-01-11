@@ -114,8 +114,11 @@ export default {
       checkList: "get_checklist"
     })
   },
-  mounted() {
-    this.checkInfo_init();
+  mounted() {},
+  watch: {
+    checkList: function() {
+      this.checkInfo_init();
+    }
   },
   components: {
     checkStep

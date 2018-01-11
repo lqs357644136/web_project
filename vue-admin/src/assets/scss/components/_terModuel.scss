@@ -4,10 +4,11 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: center;
             .menuBox {
-                height: pxTorem(300px);
-                width: pxTorem(300px);
+                height: pxTorem(200px);
+                width: pxTorem(200px);
+                margin-top: pxTorem(20px);
+                margin-bottom: pxTorem(20px);
                 display: flex;
                 flex-direction: column;
                 text-align: center;
@@ -177,8 +178,7 @@
                 width: pxTorem(150px);
             }
         }
-    } 
-    //产品履历
+    } //产品履历
     .product {
         display: flex;
         flex-direction: column;
@@ -189,9 +189,9 @@
             flex-direction: row;
             height: calc(100% - #{pxTorem(60px)});
             .formImgRow {
-                margin-left:0 !important;
+                margin-left: 0 !important;
                 margin-right: 0 !important;
-                padding:pxTorem(10px);
+                padding: pxTorem(10px);
                 padding-bottom: 0;
                 height: 100%;
                 width: 100%;
@@ -319,6 +319,78 @@
         }
         .subBtn .el-form-item__content {
             margin-left: 0 !important;
+        }
+    } //安灯报表
+    .saleLamReport {
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        // 表单
+        .saleLamFrom {
+            height:pxTorem(122px);
+            margin-bottom: pxTorem(20px);
+            .dailywork-INfo {
+                .el-card__body {
+                    .el-form-item {
+                        display: flex;
+                        width: 100%;
+                        margin-bottom: 0;
+                        .el-form-item__label {
+                            width: pxTorem(85px);
+                        }
+                        .el-form-item__content {
+                            .el-select {
+                            }
+                            .el-date-editor.el-input{
+                                width: pxTorem(300px);
+                            }
+                            .el-input.is-disabled .el-input__inner {
+                                //background-color: inherit;
+                                color: inherit;
+                                border: 1px solid #bfcbd9;
+                            }
+                        }
+                    }
+                }
+                .dailywork-body {
+                    display: flex;
+                    flex-direction: row;
+                    .dailyFrom {
+                        flex: 1;
+                    }
+                    .dailyBtn {
+                        height: pxTorem(36px);
+                        width: pxTorem(100px);
+                        margin-left: pxTorem(20px);
+                        margin-bottom: 0;
+                        .subBtn {
+                            height: 100%;
+                            .el-form-item__content {
+                                height: 100%;
+                                button {
+                                    height: 100%;
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 图表
+        .saleChart{
+            flex: 1;
+            //帕拉图
+            .saleChartRow{
+                height:100%;
+                margin:0 !important;
+                .saleChartCol{
+                    height:100%;
+                }
+            }
+            .chartView{
+                height:100%;
+            }
         }
     }
 }

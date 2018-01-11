@@ -11,7 +11,6 @@
         <el-table-column align="center" prop="ptno" label="产品编码"></el-table-column>
         <el-table-column align="center" prop="startTime" label="发出时间"></el-table-column>
         <el-table-column align="center" width="120px" prop="duration" label="时长(分钟)"></el-table-column>
-        <el-table-column align="center" prop="typeName" label="  类型"></el-table-column>
         <el-table-column align="center" label="操作" width="70px">
           <template slot-scope="scope">
             <div class="edit">

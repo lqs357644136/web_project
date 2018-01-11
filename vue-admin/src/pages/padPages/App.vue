@@ -53,21 +53,18 @@ export default {
 
           //菜单暂时写死
           let menus = [
+            //首件录入
             { name: "firstEntity" },
-            //{name: 'attention'},
+            //巡迴录入
             { name: "tourEntity" },
+            //检查清单
             { name: "checkList" },
-            {
-              name: "product",
-              child: [{ name: "productInfo" }, { name: "productEnter" }]
-            },
-            {
-              name: "batchEnter",
-              child: [{ name: "batchEnterBlend" }, { name: "batchEnterRaw" }]
-            },
-            {
-              name:"workonoff"
-            }
+            //产品履历
+            {name: "product",child: [{ name: "productInfo" }, { name: "productEnter" }]},
+            //上岗纪录
+            {name:"workonoff"}
+            //批次录入
+            // {name: "batchEnter",child: [{ name: "batchEnterBlend" }, { name: "batchEnterRaw" }] },
           ];
 
           this.$store.dispatch("set_menus", menus);

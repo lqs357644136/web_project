@@ -22,6 +22,7 @@ export const menu_zh = {
   adnDailywork: '异常报工',
   proDailywork: '生产报工',
   selfEntity: '自检录入',
+  saleLamReport: '安灯报表',
 };
 
 export const menu_en = {
@@ -48,4 +49,5 @@ export const menu_en = {
   adnDailywork: 'adnDailywork',
   proDailywork: 'proDailywork',
   selfEntity: 'selfEntity',
+  saleLamReport: 'saleLamReport',
 };

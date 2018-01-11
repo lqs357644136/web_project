@@ -128,8 +128,7 @@ export default {
             plant: this.checkInfoInputs.plantInput,
             line: this.checkInfoInputs.lineInput,
             process: this.checkInfoInputs.processInput,
-            ptno: this.checkInfoInputs.ptnoInput,
-            type: this.$router.currentRoute.name == "firstEntity" ? "0" : "1"
+            ptno: this.checkInfoInputs.ptnoInput
           };
           this.get_checkInfo(params);
         } else {
@@ -156,7 +155,7 @@ export default {
     //请求检查页面信息
     get_checkInfo(params) {
       this.$get({
-        url: url.check_info,
+        url: url.tourCheck_info,
         params: params
       }).then(res => {
         if (res.code == 1) {
@@ -168,13 +167,6 @@ export default {
           this.getPlantSelect();
           this.fromCheckList = true;
           this.$store.dispatch("set_checklist", null);
-          //let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
-          // self.fromCheckList = false;
-          // if (!self.fromCheckList) {
-          //   setTimeout(res => {
-          //     self.$router.push(path);
-          //   }, 200);
-          // }
         }
       });
     },
@@ -185,16 +177,16 @@ export default {
         let label = null;
         let value = null;
         if (type == "plant") {
-          label = opt.plantdesc;
+          label = opt.plantdesc+"-"+opt.plant;
           value = opt.plant;
         } else if (type == "line") {
-          label = opt.linedesc;
+          label = opt.linedesc+"-"+opt.line;
           value = opt.line;
         } else if (type == "process") {
-          label = opt.processdesc;
+          label = opt.processname+"-"+opt.process;
           value = opt.process;
         } else if (type == "ptno") {
-          label = opt.ptnm;
+          label = opt.ptnm+"-"+opt.ptno;
           value = opt.ptno;
         }
         let option = {

@@ -35,6 +35,11 @@ export default {
           icon: "icon fa fa-area-chart"
         },
         {
+          path: "/ter/firstEntity",
+          title: "首检录入",
+          icon: "icon fa fa-pie-chart"
+        },
+        {
           path: "/ter/selfEntity",
           title: "自主检验",
           icon: "icon fa fa-id-card-o"
@@ -43,6 +48,11 @@ export default {
           path: '/ter/productInfo',
           title: "产品履历查看",
           icon: "icon fa fa-balance-scale"
+        },
+        {
+          path: '/ter/saleLamReport',
+          title: "安灯报表",
+          icon: "icon fa fa-pie-chart"
         }
       ]
     };

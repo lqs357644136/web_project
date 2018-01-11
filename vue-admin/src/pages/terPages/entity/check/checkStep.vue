@@ -49,7 +49,7 @@
 <script>
 import { mapGetters } from "vuex";
 import url from "api";
-import { server_base_url } from "common/config/index.js";
+import qs from 'qs'
 export default {
   props: ["tabCheck"],
   data() {
@@ -151,6 +151,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let inspect = this.checkList.inspect;
+          console.log(inspect);
           let spec = this.tabCheck;
           let itemObj = this.checkFinal();
           let params = {
@@ -174,10 +175,10 @@ export default {
               specId: spec.specId, //检验规范ID
             }
           };
-          let urlPath = inspect.type == "0" ? url.firstCheck_add : url.tourCheck_add;
-          this.$post({
+          let urlPath = inspect.type == "0" ? url.terFirstCheck_add : url.terSelfCheck_add;
+          this.$post_noToken({
             url: urlPath,
-            data: params
+            data:params
           }).then(res => {
             let finalView = {
               code: spec.code,
@@ -188,10 +189,10 @@ export default {
                 this.inputs.input02,
                 this.inputs.input03,
                 this.inputs.input04,
-                this.inputs.input05,
+                this.inputs.input05
               ],
               type: spec.type,
-              index:spec.index
+              index: spec.index
             };
             if (res.code == 1) {
               this.$message.success(res.msg);

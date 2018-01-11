@@ -39,7 +39,6 @@
                     </el-form-item>
                   </el-col>
                 </el-row>
-
                 <el-row>
                   <el-form-item class="subBtn">
                     <el-button type="primary" @click="selectSuccess('checkInfoInputs')">确定</el-button>
@@ -117,8 +116,7 @@ export default {
           let params = {
             plant: this.checkInfoInputs.plantInput,
             line: this.checkInfoInputs.lineInput,
-            process: this.checkInfoInputs.processInput,
-            type: this.$router.currentRoute.name == "firstEntity" ? "0" : "1"
+            process: this.checkInfoInputs.processInput
           };
           this.get_checkInfo(params);
         } else {
@@ -141,9 +139,10 @@ export default {
     get_checkInfo(params) {
       let self = this;
       self.$get({
-        url: url.check_info,
+        url: url.firstCheck_info,
         params: params
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
           this.$message.success(res.msg);
           self.$store.dispatch("set_checklist", res.data);
@@ -171,13 +170,13 @@ export default {
         let label = null;
         let value = null;
         if (type == "plant") {
-          label = opt.plantdesc;
+          label = opt.plantdesc+"-"+opt.plant;
           value = opt.plant;
         } else if (type == "line") {
-          label = opt.linedesc;
+          label = opt.linedesc+"-"+opt.line;
           value = opt.line;
         } else if (type == "process") {
-          label = opt.processdesc;
+          label = opt.processname+"-"+opt.process;
           value = opt.process;
         }
         let option = {
@@ -233,6 +232,7 @@ export default {
         url: url.check_getProcess,
         params: { plant: plant, line: line }
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
           this.set_optionFam(
             "process",

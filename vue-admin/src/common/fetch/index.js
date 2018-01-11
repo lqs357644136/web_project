@@ -115,6 +115,7 @@ export const $get_file = function (options) {
 
 //---------不需要token请求 start-------------
 export const $post_noToken = function (options) {
+  console.log(options)
   NProgress.done().start();
   let url = options.url;
   let data = options.data;
