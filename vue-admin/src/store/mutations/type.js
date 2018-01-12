@@ -24,3 +24,5 @@ export const SET_CHECKLIST ='SET_CHECKLIST'
 export const SET_OTHERLINK ='SET_OTHERLINK'
 //存储履历列表选中的单个履历信息
 export const SET_PRODUCTINFO ='SET_PRODUCTINFO'
+//存储安灯报表图表数据
+export const SET_SALELAM_CHARTDATA ='SET_SALELAM_CHARTDATA'

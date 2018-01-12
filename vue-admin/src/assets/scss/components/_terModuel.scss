@@ -322,12 +322,11 @@
         }
     } //安灯报表
     .saleLamReport {
-        height:100%;
+        height: 100%;
         display: flex;
-        flex-direction: column;
-        // 表单
+        flex-direction: column; // 表单
         .saleLamFrom {
-            height:pxTorem(122px);
+            height: pxTorem(122px);
             margin-bottom: pxTorem(20px);
             .dailywork-INfo {
                 .el-card__body {
@@ -339,9 +338,8 @@
                             width: pxTorem(85px);
                         }
                         .el-form-item__content {
-                            .el-select {
-                            }
-                            .el-date-editor.el-input{
+                            .el-select {}
+                            .el-date-editor.el-input {
                                 width: pxTorem(300px);
                             }
                             .el-input.is-disabled .el-input__inner {
@@ -376,20 +374,32 @@
                     }
                 }
             }
-        }
-        // 图表
-        .saleChart{
-            flex: 1;
-            //帕拉图
-            .saleChartRow{
-                height:100%;
-                margin:0 !important;
-                .saleChartCol{
-                    height:100%;
+        } // 图表
+        .saleChart {
+            position: relative;
+            flex: 1; //帕拉图
+            .saleChartRow {
+                height: 100%;
+                margin: 0 !important;
+                .saleChartCol {
+                    height: 100%;
                 }
             }
-            .chartView{
-                height:100%;
+            .chartView {
+                height: 100%;
+            }
+            .noData {
+                background-color: #eff0f4;
+                justify-content: center;
+                flex-direction: column;
+                text-align: center;
+                color: #6a6a6a;
+                font-size: pxTorem(20px);
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                display: flex;
             }
         }
     }

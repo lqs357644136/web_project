@@ -23,4 +23,6 @@ export default {
   otherLink:null,
   //存储履历信息
   productInfo:null,
+  //存储履历信息
+  saleLamChartData:null,
 }

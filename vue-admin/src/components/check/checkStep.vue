@@ -159,7 +159,7 @@ export default {
               line: inspect.line, //制程
               plant: inspect.plant, //车间
               process: inspect.process, //机台
-              operator: Window.GETMACINFO().empNo + "", //人员
+              operator: inspect.operator, //人员
               orderNo: inspect.orderNo, //工令单号
               reconcile: inspect.reconcile, //调合
               pdNum: inspect.pdNum, //生产数量
@@ -174,7 +174,7 @@ export default {
               specId: spec.specId, //检验规范ID
             }
           };
-          let urlPath = inspect.type == "0" ? url.firstCheck_add : url.tourCheck_add;
+          let urlPath = inspect.type == "1" ? url.firstCheck_add : url.tourCheck_add;
           this.$post({
             url: urlPath,
             data: params

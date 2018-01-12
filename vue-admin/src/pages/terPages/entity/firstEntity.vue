@@ -1,10 +1,10 @@
 <template>
-    <div class="panel">
-        <panel-title :back="true" :title="$route.meta.title"></panel-title>
-        <div class="panel-body">
-            <check></check>
-        </div>
+  <div class="panel">
+    <panel-title :back="true" :title="$route.meta.title"></panel-title>
+    <div class="panel-body">
+      <check></check>
     </div>
+  </div>
 </template>
 <script>
 import check from "./check/check.vue";
@@ -13,7 +13,7 @@ import { mapGetters } from "vuex";
 import url from "api";
 
 export default {
-  name:'firstEntity',
+  name: "firstEntity",
   data() {
     var checkSelect = (rule, value, callback) => {
       if (!value) {
@@ -23,11 +23,11 @@ export default {
       }
     };
     return {
-        macInfo:{
-            equipNo:'',
-            plant:'',
-            line:''
-        }
+      macInfo: {
+        equipNo: "",
+        plant: "",
+        line: ""
+      }
     };
   },
   created() {
@@ -51,23 +51,31 @@ export default {
     //请求检查页面信息
     get_checkInfo() {
       let params = {
-          process:this.macInfo.equipNo,
-          plant:this.macInfo.plant,
-          line:this.macInfo.line,
+        process: this.macInfo.equipNo,
+        plant: this.macInfo.plant,
+        line: this.macInfo.line
       };
       this.$get_noToken({
-          url: url.terFirstCheck_info,
-          params: params
-        }).then(res =>{
-          console.log(res)
-          if (res.code == 1) {
-            this.$message.success(res.msg);
-            this.$store.dispatch("set_checklist", res.data);
-          } else {
-            this.$message.error(res.msg);
-          }
-        });
-    },
+        url: url.terFirstCheck_info,
+        params: params
+      }).then(res => {
+        if (res.code == 1) {
+          this.$message.success(res.msg);
+          this.$store.dispatch("set_checklist", res.data);
+        } else {
+          this.$alert(res.msg, "错误", {
+            confirmButtonText: "确定",
+            callback: action => {
+              try {
+                window.android.finish();
+              } catch (e) {
+                console.log(e);
+              }
+            }
+          });
+        }
+      });
+    }
   }
 };
 </script>

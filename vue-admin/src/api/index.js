@@ -39,6 +39,8 @@ let url = {
   terSelfCheck_info:'/rest/kanban/getSelfInspectInfo' ,//GET 获取自主检验信息
   terSelfCheck_add:'/rest/kanban/addSelfInspectResult',//POST 提交自主检测结果
   terProduct_list:'/rest/kanban/getProductResumeList',//GET 获取产品履历列表
+  //esop
+  saleLam_get:'/rest/Andon/getAndonList',//GET 获取安灯数据
 }
 
 //测试环境接口地址

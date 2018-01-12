@@ -33,4 +33,7 @@ export default {
   [type.GET_PRODUCTINFO]:state =>{
     return state.productInfo;
   },
+  [type.GET_SALELAM_CHARTDATA]:state =>{
+    return state.saleLamChartData;
+  },
 }

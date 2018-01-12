@@ -60,6 +60,7 @@ export default {
           url: url.terSelfCheck_info,
           params: params
         }).then(res =>{
+          console.log(res)
           if (res.code == 1) {
             this.$message.success(res.msg);
             this.$store.dispatch("set_checklist", res.data);

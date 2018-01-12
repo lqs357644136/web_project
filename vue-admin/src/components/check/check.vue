@@ -152,7 +152,7 @@ export default {
         {
           title: "人员",
           name: "operator",
-          value: Window.GETMACINFO().empNo + ""
+          value: this.checkList.inspect.operator
         }, //人员
         {
           title: "工令单号",

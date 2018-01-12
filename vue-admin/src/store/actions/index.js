@@ -34,4 +34,7 @@ export default {
   [actions.SET_PRODUCTINFO]({commit},product){
     commit(mutations.SET_PRODUCTINFO,product)
   },
+  [actions.SET_SALELAM_CHARTDATA]({commit},chartData){
+    commit(mutations.SET_SALELAM_CHARTDATA,chartData)
+  },
 }

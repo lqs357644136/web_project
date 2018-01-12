@@ -64,6 +64,9 @@ export default {
   [type.SET_PRODUCTINFO](state, productInfo) {
     state.productInfo = productInfo;
   },
+  [type.SET_SALELAM_CHARTDATA](state, chartData) {
+    state.saleLamChartData = chartData;
+  },
 }
 
 //根绝用户信息的菜单信息生成菜单目录数据

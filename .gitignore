@@ -11,3 +11,9 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+
+# node ignore
+intelfor_project_svn/
+vue-admin_bk/
+nuxt/
