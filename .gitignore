@@ -15,5 +15,4 @@ yarn-error.log*
 
 # node ignore
 intelfor_project_svn/
-vue-admin_bk/
 nuxt/
