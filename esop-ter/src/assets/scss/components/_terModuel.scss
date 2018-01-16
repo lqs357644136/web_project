@@ -1,0 +1,406 @@
+.terView {
+    .home {
+        .menus {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .menuBox {
+                height: pxTorem(200px);
+                width: pxTorem(200px);
+                margin-top: pxTorem(20px);
+                margin-bottom: pxTorem(20px);
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                .icon {
+                    height: pxTorem(150px);
+                    line-height: pxTorem(150px);
+                    width: pxTorem(150px);
+                    text-align: center;
+                    margin: 0 auto;
+                    margin-bottom: pxTorem(10px);
+                    background-color: #1a9dd4;
+                    color: white;
+                    font-size: pxTorem(80px);
+                    border-radius: pxTorem(10px);
+                    box-shadow: pxTorem(3px) pxTorem(3px) pxTorem(5px) #a2a1a1;
+                }
+                .text {
+                    font-size: pxTorem(30px);
+                    color: #5a5a5a;
+                }
+            }
+        }
+    } //报工
+    .dailywork {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .dailywork-INfo {
+            margin-bottom: pxTorem(20px);
+            .dailywork-body {
+                display: flex;
+                flex-direction: row;
+                .dailyFrom {
+                    flex: 1;
+                }
+                .dailyBtn {
+                    width: pxTorem(150px);
+                    margin-left: pxTorem(20px);
+                    height: pxTorem(96px);
+                    margin-bottom: 0;
+                    .subBtn {
+                        height: 100%;
+                        .el-form-item__content {
+                            height: 100%;
+                            button {
+                                height: 100%;
+                                width: 100%;
+                                font-size: pxTorem(20px);
+                            }
+                        }
+                    }
+                }
+            }
+            .el-form-item__label {
+                width: pxTorem(90px);
+            }
+            .el-form-item__content {
+                .el-select {
+                    width: 100%;
+                }
+                .el-input.is-disabled .el-input__inner {
+                    //background-color: inherit;
+                    color: inherit;
+                    border: 1px solid #bfcbd9;
+                }
+            }
+            .el-card__body {
+                padding-bottom: 0;
+            }
+        }
+        .dailywork-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .el-card__header {}
+            .el-card__body {
+                overflow: auto;
+                padding: 0;
+                flex: 1;
+                .list {
+                    overflow: hidden;
+                }
+                .el-table__body-wrapper {}
+            }
+        }
+        .isDaily {
+            background-color: #cff7de;
+        }
+        .noDaily {
+            background-color: #f3d3d3;
+            ;
+        }
+    } //批次录入
+    .batchEnter {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .deteTable,
+        .deteCheck {
+            height: 100%;
+        }
+        .detectionFrom {
+            margin-bottom: pxTorem(20px);
+            .detectionFrom-header {
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                .name {
+                    font-weight: 800;
+                }
+                .btn {
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .el-form-item__content {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+        .el-card__body {
+            .el-col {
+                margin-bottom: pxTorem(20px);
+            }
+            .el-col:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .el-form-item {
+            .el-form-item__label {
+                width: pxTorem(70px) !important;
+            }
+            margin-right: 0;
+            margin-bottom: 0;
+        }
+        .tableBox {
+            flex: 1;
+            .el-card__body {
+                overflow: auto;
+                padding: 0;
+            }
+            .el-table {
+                height: 100%;
+                border: 0;
+            }
+            .el-form-item:last-child {
+                margin-bottom: 0;
+            }
+            .edit {
+                display: flex;
+                justify-content: center;
+            }
+            .cell {
+                text-align: center;
+            }
+        }
+        .detectionBtn {
+            height: pxTorem(40px);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            button {
+                width: pxTorem(150px);
+            }
+        }
+    } //产品履历
+    .product {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .formImg {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            height: calc(100% - #{pxTorem(60px)});
+            .formImgRow {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding: pxTorem(10px);
+                padding-bottom: 0;
+                height: 100%;
+                width: 100%;
+            }
+            .productFroms {
+                height: 100%;
+                &>* {
+                    height: 100%;
+                }
+                .productFromsItem {
+                    .productFromsItem-body {
+                        .norm {
+                            .el-form-item {
+                                margin-bottom: pxTorem(22px);
+                                display: flex;
+                                .el-form-item__label {
+                                    width: pxTorem(100px);
+                                }
+                            }
+                        }
+                    }
+                }
+                .el-input.is-disabled .el-input__inner {
+                    color: initial;
+                }
+                .el-textarea.is-disabled .el-textarea__inner {
+                    color: initial;
+                }
+            }
+            .productImg {
+                height: 100%;
+                &>* {
+                    height: 100%;
+                }
+                .imgInfo,
+                .imgUpdate {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: space-between;
+                    .el-card__header {
+                        height: pxTorem(42px);
+                        line-height: pxTorem(42px);
+                        text-align: center;
+                        padding: 0;
+                    }
+                    .el-card__body {
+                        height: calc(100% - #{pxTorem(42px)}) !important;
+                        padding: 0;
+                        .imgItemBody {
+                            height: 100%;
+                        }
+                        img {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    .imgViewBox {
+                        .imageBox {
+                            li {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+                .imgUpdate {
+                    .imgItem {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .avatar-uploader .el-upload {
+                        border-radius: pxTorem(6px);
+                        cursor: pointer;
+                        position: relative;
+                        overflow: hidden;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        i {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        }
+                    }
+                    .avatar-uploader .el-upload:hover {
+                        border-color: #409EFF;
+                    }
+                    .avatar-uploader-icon {
+                        font-size: pxTorem(28px);
+                        color: #8c939d;
+                        text-align: center;
+                    }
+                    .avatar {
+                        width: pxTorem(178px);
+                        height: pxTorem(178px);
+                        display: block;
+                    }
+                    .el-card__body,
+                    .avatar-uploader,
+                    .el-upload {
+                        height: 100%;
+                    }
+                }
+                .imgItem {
+                    height: calc(50% - #{pxTorem(10px)});
+                }
+            }
+        }
+        .subBtn {
+            height: pxTorem(50px);
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            .el-form-item__content {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                button {
+                    padding: pxTorem(10px) pxTorem(60px);
+                }
+                .el-button+.el-button {
+                    margin-left: pxTorem(20px);
+                }
+            }
+        }
+        .subBtn .el-form-item__content {
+            margin-left: 0 !important;
+        }
+    } //安灯报表
+    .saleLamReport {
+        height: 100%;
+        display: flex;
+        flex-direction: column; // 表单
+        .saleLamFrom {
+            height: pxTorem(122px);
+            margin-bottom: pxTorem(20px);
+            .dailywork-INfo {
+                .el-card__body {
+                    .el-form-item {
+                        display: flex;
+                        width: 100%;
+                        margin-bottom: 0;
+                        .el-form-item__label {
+                            width: pxTorem(85px);
+                        }
+                        .el-form-item__content {
+                            .el-select {}
+                            .el-date-editor.el-input {
+                                width: pxTorem(300px);
+                            }
+                            .el-input.is-disabled .el-input__inner {
+                                //background-color: inherit;
+                                color: inherit;
+                                border: 1px solid #bfcbd9;
+                            }
+                        }
+                    }
+                }
+                .dailywork-body {
+                    display: flex;
+                    flex-direction: row;
+                    .dailyFrom {
+                        flex: 1;
+                    }
+                    .dailyBtn {
+                        height: pxTorem(36px);
+                        width: pxTorem(100px);
+                        margin-left: pxTorem(20px);
+                        margin-bottom: 0;
+                        .subBtn {
+                            height: 100%;
+                            .el-form-item__content {
+                                height: 100%;
+                                button {
+                                    height: 100%;
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } // 图表
+        .saleChart {
+            position: relative;
+            flex: 1; //帕拉图
+            .saleChartRow {
+                height: 100%;
+                margin: 0 !important;
+                .saleChartCol {
+                    height: 100%;
+                }
+            }
+            .chartView {
+                height: 100%;
+            }
+            .noData {
+                background-color: #eff0f4;
+                justify-content: center;
+                flex-direction: column;
+                text-align: center;
+                color: #6a6a6a;
+                font-size: pxTorem(20px);
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                display: flex;
+            }
+        }
+    }
+}

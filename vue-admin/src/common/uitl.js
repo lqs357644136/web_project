@@ -22,6 +22,11 @@ export const exitFullscreen = function () {
   }
 }
 
+//生成平板端接口请求路径
+export const api_baseurl = function (host) {
+  return 'http://' + host + '/esop'
+}
+
 //终端获取机器信息方法
 export const getMacINfo = function () {
   let ANDROID = window.android;

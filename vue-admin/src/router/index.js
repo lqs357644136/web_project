@@ -12,14 +12,14 @@ import i18n from 'common/i18n'
 // import login from 'pages/user/login.vue'
 //
 //平板端
-import layout from 'pages/padPages/App.vue'
-import firstEntity from 'pages/padPages/firstEntity/firstEntity.vue'
-import productInfo from 'pages/padPages/product/productInfo/productInfo.vue'
-import productEnter from 'pages/padPages/product/productEnter/productEnter.vue'
-import tourEntity from 'pages/padPages/tourEntity/tourEntity.vue'
-import checkList from 'pages/padPages/checkList/checkList.vue'
-import workonoff from 'pages/padPages/workonoff/workonoff.vue'
-//import homePage from 'pages/padPages/home/index.vue'
+// import layout from 'pages/padPages/App.vue'
+// import firstEntity from 'pages/padPages/firstEntity/firstEntity.vue'
+// import productInfo from 'pages/padPages/product/productInfo/productInfo.vue'
+// import productEnter from 'pages/padPages/product/productEnter/productEnter.vue'
+// import tourEntity from 'pages/padPages/tourEntity/tourEntity.vue'
+// import checkList from 'pages/padPages/checkList/checkList.vue'
+// import workonoff from 'pages/padPages/workonoff/workonoff.vue'
+// import homePage from 'pages/padPages/home/index.vue'
 // import attention from 'pages/padPages/attention/attention.vue'
 // import batchEnterRaw from 'pages/padPages/batchEnter/batchEnterRaw.vue'
 // import batchEnterBlend from 'pages/padPages/batchEnter/batchEnterBlend.vue'
@@ -40,8 +40,8 @@ export const privateModule = [
     //检查清单
     path: '/checkList',
     name: 'checkList',
-    //component: resolve => require(['pages/padPages/checkList/checkList.vue'], resolve),
-    component: checkList,
+    component: resolve => require(['pages/padPages/checkList/checkList.vue'], resolve),
+    //component: checkList,
     meta: {
       title: messages.checkList,
       icon: 'fa fa-commenting',
@@ -52,8 +52,8 @@ export const privateModule = [
     //首检管理
     path: '/firstentity',
     name: 'firstEntity',
-    //component: resolve => require(['pages/padPages/firstEntity/firstEntity.vue'], resolve),
-    component: firstEntity,
+    component: resolve => require(['pages/padPages/firstEntity/firstEntity.vue'], resolve),
+    //component: firstEntity,
     meta: {
       title: messages.firstEntity,
       icon: 'fa fa-area-chart',
@@ -64,8 +64,8 @@ export const privateModule = [
     //巡迴检查
     path: '/tourEntity',
     name: 'tourEntity',
-    //component: resolve => require(['pages/padPages/tourEntity/tourEntity.vue'], resolve),
-    component: tourEntity,
+    component: resolve => require(['pages/padPages/tourEntity/tourEntity.vue'], resolve),
+    //component: tourEntity,
     meta: {
       title: messages.tourEntity,
       icon: 'fa fa-bookmark',
@@ -81,15 +81,15 @@ export const privateModule = [
       icon: 'fa fa-asl-interpreting',
       auth: true,
       children: [{
-          title: messages.productInfo,
-          path: '/product/productInfo',
-          name: 'productInfo',
-        },
-        {
-          title: messages.productEnter,
-          path: '/product/productEnter',
-          name: 'productEnter',
-        }
+        title: messages.productInfo,
+        path: '/product/productInfo',
+        name: 'productInfo',
+      },
+      {
+        title: messages.productEnter,
+        path: '/product/productEnter',
+        name: 'productEnter',
+      }
       ]
     }
   },
@@ -97,8 +97,8 @@ export const privateModule = [
     //产品履历查看
     path: '/product/productInfo',
     name: 'productInfo',
-    //component: resolve => require(['pages/padPages/product/productInfo/productInfo.vue'], resolve),
-    component: productInfo,
+    component: resolve => require(['pages/padPages/product/productInfo/productInfo.vue'], resolve),
+    //component: productInfo,
     meta: {
       title: messages.productInfo,
       icon: 'fa fa-asl-interpreting',
@@ -109,8 +109,8 @@ export const privateModule = [
     //产品履历录入
     path: '/product/productEnter',
     name: 'productEnter',
-    //component: resolve => require(['pages/padPages/product/productEnter/productEnter.vue'], resolve),
-    component: productEnter,
+    component: resolve => require(['pages/padPages/product/productEnter/productEnter.vue'], resolve),
+    //component: productEnter,
     meta: {
       title: messages.productEnter,
       icon: 'fa fa-asl-interpreting',
@@ -121,8 +121,8 @@ export const privateModule = [
     //上岗纪录
     path: '/workonoff',
     name: 'workonoff',
-    //component: resolve => require(['pages/padPages/workonoff/workonoff.vue'], resolve),
-    component: workonoff,
+    component: resolve => require(['pages/padPages/workonoff/workonoff.vue'], resolve),
+    //component: workonoff,
     meta: {
       title: messages.workonoff,
       icon: 'fa fa-codiepie',
@@ -150,15 +150,15 @@ export const privateModule = [
       icon: 'fa fa-calendar-minus-o',
       auth: true,
       children: [{
-          title: messages.batchEnterBlend,
-          path: '/batchEnter/batchEnterBlend',
-          name: 'batchEnterBlend',
-        },
-        {
-          title: messages.batchEnterRaw,
-          path: '/batchEnter/batchEnterRaw',
-          name: 'batchEnterRaw',
-        }
+        title: messages.batchEnterBlend,
+        path: '/batchEnter/batchEnterBlend',
+        name: 'batchEnterBlend',
+      },
+      {
+        title: messages.batchEnterRaw,
+        path: '/batchEnter/batchEnterRaw',
+        name: 'batchEnterRaw',
+      }
       ]
     }
   },
@@ -203,53 +203,53 @@ export const privateModule = [
 
 //手机页面功能
 export const phoneModule = [{
-    //手机主页
-    path: '/phone/home',
-    name: 'phoneHome',
-    component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.homePage,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
+  //手机主页
+  path: '/phone/home',
+  name: 'phoneHome',
+  component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: messages.homePage,
+    icon: 'fa fa-asl-interpreting',
+    auth: true
   },
-  {
-    //手机用户页
-    path: '/phone/user',
-    name: 'phoneUser',
-    component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.user,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
+},
+{
+  //手机用户页
+  path: '/phone/user',
+  name: 'phoneUser',
+  component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: messages.user,
+    icon: 'fa fa-asl-interpreting',
+    auth: true
   },
-  {
-    //手机消息页
-    path: '/phone/news',
-    name: 'phoneNews',
-    component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.msg,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
+},
+{
+  //手机消息页
+  path: '/phone/news',
+  name: 'phoneNews',
+  component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: messages.msg,
+    icon: 'fa fa-asl-interpreting',
+    auth: true
   },
-  {
-    //电子看板
-    path: '/phone/signage',
-    name: 'signage',
-    component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.signage,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
-  }
+},
+{
+  //电子看板
+  path: '/phone/signage',
+  name: 'signage',
+  component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
+  //component: phoneHome,
+  meta: {
+    title: messages.signage,
+    icon: 'fa fa-asl-interpreting',
+    auth: true
+  },
+}
 ]
 
 //终端页面功能
@@ -308,7 +308,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   },
-},{
+}, {
   //首件录入
   path: '/ter/firstEntity',
   name: 'firstEntity',
@@ -319,7 +319,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   }
-},{
+}, {
   //自检录入
   path: '/ter/selfEntity',
   name: 'selfEntity',
@@ -330,7 +330,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   }
-},{
+}, {
   //产品履历查看
   path: '/ter/productInfo',
   name: 'productInfo',
@@ -341,7 +341,7 @@ export const terModule = [{
     icon: 'fa fa-asl-interpreting',
     auth: false
   }
-},{
+}, {
   //安灯报表
   path: '/ter/saleLamReport',
   name: 'saleLamReport',
@@ -413,6 +413,11 @@ const router = new VueRouter({
 //全局路由配置
 //路由开始之前的操作
 router.beforeEach((to, from, next) => {
+  //判断是否需要获取接口地址
+  if(to.path.indexOf('/ter/')!=-1){
+    let base_url = to.query.ip
+    store.dispatch('set_host',base_url)
+  }
   NProgress.done().start();
   let isLogin = to.meta.auth; //是否需要登录
   if (isLogin) {

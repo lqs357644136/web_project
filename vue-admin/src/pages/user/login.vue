@@ -15,6 +15,12 @@
         </p>
       </div>
       <div class="login-form">
+        <el-form ref="host" :model="host" :rules="rules" label-width="0">
+          <el-form-item prop="host" class="login-item host">
+            <el-input v-model="host.ip" placeholder="服务器ip" class="form-input ip" :autofocus="true"></el-input>
+            <el-input v-model="host.port" placeholder="服务器端口" class="form-input port" :autofocus="true"></el-input>
+          </el-form-item>
+        </el-form>
         <el-form ref="form" :model="form" :rules="rules" label-width="0">
           <el-form-item prop="username" class="login-item">
             <el-input v-model="form.username" placeholder="请输入账户名：" class="form-input" :autofocus="true"></el-input>
@@ -35,44 +41,80 @@ import url from "api";
 
 export default {
   data() {
+    var checkStep = (rule, value, callback) => {
+      let flag = this.host.ip.length>0&&this.host.port.length>0;
+      if (!flag) {
+        return callback(new Error("请输入服务器地址"));
+      } else {
+        callback();
+      }
+    };
     return {
+      host: {
+        ip: "",
+        port: "",
+      },
       form: {
         username: null,
-        password: null
+        password: null,
       },
       rules: {
         username: [{ required: true, message: "请输入账户名！", trigger: "blur" }],
-        password: [{ required: true, message: "请输入账户密码！", trigger: "blur" }]
+        password: [{ required: true, message: "请输入账户密码！", trigger: "blur" }],
+        host: [{ validator: checkStep, trigger: "blur" }]
       },
       //请求时的loading效果
       load_data: false
     };
   },
+  computed: {
+    'subHost':function(){
+      return this.host.ip+":"+this.host.port
+    }
+  },
+  mounted() {
+    this.login_init();
+  },
   methods: {
+    // 初始化登录信息
+    login_init() {
+      let host = this.$store.getters.get_host;
+      if (host) {
+        this.host.ip = host.split(":")[0];
+        this.host.port = host.split(":")[1];
+      }
+    },
     //提交
     submit_form() {
       this.$refs.form.validate(valid => {
-        if (!valid) return false;
+        let flag = this.host.ip.length>0&&this.host.port.length>0;
+        if (!valid || !flag) return false;
         this.load_data = true;
-        //登录提交
-        this.$post({
-          url: url.user_login,
-          data: this.from
-        }).then(res => {
-          if (res.code != 1) {
-            this.$notify.info({
-              title: "温馨提示",
-              message: "测试账号:admin , 密码:123456"
-            });
-            this.load_data = false;
-          } else {
-            this.$store.commit("SET_TOKEN", res.data.token);
-            if (document.body.offsetWidth < 480) {
-              this.$router.push("/phone/home");
-            }else{
-              this.$router.push("/pad");
+        this.$store.dispatch("set_host", this.subHost).then(() => {
+          let data = {
+            username: this.form.username,
+            password: this.form.password
+          };
+          //登录提交
+          this.$post({
+            url: url.user_login,
+            data: data
+          }).then(res => {
+            if (res.code != 1) {
+              this.$notify.info({
+                title: "温馨提示",
+                message: "测试账号:admin , 密码:123456"
+              });
+              this.load_data = false;
+            } else {
+              this.$store.commit("SET_TOKEN", res.data.token);
+              if (document.body.offsetWidth < 480) {
+                this.$router.push("/phone/home");
+              } else {
+                this.$router.push("/pad");
+              }
             }
-          }
+          });
         });
       });
     }
@@ -141,6 +183,17 @@ export default {
       &:hover {
         border-color: #6bc5a4;
         background: #6bc5a4;
+      }
+    }
+    .host .el-form-item__content {
+      display: flex;
+      flex-direction: row;
+      .ip {
+        flex: 1;
+      }
+      .port {
+        margin-left: 5px;
+        width: 100px;
       }
     }
   }

@@ -4,7 +4,7 @@ import {
 } from './type';
 import * as type from 'store/mutations/type';
 import {
-  setToken
+  setToken , setHost
 } from 'common/cookie'
 import i18n from 'common/i18n'
 import router from 'router/index.js'
@@ -13,6 +13,10 @@ import {
 } from 'router/index.js'
 
 export default {
+  [type.SET_HOST](state, host) {
+    state.host = host;
+    setHost(host);
+  },
   [type.SET_TOKEN](state, token) {
     state.token = token;
     setToken(token);

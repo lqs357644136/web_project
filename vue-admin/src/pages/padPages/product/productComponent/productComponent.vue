@@ -233,7 +233,6 @@
 
 <script>
 import imageView from "vue-imageview";
-import { server_base_url } from "common/config/index.js";
 import { mapGetters } from 'vuex'
 import url from "api";
 export default {
@@ -317,7 +316,7 @@ export default {
       },
       //图片上传
       imgUpload: {
-        uploadUrl: server_base_url + url.file_POST, //上传地址
+        uploadUrl: this.$api_baseurl(this.$store.getters.get_host ? this.$store.getters.get_host : "") + url.file_POST, //上传地址
         badPicture_imageUrl: "",
         improvePicture_imageUrl: "",
         headers: {
@@ -419,8 +418,8 @@ export default {
             }).then(res => {
               if (res.code == 1) {
                 this.$message.success(res.msg);
-                this.$store.dispatch("set_otherlink", Math.random());
-                this.$store.dispatch("set_pageloading", "/product/productInfo");
+                // this.$store.dispatch("set_otherlink", Math.random());
+                // this.$store.dispatch("set_pageloading", "/product/productInfo");
               } else {
                 this.$message.error(res.msg);
               }

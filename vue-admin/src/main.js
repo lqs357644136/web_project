@@ -21,7 +21,7 @@ import 'common/filiter'
 //导入axios请求方法
 import { $get,$post,$get_file,$post_noToken,$get_noToken } from 'common/fetch/index.js'
 //导入工具
-import { getMacINfo } from 'common/uitl.js'
+import { getMacINfo,api_baseurl,getQueryString } from 'common/uitl.js'
 
 //导入mock数据
 //import './mock'
@@ -42,6 +42,8 @@ Vue.prototype.$post = $post;
 Vue.prototype.$get_noToken = $get_noToken;
 Vue.prototype.$post_noToken = $post_noToken;
 Vue.prototype.$get_file = $get_file;
+//注册接口地址生成方法
+Vue.prototype.$api_baseurl = api_baseurl;
 //终端获取机器信息注册到全局
 Window.GETMACINFO = getMacINfo;
 
