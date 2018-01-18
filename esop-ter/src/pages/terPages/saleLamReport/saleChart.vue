@@ -82,6 +82,8 @@ export default {
           {
             type: "value",
             name: "占比",
+            min:0,
+            max:100,
             axisLabel: {
               formatter: "{value} %"
             }

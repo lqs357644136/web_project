@@ -40,7 +40,6 @@ export default {
     state.menus = roleMenus(menus);
   },
   [type.SET_PAGELOADING](state, path) {
-    state.pageloading = true;
     if (path) {
       let routerName = router.currentRoute.name;
       if(routerName=='firstEntity'||routerName=='tourEntity'){

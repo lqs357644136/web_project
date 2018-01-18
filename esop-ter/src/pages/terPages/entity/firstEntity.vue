@@ -59,8 +59,8 @@ export default {
         url: url.terFirstCheck_info,
         params: params
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.$store.dispatch("set_checklist", res.data);
         } else {
           this.$alert(res.msg, "错误", {

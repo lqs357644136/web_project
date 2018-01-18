@@ -44,7 +44,7 @@
 import { panelTitle } from "components";
 import saleChart from "./saleChart.vue";
 import { $dataFormat } from "common/filiter/index.js";
-import { getQueryString } from 'common/uitl.js'
+import { getQueryString } from "common/uitl.js";
 import url from "api";
 export default {
   name: "saleLamReport",
@@ -83,7 +83,7 @@ export default {
     // this.$store.dispatch('set_host',base_url).then(()=>{
     //   this.sale_init();
     // })
-    this.sale_init()
+    this.sale_init();
   },
   methods: {
     //点击查询按钮
@@ -100,7 +100,7 @@ export default {
     //初始化默认时间,初始下拉首选项目,首次加载图表数据
     sale_init() {
       let oneDay = 86400000;
-      let dayBefore90 = new Date() - oneDay*90;
+      let dayBefore90 = new Date() - oneDay * 90;
       this.inputs.saleType = this.selectOptions.saleOption[1].value;
       this.inputs.dateRange = [new Date(dayBefore90), new Date()];
       this.get_chartDate();
@@ -118,9 +118,7 @@ export default {
         url: url.saleLam_get,
         params: params
       }).then(res => {
-        console.log(res);
         if (res.code == "1") {
-          this.$message.success(res.msg);
           if (res.data && res.data.length > 0) {
             //初始化bar图数据
             let chartData = {
@@ -136,13 +134,16 @@ export default {
                 name: obj.propertyValue,
                 value: obj.andonCount
               };
-              count += obj.andonCount;
+              count+=obj.andonCount;
               chartData.bar.push(item);
+              //chartData.line.push(item);
               chartData.pie.push(item);
             }
-            for (let obj of res.data) {
-              let lineVal = parseInt(obj.totalCount / count * 100);
-              chartData.line.push(lineVal);
+            Array.reverse(chartData.bar);
+            //Array.reverse(chartData.line);
+            Array.reverse(chartData.pie);
+            for(let obj of chartData.bar){
+              chartData.line.push(Math.ceil(obj.value/count*100));
             }
             chartData.info = this.inputs;
             this.$store.dispatch("set_salelam_chartdata", chartData);

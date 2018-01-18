@@ -58,36 +58,29 @@
                 </el-card>
 
                 <!-- 报工列表 -->
-                <el-card class="box-card dailywork-list">
-                    <div slot="header" class="clearfix">
-                        <span>异常清单</span>
-                    </div>
-                    <div class="list">
-                        <el-table :row-class-name="tableRowClassName" :highlight-current-row="false" :data="dailyworkList" height="100%" border style="width: 100%">
-                            <el-table-column align="center" type="index" width="50" label="序号"></el-table-column>
-                            <el-table-column align="center" prop="recType" label="异常类型"></el-table-column>
-                            <el-table-column prop="createTime" label="开始时间">
-                                <template slot-scope="scope">
-                                    <div v-if="scope.row.createTime">
-                                        <i class="el-icon-time"></i>
-                                        <span>{{ scope.row.createTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
-                                    </div>
-                                    <div v-else>-</div>
-                                </template>
-                            </el-table-column>
-                            <el-table-column prop="endTime" label="结束时间">
-                                <template slot-scope="scope" v-if="scope.row.endTime">
-                                    <div v-if="scope.row.endTime">
-                                        <i class="el-icon-time"></i>
-                                        <span>{{ scope.row.endTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
-                                    </div>
-                                    <div v-else>-</div>
-                                </template>
-                            </el-table-column>
-                            <el-table-column align="center" prop="abnormalTime" label="异常工时(小时)"></el-table-column>
-                        </el-table>
-                    </div>
-                </el-card>
+                 <el-table class="dailywork-list" :row-class-name="tableRowClassName" :highlight-current-row="false" :data="dailyworkList" height="100%" border style="width: 100%">
+                      <el-table-column align="center" type="index" label="序号"></el-table-column>
+                      <el-table-column align="center" prop="recType" label="异常类型"></el-table-column>
+                      <el-table-column prop="createTime" label="开始时间">
+                          <template slot-scope="scope">
+                              <div v-if="scope.row.createTime">
+                                  <i class="el-icon-time"></i>
+                                  <span>{{ scope.row.createTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+                              </div>
+                              <div v-else>-</div>
+                          </template>
+                      </el-table-column>
+                      <el-table-column prop="endTime" label="结束时间">
+                          <template slot-scope="scope" v-if="scope.row.endTime">
+                              <div v-if="scope.row.endTime">
+                                  <i class="el-icon-time"></i>
+                                  <span>{{ scope.row.endTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+                              </div>
+                              <div v-else>-</div>
+                          </template>
+                      </el-table-column>
+                      <el-table-column align="center" prop="abnormalTime" label="异常工时(小时)"></el-table-column>
+                  </el-table>
 
             </el-form>
 
@@ -187,16 +180,16 @@ export default {
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.dailyworkList = [];
           for (let obj of res.data.allList) {
             let item = {
               recType: obj.recType,
               createTime: obj.createTime,
               endTime: obj.endTime,
-              abnormalTime: obj.abnormalTime||obj.abnormalTime==0
-                ? Math.floor(obj.abnormalTime / 60 * 100) / 100
-                : "-"
+              abnormalTime:
+                obj.abnormalTime || obj.abnormalTime == 0
+                  ? Math.floor(obj.abnormalTime / 60 * 100) / 100
+                  : "-"
             };
             this.dailyworkList.push(item);
           }
@@ -210,7 +203,9 @@ export default {
             this.macInfo.createTime = res.data.unFinishList[0].createTime;
             this.macInfo.endTime = res.data.unFinishList[0].endTime;
             this.macInfo.abnormalTime = res.data.unFinishList[0].abnormalTime
-              ? Math.floor(res.data.unFinishList[0].abnormalTime / 60 * 100) /100 : "-";
+              ? Math.floor(res.data.unFinishList[0].abnormalTime / 60 * 100) /
+                100
+              : "-";
           } else {
             this.isDailyStart = true;
             this.dailyStartHidden = true;
@@ -229,7 +224,6 @@ export default {
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
-          this.$message.success(res.msg);
           for (let obj of res.data) {
             let option = {
               label: obj.typename,
@@ -254,7 +248,6 @@ export default {
           }
         }).then(res => {
           if (res.code == 1) {
-            this.$message.success(res.msg);
             if (!res.data.id) {
               //允许开始报工
               this.dailyStartHidden = false;
@@ -282,7 +275,6 @@ export default {
         data
       }).then(res => {
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.getAdnList();
         } else {
           this.$message.error(res.msg);
@@ -299,7 +291,6 @@ export default {
         data
       }).then(res => {
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.macInfo.endTime = null;
           this.macInfo.abnormalTime = null;
           this.macInfo.recType = null;

@@ -9,7 +9,7 @@
           <el-table-column align="center" prop="plant" label="车间"></el-table-column>
           <el-table-column align="center" prop="line" label="制程"></el-table-column>
           <el-table-column align="center" prop="process" label="工序"></el-table-column>
-          <el-table-column prop="onWork" label="上岗时间">
+          <el-table-column width="230px" prop="onWork" label="上岗时间">
             <template slot-scope="scope">
               <div>
                 <i class="el-icon-time"></i>
@@ -17,7 +17,7 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="offWork" label="下岗时间">
+          <el-table-column width="230px"  prop="offWork" label="下岗时间">
             <template slot-scope="scope">
               <div>
                 <i class="el-icon-time"></i>

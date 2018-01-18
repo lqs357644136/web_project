@@ -13,10 +13,16 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import axios from 'axios'
 import router from 'src/router'
-import { Message } from 'element-ui'
+import {
+  Message
+} from 'element-ui'
 import store from 'store'
-import { setToken } from 'common/cookie'
-import { api_baseurl } from 'common/uitl.js'
+import {
+  setToken
+} from 'common/cookie'
+import {
+  api_baseurl
+} from 'common/uitl.js'
 import qs from "qs";
 //---------需要token请求 start-------------
 export const $post = function (options) {
@@ -86,7 +92,11 @@ export const $get = function (options) {
       NProgress.done();
       console.log('错误信息')
       console.log(error)
-      Message.error('服务器请求失败！')
+      Message.error('服务器请求失败！');
+      store.dispatch("login_out");
+      setTimeout(() => {
+        router.push("/user/login");
+      }, 500);
       reject(error);
     })
 
@@ -102,7 +112,7 @@ export const $get_file = function (options) {
 
   return new Promise((resolve, reject) => {
 
-    let data = path+"?path="+params.path+"&token="+token;
+    let data = path + "?path=" + params.path + "&token=" + token;
     NProgress.done();
     resolve(data)
 
@@ -124,7 +134,7 @@ export const $post_noToken = function (options) {
         if (res.data.code != -1) {
           NProgress.done();
           resolve(res.data)
-        } else { 
+        } else {
           NProgress.done();
           Message.error('请求失败')
         }

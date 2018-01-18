@@ -8,11 +8,8 @@
         </div>
       </div>
       <div class="login-title">
-        <p class="name">INTELFOR</p>
-        <p class="msg">management system</p>
-        <p class="msg">
-          <a href="http://192.168.1.10:8080/esop-mobile-apk/esop-mobile.apk">下载本地APP</a>
-        </p>
+        <p class="name">智企E-SOP管理系统</p>
+        <p class="msg">mobile admin <a href="http://192.168.1.10:8080/esop-mobile-apk/esop-mobile.apk">点击下载APP</a></p>
       </div>
       <div class="login-form">
         <el-form ref="host" :model="host" :rules="rules" label-width="0">
@@ -33,6 +30,7 @@
           </el-form-item>
         </el-form>
       </div>
+      <p class="msggf">© 广州智企信息技术有限公司版权所有 </p>
     </div>
   </div>
 </template>
@@ -42,7 +40,7 @@ import url from "api";
 export default {
   data() {
     var checkStep = (rule, value, callback) => {
-      let flag = this.host.ip.length>0&&this.host.port.length>0;
+      let flag = this.host.ip.length > 0 && this.host.port.length > 0;
       if (!flag) {
         return callback(new Error("请输入服务器地址"));
       } else {
@@ -52,11 +50,11 @@ export default {
     return {
       host: {
         ip: "",
-        port: "",
+        port: ""
       },
       form: {
         username: null,
-        password: null,
+        password: null
       },
       rules: {
         username: [{ required: true, message: "请输入账户名！", trigger: "blur" }],
@@ -68,8 +66,8 @@ export default {
     };
   },
   computed: {
-    'subHost':function(){
-      return this.host.ip+":"+this.host.port
+    subHost: function() {
+      return this.host.ip + ":" + this.host.port;
     }
   },
   mounted() {
@@ -87,7 +85,7 @@ export default {
     //提交
     submit_form() {
       this.$refs.form.validate(valid => {
-        let flag = this.host.ip.length>0&&this.host.port.length>0;
+        let flag = this.host.ip.length > 0 && this.host.port.length > 0;
         if (!valid || !flag) return false;
         this.load_data = true;
         this.$store.dispatch("set_host", this.subHost).then(() => {
@@ -100,6 +98,7 @@ export default {
             url: url.user_login,
             data: data
           }).then(res => {
+            console.log(res)
             if (res.code != 1) {
               this.$notify.info({
                 title: "温馨提示",
@@ -128,10 +127,7 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url(./images/login_bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: #417f92;
   .loginWarp {
     width: 300px;
     padding: 25px 15px;
@@ -140,23 +136,28 @@ export default {
     border-radius: 5px;
     .login-title {
       .name {
-        font-size: 38px;
+        font-size: 26px;
         text-align: center;
         color: #22ab6d;
+        margin-bottom:5px;
       }
       .msg {
         font-size: 18px;
-        color: #d3d3d3;
+        color: #7b7b7b;
+        text-align: center;
+      }
+      a {
+        font-size: 18px;
+        color: #2799de;
         text-align: center;
       }
       margin-bottom: 20px;
-      font-family: "Microsoft YaHei";
-      line-height: 38px;
-      font-weight: bold;
-      font-size: 70px;
-      text-shadow: 0px 0px 0 rgb(-102, 35, -27), 1px 1px 0 rgb(-198, -61, -123),
-        2px 2px 1px rgba(0, 0, 0, 0.6), 2px 2px 1px rgba(0, 0, 0, 0.5),
-        0px 0px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .msggf {
+      font-size: 14px;
+      color: #7b7b7b;
+      text-align: center;
     }
     .login-item {
       .el-input__inner {

@@ -1,11 +1,12 @@
 <template>
-  <section class="body-warp">
-      <router-view></router-view>
+  <section class="body-warp terView">
+      <router-view class="ter"></router-view>
   </section>
 </template>
 <script type="text/javascript">
+import 'assets/scss/main.scss'
 export default {
-  name: "app"
+  name: "esop-ter"
 };
 </script>
 <style lang="scss" type="text/scss" rel="stylesheet/scss">

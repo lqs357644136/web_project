@@ -9,12 +9,22 @@ Vue.use(VueRouter)
 let lang = store.getters.get_lang;
 let messages = i18n.getLocaleMessage(lang).message.menu;
 
-//终端页面功能
-export const terModule = [{
+//公共模块
+const routes = [{
+  path: '/404',
+  name: 'notPage',
+  component:r => require.ensure([], () => r(require('pages/error/404')), 'notPage'),
+}, {
+  path: '*',
+  redirect: '/404'
+}, {
+  path: '/ter',
+  redirect: '/ter/home'
+},{
   //终端主页
   path: '/ter/home',
   name: 'terHome',
-  component: resolve => require(['pages/terPages/home/home.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/home/home.vue')), 'terHome'),
   //component: phoneHome,
   meta: {
     title: messages.homePage,
@@ -25,7 +35,7 @@ export const terModule = [{
   //异常报工
   path: '/ter/dailywork/adnDailywork',
   name: 'adnDailywork',
-  component: resolve => require(['pages/terPages/dailywork/adnDailywork.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/dailywork/adnDailywork.vue')), 'terHome'),
   //component: phoneHome,
   meta: {
     title: messages.adnDailywork,
@@ -36,7 +46,7 @@ export const terModule = [{
   //生产报工
   path: '/ter/dailywork/proDailywork',
   name: 'proDailywork',
-  component: resolve => require(['pages/terPages/dailywork/proDailywork.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/dailywork/proDailywork.vue')), 'proDailywork'),
   //component: phoneHome,
   meta: {
     title: messages.proDailywork,
@@ -47,7 +57,7 @@ export const terModule = [{
   //原料批次录入
   path: '/ter/batch/batchEnterRaw',
   name: 'batchEnterRaw',
-  component: resolve => require(['pages/terPages/batchEnter/batchEnterRaw.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/batchEnter/batchEnterRaw.vue')), 'batchEnterRaw'),
   //component: phoneHome,
   meta: {
     title: messages.batchEnterRaw,
@@ -58,7 +68,7 @@ export const terModule = [{
   //调合批次录入
   path: '/ter/batch/batchEnterBlend',
   name: 'batchEnterBlend',
-  component: resolve => require(['pages/terPages/batchEnter/batchEnterBlend.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/batchEnter/batchEnterBlend.vue')), 'batchEnterBlend'),
   //component: phoneHome,
   meta: {
     title: messages.batchEnterBlend,
@@ -69,7 +79,7 @@ export const terModule = [{
   //首件录入
   path: '/ter/firstEntity',
   name: 'firstEntity',
-  component: resolve => require(['pages/terPages/entity/firstEntity.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/entity/firstEntity.vue')), 'firstEntity'),
   //component: phoneHome,
   meta: {
     title: messages.firstEntity,
@@ -80,7 +90,7 @@ export const terModule = [{
   //自检录入
   path: '/ter/selfEntity',
   name: 'selfEntity',
-  component: resolve => require(['pages/terPages/entity/selfEntity.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/entity/selfEntity.vue')), 'selfEntity'),
   //component: phoneHome,
   meta: {
     title: messages.selfEntity,
@@ -91,7 +101,7 @@ export const terModule = [{
   //产品履历查看
   path: '/ter/productInfo',
   name: 'productInfo',
-  component: resolve => require(['pages/terPages/product/productInfo/productInfo.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/product/productInfo/productInfo.vue')), 'productInfo'),
   //component: phoneHome,
   meta: {
     title: messages.productInfo,
@@ -99,34 +109,49 @@ export const terModule = [{
     auth: false
   }
 }, {
+  //机台电子看板
+  path: '/ter/machineReachRate',
+  name: 'machineReachRate',
+  component:r => require.ensure([], () => r(require('pages/terPages/signage/machineReachRate.vue')), 'machineReachRate'),
+  //component: machineReachRate,
+  meta: {
+    title: messages.machineReachRate,
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  }
+}, {
+  //总排程电子看板
+  path: '/ter/prodSchedule',
+  name: 'prodSchedule',
+  component:r => require.ensure([], () => r(require('pages/terPages/signage/prodSchedule.vue')), 'prodSchedule'),
+  //component: prodSchedule,
+  meta: {
+    title: messages.prodSchedule,
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  }
+},  {
+  //机台电子看板
+  path: '/ter/wholeReachRate',
+  name: 'wholeReachRate',
+  component:r => require.ensure([], () => r(require('pages/terPages/signage/wholeReachRate.vue')), 'wholeReachRate'),
+  //component: wholeReachRate,
+  meta: {
+    title: messages.wholeReachRate,
+    icon: 'fa fa-asl-interpreting',
+    auth: false
+  }
+},  {
   //安灯报表
   path: '/ter/saleLamReport',
   name: 'saleLamReport',
-  component: resolve => require(['pages/terPages/saleLamReport/saleLamReport.vue'], resolve),
+  component:r => require.ensure([], () => r(require('pages/terPages/saleLamReport/saleLamReport.vue')), 'saleLamReport'),
   //component: phoneHome,
   meta: {
     title: messages.saleLamReport,
     icon: 'fa fa-asl-interpreting',
     auth: false
   }
-}
-]
-
-
-//公共模块
-const routes = [{
-  path: '/404',
-  name: 'notPage',
-  component: resolve => require(['pages/error/404'], resolve)
-}, {
-  path: '*',
-  redirect: '/404'
-},{
-  path: '/ter',
-  redirect: '/ter/home',
-  component: resolve => require(['pages/terPages/App.vue'], resolve),
-  //component: phoneLayout,
-  children: terModule
 }]
 
 const router = new VueRouter({
@@ -148,7 +173,7 @@ const router = new VueRouter({
 //路由开始之前的操作
 router.beforeEach((to, from, next) => {
   //判断是否需要获取接口地址
-  if(to.path.indexOf('/ter/')!=-1){
+  if(to.path.indexOf('/ter')!=-1){
     let base_url = to.query.ip
     store.dispatch('set_host',base_url)
   }

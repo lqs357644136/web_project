@@ -1,6 +1,5 @@
 import store from 'vuex';
 let host = store
-console.log(host)
 //接入服务器接口地址根目录
 
 //主机

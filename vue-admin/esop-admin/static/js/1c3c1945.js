@@ -1,1 +1,0 @@
-webpackJsonp([21],{1164:function(n,e){n.exports={render:function(){var n=this,e=n.$createElement;return(n._self._c||e)("div",[n._v("注意事项")])},staticRenderFns:[]}},639:function(n,e,t){var r=t(6)(null,t(1164),null,null);n.exports=r.exports}});

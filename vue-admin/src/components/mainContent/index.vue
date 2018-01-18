@@ -2,13 +2,7 @@
   <div class="main-content ofh">
     <h-section></h-section>
     <div class="pageContent">
-      <slot></slot>
-      <div class="esop-pageloading" v-show="pageContentLoading">
-        <div class="msg">
-          <i class="icon fa fa-circle-o-notch fa-spin"></i>
-          <span class="title">页面加载中</span>
-        </div>  
-      </div>  
+      <slot></slot> 
     </div>
   </div>
 </template>
@@ -21,11 +15,6 @@ export default {
   data(){
     return {
       
-    }
-  },
-  computed: {
-    'pageContentLoading':function(){
-      return this.$store.getters.get_pageloading;
     }
   },
   created(){

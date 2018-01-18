@@ -84,16 +84,6 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            .el-card__header {}
-            .el-card__body {
-                overflow: auto;
-                padding: 0;
-                flex: 1;
-                .list {
-                    overflow: hidden;
-                }
-                .el-table__body-wrapper {}
-            }
         }
         .isDaily {
             background-color: #cff7de;
@@ -113,6 +103,7 @@
         }
         .detectionFrom {
             margin-bottom: pxTorem(20px);
+            height: pxTorem(142px);
             .detectionFrom-header {
                 height: 100%;
                 display: flex;
@@ -402,5 +393,8 @@
                 display: flex;
             }
         }
+    }
+    .signage {
+        padding: 0;
     }
 }

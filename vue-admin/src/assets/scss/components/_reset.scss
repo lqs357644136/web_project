@@ -5,6 +5,7 @@
     margin: 0;
     outline: 0;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: pxTorem(18px);
 }
 
 a {
@@ -144,6 +145,8 @@ button {
 } // 列表
 .el-table {
     height: 100% !important;
+    display: flex;
+    flex-direction: column;
     td {
         text-align: center;
     }
@@ -160,8 +163,17 @@ button {
         flex-direction: row;
         justify-content: center;
     }
+    .el-table__header-wrapper {
+        height: pxTorem(60px);
+    }
     .el-table__body-wrapper {
-        height:calc(100% - #{pxTorem(40px)}) !important;
+        //height:calc(100% - #{pxTorem(60px)}) !important;
+        height: initial !important;
+        flex: 1;
+    }
+    td,
+    th {
+        height: pxTorem(60px);
     }
 } //卡片
 .el-card {
@@ -272,4 +284,18 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+//请求加载动画重写
+#nprogress {
+    z-index: 9999;
+    .spinner {
+        right: pxTorem(10px);
+        top: pxTorem(10px);
+    }
+}
+//弹出框居中修复
+.el-dialog{
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
 }

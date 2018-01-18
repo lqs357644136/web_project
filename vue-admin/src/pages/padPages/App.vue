@@ -6,7 +6,7 @@
         <span class="title">系统资源加载中</span>
       </div>
     </div>
-    <div class="mainPage" v-else>
+    <div class="mainPage">
       <div class="pad">
         <left-slide></left-slide>
         <main-content>
@@ -24,7 +24,7 @@ export default {
   name: "padView",
   data() {
     return {
-      mainLoading: true,
+      mainLoading: true
     };
   },
   created() {
@@ -32,7 +32,7 @@ export default {
   },
   components: {
     mainContent,
-    leftSlide,
+    leftSlide
   },
   methods: {
     //获取系统所需资源,判断是平板还是手机
@@ -46,13 +46,14 @@ export default {
             realName: res.data.realName,
             menuList: res.data.menuList
           };
-
           this.$store.commit("SET_USERINFO", userInfo);
           //获取菜单
           //let menus =this.$store.getters.get_menus
 
           //菜单暂时写死
           let menus = [
+            //检验规范
+            { name: "specification" },
             //首件录入
             { name: "firstEntity" },
             //巡迴录入
@@ -60,15 +61,29 @@ export default {
             //检查清单
             { name: "checkList" },
             //产品履历
-            {name: "product",child: [{ name: "productInfo" }, { name: "productEnter" }]},
+            {
+              name: "product",
+              child: [{ name: "productInfo" }, { name: "productEnter" }]
+            },
             //上岗纪录
-            {name:"workonoff"}
+            { name: "workonoff" },
+            //电子看板
+            {
+              name: "signage",
+              child: [
+                { name: "machineReachRate" },
+                { name: "prodSchedule" },
+                { name: "wholeReachRate" }
+              ]
+            }
             //批次录入
             // {name: "batchEnter",child: [{ name: "batchEnterBlend" }, { name: "batchEnterRaw" }] },
           ];
 
           this.$store.dispatch("set_menus", menus);
           this.mainLoading = false;
+        } else {
+          
         }
       });
     }

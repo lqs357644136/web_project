@@ -20,25 +20,15 @@
                   </el-form-item>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="6" :lg="6">
-                  <el-form-item label="产品编码" prop="partNo">
-                    <el-select :disabled="!isDailyStart" @change="partNoChange()" v-model="macInfo.partNo" placeholder="请选择">
-                      <el-option v-for="item in partNoSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                  <el-form-item label="班次" prop="shift">
+                    <el-select :disabled="!isDailyStart" @change="shiftChange(macInfo.shift)" v-model="macInfo.shift" placeholder="请选择">
+                      <el-option v-for="item in shiftSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
                     </el-select>
                   </el-form-item>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="6" :lg="6">
-                  <el-form-item label="产量">
-                    <el-input :disabled="!isDailyStart" @change="qtyChange()" type="number" v-model="macInfo.qty" placeholder="请输入产量"></el-input>
-                  </el-form-item>
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="6" :lg="6">
-                  <el-form-item label="报废数">
-                    <el-input :disabled="!isDailyStart" @change="scrapQtyChange()" type="number" v-model="macInfo.scrapQty" placeholder="请输入报废数"></el-input>
-                  </el-form-item>
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="6" :lg="6">
-                  <el-form-item label="不良原因">
-                    <el-input :disabled="!isDailyStart" @change="badReasonChange()" v-model="macInfo.badReason" placeholder="请输入不良原因"></el-input>
+                  <el-form-item label="生产数量">
+                    <el-input :disabled="!isDailyStart" @change="qtyChange()" type="number" v-model="macInfo.qty" placeholder="请输入生产数量"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="6" :lg="6">
@@ -54,6 +44,11 @@
                 <el-col :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="机台">
                     <el-input :disabled="true" v-model="macInfo.equipNo" placeholder="机台"></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="6" :lg="6">
+                  <el-form-item label="产品编码">
+                    <el-input :disabled="true" v-model="macInfo.ptno" placeholder="产品编码"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="6" :lg="6">
@@ -90,42 +85,36 @@
         </el-card>
 
         <!-- 报工列表 -->
-        <el-card class="box-card dailywork-list">
-          <div slot="header" class="clearfix">
-            <span>生产清单</span>
-          </div>
-          <div class="list">
-            <el-table :row-class-name="tableRowClassName" :highlight-current-row="false" :data="dailyworkList" height="100%" border style="width: 100%">
-              <el-table-column align="center" type="index" width="50" label="序号"></el-table-column>
-              <el-table-column align="center" prop="gongdan" label="工单"></el-table-column>
-              <el-table-column align="center" prop="procItem" label="工位"></el-table-column>
-              <el-table-column align="center" prop="empNo" label="工号"></el-table-column>
-              <el-table-column align="center" prop="partNo" label="产品编码"></el-table-column>
-              <el-table-column align="center" prop="recType" label="报工类型"></el-table-column>
-              <el-table-column prop="createTime" label="开始时间">
-                <template slot-scope="scope">
-                  <div v-if="scope.row.createTime">
-                    <i class="el-icon-time"></i>
-                    <span>{{ scope.row.createTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
-                  </div>
-                  <div v-else>-</div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="endTime" label="结束时间">
-                <template slot-scope="scope" v-if="scope.row.endTime">
-                  <div v-if="scope.row.endTime">
-                    <i class="el-icon-time"></i>
-                    <span>{{ scope.row.endTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
-                  </div>
-                  <div v-else>-</div>
-                </template>
-              </el-table-column>
-              <el-table-column align="center" prop="procTime" label="实际工时(小时)"></el-table-column>
-              <el-table-column align="center" prop="qty" label="产量"></el-table-column>
-              <el-table-column align="center" prop="scrapQty" label="报废数"></el-table-column>
-            </el-table>
-          </div>
-        </el-card>
+        <el-table class="dailywork-list" :row-class-name="tableRowClassName" :highlight-current-row="false" :data="dailyworkList" height="100%" border style="width: 100%">
+          <el-table-column align="center" type="index" label="序号"></el-table-column>
+          <el-table-column align="center" prop="orderNo" width="120px" label="工单"></el-table-column>
+          <el-table-column align="center" prop="procItem" width="120px" label="工位"></el-table-column>
+          <el-table-column align="center" prop="empNo" width="120px" label="工号"></el-table-column>
+          <el-table-column align="center" prop="shift" label="班次"></el-table-column>
+          <el-table-column align="center" prop="schQty" label="计划数"></el-table-column>
+          <el-table-column align="center" prop="partNo" width="150px" label="产品编码"></el-table-column>
+          <el-table-column align="center" prop="recType" width="120px" label="报工类型"></el-table-column>
+          <el-table-column prop="createTime" width="240px" label="开始时间">
+            <template slot-scope="scope">
+              <div v-if="scope.row.createTime">
+                <i class="el-icon-time"></i>
+                <span>{{ scope.row.createTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+              </div>
+              <div v-else>-</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="endTime" width="240px" label="结束时间">
+            <template slot-scope="scope" v-if="scope.row.endTime">
+              <div v-if="scope.row.endTime">
+                <i class="el-icon-time"></i>
+                <span>{{ scope.row.endTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+              </div>
+              <div v-else>-</div>
+            </template>
+          </el-table-column>
+          <el-table-column align="center" prop="procTime" width="180px" label="实际工时(小时)"></el-table-column>
+          <el-table-column align="center" prop="qty" width="120px" label="生产数量"></el-table-column>
+        </el-table>
 
       </el-form>
 
@@ -159,24 +148,27 @@ export default {
         partNo: "", //产品编码
         plant: "", //车间
         line: "", //线别
+        ptno: "", //产品编号
         recType: "", //报工类型
         orderNo: "", //工单
         procItem: "", //工位
         createTime: "", //开始时间
         endTime: "", //结束时间
         procTime: "", //实际时间
-        badReason: "", //不良原因
-        qty: "", //产量
+        qty: "", //生产数量
         abnormalTime: "", //异常工时
-        scrapQty: "", //报废数
-        id: "" //id
+        id: '', //id
+        shift: '', //班次
+        schQty :'',//计划数
       },
       typeSelect: [],
       partNoSelect: [],
+      shiftSelect: [],
       dailyworkList: [],
       rules: {
         //验证规则
-        recType: [{ validator: checkSelect, trigger: "blur" }]
+        recType: [{ validator: checkSelect, trigger: "blur" }],
+        shift: [{ validator: checkSelect, trigger: "blur" }]
       }
     };
   },
@@ -229,6 +221,7 @@ export default {
       this.macInfo.empNo = macInfo.empNo;
       this.macInfo.line = macInfo.line;
       this.macInfo.plant = macInfo.plant;
+      this.macInfo.ptno = macInfo.ptno;
       this.getProList();
     },
     //获取列表信息,
@@ -239,7 +232,6 @@ export default {
       }).then(res => {
         console.log(res)
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.dailyworkList = [];
           for (let obj of res.data.allList) {
             let item = {
@@ -251,7 +243,8 @@ export default {
               procTime: obj.procTime,
               badReason: obj.badReason,
               qty: obj.qty,
-              scrapQty: obj.scrapQty,
+              shift:obj.shift,
+              schQty: obj.schQty,
               recType: obj.recType,
               createTime: obj.createTime,
               endTime: obj.endTime,
@@ -283,8 +276,9 @@ export default {
             this.macInfo.orderNo = finish.orderNo ? finish.orderNo : "";
             this.macInfo.procItem = finish.procItem ? finish.procItem : "";
             this.macInfo.badReason = finish.badReason ? finish.badReason : "";
+            this.macInfo.shift = finish.shift ? finish.shift : "";
             this.macInfo.qty = finish.qty ? finish.qty : "";
-            this.macInfo.scrapQty = finish.scrapQty ? finish.scrapQty : "";
+            this.macInfo.schQty = finish.schQty ? finish.schQty : "";
             this.macInfo.recType = finish.recType ? finish.recType : "";
             this.macInfo.id = finish.id;
             this.macInfo.createTime = finish.createTime;
@@ -299,7 +293,30 @@ export default {
             this.isDailyStart = true;
             this.dailyStartHidden = true;
             this.typeSelect_init(1);
+            this.shiftSelect_init();
             this.partNoSelect_init(this.macInfo.plant);
+          }
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
+    //初始化班次号
+    shiftSelect_init() {
+      this.$get_noToken({
+        url: url.daily_shiftType
+      }).then(res => {
+        if (res.code == 1) {
+          this.shiftSelect = [];
+          for (let obj of res.data) {
+            let option = {
+              label: obj.typename,
+              value: obj.typename
+            };
+            this.shiftSelect.push(option);
+          }
+          if (this.shiftSelect.length > 0) {
+            this.macInfo.shift = this.shiftSelect[0].label;
           }
         } else {
           this.$message.error(res.msg);
@@ -314,7 +331,6 @@ export default {
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
-          this.$message.success(res.msg);
           for (let obj of res.data) {
             let option = {
               label: obj.typename,
@@ -335,7 +351,6 @@ export default {
       }).then(res => {
         if (res.code == 1) {
           this.partNoSelect = [];
-          this.$message.success(res.msg);
           for (let obj of res.data) {
             let option = {
               label: obj.ptnm,
@@ -360,8 +375,8 @@ export default {
           url: url.proDailywork_forOne,
           params: params
         }).then(res => {
+          console.log(res)
           if (res.code == 1) {
-            this.$message.success(res.msg);
             if (!res.data.id) {
               //允许开始报工
               let flag = this.dailyStartFlag();
@@ -380,22 +395,8 @@ export default {
         });
       }
     },
-    //点选某个产品编码
-    partNoChange() {
-      let flag = this.dailyStartFlag();
-      if (flag) {
-        this.dailyStartHidden = false;
-        this.isDailyStart = true;
-      }
-    },
-    //不良原因发生改变
-    badReasonChange() {
-      let flag = this.dailyStartFlag();
-      if (flag) {
-        this.dailyStartHidden = false;
-        this.isDailyStart = true;
-      }
-    },
+ 
+   
     //产量发生改变
     qtyChange() {
       let flag = this.dailyStartFlag();
@@ -404,8 +405,9 @@ export default {
         this.isDailyStart = true;
       }
     },
-    //报废数发生改变
-    scrapQtyChange() {
+  
+    //班次改变
+    shiftChange() {
       let flag = this.dailyStartFlag();
       if (flag) {
         this.dailyStartHidden = false;
@@ -416,10 +418,8 @@ export default {
     dailyStartFlag() {
       let flag =
         this.macInfo.recType.length > 0 &&
-        this.macInfo.partNo.length > 0 &&
         this.macInfo.qty.length > 0 &&
-        this.macInfo.scrapQty.length > 0 &&
-        this.macInfo.badReason.length > 0;
+        this.macInfo.shift.length > 0;
       return flag;
     },
     //开始报工
@@ -428,20 +428,18 @@ export default {
         empNo: this.macInfo.empNo,
         equipNo: this.macInfo.equipNo,
         recType: this.macInfo.recType,
-        partNo: this.macInfo.partNo,
+        partNo: this.macInfo.ptno,
         resNo: this.macInfo.line,
-        scrapQty:this.macInfo.scrapQty,
         qty: this.macInfo.qty,
-        badReason: this.macInfo.badReason,
-        orderNo: this.macInfo.orderNo
+        plant: this.macInfo.plant,
+        shift: this.macInfo.shift
       };
-      console.log(data)
+      console.log(data);
       this.$post_noToken({
         url: url.proDailywork_add,
         data
       }).then(res => {
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.getProList();
         } else {
           this.$message.error(res.msg);
@@ -458,7 +456,6 @@ export default {
         data
       }).then(res => {
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.macInfo.endTime = "";
           this.macInfo.abnormalTime = "";
           this.macInfo.recType = "";

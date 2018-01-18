@@ -24,7 +24,6 @@ import { mapGetters, mapActions } from "vuex";
 import { exitFullscreen } from "common/uitl.js";
 import { setToken } from "common/cookie";
 
-
 export default {
   computed: {
     ...mapGetters({

@@ -12,10 +12,10 @@
         <el-table-column prop="resumeType" label="履历类型"></el-table-column>
         <el-table-column prop="badContent" label="不良内容"></el-table-column>
         <el-table-column prop="badNumber" label="不良数目"></el-table-column>
-        <el-table-column align="center" label="操作" width="70px">
+        <el-table-column align="center" label="操作" width="100px">
           <template slot-scope="scope">
             <div class="edit">
-              <el-button @click="goInfo(scope)" type="primary" size="mini">详情</el-button>
+              <el-button @click="goInfo(scope)" type="primary" >详情</el-button>
             </div>
           </template>
         </el-table-column>
@@ -41,7 +41,6 @@ export default {
         url: url.terProduct_list
       }).then(res => {
         if (res.code == 1) {
-          this.$message.success(res.msg);
           this.productList = [];
           for (let item of res.data) {
             let obj = {

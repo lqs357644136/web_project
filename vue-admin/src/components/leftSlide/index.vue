@@ -75,24 +75,24 @@ export default {
     },
     //选中样式处理
     menuItemActive(name) {
-
       let menuItems = this.$refs["esopLeftSlide"].querySelectorAll(".menuItem");
       for (let item of menuItems) {
         item.classList.remove("active");
       }
+      //console.log(this.menus)
       let targerDom = this.$refs[name][0];
-      targerDom.classList.add("active");
+      targerDom.classList.add("active"); 
     },
     //页面刷新后样式处理
     flashStyleInit() {
       let name = this.$router.currentRoute.name;
-      this.menuItemActive(name);
+      //this.menuItemActive(name);
     }
   },
   watch: {
-    fromCheckList: function(a, b) {
-      this.menuItemActive(this.$router.currentRoute.name);
-    },
+    // 'menus': function(a, b) {
+    //   this.menuItemActive(this.$router.currentRoute.name);
+    // },
     otherLink: function(a, b) {
       this.menuItemActive(this.$router.currentRoute.name);
     }

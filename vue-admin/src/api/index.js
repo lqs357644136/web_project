@@ -23,6 +23,10 @@ let url = {
   product_info:'/rest/qc/getProductResumeInfo',//GET 获取产品履历下拉框数据
   product_add:'/rest/qc/addProductResume',//POST 获取产品履历信息录入
   workonoffList:'/rest/kanban/getWorkonoffList',//GET 获取获取上岗纪录列表(分页)
+  machineReachRate_list:'/rest/kanban/getMachineReachRateBoard',//GET 获取获取机台电子看板
+  prodSchedule_list:'/rest/kanban/getProdScheduleBoard',//GET 获取总排成电子看板
+  wholeReachRate_list:'/rest/kanban/getWholeReachRateBoard',//GET 获取整体达成率电子看板
+  inspectSpec_list:'/rest/kanban/getInspectSpecList',//GET 获取检验规范列表
   //终端
   abnDailywork_list: '/rest/kanban/getProdAbnormalList',//GET 获取获取异常报工列表
   proDailywork_list: '/rest/kanban/getProdRecordList',//GET 获取获取生产报工列表
@@ -38,6 +42,7 @@ let url = {
   terFirstCheck_add:'/rest/kanban/addFirstInspectResult',//POST 提交首件检测结果
   terSelfCheck_info:'/rest/kanban/getSelfInspectInfo' ,//GET 获取自主检验信息
   terSelfCheck_add:'/rest/kanban/addSelfInspectResult',//POST 提交自主检测结果
+  terProduct_list:'/rest/kanban/getProductResumeList',//GET 获取产品履历列表
   terProduct_list:'/rest/kanban/getProductResumeList',//GET 获取产品履历列表
   //esop
   saleLam_get:'/rest/Andon/getAndonList',//GET 获取安灯数据

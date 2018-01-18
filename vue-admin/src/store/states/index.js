@@ -8,7 +8,7 @@ export default {
   //token
   token:getToken(),
   //用户信息
-  userInfo:null,
+  userInfo:{},
   //左侧菜单展开状态
   leftSilde:true,
   //系统语言  

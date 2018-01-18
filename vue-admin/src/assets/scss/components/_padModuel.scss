@@ -94,8 +94,8 @@
                     .el-card__body {
                         height: calc(100% - #{pxTorem(42px)}) !important;
                         padding: 0;
-                        .imgItemBody{
-                            height:100%;
+                        .imgItemBody {
+                            height: 100%;
                         }
                         img {
                             height: 100%;
@@ -173,8 +173,7 @@
         .subBtn .el-form-item__content {
             margin-left: 0 !important;
         }
-    } 
-    //批次录入
+    } //批次录入
     .batchEnter {
         height: 100%;
         display: flex;
@@ -249,18 +248,109 @@
                 width: pxTorem(150px);
             }
         }
-    }
-    //上岗纪录
-    .workonoff{
+    } //上岗纪录
+    .workonoff {
         display: flex;
         flex-direction: column;
-        padding:0;
-        .workonoff-list{
+        padding: 0;
+        .workonoff-list {
             overflow: hidden;
-            flex:1;
+            height: calc(100% - 3.75rem);
         }
-        .workonoff-list-goPage{
-            height:pxTorem(60px);
+        .workonoff-list-goPage {
+            height: pxTorem(60px);
+        }
+    } //电子看板
+    .signage {
+        padding: 0;
+    } //检验规范
+    .specification {
+        display: flex;
+        flex-direction: column;
+        .specForm {
+            display: flex;
+            flex-direction: row;
+            padding-bottom: pxTorem(20px);
+            border-bottom: 1px solid #dfdfdf;
+            height: pxTorem(58px);
+            .el-form-item {
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+                .el-select {
+                    display: block;
+                }
+            }
+            .plant {
+                .el-form-item__label {
+                    width: pxTorem(50px);
+                }
+            }
+            .line {
+                .el-form-item__label {
+                    width: pxTorem(50px);
+                }
+            }
+            .ptno {
+                .el-form-item__label {
+                    width: pxTorem(80px);
+                }
+            }
+            .selectForm {
+                flex: 1;
+            }
+            .subBtn {
+                margin-left: pxTorem(20px);
+                width: pxTorem(70px);
+            }
+        }
+        .specTable {
+            flex: 1;
+        }
+        .specInfo {
+            .el-collapse-item__header {
+                height: pxTorem(60px);
+                line-height: pxTorem(60px);
+                font-size: pxTorem(18px);
+            }
+            .el-collapse-item__content {
+                p {
+                    height: pxTorem(40px);
+                    line-height: pxTorem(40px);
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: pxTorem(5px);
+                    .name {
+                        width: pxTorem(80px);
+                        text-align: right;
+                        margin-right: pxTorem(10px);
+                        font-weight: 800;
+                    }
+                    .value {
+                        flex: 1;
+                        padding: 0 10px;
+                        border-bottom:1px solid #dfdfdf;
+                    }
+                }
+            }
+            .type {
+                .el-collapse-item__content {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                }
+                .yes {
+                    color: green;
+                }
+                .no {
+                    color: red;
+                }
+            }
+        }
+        .dialog-footer {
+            button {
+                width: 100%;
+            }
         }
     }
 }

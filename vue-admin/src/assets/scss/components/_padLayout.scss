@@ -42,6 +42,10 @@
             background-color: #1d90e6;
             color: white;
         }
+        .esop-leftMenu {
+            height: calc(100% - #{pxTorem(50px)});
+            overflow-y: auto;
+        }
         .singleItem {
             color: #6a6a6a;
             background-color: #ffffff;
@@ -106,9 +110,9 @@
                 li {
                     padding-left: pxTorem(20px);
                     padding-right: pxTorem(10px);
-                    height: pxTorem(40px);
+                    height: pxTorem(50px);
                     ;
-                    line-height: pxTorem(40px);
+                    line-height: pxTorem(50px);
                     border-bottom: 1px solid #dfdfdf;
                 }
                 li:last-child {
@@ -168,7 +172,6 @@
                 .notification-list {
                     position: relative;
                     display: inline-block;
-                    z-index: 999;
                     .notification-btn {
                         display: block;
                         padding: 0 pxTorem(15px);
@@ -198,7 +201,6 @@
                         }
                     }
                 }
-                
             }
         }
         .pageContent {
@@ -209,6 +211,5 @@
             padding: pxTorem(10px);
             position: relative;
         }
-        
     }
 }

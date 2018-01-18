@@ -33,30 +33,24 @@
     </el-form>
 
     <!-- 批次录入列表 -->
-    <el-card class="tableBox">
-      <div slot="header" class="clearfix detectionFrom-header">
-        <span>批次录入清单</span>
-      </div>
-
-      <el-table :stripe="true" :data="tableData" height="100%" border style="width: 100%">
-        <el-table-column prop="materialNo" :label="materialNo"></el-table-column>
-        <el-table-column prop="batchNo" label="批次号"></el-table-column>
-        <el-table-column prop="quantity" label="数量"></el-table-column>
-        <el-table-column prop="createDate" label="时间">
-          <template slot-scope="scope">
-            <i class="el-icon-time"></i>
-            <span style="margin-left: 10px">{{ scope.row.createDate | dataFormat('yyyy-MM-dd') }}</span>
-          </template>
-        </el-table-column>
-        <el-table-column label="操作">
-          <template slot-scope="scope">
-            <div class="edit">
-              <el-button @click="deteleBatchEnter(scope.$index,scope.row.id)" type="danger" size="mini">删除</el-button>
-            </div>
-          </template>
-        </el-table-column>
-      </el-table>
-    </el-card>
+    <el-table class="tableBox" :stripe="true" :data="tableData" border style="width: 100%">
+      <el-table-column prop="materialNo" :label="materialNo"></el-table-column>
+      <el-table-column prop="batchNo" label="批次号"></el-table-column>
+      <el-table-column prop="quantity" label="数量"></el-table-column>
+      <el-table-column prop="createDate" width="250px" label="时间">
+        <template slot-scope="scope">
+          <i class="el-icon-time"></i>
+          <span style="margin-left: 10px">{{ scope.row.createDate | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <div class="edit">
+            <el-button @click="deteleBatchEnter(scope.$index,scope.row.id)" type="danger">删除</el-button>
+          </div>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -116,14 +110,15 @@ export default {
             quantity: self.inputs.quantity,
             type: self.batchType
           };
-          console.log(params)
           this.$post_noToken({
             url: url.terBatch_List_add,
             data: params
           }).then(res => {
             if (res.code == 1) {
+              this.inputs.materialNo = "";
+              this.inputs.batchNo = "";
+              this.inputs.quantity = "";
               this.get_batchList();
-              this.$message.success(res.msg);
             } else {
               this.$message.error(res.msg);
             }
@@ -139,24 +134,24 @@ export default {
     },
     //删除批次清单
     deteleBatchEnter(index, id) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+      this.$confirm("此操作将删除该批次, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(() => {
-          this.$get_noToken({
-            url: url.terBatch_List_delete,
-            params: { id: id }
-          }).then(res => {
-            if (res.code == 1) {
-              this.tableData.splice(index, 1);
-              this.$message({
-                type: "success",
-                message: "删除成功!"
-              });
-            }
-          });
-        })
+        this.$get_noToken({
+          url: url.terBatch_List_delete,
+          params: { id: id }
+        }).then(res => {
+          if (res.code == 1) {
+            this.tableData.splice(index, 1);
+            this.$message({
+              type: "success",
+              message: "删除成功!"
+            });
+          }
+        });
+      });
     },
     //获取清单数据
     get_batchList() {
