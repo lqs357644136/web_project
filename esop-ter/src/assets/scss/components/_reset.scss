@@ -163,7 +163,7 @@ button {
         flex-direction: row;
         justify-content: center;
     }
-    .el-table__header-wrapper{
+    .el-table__header-wrapper {
         height: pxTorem(60px);
     }
     .el-table__body-wrapper {
@@ -171,7 +171,8 @@ button {
         height: initial !important;
         flex: 1;
     }
-    td,th {
+    td,
+    th {
         height: pxTorem(60px);
         min-width: pxTorem(120px);
     }
@@ -234,6 +235,7 @@ button {
     }
 } //下拉框
 .el-select {
+    width:100%;
     .el-input {
         .el-input__icon {
             transition: transform .3s;
@@ -243,6 +245,7 @@ button {
     }
 } //输入框-number
 .el-input-number {
+    width:100%;
     >* {
         height: 100%;
     }
@@ -259,7 +262,8 @@ button {
 }
 
 .el-form-item {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     .el-form-item__label {
         width: pxTorem(100px);
         font-size: pxTorem(16px);
@@ -285,4 +289,19 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+//隐藏画板按钮
+.card-hidden-btn {
+    float: right;
+    font-size: pxTorem(30px);
+    color: #888585;
+}
+
+//隐藏画板主体
+.card-body-hidden {
+    .el-card__body {
+        display: none;
+       
+    }
 }

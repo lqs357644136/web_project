@@ -4,8 +4,8 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../esop-admin/index.html'),
-    assetsRoot: path.resolve(__dirname, '../esop-admin'),
+    index: path.resolve(__dirname, '../esop-ter/index.html'),
+    assetsRoot: path.resolve(__dirname, '../esop-ter'),
     assetsSubDirectory: './static',
     assetsPublicPath: './',
     productionSourceMap: false,

@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <panel-title :back="true"  :title="$route.meta.title"></panel-title>
+    <panel-title :center="true"  :title="$route.meta.title"></panel-title>
     <div class="panel-body signage">
       <el-table :highlight-current-row="false" :data="tableList" height="100%" border style="width:100%">
           <el-table-column align="center" type="index" label="序号"></el-table-column>

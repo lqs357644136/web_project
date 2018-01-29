@@ -29,8 +29,9 @@ let url = {
   wholeReachRate_list:'/rest/kanban/getWholeReachRateBoard',//GET 获取整体达成率电子看板
   inspectSpec_list:'/rest/kanban/getInspectSpecList',//GET 获取检验规范列表
   daily_shiftType:'/rest/kanban/getShiftType',//GET 获取班次类型
+  getMaterial:'/rest/kanban/getMaterial',//GET 获取当前工位对应原料
   //esop
-  saleLam_get:'/rest/Andon/getAndonList',//GET 获取安灯数据
+  saleLam_get:'/rest/Andon/getAndonList',//GET 
 }
 
 export default url

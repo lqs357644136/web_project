@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="login-title">
-        <p class="name">智企E-SOP管理系统</p>
+        <p class="name">E-SOP管理系统</p>
         <p class="msg">mobile admin <a href="http://192.168.1.10:8080/esop-mobile-apk/esop-mobile.apk">点击下载APP</a></p>
       </div>
       <div class="login-form">
@@ -30,7 +30,6 @@
           </el-form-item>
         </el-form>
       </div>
-      <p class="msggf">© 广州智企信息技术有限公司版权所有 </p>
     </div>
   </div>
 </template>

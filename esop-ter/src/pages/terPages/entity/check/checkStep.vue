@@ -23,33 +23,34 @@
 
     <div class="stepInputs">
       <el-form-item class="stepInput" prop="input01">
-        <el-input type="number" v-model="inputs.input01" auto-complete="off"></el-input>
+        <el-input :disabled="isPass" type="number" v-model="inputs.input01" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item class="stepInput" prop="input02">
-        <el-input type="number" v-model="inputs.input02" auto-complete="off"></el-input>
+        <el-input :disabled="isPass" type="number" v-model="inputs.input02" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item class="stepInput" prop="input03">
-        <el-input type="number" v-model="inputs.input03" auto-complete="off"></el-input>
+        <el-input :disabled="isPass" type="number" v-model="inputs.input03" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item class="stepInput" prop="input04">
-        <el-input type="number" v-model="inputs.input04" auto-complete="off"></el-input>
+        <el-input :disabled="isPass" type="number" v-model="inputs.input04" auto-complete="off"></el-input>
       </el-form-item>
       <el-form-item class="stepInput" prop="input05">
-        <el-input type="number" v-model="inputs.input05" auto-complete="off"></el-input>
+        <el-input :disabled="isPass" type="number" v-model="inputs.input05" auto-complete="off"></el-input>
       </el-form-item>
     </div>
 
-    <el-form-item class="stepBtn">
+    <el-form-item class="stepBtn" v-if="!isPass">
       <el-button type="primary" @click="submitForm('inputs')">提交</el-button>
       <el-button @click="resetForm('inputs')">重置</el-button>
     </el-form-item>
+    <el-button class="stepBtn" v-else type="success">检验通过</el-button>
   </el-form>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import url from "api";
-import qs from 'qs'
+import qs from "qs";
 export default {
   props: ["tabCheck"],
   data() {
@@ -74,6 +75,7 @@ export default {
     };
 
     return {
+      isPass: false,
       computRang: {
         minVal: 0,
         maxVal: 0
@@ -101,18 +103,33 @@ export default {
   },
   mounted() {
     this.computRang_init();
+    this.checkInput_init();
   },
   methods: {
     //初始化计算值
     computRang_init() {
       if (this.tabCheck.specificationType == 0) {
-        this.computRang.minVal = this.tabCheck.lowerLimit;
-        this.computRang.maxVal = this.tabCheck.upperLimit;
+        this.computRang.minVal = this.tabCheck.lowerLimit * 1;
+        this.computRang.maxVal = this.tabCheck.upperLimit * 1;
       } else {
         this.computRang.minVal =
           this.tabCheck.stdValue - this.tabCheck.stdValueMinus;
         this.computRang.maxVal =
-          this.tabCheck.stdValue + this.tabCheck.stdValuePlus;
+          parseFloat(this.tabCheck.stdValue) +
+          parseFloat(this.tabCheck.stdValuePlus);
+      }
+    },
+    //初始化输入框数值
+    checkInput_init() {
+      if (this.tabCheck.result) {
+        if (this.tabCheck.result.result == "1") {
+          this.isPass = true;
+        }
+        this.inputs.input01 = this.tabCheck.result.r1;
+        this.inputs.input02 = this.tabCheck.result.r2;
+        this.inputs.input03 = this.tabCheck.result.r3;
+        this.inputs.input04 = this.tabCheck.result.r4;
+        this.inputs.input05 = this.tabCheck.result.r5;
       }
     },
     //最终检验结果
@@ -151,7 +168,6 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let inspect = this.checkList.inspect;
-          console.log(inspect);
           let spec = this.tabCheck;
           let itemObj = this.checkFinal();
           let params = {
@@ -163,7 +179,7 @@ export default {
               operator: Window.GETMACINFO().empNo + "", //人员
               orderNo: inspect.orderNo, //工令单号
               reconcile: inspect.reconcile, //调合
-              pdNum: inspect.pdNum, //生产数量
+              pdNum: inspect.pdNum //生产数量
             },
             result: {
               r1: this.inputs.input01,
@@ -172,13 +188,14 @@ export default {
               r4: this.inputs.input04,
               r5: this.inputs.input05,
               result: itemObj.result, //检验结论 ,
-              specId: spec.specId, //检验规范ID
+              specId: spec.specId //检验规范ID
             }
           };
-          let urlPath = inspect.type == "0" ? url.terFirstCheck_add : url.terSelfCheck_add;
+          let urlPath =
+            inspect.type == "0" ? url.terFirstCheck_add : url.terSelfCheck_add;
           this.$post_noToken({
             url: urlPath,
-            data:params
+            data: params
           }).then(res => {
             let finalView = {
               code: spec.code,
@@ -194,8 +211,9 @@ export default {
               type: spec.type,
               index: spec.index
             };
+            this.isPass = itemObj.result == "1" ? true : false;
             if (res.code == 1) {
-              this.$message.success(res.msg);
+              //this.$message.success(res.msg);
             } else {
               this.$message.error(res.msg);
             }

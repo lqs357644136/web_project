@@ -19,7 +19,7 @@
                 -webkit-flex-direction: row;
                 label {
                     text-align: justify;
-                    width: pxTorem(70px);
+                    width: pxTorem(80px);
                     font-weight: 800;
                     span {
                         padding-left: 100%;
@@ -60,6 +60,9 @@
                 }
                 .isPassIcon {
                     color: green !important;
+                }
+                .failPassIcon {
+                    color: red !important;
                 }
                 .isPass {
                     display: flex;

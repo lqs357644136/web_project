@@ -173,6 +173,22 @@
         .subBtn .el-form-item__content {
             margin-left: 0 !important;
         }
+    } //产品履历信息列表
+    .productList {
+        height: 100%;
+        padding: pxTorem(10px);
+        display: flex;
+        flex-direction: column;
+        .listForm {
+            margin-bottom: pxTorem(20px);
+            .el-form-item{
+                margin-bottom:0;
+            }
+        }
+        .listTable {
+            flex: 1;
+            width: 100%;
+        }
     } //批次录入
     .batchEnter {
         height: 100%;
@@ -262,7 +278,25 @@
         }
     } //电子看板
     .signage {
-        padding: 0;
+        padding: 0; //达成率颜色
+        .reachRate {
+            height: pxTorem(60px);
+            line-height: pxTorem(60px);
+            .rh {
+                height: 100%;
+                width: 100%;
+                color: white;
+            }
+            .rhColor01 {
+                background-color: #67C23A;
+            }
+            .rhColor02 {
+                background-color: #E6A23C;
+            }
+            .rhColor03 {
+                background-color: #F56C6C;
+            }
+        }
     } //检验规范
     .specification {
         display: flex;
@@ -329,7 +363,7 @@
                     .value {
                         flex: 1;
                         padding: 0 10px;
-                        border-bottom:1px solid #dfdfdf;
+                        border-bottom: 1px solid #dfdfdf;
                     }
                 }
             }

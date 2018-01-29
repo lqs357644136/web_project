@@ -39,10 +39,11 @@
       </el-form-item>
     </div>
 
-    <el-form-item class="stepBtn">
+    <el-form-item class="stepBtn" v-if="!isPass">
       <el-button type="primary" @click="submitForm('inputs')">提交</el-button>
       <el-button @click="resetForm('inputs')">重置</el-button>
     </el-form-item>
+    <el-button class="stepBtn" v-else type="success">检验通过</el-button>
   </el-form>
 </template>
 
@@ -74,6 +75,7 @@ export default {
     };
 
     return {
+      isPass: false,
       computRang: {
         minVal: 0,
         maxVal: 0
@@ -101,6 +103,7 @@ export default {
   },
   mounted() {
     this.computRang_init();
+    this.checkInput_init();
   },
   methods: {
     //初始化计算值
@@ -109,10 +112,21 @@ export default {
         this.computRang.minVal = this.tabCheck.lowerLimit;
         this.computRang.maxVal = this.tabCheck.upperLimit;
       } else {
-        this.computRang.minVal =
-          this.tabCheck.stdValue - this.tabCheck.stdValueMinus;
-        this.computRang.maxVal =
-          this.tabCheck.stdValue + this.tabCheck.stdValuePlus;
+        this.computRang.minVal = parseFloat(this.tabCheck.stdValue) - parseFloat(this.tabCheck.stdValueMinus);
+        this.computRang.maxVal = parseFloat(this.tabCheck.stdValue)  + parseFloat(this.tabCheck.stdValuePlus);
+      }
+    },
+    //初始化输入框数值
+    checkInput_init() {
+      if (this.tabCheck.result) {
+        if (this.tabCheck.result.result == "1") {
+          this.isPass = true;
+        }
+        this.inputs.input01 = this.tabCheck.result.r1;
+        this.inputs.input02 = this.tabCheck.result.r2;
+        this.inputs.input03 = this.tabCheck.result.r3;
+        this.inputs.input04 = this.tabCheck.result.r4;
+        this.inputs.input05 = this.tabCheck.result.r5;
       }
     },
     //最终检验结果
@@ -193,8 +207,9 @@ export default {
               type: spec.type,
               index:spec.index
             };
+            this.isPass = itemObj.result == "1" ? true : false;
             if (res.code == 1) {
-              this.$message.success(res.msg);
+              //this.$message.success(res.msg);
             } else {
               this.$message.error(res.msg);
             }

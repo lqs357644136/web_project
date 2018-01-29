@@ -37,15 +37,18 @@
             <el-tabs type="border-card">
               <el-tab-pane v-for="(check,index) in checkStep" :key="index">
                 <span slot="label">
-                  <i v-if="check.noPass" class="fa fa-wrench"></i>
-                  <i v-else class="isPassIcon fa fa-check"></i>
-                  {{check.itemDescription}}
+                  <span>
+                    <i v-if="check.noPass=='0'" class="failPassIcon fa fa-close"></i>
+                    <i v-else-if="check.noPass=='1'" class="isPassIcon fa fa-check"></i>
+                    <i v-else class="fa fa-wrench"></i>
+                    {{check.itemDescription}}
+                  </span>
                 </span>
-                <checkStep v-if="check.noPass" v-on:checkEndListen="checkEndView" :tabCheck="check"></checkStep>
-                <div class="isPass" v-else>
+                <checkStep v-on:checkEndListen="checkEndView" :tabCheck="check"></checkStep>
+                <!-- <div class="isPass" v-else>
                   <div class="icon fa fa-check"></div>
                   <div class="text">此项目已经通过检测</div>
-                </div>
+                </div> -->
               </el-tab-pane>
             </el-tabs>
           </div>
@@ -179,21 +182,19 @@ export default {
       let index = 0;
       for (const spec of this.checkList.specList) {
         let specificationType = spec.specificationType;
-        let noPass = true;
+        let noPass = "-1";
         if (spec.result) {
-          if (spec.result) {
-            noPass = false;
-          }
+          noPass = spec.result.result;
         }
         let project = {
           specId: spec.id, //检验规范ID
-
           code: spec.item.code, //项目代号
           itemDescription: spec.item.description, //项目名称
           methodDescription: spec.method.description, //检测方法
           specificationType: specificationType, //规格类型：0(范围),1(公差) ,
           inspectSpecification: spec.inspectSpecification, //检验规格
           symbol: spec.symbol, //符号
+          result:spec.result,//计算结果
           noPass: noPass, //没有通过检测
           index: index
         };
@@ -211,8 +212,8 @@ export default {
       this.isAllPass(this.checkList.inspect.type);
     },
     //检测成功后改变样式
-    isPass_change(index) {
-      this.checkStep[index].noPass = false;
+    isPass_change(index, result) {
+      this.checkStep[index].noPass = result;
     },
     //判断是否全部项目通过
     isAllPass(type) {
@@ -241,9 +242,7 @@ export default {
       let name = finalView.name;
       let time = $dataFormat(new Date(), "hh:mm:ss");
       let result = finalView.result == "1" ? "成功" : "失败";
-      if (finalView.result == "1") {
-        this.isPass_change(finalView.index);
-      }
+      this.isPass_change(finalView.index, finalView.result);
       new Promise((resolve, reject) => {
         resolve((this.loading = true));
       }).then(() => {

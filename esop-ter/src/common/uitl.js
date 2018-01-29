@@ -47,10 +47,10 @@ export const getMacINfo = function () {
   //   backUp:function(){
   //     console.log("返回上一页(只能在终端上生效)");
   //   },
-  //   equipNo: 'ZSA20T-1',//工位
+  //   equipNo: 'C01',//工位
   //   empNo: 30031,//工号
-  //   line:'A01',//制程
-  //   plant:'ZSA',//车间
-  //   ptno:'02046',//产品编码
+  //   line:'BC1',//制程
+  //   plant:'1000',//车间
+  //   ptno:'06873008',//产品编码
   // }
 }

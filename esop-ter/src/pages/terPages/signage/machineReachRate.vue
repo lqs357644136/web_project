@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <panel-title :back="true" :title="$route.meta.title"></panel-title>
+    <panel-title :center="true" :title="$route.meta.title"></panel-title>
     <div class="panel-body signage">
       <el-table :highlight-current-row="false" :data="tableList" height="100%" border style="width: 100%">
         <el-table-column align="center" type="index" label="序号"></el-table-column>
@@ -11,7 +11,13 @@
         <el-table-column align="center" width="150px" prop="prodMinute" label="量产分钟数(M)"></el-table-column>
         <el-table-column align="center" prop="idealQty" width="150px" label="理想量产/8HR"></el-table-column>
         <el-table-column align="center" prop="actualQty" width="150px" label="实际产数/8HR"></el-table-column>
-        <el-table-column align="center" prop="reachRate" label="达成率%"></el-table-column>
+        <el-table-column align="center" prop="reachRate" label="达成率%">
+            <template slot-scope="scope">
+              <div v-if="scope.row.reachRate==100" class="reachRate"><div class="rh rhColor01">{{ scope.row.reachRate }}%</div></div>
+              <div v-else-if="scope.row.reachRate>90&&scope.row.reachRate<99" class="reachRate"><div class="rh rhColor02">{{ scope.row.reachRate }}%</div></div>
+              <div v-else class="reachRate"><div class="rh rhColor03">{{ scope.row.reachRate }}%</div></div>
+            </template>
+        </el-table-column>
       </el-table>
     </div>
   </div>
@@ -43,7 +49,7 @@ export default {
               partNo: item.partNo, //产品编码
               process: item.process, //机台型号
               prodMinute: item.prodMinute, //量产分钟数
-              reachRate: item.reachRate + "%", //达成率
+              reachRate: item.reachRate, //达成率
               recordQty: item.recordQty, //生产报工数
               schQty: item.schQty, //计划生产总数
               unitProd: item.unitProd //单位生产

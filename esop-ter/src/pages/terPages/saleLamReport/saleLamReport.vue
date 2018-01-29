@@ -10,7 +10,7 @@
         <div class="dailywork-body">
           <div class="dailyFrom">
             <el-row class="dailyFromRow" :gutter="20">
-              <el-col class="dailyFromCol" :xs="24" :sm="24" :md="8" :lg="8">
+              <el-col class="dailyFromCol" :xs="24" :sm="24" :md="6" :lg="6">
                 <el-form-item label="统计类型" prop="saleType">
                   <el-select v-model="inputs.saleType" placeholder="请选择">
                     <el-option v-for="item in selectOptions.saleOption" :key="item.value" :label="item.label" :value="item.value"></el-option>

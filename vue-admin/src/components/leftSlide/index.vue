@@ -41,7 +41,7 @@ export default {
       defaultPath: this.$router.currentRoute.path //默认选中菜单
     };
   },
-  mounted() {
+  updated() {
     this.flashStyleInit();
   },
   computed: {
@@ -79,14 +79,13 @@ export default {
       for (let item of menuItems) {
         item.classList.remove("active");
       }
-      //console.log(this.menus)
       let targerDom = this.$refs[name][0];
-      targerDom.classList.add("active"); 
+      targerDom.classList.add("active");
     },
     //页面刷新后样式处理
     flashStyleInit() {
       let name = this.$router.currentRoute.name;
-      //this.menuItemActive(name);
+      this.menuItemActive(name);
     }
   },
   watch: {

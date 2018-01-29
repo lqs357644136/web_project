@@ -294,8 +294,23 @@ button {
         top: pxTorem(10px);
     }
 }
+
 //弹出框居中修复
-.el-dialog{
+.el-dialog {
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
+}
+
+//隐藏画板按钮
+.card-hidden-btn {
+    float: right;
+    font-size: pxTorem(30px);
+    color: #888585;
+}
+
+//隐藏画板主体
+.card-body-hidden {
+    .el-card__body {
+        display: none; 
+    }
 }

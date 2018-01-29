@@ -25,7 +25,8 @@ export default {
           happenReasonList: [], //发生原因
           happenFrequencyList: [], //发生频度
           outputReasonList: [], //输出原因
-          progressList: [] //对策进度
+          progressList: [], //对策进度
+          badCodeList:[],//不良代码
         }
       }
     };
@@ -54,6 +55,7 @@ export default {
           self.info.productSelects.happenFrequencyList = self.eachSetSelect(res.data.happenFrequencyList);
           self.info.productSelects.outputReasonList = self.eachSetSelect(res.data.outputReasonList);
           self.info.productSelects.progressList = self.eachSetSelect(res.data.progressList);
+          self.info.productSelects.badCodeList = self.eachSetSelect(res.data.badCodeList);
         }else{
           self.$message.error(res.msg);
         }

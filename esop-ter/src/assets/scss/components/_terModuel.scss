@@ -103,7 +103,6 @@
         }
         .detectionFrom {
             margin-bottom: pxTorem(20px);
-            height: pxTorem(142px);
             .detectionFrom-header {
                 height: 100%;
                 display: flex;
@@ -111,25 +110,26 @@
                 .name {
                     font-weight: 800;
                 }
-                .btn {
-                    margin: 0;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    .el-form-item__content {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
+            }
+            .detectionFrom-body{
+                display: flex;
+                flex-direction: row;
+                .detectionFrom-input{
+                    flex: 1;
+                    .is-disabled .el-input__inner{
+                        color: initial;
                     }
+                }
+                .detectionFrom-btn{
+                    margin-left:pxTorem(20px);
+                    width:pxTorem(80px);
                 }
             }
         }
         .el-card__body {
+            padding-bottom:0;
             .el-col {
                 margin-bottom: pxTorem(20px);
-            }
-            .el-col:last-child {
-                margin-bottom: 0;
             }
         }
         .el-form-item {
@@ -311,6 +311,25 @@
         .subBtn .el-form-item__content {
             margin-left: 0 !important;
         }
+    } //产品履历信息列表
+    .productList {
+        height: 100%;
+        padding: pxTorem(10px);
+        display: flex;
+        flex-direction: column;
+        .listForm {
+            margin-bottom: pxTorem(20px);
+            .el-form-item {
+                margin-bottom: 0;
+            }
+            .is-disabled .el-input__inner{
+                color:initial;
+            }
+        }
+        .listTable {
+            flex: 1;
+            width: 100%;
+        }
     } //安灯报表
     .saleLamReport {
         height: 100%;
@@ -395,6 +414,24 @@
         }
     }
     .signage {
-        padding: 0;
+        padding: 0; //达成率颜色
+        .reachRate {
+            height: pxTorem(60px);
+            line-height: pxTorem(60px);
+            .rh {
+                height: 100%;
+                width: 100%;
+                color: white;
+            }
+            .rhColor01 {
+                background-color: #67C23A;
+            }
+            .rhColor02 {
+                background-color: #E6A23C;
+            }
+            .rhColor03 {
+                background-color: #F56C6C;
+            }
+        }
     }
 }

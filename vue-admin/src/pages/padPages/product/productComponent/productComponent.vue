@@ -45,27 +45,19 @@
                                         </el-form-item>
                                     </el-col>
                                     <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                        <el-form-item label="不良代码" prop="badCode">
+                                            <el-select v-if="isInfo" v-model="productInputs.badCode" placeholder="请选择">
+                                                <el-option v-for="item in productSelects.badCodeList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                                            </el-select>
+                                            <el-input :disabled="!isInfo" v-model="productInputs.badCode" v-else placeholder="不良代码"></el-input>
+                                        </el-form-item>
+                                    </el-col>
+                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
                                         <el-form-item label="履历类型" prop="resumeType">
                                             <el-select v-if="isInfo" v-model="productInputs.resumeType" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.resumeTypeList" :key="item.value" :label="item.label" :value="item.value"></el-option>
                                             </el-select>
                                             <el-input :disabled="!isInfo" v-model="productInputs.resumeType" v-else placeholder="履历类型"></el-input>
-                                        </el-form-item>
-                                    </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
-                                        <el-form-item label="发生原因" prop="happenReason">
-                                            <el-select v-if="isInfo" v-model="productInputs.happenReason" placeholder="请选择">
-                                                <el-option v-for="item in productSelects.happenReasonList" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                                            </el-select>
-                                            <el-input :disabled="!isInfo" v-model="productInputs.happenReason" v-else placeholder="发生原因"></el-input>
-                                        </el-form-item>
-                                    </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
-                                        <el-form-item label="输出原因" prop="outputReason">
-                                            <el-select v-if="isInfo" v-model="productInputs.outputReason" placeholder="请选择">
-                                                <el-option v-for="item in productSelects.outputReasonList" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                                            </el-select>
-                                            <el-input :disabled="!isInfo" v-model="productInputs.outputReason" v-else placeholder="输出原因"></el-input>
                                         </el-form-item>
                                     </el-col>
                                     <el-col :xs="24" :sm="24" :md="12" :lg="12">
@@ -88,20 +80,29 @@
                         </el-tab-pane>
 
                         <el-tab-pane class="productFromsItem">
-                            <span slot="label">对策原因</span>
+                            <span slot="label">具体原因</span>
                             <div class="productFromsItem-body">
 
                                 <el-row :gutter="30">
-                                    <el-col :span="12">
-                                        <el-form-item label="对策进度" prop="progress">
-                                            <el-select v-if="isInfo" v-model="productInputs.progress" placeholder="请选择">
-                                                <el-option v-for="item in productSelects.progressList " :key="item.value" :label="item.label" :value="item.value"></el-option>
+                                    <el-col :span="24">
+                                        <el-form-item label="发生原因" prop="happenReason">
+                                            <el-select v-if="isInfo" multiple collapse-tags v-model="productInputs.happenReason" placeholder="请选择">
+                                                <el-option v-for="item in productSelects.happenReasonList" :key="item.value" :label="item.label" :value="item.value"></el-option>
                                             </el-select>
-                                            <el-input :disabled="!isInfo" v-else v-model="productInputs.progress" placeholder="对策进度"></el-input>
+                                            <el-input :disabled="!isInfo" v-model="productInputs.happenReason" v-else placeholder="发生原因"></el-input>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
-
+                                <el-row :gutter="30">
+                                    <el-col :span="24">
+                                        <el-form-item label="输出原因" prop="outputReason">
+                                            <el-select v-if="isInfo" multiple collapse-tags v-model="productInputs.outputReason" placeholder="请选择">
+                                                <el-option v-for="item in productSelects.outputReasonList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                                            </el-select>
+                                            <el-input :disabled="!isInfo" v-model="productInputs.outputReason" v-else placeholder="输出原因"></el-input>
+                                        </el-form-item>
+                                    </el-col>
+                                </el-row>
                                 <el-row>
                                     <el-col :span="24">
                                         <el-form-item label="原因" prop="reason">
@@ -111,6 +112,23 @@
                                     </el-col>
                                 </el-row>
 
+                            </div>
+                        </el-tab-pane>
+
+                        <el-tab-pane class="productFromsItem">
+                            <span slot="label">对策内容</span>
+                            <div class="productFromsItem-body">
+
+                                <el-row :gutter="30">
+                                    <el-col :span="24">
+                                        <el-form-item label="对策进度" prop="progress">
+                                            <el-select v-if="isInfo" v-model="productInputs.progress" placeholder="请选择">
+                                                <el-option v-for="item in productSelects.progressList " :key="item.value" :label="item.label" :value="item.value"></el-option>
+                                            </el-select>
+                                            <el-input :disabled="!isInfo" v-else v-model="productInputs.progress" placeholder="对策进度"></el-input>
+                                        </el-form-item>
+                                    </el-col>
+                                </el-row>
                                 <el-row>
                                     <el-col :span="24">
                                         <el-form-item label="对策" prop="countermeasure">
@@ -128,13 +146,6 @@
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
-
-                            </div>
-                        </el-tab-pane>
-
-                        <el-tab-pane class="productFromsItem">
-                            <span slot="label">对策原因</span>
-                            <div class="productFromsItem-body">
                                 <el-row>
                                     <el-col :span="24">
                                         <el-form-item label="不良内容" prop="badContent">
@@ -233,7 +244,7 @@
 
 <script>
 import imageView from "vue-imageview";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 import url from "api";
 export default {
   data() {
@@ -254,7 +265,8 @@ export default {
         happenReasonList: [], //发生原因
         happenFrequencyList: [], //发生频度
         outputReasonList: [], //输出原因
-        progressList: [] //对策进度
+        progressList: [], //对策进度
+        badCodeList: [] //不良代码
       },
       //所需提交的数据
       productInputs: {
@@ -275,17 +287,18 @@ export default {
         badPicture: "", //不良写真
         improvePicture: "", //改善后写真
         badContent: "", //不良内容
+        badCode: "" //不良代码
         //多余字段
-        bpmStatus: "string",
-        createBy: "string",
-        createDate: "2018-01-03T06:39:13.260Z",
-        createName: "string",
-        id: "string",
-        sysCompanyCode: "string",
-        sysOrgCode: "string",
-        updateBy: "string",
-        updateDate: "2018-01-03T06:39:13.260Z",
-        updateName: "string"
+        // bpmStatus: "string",
+        // createBy: "string",
+        // createDate: "2018-01-03T06:39:13.260Z",
+        // createName: "string",
+        // id: "string",
+        // sysCompanyCode: "string",
+        // sysOrgCode: "string",
+        // updateBy: "string",
+        // updateDate: "2018-01-03T06:39:13.260Z",
+        // updateName: "string"
       },
       //下拉验证规则
       rules: {
@@ -303,20 +316,24 @@ export default {
         countermeasure: [{ validator: checkSelect, trigger: "blur" }],
         afterContent: [{ validator: checkSelect, trigger: "blur" }],
         effectiveDate: [{ validator: checkSelect, trigger: "blur" }],
-        badContent: [{ validator: checkSelect, trigger: "blur" }]
+        badContent: [{ validator: checkSelect, trigger: "blur" }],
+        badCode: [{ validator: checkSelect, trigger: "blur" }]
       },
       timeRadio: 3,
       //图片查看
       imgInfoShow: false,
       imgArr: [],
       imageIndex: 0,
-      imgInfo:{
+      imgInfo: {
         badPicture_imageUrl: "",
-        improvePicture_imageUrl: "",
+        improvePicture_imageUrl: ""
       },
       //图片上传
       imgUpload: {
-        uploadUrl: this.$api_baseurl(this.$store.getters.get_host ? this.$store.getters.get_host : "") + url.file_POST, //上传地址
+        uploadUrl:
+          this.$api_baseurl(
+            this.$store.getters.get_host ? this.$store.getters.get_host : ""
+          ) + url.file_POST, //上传地址
         badPicture_imageUrl: "",
         improvePicture_imageUrl: "",
         headers: {
@@ -326,15 +343,15 @@ export default {
       }
     };
   },
-  props: ["isInfo","productInfo"],
+  props: ["isInfo", "productInfo"],
   created() {},
   mounted() {
     this.product_inti();
   },
   computed: {
-      ...mapGetters({
-          pInfo:'get_productinfo'
-      })
+    ...mapGetters({
+      pInfo: "get_productinfo"
+    })
   },
   components: {
     imageView
@@ -345,29 +362,29 @@ export default {
       if (this.isInfo) {
         this.productSelects = this.productInfo.productSelects;
       } else {
-          this.productInputs = this.pInfo;
-          this.get_productInfo_imgPath({
-              badPicture:this.productInputs.badPicture,
-              improvePicture:this.productInputs.improvePicture,
-          })
+        this.productInputs = this.pInfo;
+        this.get_productInfo_imgPath({
+          badPicture: this.productInputs.badPicture,
+          improvePicture: this.productInputs.improvePicture
+        });
       }
     },
     //获取履历信息图片地址
-    get_productInfo_imgPath(getUrls){
-        this.$get_file({
-            url:url.file_get,
-            params:{path:getUrls.badPicture}
-        }).then(res=>{
-            this.imgInfo.badPicture_imageUrl = res;
-            this.imgArr.push(res);
-        });
-        this.$get_file({
-            url:url.file_get,
-            params:{path:getUrls.improvePicture}
-        }).then(res=>{
-            this.imgInfo.improvePicture_imageUrl = res;
-            this.imgArr.push(res);
-        });
+    get_productInfo_imgPath(getUrls) {
+      this.$get_file({
+        url: url.file_get,
+        params: { path: getUrls.badPicture }
+      }).then(res => {
+        this.imgInfo.badPicture_imageUrl = res;
+        this.imgArr.push(res);
+      });
+      this.$get_file({
+        url: url.file_get,
+        params: { path: getUrls.improvePicture }
+      }).then(res => {
+        this.imgInfo.improvePicture_imageUrl = res;
+        this.imgArr.push(res);
+      });
     },
     imgInfoShowfn() {
       this.imgInfoShow = true;
@@ -412,14 +429,24 @@ export default {
             this.productInputs.badPicture.length > 0 &&
             this.productInputs.improvePicture.length > 0
           ) {
+            this.productInputs.happenReason = this.reasonSubmitChange(
+              this.productInputs.happenReason
+            );
+            this.productInputs.outputReason = this.reasonSubmitChange(
+              this.productInputs.outputReason
+            );
             this.$post({
               url: url.product_add,
               data: this.productInputs
             }).then(res => {
               if (res.code == 1) {
                 this.$message.success(res.msg);
-                // this.$store.dispatch("set_otherlink", Math.random());
-                // this.$store.dispatch("set_pageloading", "/product/productInfo");
+                this.$alert(res.msg, "录入成功", {
+                  confirmButtonText: "前往列表",
+                  callback: action => {
+                   this.$router.push('/product/productInfo')
+                  }
+                });
               } else {
                 this.$message.error(res.msg);
               }
@@ -438,6 +465,10 @@ export default {
           });
         }
       });
+    },
+    //发生原因与输出原因,提交格式处理
+    reasonSubmitChange(reasonArr) {
+      return reasonArr.toString();
     },
     goSave(formName) {}
   }
