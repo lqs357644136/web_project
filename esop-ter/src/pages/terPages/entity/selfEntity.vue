@@ -9,7 +9,6 @@
 <script>
 import check from "./check/check.vue";
 import { panelTitle } from "components";
-import { mapGetters } from "vuex";
 import url from "api";
 
 export default {

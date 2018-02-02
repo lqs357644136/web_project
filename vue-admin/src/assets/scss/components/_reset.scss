@@ -167,8 +167,6 @@ button {
         height: pxTorem(60px);
     }
     .el-table__body-wrapper {
-        //height:calc(100% - #{pxTorem(60px)}) !important;
-        height: initial !important;
         flex: 1;
     }
     td,
@@ -234,34 +232,21 @@ button {
     }
 } //下拉框
 .el-select {
+    width: 100%;
     .el-input {
-        .el-input__icon {
-            transition: transform .3s;
-            -ms-transform: translateY(-50%) rotate(180deg);
-            transform: translateY(-50%) rotateZ(180deg);
-        }
+        
     }
-} //输入框-number
-.el-input-number {
-    >* {
-        height: 100%;
-    }
-    .el-input__inner {
-        overflow: hidden;
-    }
-}
-
-.el-input__inner {
-    height: pxTorem(36px)
 } //用户下拉
 .el-dropdown-menu {
     min-width: pxTorem(100px);
 }
 
 .el-form-item {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     .el-form-item__label {
         width: pxTorem(100px);
+        font-size: pxTorem(16px);
     }
     .el-form-item__content {
         .el-date-editor.el-input {
@@ -286,21 +271,6 @@ button {
     align-items: center;
 }
 
-//请求加载动画重写
-#nprogress {
-    z-index: 9999;
-    .spinner {
-        right: pxTorem(10px);
-        top: pxTorem(10px);
-    }
-}
-
-//弹出框居中修复
-.el-dialog {
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-}
-
 //隐藏画板按钮
 .card-hidden-btn {
     float: right;
@@ -311,6 +281,6 @@ button {
 //隐藏画板主体
 .card-body-hidden {
     .el-card__body {
-        display: none; 
+        display: none;
     }
 }

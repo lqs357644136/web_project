@@ -43,7 +43,7 @@
 
                 <el-col v-show="typeFlag=='f'" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="上模">
-                    <el-input  @change="topChange()" type="text" v-model="macInfo.topMould" placeholder="请输入上模"></el-input>
+                    <el-input @change="topChange()" type="text" v-model="macInfo.topMould" placeholder="请输入上模"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col v-show="typeFlag=='f'" :xs="24" :sm="24" :md="6" :lg="6">
@@ -155,7 +155,6 @@
 
 <script>
 import { panelTitle } from "components";
-import { mapGetters } from "vuex";
 import url from "api";
 import { $dataFormat } from "common/filiter/index.js";
 
@@ -340,8 +339,12 @@ export default {
             this.macInfo.scrapQty = finish.scrapQty ? finish.scrapQty : "";
             this.macInfo.schQty = finish.schQty ? finish.schQty : "";
             this.macInfo.topMould = finish.topMould ? finish.topMould : "";
-            this.macInfo.middleMould = finish.middleMould? finish.middleMould: "";
-            this.macInfo.bottomMould = finish.bottomMould? finish.bottomMould: "";
+            this.macInfo.middleMould = finish.middleMould
+              ? finish.middleMould
+              : "";
+            this.macInfo.bottomMould = finish.bottomMould
+              ? finish.bottomMould
+              : "";
             this.macInfo.recType = finish.recType ? finish.recType : "";
             this.macInfo.id = finish.id;
             this.macInfo.createTime = finish.createTime;
@@ -354,11 +357,15 @@ export default {
               : "0.00";
 
             //进入报工页面时候处理表单typeFlag显示
-            if (this.macInfo.recType == "换模具" || this.macInfo.recType == "f") {
+            if (
+              this.macInfo.recType == "换模具" ||
+              this.macInfo.recType == "f"
+            ) {
               this.typeFlag = "f";
             } else {
               this.typeFlag = "a";
             }
+            
           } else {
             this.lsflag = false;
             this.isDailyStart = true;
@@ -397,15 +404,16 @@ export default {
     //初始化类型下拉列表
     typeSelect_init(type) {
       this.$get_noToken({
-        url: url.dailywork_type,
+        url: url.proDailywork_type,
         params: { type: type }
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
           for (let obj of res.data) {
             let option = {
-              label: obj.typename,
-              value: obj.typecode
+              label: obj.name,
+              value: obj.code,
+              isMould: obj.isMould
             };
             this.typeSelect.push(option);
           }

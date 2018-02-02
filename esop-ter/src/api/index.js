@@ -15,7 +15,8 @@ let url = {
   proDailywork_forOne: '/rest/kanban/getProdRecord',//GET 获取某个生产报工
   abnDailywork_add: '/rest/kanban/addProdAbnormal',//POST 保存异常报工
   proDailywork_add: '/rest/kanban/addProdRecord',//POST 保存生产报工
-  dailywork_type: '/rest/kanban/getRecType',//GET 获取报工类型
+  abnDailywork_type: '/rest/kanban/getAbnormalType',//GET 获取异常报工类型
+  proDailywork_type: '/rest/kanban/getRecordType',//GET 获取生产报工类型
   terBatch_List:'/rest/kanban/getMaterialBatch',//GET 获取物料信息列表
   terBatch_List_delete:'/rest/kanban/deleteMaterialBatch',//GET 删除物料录入信息
   terBatch_List_add:'/rest/kanban/addMaterialBatch',//POST 物料录入

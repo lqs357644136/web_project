@@ -1,15 +1,11 @@
 .checkView {
     display: flex;
-    flex: row;
+    flex-direction: column;
     height: 100%;
-    .checkViewRow {
-        height: 100%;
-        width: 100%;
-    }
     .checkInfo {
-        height: 100%;
-        .el-card {
-            height: 100%;
+        margin-bottom: pxTorem(20px);
+        .el-card__body {
+            padding-bottom: 0;
         }
         .infoItem {
             .item {
@@ -17,104 +13,171 @@
                 line-height: pxTorem(36px);
                 display: flex;
                 -webkit-flex-direction: row;
+                margin-bottom: pxTorem(20px);
                 label {
-                    text-align: justify;
+                    text-align: right;
                     width: pxTorem(80px);
-                    font-weight: 800;
                     span {
                         padding-left: 100%;
                         display: inline-block
                     }
                 }
                 .value {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
                     flex: 1;
                     margin-left: pxTorem(5px);
                 }
             }
+            .el-form-item {
+                height: 100%;
+                margin-bottom: 0;
+                .is-disabled {
+                    .el-input__inner {
+                        color: initial;
+                    }
+                }
+            }
         }
     }
-    .checkSpace {
-        height: 100%;
+    .checkMain {
+        flex: 1;
         display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-justify-content: space-between;
-        -webkit-box-orient: vertical;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
         flex-direction: column;
-        &>.el-card {}
-        .checkMain {
-            height:calc(60% - #{pxTorem(10px)});
-            margin-bottom: pxTorem(10px);
-            .el-card__body {
-                padding: 0;
+        .el-card__body {
+            flex: 1;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .checkMainBody {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .el-tabs__header {}
+            .el-tabs__content {
+                flex: 1;
             }
-            .checkMainBody {
+            &>.el-tabs {
                 height: 100%;
-                &>.el-tabs {
+                border: 0;
+            }
+            .isPassIcon {
+                color: #67C23A !important;
+            }
+            .failPassIcon {
+                color: #F56C6C !important;
+            }
+            .isPass {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                color: #67C23A;
+                height: 100%;
+                justify-content: center;
+                .icon {
+                    font-size: pxTorem(120px)
+                }
+                .text {
+                    font-size: pxTorem(24px)
+                }
+            }
+            .el-tabs__content {
+                .el-tab-pane {
                     height: 100%;
-                    border: 0;
-                }
-                .isPassIcon {
-                    color: green !important;
-                }
-                .failPassIcon {
-                    color: red !important;
-                }
-                .isPass {
+                    flex: 1;
                     display: flex;
                     flex-direction: column;
-                    text-align: center;
-                    color: green;
-                    height: 100%;
-                    justify-content: center;
-                    .icon {
-                        font-size: pxTorem(120px)
-                    }
-                    .text {
-                        font-size: pxTorem(24px)
-                    }
                 }
-                .el-tabs__content {
-                    .el-tab-pane {
-                        height: 100%;
-                    }
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: space-evenly;
+                justify-content: space-evenly;
+                justify-content: space-between;
+            }
+            .stepFrom {
+                height: 100%;
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: space-between;
+                .stepInputs {
                     display: flex;
-                    -webkit-flex-direction: column;
-                    flex-direction: column;
-                    -webkit-justify-content: space-evenly;
-                    justify-content: space-evenly;
-                    justify-content: space-between;
-                }
-                .stepFrom {
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    .stepInputs {
-                        display: flex;
-                        justify-content: space-around;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                    .stepInput {
                         margin-bottom: pxTorem(20px);
-                        .stepInput {
-                            margin-bottom: 0;
+                        margin-right: 0;
+                        width: 20%;
+                        .el-form-item__content {
+                            display: flex;
+                            flex-direction: row;
+                            .inputForm {
+                                display: flex;
+                                flex-direction: column;
+                                input {
+                                    flex:1;
+                                    font-size: pxTorem(20px);
+                                    text-align: center;
+                                }
+                            }
+                            .inputSuccess {
+                                input {
+                                    color: white;
+                                    background-color: #67C23A;
+                                    height: 100%;
+                                    text-align: center;
+                                }
+                            }
+                            .inputFail {
+                                input {
+                                    color: white;
+                                    background-color: #F56C6C;
+                                    height: 100%;
+                                    text-align: center;
+                                }
+                            }
+                            .airFlag {
+                                width: pxTorem(30px);
+                                margin: 0 pxTorem(10px);
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                                font-size: 30px;
+                                .none {
+                                    color: #6a6a6a;
+                                }
+                            }
                         }
                     }
-                    .checkChioce {
-                        //margin-bottom: pxTorem(20px);
+                    .nothingCheck {
+                        text-align: center;
+                        width: 100%;
+                        color: #20a0ff;
+                    }
+                }
+                .checkChioce {
+                    border-bottom: 1px solid #dfdfdf;
+                    display: flex;
+                    padding: pxTorem(5px) pxTorem(10px);
+                    justify-content: space-between;
+                    .info {
+                        line-height: pxTorem(40px);
                         display: flex;
-                        justify-content: space-between;
-                        padding: pxTorem(5px) pxTorem(10px);
                         label {
                             margin-right: pxTorem(10px);
                         }
+                        .checkTotal {
+                            margin-right: pxTorem(20px);
+                        }
+                        .checkNeed {
+                            margin-right: pxTorem(20px);
+                        }
                         .testType {
-                            line-height: pxTorem(36px);
+                            margin-right: pxTorem(20px);
                         }
                         .deviation {
-                            line-height: pxTorem(36px);
                             .range {}
                             .tolerance {
                                 display: flex;
@@ -125,49 +188,25 @@
                                     flex-direction: column;
                                     .stdValueMinus,
                                     .stdValuePlus {
-                                        line-height: pxTorem(10px);
                                         font-size: pxTorem(12px);
                                     }
                                 }
                             }
                         }
+                        .seeCheck {}
                     }
+                    .crlBtn {}
                 }
-                .stepBtn {
-                    margin-bottom: 0;
-                    margin-right: 0;
-                    .el-form-item__content {
-                        display: flex;
+            }
+            .stepBtn {
+                margin-bottom: 0;
+                margin-right: 0;
+                padding-top: pxTorem(5px);
+                .el-form-item__content {
+                    display: flex;
+                    width: 100%;
+                    button {
                         width: 100%;
-                        button {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-        }
-        .checkEnd {
-            height: 40%; //flex: 1;
-            .checkEnd-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                .edit {}
-            }
-            .el-card__body {
-                position: relative;
-                background-color: #d5d5d5;
-                display: block;
-                padding: 0;
-                .checkEndBody {
-                    overflow-y: auto;
-                    padding: pxTorem(10px);
-                    height: 100%;
-                    .success {
-                        color: green;
-                    }
-                    .error {
-                        color: red;
                     }
                 }
             }

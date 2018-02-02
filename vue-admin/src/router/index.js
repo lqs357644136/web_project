@@ -8,7 +8,8 @@ import i18n from 'common/i18n'
 //预加载
 //
 //公共
-// import login from 'pages/user/login.vue'
+import login from 'pages/user/login.vue'
+import notPage from 'pages/error/404'
 //
 //平板端
 import layout from 'pages/padPages/App.vue'
@@ -284,122 +285,20 @@ export const phoneModule = [{
   }
 ]
 
-//终端页面功能
-export const terModule = [{
-  //终端主页
-  path: '/ter/home',
-  name: 'terHome',
-  component: resolve => require(['pages/terPages/home/home.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.homePage,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  },
-}, {
-  //异常报工
-  path: '/ter/dailywork/adnDailywork',
-  name: 'adnDailywork',
-  component: resolve => require(['pages/terPages/dailywork/adnDailywork.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.adnDailywork,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  },
-}, {
-  //生产报工
-  path: '/ter/dailywork/proDailywork',
-  name: 'proDailywork',
-  component: resolve => require(['pages/terPages/dailywork/proDailywork.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.proDailywork,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  },
-}, {
-  //原料批次录入
-  path: '/ter/batch/batchEnterRaw',
-  name: 'batchEnterRaw',
-  component: resolve => require(['pages/terPages/batchEnter/batchEnterRaw.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.batchEnterRaw,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  },
-}, {
-  //调合批次录入
-  path: '/ter/batch/batchEnterBlend',
-  name: 'batchEnterBlend',
-  component: resolve => require(['pages/terPages/batchEnter/batchEnterBlend.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.batchEnterBlend,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  },
-}, {
-  //首件录入
-  path: '/ter/firstEntity',
-  name: 'terFirstEntity',
-  component: resolve => require(['pages/terPages/entity/firstEntity.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.firstEntity,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  }
-}, {
-  //自检录入
-  path: '/ter/selfEntity',
-  name: 'terSelfEntity',
-  component: resolve => require(['pages/terPages/entity/selfEntity.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.selfEntity,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  }
-}, {
-  //产品履历查看
-  path: '/ter/productInfo',
-  name: 'terProductInfo',
-  component: resolve => require(['pages/terPages/product/productInfo/productInfo.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.productInfo,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  }
-}, {
-  //安灯报表
-  path: '/ter/saleLamReport',
-  name: 'saleLamReport',
-  component: resolve => require(['pages/terPages/saleLamReport/saleLamReport.vue'], resolve),
-  //component: phoneHome,
-  meta: {
-    title: messages.saleLamReport,
-    icon: 'fa fa-asl-interpreting',
-    auth: false
-  }
-}]
-
-
 //公共模块
 const routes = [{
   path: '/404',
   name: 'notPage',
-  component: resolve => require(['pages/error/404'], resolve)
+  //component: resolve => require(['pages/error/404'], resolve),
+  component :notPage,
 }, {
   path: '*',
   redirect: '/404'
 }, {
   path: '/user/login',
   name: 'login',
-  component: resolve => require(['pages/user/login.vue'], resolve),
-  //component: login
+  //component: resolve => require(['pages/user/login.vue'], resolve),
+  component: login,
   meta: {
     auth: true
   }
@@ -409,8 +308,8 @@ const routes = [{
 }, {
   path: '/pad',
   redirect: '/specification',
-  component: resolve => require(['pages/padPages/App.vue'], resolve),
-  //component: layout,
+  //component: resolve => require(['pages/padPages/App.vue'], resolve),
+  component: layout,
   children: privateModule
 }, {
   path: '/phone',
@@ -418,12 +317,6 @@ const routes = [{
   component: resolve => require(['pages/phonePages/App.vue'], resolve),
   //component: phoneLayout,
   children: phoneModule
-}, {
-  path: '/ter',
-  redirect: '/ter/home',
-  component: resolve => require(['pages/terPages/App.vue'], resolve),
-  //component: phoneLayout,
-  children: terModule
 }]
 
 const router = new VueRouter({

@@ -1,10 +1,10 @@
 <template>
   <div class="saleChart">
     <el-row class="saleChartRow" :gutter="20">
-      <el-col class="saleChartCol" :xs="24" :sm="24" :md="12" :lg="12">
+      <el-col class="saleChartCol" :xs="12" :sm="12" :md="12" :lg="12">
         <div class="chartView" ref="pala_chart"></div>
       </el-col>
-      <el-col class="saleChartCol" :xs="24" :sm="24" :md="12" :lg="12">
+      <el-col class="saleChartCol" :xs="12" :sm="12" :md="12" :lg="12">
         <div class="chartView" ref="pie_chart"></div>
       </el-col>
     </el-row>

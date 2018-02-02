@@ -9,7 +9,7 @@
       </div>
       <div class="login-title">
         <p class="name">E-SOP管理系统</p>
-        <p class="msg">mobile admin <a href="http://192.168.1.10:8080/esop-mobile-apk/esop-mobile.apk">点击下载APP</a></p>
+        <p class="msg">mobile admin</p>
       </div>
       <div class="login-form">
         <el-form ref="host" :model="host" :rules="rules" label-width="0">
@@ -26,7 +26,7 @@
             <el-input type="password" v-model="form.password" placeholder="请输入账户密码：" class="form-input"></el-input>
           </el-form-item>
           <el-form-item class="login-item">
-            <el-button size="large" icon="check" class="form-submit" @click="submit_form"></el-button>
+            <el-button size="large" class="form-submit" @click="submit_form">登录</el-button>
           </el-form-item>
         </el-form>
       </div>

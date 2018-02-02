@@ -91,7 +91,6 @@
 
 <script>
 import { panelTitle } from "components";
-import { mapGetters } from "vuex";
 import url from "api";
 import { $dataFormat } from "common/filiter/index.js";
 export default {
@@ -219,15 +218,15 @@ export default {
     //初始化类型下拉列表
     typeSelect_init(type) {
       this.$get_noToken({
-        url: url.dailywork_type,
+        url: url.abnDailywork_type,
         params: { type: type }
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
           for (let obj of res.data) {
             let option = {
-              label: obj.typename,
-              value: obj.typecode
+              label: obj.name,
+              value: obj.code
             };
             this.typeSelect.push(option);
           }

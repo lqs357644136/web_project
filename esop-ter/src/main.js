@@ -1,7 +1,7 @@
 //导入样式
 import 'normalize.css'
 import 'font-awesome/scss/font-awesome.scss'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 //导入Vue框架
 import Vue from 'vue'
 //导入element组件
@@ -29,7 +29,61 @@ import i18n from 'common/i18n'
 // import './mock'
 
 //使用element-ui
-Vue.use(ElementUI)
+//Vue.use(ElementUI)
+import {
+  Input,
+  InputNumber,
+  Select,
+  Option,
+  Button,
+  ButtonGroup,
+  Table,
+  TableColumn,
+  DatePicker,
+  Form,
+  FormItem,
+  Tabs,
+  TabPane,
+  Alert,
+  Icon,
+  Row,
+  Col,
+  Upload,
+  Card,
+  MessageBox,
+  Message,
+  Notification
+} from 'element-ui'
+
+Vue.use(Input)
+Vue.use(InputNumber)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(ButtonGroup)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(DatePicker)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Alert)
+Vue.use(Icon)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Upload)
+Vue.use(Card)
+
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
+Vue.prototype.$notify = Notification
+Vue.prototype.$message = Message
+
+
+
 //使用api
 Vue.use(api)
 //发布后是否显示提示

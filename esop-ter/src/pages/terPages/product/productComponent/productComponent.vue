@@ -371,6 +371,7 @@ export default {
         url: url.file_get,
         params: { path: getUrls.badPicture }
       }).then(res => {
+        console.log(res)
         this.imgInfo.badPicture_imageUrl = res;
         this.imgArr.push(res);
       });

@@ -368,17 +368,12 @@
                     }
                     .dailyBtn {
                         height: pxTorem(36px);
-                        width: pxTorem(100px);
                         margin-left: pxTorem(20px);
                         margin-bottom: 0;
                         .subBtn {
                             height: 100%;
                             .el-form-item__content {
                                 height: 100%;
-                                button {
-                                    height: 100%;
-                                    width: 100%;
-                                }
                             }
                         }
                     }

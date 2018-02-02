@@ -17,7 +17,7 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col class="dailyFromCol" :xs="24" :sm="24" :md="11" :lg="11">
+              <el-col class="dailyFromCol" :xs="24" :sm="24" :md="18" :lg="18">
                 <el-form-item label="日期范围" prop="dateRange">
                   <el-date-picker v-model="inputs.dateRange" :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " value-format="yyyy-MM-dd" format="yyyy年MM月dd日" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期">
                   </el-date-picker>
@@ -27,10 +27,7 @@
           </div>
           <div class="dailyBtn">
             <el-form-item class="subBtn">
-              <el-button @click="findChart('inputs')" type="primary">
-                <i class="fa fa-search"></i>
-                <span> 查询</span>
-              </el-button>
+              <el-button @click="findChart('inputs')" type="primary">查询</el-button>
             </el-form-item>
           </div>
         </div>

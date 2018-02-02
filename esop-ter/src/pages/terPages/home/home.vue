@@ -11,7 +11,7 @@
 
 <script>
 //测试请求接口地址
-let api = '192.168.1.12:8080';
+let api = '192.168.1.10:8080';
 
 export default {
   data() {

@@ -70,7 +70,6 @@
 <script>
 import { panelTitle } from "components";
 import url from "api";
-import { server_base_url } from "common/config/index.js";
 
 export default {
   props: ["batchType"],
