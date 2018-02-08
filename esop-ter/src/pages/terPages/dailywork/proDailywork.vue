@@ -285,6 +285,7 @@ export default {
         url: url.proDailywork_list,
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
           this.dailyworkList = [];
           for (let obj of res.data.allList) {
@@ -328,7 +329,7 @@ export default {
             this.dailyworkList[0].qty = null;
             this.dailyworkList[0].scrapQty = null;
             this.isDailyStart = false;
-            //this.recTypeMenu = 
+            this.recTypeMenu = finish.recType ? finish.recType : [];
             this.macInfo.empNo = finish.empNo ? finish.empNo : "";
             this.macInfo.equipNo = finish.equipNo ? finish.equipNo : "";
             this.macInfo.resNo = finish.resNo ? finish.resNo : "";
@@ -558,7 +559,7 @@ export default {
       });
     },
     //列表状态
-    tableRowClassName(row, index) {
+    tableRowClassName({row}) {
       if (row.pro) {
         return "noDaily";
       } else {
