@@ -30,28 +30,28 @@
                   </el-form-item>
                 </el-col>
                 <!-- 是否换模具 start -->
-                <el-col v-show="typeFlag!='f'&&typeFlag.length>0" :xs="24" :sm="24" :md="6" :lg="6">
+                <el-col v-show="recTypeMenu.qty==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="生产数量">
                     <el-input @change="qtyChange()" type="number" v-model="macInfo.qty" placeholder="请输入生产数量"></el-input>
                   </el-form-item>
                 </el-col>
-                <el-col v-show="typeFlag!='f'&&typeFlag.length>0" :xs="24" :sm="24" :md="6" :lg="6">
+                <el-col v-show="recTypeMenu.scrapQty==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="报废数">
                     <el-input @change="scrapQtyChange()" type="number" v-model="macInfo.scrapQty" placeholder="请输入报废数"></el-input>
                   </el-form-item>
                 </el-col>
 
-                <el-col v-show="typeFlag=='f'" :xs="24" :sm="24" :md="6" :lg="6">
+                <el-col v-show="recTypeMenu.topMould==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="上模">
                     <el-input @change="topChange()" type="text" v-model="macInfo.topMould" placeholder="请输入上模"></el-input>
                   </el-form-item>
                 </el-col>
-                <el-col v-show="typeFlag=='f'" :xs="24" :sm="24" :md="6" :lg="6">
+                <el-col v-show="recTypeMenu.middleMould==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="中模">
                     <el-input @change="middleChange()" type="text" v-model="macInfo.middleMould" placeholder="请输入中模"></el-input>
                   </el-form-item>
                 </el-col>
-                <el-col v-show="typeFlag=='f'" :xs="24" :sm="24" :md="6" :lg="6">
+                <el-col v-show="recTypeMenu.bottomMould==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="下模">
                     <el-input @change="bottomChange()" type="text" v-model="macInfo.bottomMould" placeholder="请输入下模"></el-input>
                   </el-form-item>
@@ -210,7 +210,9 @@ export default {
         //验证规则
         recType: [{ validator: checkSelect, trigger: "blur" }],
         shift: [{ validator: checkSelect, trigger: "blur" }]
-      }
+      },
+      //动态菜单
+      recTypeMenu:[]
     };
   },
   computed: {
@@ -283,7 +285,6 @@ export default {
         url: url.proDailywork_list,
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
-        console.log(res);
         if (res.code == 1) {
           this.dailyworkList = [];
           for (let obj of res.data.allList) {
@@ -327,6 +328,7 @@ export default {
             this.dailyworkList[0].qty = null;
             this.dailyworkList[0].scrapQty = null;
             this.isDailyStart = false;
+            //this.recTypeMenu = 
             this.macInfo.empNo = finish.empNo ? finish.empNo : "";
             this.macInfo.equipNo = finish.equipNo ? finish.equipNo : "";
             this.macInfo.resNo = finish.resNo ? finish.resNo : "";
@@ -355,24 +357,12 @@ export default {
             this.macInfo.abnormalTime = finish.abnormalTime
               ? Math.floor(finish.abnormalTime / 60 * 100) / 100
               : "0.00";
-
-            //进入报工页面时候处理表单typeFlag显示
-            if (
-              this.macInfo.recType == "换模具" ||
-              this.macInfo.recType == "f"
-            ) {
-              this.typeFlag = "f";
-            } else {
-              this.typeFlag = "a";
-            }
-            
           } else {
             this.lsflag = false;
             this.isDailyStart = true;
             this.dailyStartHidden = true;
-            this.typeSelect_init(1);
+            this.typeSelect_init();
             this.shiftSelect_init();
-            this.partNoSelect_init(this.macInfo.plant);
           }
         } else {
           this.$message.error(res.msg);
@@ -402,10 +392,9 @@ export default {
       });
     },
     //初始化类型下拉列表
-    typeSelect_init(type) {
+    typeSelect_init() {
       this.$get_noToken({
-        url: url.proDailywork_type,
-        params: { type: type }
+        url: url.proDailywork_type
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
@@ -422,32 +411,10 @@ export default {
         }
       });
     },
-    //初始化产品编码下拉列表
-    partNoSelect_init(plant) {
-      this.$get_noToken({
-        url: url.check_getPartno,
-        params: { plant: plant }
-      }).then(res => {
-        if (res.code == 1) {
-          this.partNoSelect = [];
-          for (let obj of res.data) {
-            let option = {
-              label: obj.ptnm,
-              value: obj.ptno
-            };
-            this.partNoSelect.push(option);
-          }
-        } else {
-          this.$message.error(res.msg);
-        }
-      });
-    },
     //点选某个报工类型
     recTypeChange(recType) {
       let params = {
-        recType: recType,
-        equipNo: this.macInfo.equipNo,
-        empNo: this.macInfo.empNo
+        recType: recType
       };
       if (this.isDailyStart && recType) {
         this.$get_noToken({
@@ -455,24 +422,18 @@ export default {
           params: params
         }).then(res => {
           if (res.code == 1) {
-            if (!res.data.id) {
-              //允许开始报工
-              this.typeFlag = recType;
-              this.macInfo.qty = "0";
-              this.macInfo.scrapQty = "0";
-              this.macInfo.topMould = "";
-              this.macInfo.middleMould = "";
-              this.macInfo.bottomMould = "";
-              this.dailyStartHidden = true;
-              let flag = this.dailyStartFlag();
-              if (flag) {
-                this.dailyStartHidden = false;
-                this.isDailyStart = true;
-              }
-            } else {
-              //允许结束报工
-              this.isDailyStart = false;
-              this.macInfo.id = res.data.id;
+            //允许开始报工
+            this.recTypeMenu = res.data;
+            this.macInfo.qty = 0;
+            this.macInfo.scrapQty = 0;
+            this.macInfo.topMould = 0;
+            this.macInfo.middleMould = 0;
+            this.macInfo.bottomMould = 0;
+            this.dailyStartHidden = true;
+            let flag = this.dailyStartFlag();
+            if (flag) {
+              this.dailyStartHidden = false;
+              this.isDailyStart = true;
             }
           } else {
             this.$message.error(res.msg);
@@ -534,20 +495,6 @@ export default {
     dailyStartFlag() {
       let flag = false;
       if (!this.lsflag) {
-        // if (this.typeFlag != "f" && this.typeFlag.length > 0) {
-        //   flag =
-        //     this.macInfo.recType.length > 0 &&
-        //     this.macInfo.shift.length > 0;
-        //     this.macInfo.qty.length > 0 &&
-        //     this.macInfo.scrapQty.length > 0 &&
-        // } else if (this.typeFlag == "f") {
-        //   flag =
-        //     this.macInfo.recType.length > 0 &&
-        //     this.macInfo.topMould.length > 0 &&
-        //     this.macInfo.middleMould.length > 0 &&
-        //     this.macInfo.bottomMould.length > 0 &&
-        //     this.macInfo.shift.length > 0;
-        // }
         flag = this.macInfo.recType.length > 0 && this.macInfo.shift.length > 0;
       }
       return flag;
@@ -568,7 +515,6 @@ export default {
         middleMould: this.macInfo.middleMould,
         bottomMould: this.macInfo.bottomMould
       };
-      console.log(data);
       this.$post_noToken({
         url: url.proDailywork_add,
         data

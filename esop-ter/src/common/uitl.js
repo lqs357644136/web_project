@@ -29,28 +29,28 @@ export const api_baseurl = function (host) {
 
 //终端获取机器信息方法
 export const getMacINfo = function () {
-  let ANDROID = window.android;
-  let equipNo = ANDROID.getProcess();
-  let empNo = ANDROID.getJobNumber();
-  let line = ANDROID.getLine();
-  let plant = ANDROID.getPlant();
-  let ptno = ANDROID.getPartNo();
-  return {
-    equipNo: equipNo,
-    empNo: empNo,
-    line: line,
-    plant: plant,
-    ptno: ptno
-  }
-
+  // let ANDROID = window.android;
+  // let equipNo = ANDROID.getProcess();
+  // let empNo = ANDROID.getJobNumber();
+  // let line = ANDROID.getLine();
+  // let plant = ANDROID.getPlant();
+  // let ptno = ANDROID.getPartNo();
   // return {
-  //   backUp:function(){
-  //     console.log("返回上一页(只能在终端上生效)");
-  //   },
-  //   equipNo: 'C01',//工位
-  //   empNo: 30031,//工号
-  //   line:'BC1',//制程
-  //   plant:'1000',//车间
-  //   ptno:'06873008',//产品编码
+  //   equipNo: equipNo,
+  //   empNo: empNo,
+  //   line: line,
+  //   plant: plant,
+  //   ptno: ptno
   // }
+
+  return {
+    backUp:function(){
+      console.log("返回上一页(只能在终端上生效)");
+    },
+    equipNo: 'C01',//工位
+    empNo: 30031,//工号
+    line:'BC1',//制程
+    plant:'1000',//车间
+    ptno:'06873008',//产品编码
+  }
 }

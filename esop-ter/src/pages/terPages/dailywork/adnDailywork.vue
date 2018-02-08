@@ -1,91 +1,91 @@
 <template>
-    <div class="panel">
-        <panel-title :back="isDailyStart" :center="true" :title="$route.meta.title"></panel-title>
-        <div class="panel-body">
+  <div class="panel">
+    <panel-title :back="isDailyStart" :center="true" :title="$route.meta.title"></panel-title>
+    <div class="panel-body">
 
-            <el-form :model="macInfo" :rules="rules" ref="macInfo" class="dailywork">
-                <!-- 报工信息 -->
-                <el-card class="box-card dailywork-INfo">
-                    <div slot="header" class="clearfix">
-                        <span>报工信息</span>
-                    </div>
-                    <div class="dailywork-body">
-                        <div class="dailyFrom">
-                            <el-row class="" :gutter="20">
-                                <el-col :xs="24" :sm="24" :md="8" :lg="8">
-                                    <el-form-item label="异常类型" prop="recType">
-                                        <el-select :disabled="!isDailyStart" @change="recTypeChange(macInfo.recType)" v-model="macInfo.recType" placeholder="请选择">
-                                            <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                                        </el-select>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :xs="24" :sm="24" :md="8" :lg="8">
-                                    <el-form-item label="机台">
-                                        <el-input :disabled="true" v-model="macInfo.equipNo" placeholder="机台"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :xs="24" :sm="24" :md="8" :lg="8">
-                                    <el-form-item label="工号/姓名">
-                                        <el-input :disabled="true" v-model="macInfo.empNo" placeholder="工号/姓名"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :xs="24" :sm="24" :md="8" :lg="8">
-                                    <el-form-item label="开始时间">
-                                        <el-input :disabled="true" v-model="startTime" placeholder="-"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :xs="24" :sm="24" :md="8" :lg="8">
-                                    <el-form-item label="结束时间">
-                                        <el-input :disabled="true" v-model="overTime" placeholder="-"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :xs="24" :sm="24" :md="8" :lg="8">
-                                    <el-form-item label="异常工时">
-                                        <el-input :disabled="true" v-model="allTime" placeholder="-"></el-input>
-                                    </el-form-item>
-                                </el-col>
-                            </el-row>
-                        </div>
-                        <div class="dailyBtn">
-                            <el-form-item class="subBtn">
-                                <el-button @click="dailyStart()" v-if="isDailyStart" :disabled="dailyStartHidden" type="primary">
-                                    <i class="fa fa-hand-pointer-o"></i> 开始报工</el-button>
-                                <el-button @click="dailyEnd()" v-else type="success">
-                                    <i class="fa fa-step-forward"></i> 结束报工</el-button>
-                            </el-form-item>
-                        </div>
-                    </div>
-                </el-card>
+      <el-form :model="macInfo" :rules="rules" ref="macInfo" class="dailywork">
+        <!-- 报工信息 -->
+        <el-card class="box-card dailywork-INfo">
+          <div slot="header" class="clearfix">
+            <span>报工信息</span>
+          </div>
+          <div class="dailywork-body">
+            <div class="dailyFrom">
+              <el-row class="" :gutter="20">
+                <el-col :xs="24" :sm="24" :md="8" :lg="8">
+                  <el-form-item label="异常类型" prop="recType">
+                    <el-select :disabled="!isDailyStart" @change="recTypeChange(macInfo.recType)" v-model="macInfo.recType" placeholder="请选择">
+                      <el-option v-for="item in typeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="8" :lg="8">
+                  <el-form-item label="机台">
+                    <el-input :disabled="true" v-model="macInfo.equipNo" placeholder="机台"></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="8" :lg="8">
+                  <el-form-item label="工号/姓名">
+                    <el-input :disabled="true" v-model="macInfo.empNo" placeholder="工号/姓名"></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="8" :lg="8">
+                  <el-form-item label="开始时间">
+                    <el-input :disabled="true" v-model="startTime" placeholder="-"></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="8" :lg="8">
+                  <el-form-item label="结束时间">
+                    <el-input :disabled="true" v-model="overTime" placeholder="-"></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :xs="24" :sm="24" :md="8" :lg="8">
+                  <el-form-item label="异常工时">
+                    <el-input :disabled="true" v-model="allTime" placeholder="-"></el-input>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+            </div>
+            <div class="dailyBtn">
+              <el-form-item class="subBtn">
+                <el-button @click="dailyStart()" v-if="isDailyStart" :disabled="dailyStartHidden" type="primary">
+                  <i class="fa fa-hand-pointer-o"></i> 开始报工</el-button>
+                <el-button @click="dailyEnd()" v-else type="success">
+                  <i class="fa fa-step-forward"></i> 结束报工</el-button>
+              </el-form-item>
+            </div>
+          </div>
+        </el-card>
 
-                <!-- 报工列表 -->
-                 <el-table class="dailywork-list" :row-class-name="tableRowClassName" :highlight-current-row="false" :data="dailyworkList" height="100%" border style="width: 100%">
-                      <el-table-column align="center" type="index" label="序号"></el-table-column>
-                      <el-table-column align="center" prop="recType" label="异常类型"></el-table-column>
-                      <el-table-column prop="createTime" label="开始时间">
-                          <template slot-scope="scope">
-                              <div v-if="scope.row.createTime">
-                                  <i class="el-icon-time"></i>
-                                  <span>{{ scope.row.createTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
-                              </div>
-                              <div v-else>-</div>
-                          </template>
-                      </el-table-column>
-                      <el-table-column prop="endTime" label="结束时间">
-                          <template slot-scope="scope" v-if="scope.row.endTime">
-                              <div v-if="scope.row.endTime">
-                                  <i class="el-icon-time"></i>
-                                  <span>{{ scope.row.endTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
-                              </div>
-                              <div v-else>-</div>
-                          </template>
-                      </el-table-column>
-                      <el-table-column align="center" prop="abnormalTime" label="异常工时(小时)"></el-table-column>
-                  </el-table>
+        <!-- 报工列表 -->
+        <el-table class="dailywork-list" :row-class-name="tableRowClassName" :highlight-current-row="false" :data="dailyworkList" height="100%" border style="width: 100%">
+          <el-table-column align="center" type="index" label="序号"></el-table-column>
+          <el-table-column align="center" prop="recType" label="异常类型"></el-table-column>
+          <el-table-column prop="createTime" label="开始时间">
+            <template slot-scope="scope">
+              <div v-if="scope.row.createTime">
+                <i class="el-icon-time"></i>
+                <span>{{ scope.row.createTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+              </div>
+              <div v-else>-</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="endTime" label="结束时间">
+            <template slot-scope="scope" v-if="scope.row.endTime">
+              <div v-if="scope.row.endTime">
+                <i class="el-icon-time"></i>
+                <span>{{ scope.row.endTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
+              </div>
+              <div v-else>-</div>
+            </template>
+          </el-table-column>
+          <el-table-column align="center" prop="abnormalTime" label="异常工时(小时)"></el-table-column>
+        </el-table>
 
-            </el-form>
+      </el-form>
 
-        </div>
     </div>
+  </div>
 
 </template>
 
@@ -108,6 +108,8 @@ export default {
       dailyStartHidden: true,
       macInfo: {
         equipNo: "", //机台编号
+        line: "", //线程
+        plant: "", //机台
         empNo: "", //工号
         recType: "", //报工类型
         createTime: "", //开始时间
@@ -170,6 +172,8 @@ export default {
       let macInfo = Window.GETMACINFO();
       this.macInfo.equipNo = macInfo.equipNo;
       this.macInfo.empNo = macInfo.empNo;
+      this.macInfo.line = macInfo.line;
+      this.macInfo.plant = macInfo.plant;
       this.getAdnList();
     },
     //获取列表信息,
@@ -208,7 +212,7 @@ export default {
           } else {
             this.isDailyStart = true;
             this.dailyStartHidden = true;
-            this.typeSelect_init(0);
+            this.typeSelect_init();
           }
         } else {
           this.$message.error(res.msg);
@@ -216,10 +220,9 @@ export default {
       });
     },
     //初始化类型下拉列表
-    typeSelect_init(type) {
+    typeSelect_init() {
       this.$get_noToken({
-        url: url.abnDailywork_type,
-        params: { type: type }
+        url: url.abnDailywork_type
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
@@ -267,7 +270,9 @@ export default {
       let data = {
         createUser: this.macInfo.empNo,
         equipNo: this.macInfo.equipNo,
-        recType: this.macInfo.recType
+        recType: this.macInfo.recType,
+        line: this.macInfo.line,
+        plant: this.macInfo.plant,
       };
       this.$post_noToken({
         url: url.abnDailywork_add,
@@ -302,7 +307,7 @@ export default {
       });
     },
     //列表状态
-    tableRowClassName(row, index) {
+    tableRowClassName({ row }) {
       if (row.abn) {
         return "noDaily";
       } else {
