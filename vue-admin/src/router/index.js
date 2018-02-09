@@ -25,9 +25,10 @@ import machineReachRate from 'pages/padPages/signage/machineReachRate.vue'
 import prodSchedule from 'pages/padPages/signage/prodSchedule.vue'
 import wholeReachRate from 'pages/padPages/signage/wholeReachRate.vue'
 import specification from 'pages/padPages/specification/specification.vue'
-// import xbar from 'pages/padPages/x-bar/x-bar.vue'testNoLogin
-// import attention from 'pages/padPages/attention/attention.vue'
-// import homePage from 'pages/padPages/home/index.vue'
+import notice from 'pages/padPages/messagePush/notice.vue'
+import bulletin from 'pages/padPages/messagePush/bulletin.vue'
+import precautions from 'pages/padPages/messagePush/precautions.vue'
+// import xbar from 'pages/padPages/x-bar/x-bar.vue'
 //
 //手机版
 //import phoneLayout from 'pages/phonePages/App.vue'
@@ -206,84 +207,120 @@ export const privateModule = [
       auth: true
     }
   },
-  //待开发
   {
-    //注意事项
-    path: '/attention',
-    name: 'attention',
-    component: resolve => require(['pages/padPages/attention/attention.vue'], resolve),
-    //component: attention,
+    //消息推送
+    path: '/messagePush',
+    name: 'messagePush',
     meta: {
-      title: messages.attention,
+      title: messages.messagePush,
+      icon: 'fa fa-comment-o',
+      auth: true,
+      children: [{
+          title: messages.notice,
+          path: '/messagePush/notice',
+          name: 'notice',
+        },
+        {
+          title: messages.bulletin,
+          path: '/messagePush/bulletin',
+          name: 'bulletin',
+        },
+        {
+          title: messages.precautions,
+          path: '/messagePush/precautions',
+          name: 'precautions',
+        }
+      ]
+    }
+  },
+  {
+    //消息广播
+    path: '/messagePush/notice',
+    name: 'notice',
+    //component: resolve => require(['pages/padPages/messagePush/notice.vue'], resolve),
+    component: notice,
+    meta: {
+      title: messages.notice,
       icon: 'fa fa-binoculars',
       auth: true
     }
   },
-  //首页
   {
-    path: '/home',
-    name: 'homePage',
-    component: resolve => require(['pages/padPages/home/index.vue'], resolve),
-    //component: homePage,
+    //电子公告
+    path: '/messagePush/bulletin',
+    name: 'bulletin',
+    //component: resolve => require(['pages/padPages/messagePush/bulletin.vue'], resolve),
+    component: bulletin,
     meta: {
-      title: messages.homePage,
-      icon: 'fa fa-institution ',
+      title: messages.bulletin,
+      icon: 'fa fa-binoculars',
       auth: true
     }
   },
-
+  {
+    //注意事项
+    path: '/messagePush/precautions',
+    name: 'precautions',
+    //component: resolve => require(['pages/padPages/messagePush/precautions.vue'], resolve),
+    component: precautions,
+    meta: {
+      title: messages.precautions,
+      icon: 'fa fa-binoculars',
+      auth: true
+    }
+  },
 ]
 
 //手机页面功能
-export const phoneModule = [{
-    //手机主页
-    path: '/phone/home',
-    name: 'phoneHome',
-    component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.homePage,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
-  },
-  {
-    //手机用户页
-    path: '/phone/user',
-    name: 'phoneUser',
-    component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.user,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
-  },
-  {
-    //手机消息页
-    path: '/phone/news',
-    name: 'phoneNews',
-    component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.msg,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
-  },
-  {
-    //电子看板
-    path: '/phone/signage',
-    name: 'phoneSignage',
-    component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
-    //component: phoneHome,
-    meta: {
-      title: messages.signage,
-      icon: 'fa fa-asl-interpreting',
-      auth: true
-    },
-  }
-]
+// export const phoneModule = [{
+//     //手机主页
+//     path: '/phone/home',
+//     name: 'phoneHome',
+//     component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
+//     //component: phoneHome,
+//     meta: {
+//       title: messages.homePage,
+//       icon: 'fa fa-asl-interpreting',
+//       auth: true
+//     },
+//   },
+//   {
+//     //手机用户页
+//     path: '/phone/user',
+//     name: 'phoneUser',
+//     component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
+//     //component: phoneHome,
+//     meta: {
+//       title: messages.user,
+//       icon: 'fa fa-asl-interpreting',
+//       auth: true
+//     },
+//   },
+//   {
+//     //手机消息页
+//     path: '/phone/news',
+//     name: 'phoneNews',
+//     component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
+//     //component: phoneHome,
+//     meta: {
+//       title: messages.msg,
+//       icon: 'fa fa-asl-interpreting',
+//       auth: true
+//     },
+//   },
+//   {
+//     //电子看板
+//     path: '/phone/signage',
+//     name: 'phoneSignage',
+//     component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
+//     //component: phoneHome,
+//     meta: {
+//       title: messages.signage,
+//       icon: 'fa fa-asl-interpreting',
+//       auth: true
+//     },
+//   }
+// ]
 
 //公共模块
 const routes = [{
@@ -311,13 +348,15 @@ const routes = [{
   //component: resolve => require(['pages/padPages/App.vue'], resolve),
   component: layout,
   children: privateModule
-}, {
-  path: '/phone',
-  redirect: '/phone/home',
-  component: resolve => require(['pages/phonePages/App.vue'], resolve),
-  //component: phoneLayout,
-  children: phoneModule
-}]
+}, 
+// {
+//   path: '/phone',
+//   redirect: '/phone/home',
+//   component: resolve => require(['pages/phonePages/App.vue'], resolve),
+//   //component: phoneLayout,
+//   children: phoneModule
+// }
+]
 
 const router = new VueRouter({
   routes,

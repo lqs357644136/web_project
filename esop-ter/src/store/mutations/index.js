@@ -1,67 +1,16 @@
 
-import {
-  SET_MENUS
-} from './type';
+import { SET_MENUS } from './type';
 import * as type from 'store/mutations/type';
-import {
-  setToken , setHost
-} from 'common/cookie'
 import i18n from 'common/i18n'
-import router from 'router/index.js'
 
 export default {
-  [type.SET_HOST](state, host) {
-    state.host = host;
-    setHost(host);
-  },
-  [type.SET_TOKEN](state, token) {
-    state.token = token;
-    setToken(token);
-  },
-  [type.SET_USERINFO](state, userInfo) {
-    state.userInfo = userInfo;
-  },
-  [type.LOGIN_OUT](state) {
-    state.token = null;
-    setToken('');
-    state.userInfo = null;
-  },
-  [type.SET_LEFTSLIDE](state) {
-    state.leftSilde = state.leftSilde ? false : true
-  },
   [type.SET_LANG](state, lang) {
     state.lang = lang;
     i18n.locale = state.lang;
   },
-  [type.SET_MENUS](state, menus) {
-    state.menus = roleMenus(menus);
-  },
-  [type.SET_PAGELOADING](state, path) {
-    state.pageloading = true;
-    if (path) {
-      let routerName = router.currentRoute.name;
-      if(routerName=='firstEntity'||routerName=='tourEntity'){
-        setTimeout(()=>{
-          state.fromCheckList = false
-        },200);
-      }
-      setTimeout(router.push({
-        path: path
-      }), 500);
-    }
-  },
-  [type.CLOSE_PAGELOADING](state) {
-    state.pageloading = false
-  },
-  [type.SET_FROMCHECKLIST](state, fromState) {
-    state.fromCheckList = fromState;
-  },
   [type.SET_CHECKLIST](state, checkList) {
     state.checkList = checkList;
   }, 
-  [type.SET_OTHERLINK](state, otherLink) {
-    state.otherLink = otherLink;
-  },
   [type.SET_PRODUCTINFO](state, productInfo) {
     state.productInfo = productInfo;
   },

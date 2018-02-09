@@ -11,13 +11,6 @@ let messages = i18n.getLocaleMessage(lang).message.menu;
 
 //公共模块
 const routes = [{
-  path: '/404',
-  name: 'notPage',
-  component:r => require.ensure([], () => r(require('pages/error/404')), 'notPage'),
-}, {
-  path: '*',
-  redirect: '/404'
-}, {
   path: '/ter',
   redirect: '/ter/home'
 },{
@@ -28,7 +21,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.homePage,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   },
 }, {
@@ -39,7 +31,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.adnDailywork,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   },
 }, {
@@ -50,7 +41,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.proDailywork,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   },
 }, {
@@ -61,7 +51,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.batchEnterRaw,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   },
 }, {
@@ -72,7 +61,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.batchEnterBlend,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   },
 }, {
@@ -83,7 +71,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.firstEntity,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   }
 }, {
@@ -94,7 +81,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.selfEntity,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   }
 }, {
@@ -105,7 +91,6 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.productInfo,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   }
 }, {
@@ -116,7 +101,6 @@ const routes = [{
   //component: machineReachRate,
   meta: {
     title: messages.machineReachRate,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   }
 }, {
@@ -127,7 +111,6 @@ const routes = [{
   //component: prodSchedule,
   meta: {
     title: messages.prodSchedule,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   }
 },  {
@@ -138,7 +121,6 @@ const routes = [{
   //component: wholeReachRate,
   meta: {
     title: messages.wholeReachRate,
-    icon: 'fa fa-asl-interpreting',
     auth: false
   }
 },  {
@@ -149,7 +131,16 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.saleLamReport,
-    icon: 'fa fa-asl-interpreting',
+    auth: false
+  }
+},{
+  //安灯报表
+  path: '/ter/precautions',
+  name: 'precautions',
+  component:r => require.ensure([], () => r(require('pages/terPages/messagePush/precautions.vue')), 'precautions'),
+  //component: precautions,
+  meta: {
+    title: messages.precautions,
     auth: false
   }
 }]
@@ -170,13 +161,8 @@ const router = new VueRouter({
 })
 
 //全局路由配置
-//路由开始之前的操作
 router.beforeEach((to, from, next) => {
   //判断是否需要获取接口地址
-  if(to.path.indexOf('/ter')!=-1){
-    let base_url = to.query.ip
-    store.dispatch('set_host',base_url)
-  }
   next();
 })
 

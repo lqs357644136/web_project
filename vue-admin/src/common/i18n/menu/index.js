@@ -7,7 +7,6 @@ export const menu_zh = {
   product: '产品履历',
   productInfo: '产品履历查看',
   productEnter: '产品履历录入',
-  attention: '注意事项',
   tourEntity: '巡检录入',
   checkList: '巡检清单',
   batchEnter: '批次录入管理',
@@ -27,6 +26,10 @@ export const menu_zh = {
   selfEntity: '自检录入',
   saleLamReport: '安灯报表',
   specification: '检验规范',
+  messagePush: '消息推送',
+  notice: '消息广播',
+  bulletin: '电子公告',
+  precautions: '注意事项',
 };
 
 export const menu_en = {
@@ -38,7 +41,6 @@ export const menu_en = {
   product: 'productResume',
   productInfo: 'productInfo',
   productEnter: 'productEnter',
-  attention: 'attention',
   tourEntity: 'tourEntity',
   checkList: 'checkList',
   batchEnter: 'batchEnter',
@@ -58,4 +60,8 @@ export const menu_en = {
   selfEntity: 'selfEntity',
   saleLamReport: 'saleLamReport',
   specification: 'specification',
+  messagePush: 'messagePush',
+  notice: 'notice',
+  bulletin: 'bulletin',
+  precautions: 'precautions',
 };

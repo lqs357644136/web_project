@@ -71,6 +71,11 @@ export default {
           path: '/ter/wholeReachRate?ip='+api,
           title: "整体达成率电子看板",
           icon: "icon fa fa-pie-chart"
+        },
+        {
+          path: '/ter/precautions?ip='+api,
+          title: "注意事项",
+          icon: "icon fa fa-bandcamp"
         }
       ]
     };

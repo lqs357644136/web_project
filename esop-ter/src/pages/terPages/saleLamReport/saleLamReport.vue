@@ -38,6 +38,31 @@
   </div>
 </template>
 <script>
+//////////UI组件加载//////////
+import Vue from 'vue'
+import {
+  Input,
+  Select,
+  Option,
+  Button,
+  ButtonGroup,
+  Form,
+  FormItem,
+  Row,
+  Col,
+  DatePicker
+} from 'element-ui'
+
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(DatePicker)
+/////////////////////////////
 import { panelTitle } from "components";
 import saleChart from "./saleChart.vue";
 import { $dataFormat } from "common/filiter/index.js";
@@ -112,7 +137,7 @@ export default {
         // endDate: $dataFormat(this.inputs.dateRange[1], "2017-01-01 00:00:00")
       };
       this.$get_noToken({
-        url: url.saleLam_get,
+        url: this.$api_baseurl(url.saleLam_get),
         params: params
       }).then(res => {
         if (res.code == "1") {

@@ -71,13 +71,16 @@ export default {
             {
               name: "signage",
               child: [
-                { name: "machineReachRate" },
-                { name: "prodSchedule" },
-                { name: "wholeReachRate" }
+                { name: "machineReachRate" },{ name: "prodSchedule" },{ name: "wholeReachRate" }
               ]
-            }
-            //批次录入
-            // {name: "batchEnter",child: [{ name: "batchEnterBlend" }, { name: "batchEnterRaw" }] },
+            },
+            //消息推送
+            {
+              name: "messagePush",
+              child: [
+                { name: "notice" },{ name: "bulletin" },{ name: "precautions" }
+              ]
+            },
           ];
 
           this.$store.dispatch("set_menus", menus);

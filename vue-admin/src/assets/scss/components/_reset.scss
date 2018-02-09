@@ -233,9 +233,7 @@ button {
 } //下拉框
 .el-select {
     width: 100%;
-    .el-input {
-        
-    }
+    .el-input {}
 } //用户下拉
 .el-dropdown-menu {
     min-width: pxTorem(100px);
@@ -282,5 +280,24 @@ button {
 .card-body-hidden {
     .el-card__body {
         display: none;
+    }
+}
+
+//带搜索功能的画板主体
+.listForm {
+    margin-bottom: pxTorem(20px);
+    .el-card__body {
+        .form_body {
+            display: flex;
+            flex-direction: row;
+            .forms {
+                margin-left: 0;
+                margin-right: 0;
+                flex: 1;
+            }
+            .btn {
+                margin-left: pxTorem(20px);
+            }
+        }
     }
 }

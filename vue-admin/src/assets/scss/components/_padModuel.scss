@@ -181,8 +181,8 @@
         flex-direction: column;
         .listForm {
             margin-bottom: pxTorem(20px);
-            .el-form-item{
-                margin-bottom:0;
+            .el-form-item {
+                margin-bottom: 0;
             }
         }
         .listTable {
@@ -384,6 +384,25 @@
         .dialog-footer {
             button {
                 width: 100%;
+            }
+        }
+    } //注意事项
+    .precautions {
+        .panel-body {
+            display: flex;
+            flex-direction: column;
+            .listForm {
+                .el-card__body {
+                    padding-bottom: 0;
+                }
+            }
+            .tabelList {
+                flex: 1;
+                .listPreContent {
+                    text-align: left;
+                    display: block;
+                    padding: 0px 5px;
+                }
             }
         }
     }

@@ -45,7 +45,7 @@
     </el-form>
 
     <!-- 批次录入列表 -->
-    <el-table class="tableBox" :stripe="true" :data="tableData" border style="width: 100%">
+    <el-table class="tableBox" :stripe="true" :data="tableData" border height="100%" style="width: 100%">
       <el-table-column prop="materialNo" :label="materialNo"></el-table-column>
       <el-table-column prop="batchNo" label="批次号"></el-table-column>
       <el-table-column prop="quantity" label="数量"></el-table-column>
@@ -142,8 +142,8 @@ export default {
     },
     //获取工位对应原料信息
     getRawInfo() {
-      this.$get({
-        url: url.getMaterial,
+      this.$get_noToken({
+        url: this.$api_baseurl(url.getMaterial),
         params: {
           plant: this.macInfo.plant,
           line: this.macInfo.line,
@@ -173,7 +173,7 @@ export default {
             unit:self.inputs.unit
           };
           this.$post_noToken({
-            url: url.terBatch_List_add,
+            url: this.$api_baseurl(url.terBatch_List_add),
             data: params
           }).then(res => {
             if (res.code == 1) {
@@ -204,7 +204,7 @@ export default {
         type: "warning"
       }).then(() => {
         this.$get_noToken({
-          url: url.terBatch_List_delete,
+          url: this.$api_baseurl(url.terBatch_List_delete),
           params: { id: id }
         }).then(res => {
           if (res.code == 1) {
@@ -220,7 +220,7 @@ export default {
     //获取清单数据
     get_batchList() {
       this.$get_noToken({
-        url: url.terBatch_List,
+        url: this.$api_baseurl(url.terBatch_List),
         params: { type: this.batchType }
       }).then(res => {
         if (res.code == 1) {

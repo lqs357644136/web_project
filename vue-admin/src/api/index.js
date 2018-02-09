@@ -27,25 +27,7 @@ let url = {
   prodSchedule_list:'/rest/kanban/getProdScheduleBoard',//GET 获取总排成电子看板
   wholeReachRate_list:'/rest/kanban/getWholeReachRateBoard',//GET 获取整体达成率电子看板
   inspectSpec_list:'/rest/kanban/getInspectSpecList',//GET 获取检验规范列表
-  //终端
-  abnDailywork_list: '/rest/kanban/getProdAbnormalList',//GET 获取获取异常报工列表
-  proDailywork_list: '/rest/kanban/getProdRecordList',//GET 获取获取生产报工列表
-  abnDailywork_forOne: '/rest/kanban/getProdAbnormal',//GET 获取某个异常报工
-  proDailywork_forOne: '/rest/kanban/getProdRecord',//GET 获取某个生产报工
-  abnDailywork_add: '/rest/kanban/addProdAbnormal',//POST 保存异常报工
-  proDailywork_add: '/rest/kanban/addProdRecord',//POST 保存生产报工
-  dailywork_type: '/rest/kanban/getRecType',//GET 获取报工类型
-  terBatch_List:'/rest/kanban/getMaterialBatch',//GET 获取物料信息列表
-  terBatch_List_delete:'/rest/kanban/deleteMaterialBatch',//GET 删除物料录入信息
-  terBatch_List_add:'/rest/kanban/addMaterialBatch',//POST 物料录入
-  terFirstCheck_info:'/rest/kanban/getFirstInspectInfo',//GET 获取首件检验信息
-  terFirstCheck_add:'/rest/kanban/addFirstInspectResult',//POST 提交首件检测结果
-  terSelfCheck_info:'/rest/kanban/getSelfInspectInfo' ,//GET 获取自主检验信息
-  terSelfCheck_add:'/rest/kanban/addSelfInspectResult',//POST 提交自主检测结果
-  terProduct_list:'/rest/kanban/getProductResumeList',//GET 获取产品履历列表
-  terProduct_list:'/rest/kanban/getProductResumeList',//GET 获取产品履历列表
-  //esop
-  saleLam_get:'/rest/Andon/getAndonList',//GET 获取安灯数据
+  precautions_list:'/rest/message/getPrecautions',//GET 获取注意事项列表
 }
 
 //测试环境接口地址

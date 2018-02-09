@@ -12,11 +12,17 @@
         <el-table-column align="center" prop="idealQty" width="150px" label="理想量产/8HR"></el-table-column>
         <el-table-column align="center" prop="actualQty" width="150px" label="实际产数/8HR"></el-table-column>
         <el-table-column align="center" prop="reachRate" label="达成率%">
-            <template slot-scope="scope">
-              <div v-if="scope.row.reachRate==100" class="reachRate"><div class="rh rhColor01">{{ scope.row.reachRate }}%</div></div>
-              <div v-else-if="scope.row.reachRate>90&&scope.row.reachRate<99" class="reachRate"><div class="rh rhColor02">{{ scope.row.reachRate }}%</div></div>
-              <div v-else class="reachRate"><div class="rh rhColor03">{{ scope.row.reachRate }}%</div></div>
-            </template>
+          <template slot-scope="scope">
+            <div v-if="scope.row.reachRate==100" class="reachRate">
+              <div class="rh rhColor01">{{ scope.row.reachRate }}%</div>
+            </div>
+            <div v-else-if="scope.row.reachRate>90&&scope.row.reachRate<99" class="reachRate">
+              <div class="rh rhColor02">{{ scope.row.reachRate }}%</div>
+            </div>
+            <div v-else class="reachRate">
+              <div class="rh rhColor03">{{ scope.row.reachRate }}%</div>
+            </div>
+          </template>
         </el-table-column>
       </el-table>
     </div>
@@ -24,6 +30,16 @@
 </template>
 
 <script>
+//////////UI组件加载//////////
+import Vue from "vue";
+import {
+  Table,
+  TableColumn,
+} from "element-ui";
+
+Vue.use(Table);
+Vue.use(TableColumn);
+/////////////////////////////
 import { panelTitle } from "components";
 import url from "api";
 export default {
@@ -39,7 +55,7 @@ export default {
   methods: {
     getList() {
       this.$get_noToken({
-        url: url.machineReachRate_list
+        url: this.$api_baseurl(url.machineReachRate_list)
       }).then(res => {
         if (res.code == 1) {
           for (let item of res.data) {

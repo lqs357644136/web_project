@@ -66,8 +66,8 @@ export default {
       this.get_list();
     },
     get_list() {
-      this.$get({
-        url: url.terProduct_list,
+      this.$get_noToken({
+        url: this.$api_baseurl(url.terProduct_list),
         params:{
           product:this.macInfo.ptno
         }

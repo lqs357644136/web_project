@@ -7,6 +7,35 @@
   </div>
 </template>
 <script>
+//////////UI组件加载//////////
+import Vue from 'vue'
+import {
+  Input,
+  Select,
+  Option,
+  Button,
+  ButtonGroup,
+  Form,
+  FormItem,
+  Row,
+  Col,
+  Tabs,
+  TabPane,
+  MessageBox
+} from 'element-ui'
+
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.prototype.$alert = MessageBox.alert
+/////////////////////////////
 import check from "./check/check.vue";
 import { panelTitle } from "components";
 import url from "api";
@@ -55,10 +84,9 @@ export default {
         line: this.macInfo.line
       };
       this.$get_noToken({
-        url: url.terFirstCheck_info,
+        url:this.$api_baseurl(url.terFirstCheck_info),
         params: params
       }).then(res => {
-        console.log(res)
         if (res.code == 1) {
           this.$store.dispatch("set_checklist", res.data);
         } else {

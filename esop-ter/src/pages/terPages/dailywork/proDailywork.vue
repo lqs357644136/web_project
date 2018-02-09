@@ -153,7 +153,33 @@
 
 </template>
 
-<script>
+<script>//////////UI组件加载//////////
+import Vue from 'vue'
+import {
+  Input,
+  Select,
+  Option,
+  Button,
+  ButtonGroup,
+  Table,
+  TableColumn,
+  Form,
+  FormItem,
+  Row,
+  Col,
+} from 'element-ui'
+
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Row)
+Vue.use(Col)
+/////////////////////////////
 import { panelTitle } from "components";
 import url from "api";
 import { $dataFormat } from "common/filiter/index.js";
@@ -282,7 +308,7 @@ export default {
     //获取列表信息,
     getProList() {
       this.$get_noToken({
-        url: url.proDailywork_list,
+        url: this.$api_baseurl(url.proDailywork_list),
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
         console.log(res)
@@ -330,6 +356,7 @@ export default {
             this.dailyworkList[0].scrapQty = null;
             this.isDailyStart = false;
             this.recTypeMenu = finish.recType ? finish.recType : [];
+            this.macInfo.recType = finish.recType.name ? finish.recType.name : "";
             this.macInfo.empNo = finish.empNo ? finish.empNo : "";
             this.macInfo.equipNo = finish.equipNo ? finish.equipNo : "";
             this.macInfo.resNo = finish.resNo ? finish.resNo : "";
@@ -348,7 +375,6 @@ export default {
             this.macInfo.bottomMould = finish.bottomMould
               ? finish.bottomMould
               : "";
-            this.macInfo.recType = finish.recType ? finish.recType : "";
             this.macInfo.id = finish.id;
             this.macInfo.createTime = finish.createTime;
             this.macInfo.endTime = finish.endTime;
@@ -373,7 +399,7 @@ export default {
     //初始化班次号
     shiftSelect_init() {
       this.$get_noToken({
-        url: url.daily_shiftType
+        url: this.$api_baseurl(url.daily_shiftType),
       }).then(res => {
         if (res.code == 1) {
           this.shiftSelect = [];
@@ -395,7 +421,7 @@ export default {
     //初始化类型下拉列表
     typeSelect_init() {
       this.$get_noToken({
-        url: url.proDailywork_type
+        url: this.$api_baseurl(url.proDailywork_type),
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
@@ -419,7 +445,7 @@ export default {
       };
       if (this.isDailyStart && recType) {
         this.$get_noToken({
-          url: url.proDailywork_forOne,
+          url:this.$api_baseurl(url.proDailywork_forOne),
           params: params
         }).then(res => {
           if (res.code == 1) {
@@ -516,8 +542,9 @@ export default {
         middleMould: this.macInfo.middleMould,
         bottomMould: this.macInfo.bottomMould
       };
+      console.log(data)
       this.$post_noToken({
-        url: url.proDailywork_add,
+        url: this.$api_baseurl(url.proDailywork_add),
         data
       }).then(res => {
         if (res.code == 1) {
@@ -539,7 +566,7 @@ export default {
         bottomMould: this.macInfo.bottomMould
       };
       this.$post_noToken({
-        url: url.proDailywork_add,
+        url: this.$api_baseurl(url.proDailywork_add),
         data
       }).then(res => {
         if (res.code == 1) {

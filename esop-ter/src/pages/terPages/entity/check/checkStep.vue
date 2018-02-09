@@ -231,11 +231,10 @@ export default {
           specId: spec.specId //检验规范ID
         }
       };
-      console.log(params);
       let urlPath =
         inspect.type == "0" ? url.terFirstCheck_add : url.terSelfCheck_add;
       this.$post_noToken({
-        url: urlPath,
+        url: this.$api_baseurl(urlPath),
         data: params
       }).then(res => {
         if (res.code == 1) {

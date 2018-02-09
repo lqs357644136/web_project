@@ -202,29 +202,6 @@
                             </transition>
                         </div>
 
-                        <!-- 上传 -->
-                        <div class="imgUpdate" v-else>
-                            <el-card class="box-card imgItem">
-                                <div slot="header" class="clearfix">
-                                    <span>不良写真</span>
-                                </div>
-                                <el-upload class="avatar-uploader imgItemBody" :action="imgUpload.uploadUrl" :headers="imgUpload.headers" :show-file-list="false" :on-success="badPicture_Success" :on-error="handleAvatarError" :before-upload="beforeAvatarUpload">
-                                    <img v-if="imgUpload.badPicture_imageUrl" :src="imgUpload.badPicture_imageUrl" class="avatar">
-                                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                                </el-upload>
-                            </el-card>
-
-                            <el-card class="box-card imgItem">
-                                <div slot="header" class="clearfix">
-                                    <span>改善后写真</span>
-                                </div>
-                                <el-upload class="avatar-uploader imgItemBody" :action="imgUpload.uploadUrl" :headers="imgUpload.headers" :show-file-list="false" :on-success="improvePicture__Success" :on-error="handleAvatarError" :before-upload="beforeAvatarUpload">
-                                    <img v-if="imgUpload.improvePicture_imageUrl" :src="imgUpload.improvePicture_imageUrl" class="avatar">
-                                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                                </el-upload>
-                            </el-card>
-                        </div>
-
                     </div>
                 </el-col>
             </el-row>
@@ -368,7 +345,7 @@ export default {
     //获取履历信息图片地址
     get_productInfo_imgPath(getUrls) {
       this.$get_file({
-        url: url.file_get,
+        url: this.$api_baseurl(url.file_get),
         params: { path: getUrls.badPicture }
       }).then(res => {
         console.log(res)
@@ -426,8 +403,8 @@ export default {
             this.productInputs.badPicture.length > 0 &&
             this.productInputs.improvePicture.length > 0
           ) {
-            this.$post({
-              url: url.product_add,
+            this.$post_noToken({
+              url: this.$api_baseurl(url.product_add),
               data: this.productInputs
             }).then(res => {
               if (res.code == 1) {

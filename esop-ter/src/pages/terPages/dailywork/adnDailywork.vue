@@ -90,6 +90,34 @@
 </template>
 
 <script>
+//////////UI组件加载//////////
+import Vue from 'vue'
+import {
+  Input,
+  Select,
+  Option,
+  Button,
+  ButtonGroup,
+  Table,
+  TableColumn,
+  Form,
+  FormItem,
+  Row,
+  Col,
+} from 'element-ui'
+
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Button)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Row)
+Vue.use(Col)
+/////////////////////////////
+
 import { panelTitle } from "components";
 import url from "api";
 import { $dataFormat } from "common/filiter/index.js";
@@ -165,7 +193,7 @@ export default {
   },
   created() {
     this.mac_init();
-  },
+  }, 
   methods: {
     //初始化机器信息
     mac_init() {
@@ -179,7 +207,7 @@ export default {
     //获取列表信息,
     getAdnList() {
       this.$get_noToken({
-        url: url.abnDailywork_list,
+        url: this.$api_baseurl(url.abnDailywork_list),
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
         if (res.code == 1) {
@@ -222,7 +250,7 @@ export default {
     //初始化类型下拉列表
     typeSelect_init() {
       this.$get_noToken({
-        url: url.abnDailywork_type
+        url: this.$api_baseurl(url.abnDailywork_type),
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
@@ -242,7 +270,7 @@ export default {
     recTypeChange(recType) {
       if (this.isDailyStart && recType) {
         this.$get_noToken({
-          url: url.abnDailywork_forOne,
+          url: this.$api_baseurl(url.abnDailywork_forOne),
           params: {
             recType: recType,
             equipNo: this.macInfo.equipNo,
@@ -275,7 +303,7 @@ export default {
         plant: this.macInfo.plant,
       };
       this.$post_noToken({
-        url: url.abnDailywork_add,
+        url: this.$api_baseurl(url.abnDailywork_add),
         data
       }).then(res => {
         if (res.code == 1) {
@@ -291,7 +319,7 @@ export default {
         id: this.macInfo.id
       };
       this.$post_noToken({
-        url: url.abnDailywork_add,
+        url: this.$api_baseurl(url.abnDailywork_add),
         data
       }).then(res => {
         if (res.code == 1) {

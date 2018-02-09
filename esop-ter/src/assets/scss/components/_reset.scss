@@ -282,3 +282,22 @@ button {
         display: none;
     }
 }
+
+//带搜索功能的画板主体
+.listForm {
+    margin-bottom: pxTorem(20px);
+    .el-card__body {
+        .form_body {
+            display: flex;
+            flex-direction: row;
+            .forms {
+                margin-left: 0;
+                margin-right: 0;
+                flex: 1;
+            }
+            .btn {
+                margin-left: pxTorem(20px);
+            }
+        }
+    }
+}

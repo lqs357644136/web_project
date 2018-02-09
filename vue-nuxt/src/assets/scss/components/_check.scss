@@ -1,0 +1,252 @@
+.checkView {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .checkInfo {
+        margin-bottom: pxTorem(20px);
+        .el-card__body {
+            padding-bottom: 0;
+        }
+        .infoItem {
+            .item {
+                height: pxTorem(36px);
+                line-height: pxTorem(36px);
+                display: flex;
+                -webkit-flex-direction: row;
+                margin-bottom: pxTorem(20px);
+                label {
+                    text-align: right;
+                    width: pxTorem(80px);
+                    span {
+                        padding-left: 100%;
+                        display: inline-block
+                    }
+                }
+                .value {
+                    flex: 1;
+                    margin-left: pxTorem(5px);
+                }
+            }
+            .el-form-item {
+                height: 100%;
+                margin-bottom: 0;
+                .is-disabled {
+                    .el-input__inner {
+                        color: initial;
+                    }
+                }
+            }
+        }
+    }
+    .checkMain {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .el-card__body {
+            flex: 1;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .checkMainBody {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .el-tabs__header {}
+            .el-tabs__content {
+                flex: 1;
+            }
+            &>.el-tabs {
+                height: 100%;
+                border: 0;
+            }
+            .isPassIcon {
+                color: #67C23A !important;
+            }
+            .failPassIcon {
+                color: #F56C6C !important;
+            }
+            .isPass {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                color: #67C23A;
+                height: 100%;
+                justify-content: center;
+                .icon {
+                    font-size: pxTorem(120px)
+                }
+                .text {
+                    font-size: pxTorem(24px)
+                }
+            }
+            .el-tabs__content {
+                .el-tab-pane {
+                    height: 100%;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                }
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: space-evenly;
+                justify-content: space-evenly;
+                justify-content: space-between;
+            }
+            .stepFrom {
+                height: 100%;
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: space-between;
+                .stepInputs {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                    .stepInput {
+                        margin-bottom: pxTorem(20px);
+                        margin-right: 0;
+                        width: 20%;
+                        .el-form-item__content {
+                            display: flex;
+                            flex-direction: row;
+                            .inputForm {
+                                display: flex;
+                                flex-direction: column;
+                                input {
+                                    flex:1;
+                                    font-size: pxTorem(20px);
+                                    text-align: center;
+                                }
+                            }
+                            .inputSuccess {
+                                input {
+                                    color: white;
+                                    background-color: #67C23A;
+                                    height: 100%;
+                                    text-align: center;
+                                }
+                            }
+                            .inputFail {
+                                input {
+                                    color: white;
+                                    background-color: #F56C6C;
+                                    height: 100%;
+                                    text-align: center;
+                                }
+                            }
+                            .airFlag {
+                                width: pxTorem(30px);
+                                margin: 0 pxTorem(10px);
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                                font-size: 30px;
+                                .none {
+                                    color: #6a6a6a;
+                                }
+                            }
+                        }
+                    }
+                    .nothingCheck {
+                        text-align: center;
+                        width: 100%;
+                        color: #20a0ff;
+                    }
+                }
+                .checkChioce {
+                    border-bottom: 1px solid #dfdfdf;
+                    display: flex;
+                    padding: pxTorem(5px) pxTorem(10px);
+                    justify-content: space-between;
+                    .info {
+                        line-height: pxTorem(40px);
+                        display: flex;
+                        label {
+                            margin-right: pxTorem(10px);
+                        }
+                        .checkTotal {
+                            margin-right: pxTorem(20px);
+                        }
+                        .checkNeed {
+                            margin-right: pxTorem(20px);
+                        }
+                        .testType {
+                            margin-right: pxTorem(20px);
+                        }
+                        .deviation {
+                            .range {}
+                            .tolerance {
+                                display: flex;
+                                flex-direction: row;
+                                .stdValue {}
+                                .tolText {
+                                    display: flex;
+                                    flex-direction: column;
+                                    .stdValueMinus,
+                                    .stdValuePlus {
+                                        font-size: pxTorem(12px);
+                                    }
+                                }
+                            }
+                        }
+                        .seeCheck {}
+                    }
+                    .crlBtn {}
+                }
+            }
+            .stepBtn {
+                margin-bottom: 0;
+                margin-right: 0;
+                padding-top: pxTorem(5px);
+                .el-form-item__content {
+                    display: flex;
+                    width: 100%;
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .checkEndBodyLoading {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(84, 83, 83, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.checkInfoInput {
+    z-index: 2000;
+    .inputBox {
+        width: 50%;
+        max-width: pxTorem(500px);
+    }
+    .box-card {
+        .el-card__header {
+            color: #6a6a6a;
+        }
+    }
+    .subBtn {
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .el-form-item__content {
+            display: flex;
+            justify-content: center;
+            margin-left: 0 !important;
+        }
+    }
+    .el-form-item {
+        .el-form-item__content {
+            margin-left: 10px !important;
+        }
+    }
+}
