@@ -401,7 +401,104 @@
                 .listPreContent {
                     text-align: left;
                     display: block;
-                    padding: 0px 5px;
+                    padding: 0 pxTorem(10px);
+                }
+            }
+        }
+    } //消息推送
+    .messagePush {
+        .panel-body {
+            display: flex;
+            flex-direction: column;
+            .listForm {
+                .el-card__body {
+                    padding-bottom: 0;
+                    .el-form-item .el-form-item__label {
+                        width: inherit;
+                    }
+                }
+            }
+            .tabelList {
+                flex: 1;
+                .el-table__expanded-cell {
+                    background-color: #efefef;
+                    padding: pxTorem(20px);
+                    .el-form {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        label {
+                            color: #99a9bf;
+                        }
+                        .el-form-item {
+                            margin: 0;
+                            width: 50%;
+                        }
+                        .listInfoContent {
+                            display: block;
+                            text-align: left;
+                        }
+                    }
+                }
+                .listContent {
+                    text-align: left;
+                    display: block;
+                    padding: 0 pxTorem(10px);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap
+                }
+            }
+        }
+        .messagePushInfo {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .forms {
+                flex: 1;
+                margin-bottom: pxTorem(20px);
+                .el-row {
+                    margin: 0 !important;
+                }
+                .el-form-item {
+                    .el-form-item__label {
+                        width: pxTorem(80px);
+                    }
+                }
+            }
+            .subBtn {
+                margin-bottom: 0;
+                .el-form-item__content {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            .flagCloud {
+                .el-form-item__content {
+                    display: flex;
+                    flex-direction: row;
+                    .el-textarea {
+                        flex: 1;
+                    }
+                    .el-button {
+                        margin-left: pxTorem(20px);
+                    }
+                }
+            }
+            .el-dialog {
+                .el-dialog__body {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    .mainBody {
+                        max-height: pxTorem(300px);
+                        overflow-y: auto;
+                        .el-form-item__label{
+                            width:  pxTorem(60px);
+                        }
+                    }
+                }
+                .el-dialog__footer {
+                    text-align: center;
                 }
             }
         }

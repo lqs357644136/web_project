@@ -239,6 +239,12 @@ button {
     min-width: pxTorem(100px);
 }
 
+//时间选择
+.el-date-editor--daterange.el-input__inner,
+.el-date-editor--datetimerange.el-input__inner {
+    width: 100%;
+}
+
 .el-form-item {
     display: flex !important;
     flex-direction: row !important;

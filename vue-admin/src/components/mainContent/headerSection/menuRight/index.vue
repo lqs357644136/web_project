@@ -1,10 +1,10 @@
 <template>
-  <div class="menu-right" v-if="get_token&&get_token.length>0">
+  <div class="menu-right" v-show="get_token&&get_token.length>0">
     <div class="notification-menu">
       <el-dropdown trigger="click" class="notification-list">
         <div class="notification-btn">
           <img src="./userLogo.png" alt="userLogo" />
-          <span v-text="get_userInfo.userName"></span>
+          <span v-if="get_userInfo" v-text="get_userInfo.userName"></span>
           <span class="icon"></span>
         </div>
         <el-dropdown-menu slot="dropdown" class="dropdown-menu">

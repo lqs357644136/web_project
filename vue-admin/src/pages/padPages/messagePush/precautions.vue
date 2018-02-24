@@ -1,5 +1,5 @@
 <template>
-  <div class="panel precautions">
+  <div class="panel messagePush">
     <panel-title :title="$route.meta.title"></panel-title>
     <div class="panel-body">
       <el-form class="listForm">
@@ -45,7 +45,7 @@
         <el-table-column align="center" type="index" label="序号" width="70px"></el-table-column>
         <el-table-column prop="warnContent" label="内容">
           <template slot-scope="scope">
-            <span class="listPreContent">{{ scope.row.warnContent}}</span>
+            <span class="listContent">{{ scope.row.warnContent}}</span>
           </template>
         </el-table-column>
         <el-table-column prop="createTime" sortable label="创建日期">

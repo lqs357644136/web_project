@@ -10,6 +10,8 @@ let url = {
   check_getLine:'/rest/kanban/getLine', //GET 获取制程信息
   check_getProcess:'/rest/kanban/getProcess', //GET 获取机台
   check_getPartno:'/rest/kanban/getPartno', //GET 获取产品编码
+  check_getPlantAndLine:'/rest/kanban/getPlantAndLine',//GET 车间和线别
+  check_getGroup:'/rest/kanban/getGroup',//GET 获取组别
   //平板 //手机
   batch_List: '/rest/plant/getMaterialBatch',//GET 物料列表 parem: type=[0/1] 0（原料批次录入）,1（调和批次录入）
   batch_List_delete: '/rest/plant/deleteMaterialBatch',//GET 删除物料列表 parem: id清单号 type=[0/1] 0（原料批次录入）,1（调和批次录入）
@@ -28,6 +30,12 @@ let url = {
   wholeReachRate_list:'/rest/kanban/getWholeReachRateBoard',//GET 获取整体达成率电子看板
   inspectSpec_list:'/rest/kanban/getInspectSpecList',//GET 获取检验规范列表
   precautions_list:'/rest/message/getPrecautions',//GET 获取注意事项列表
+  notice_list:'/rest/message/getSopNotice',//GET 获取消息公告列表
+  bulletin_list:'/rest/message/getBulletin',//GET 获取电子公告列表
+  notice_add:'/rest/message/addSopNotice',  //保存消息广播
+  bulletin_add:'/rest/message/addBulletin',  //保存电子公告
+  notice_delete:'/rest/message/deleteSopNotice',  //删除消息广播
+  bulletin_delete:'/rest/message/deleteBulletin',  //删除电子公告
 }
 
 //测试环境接口地址
