@@ -17,5 +17,8 @@ export default {
   [type.SET_SALELAM_CHARTDATA](state, chartData) {
     state.saleLamChartData = chartData;
   },
+  [type.SET_XBAR](state, xbar) {
+    state.xbar = xbar;
+  },
 }
 

@@ -34,6 +34,7 @@ let url = {
   precautions_list:'/rest/kanban/getPrecautions',//GET 获取注意事项列表
   //esop
   saleLam_get:'/rest/Andon/getAndonList',//GET 
+  get_xBar:'/rest/kanban/getXbar',//GET 获取xBar
 }
 
 export default url

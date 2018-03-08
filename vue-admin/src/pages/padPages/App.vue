@@ -18,6 +18,8 @@
 </template>
 <script type="text/javascript">
 import url from "api";
+//导入国际化设置
+import i18n from 'common/i18n'
 import { mainContent, leftSlide } from "components";
 
 export default {
@@ -35,8 +37,9 @@ export default {
     leftSlide
   },
   methods: {
-    //获取系统所需资源,判断是平板还是手机
+    //获取系统所需资源
     get_sys() {
+      console.log(i18n)
       this.$get({
         url: url.user_info
       }).then(res => {
@@ -49,7 +52,6 @@ export default {
           this.$store.commit("SET_USERINFO", userInfo);
           //获取菜单
           //let menus =this.$store.getters.get_menus
-
           //菜单暂时写死
           let menus = [
             //检验规范

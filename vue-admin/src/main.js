@@ -23,12 +23,12 @@ import { $get,$post,$get_file,$post_noToken,$get_noToken } from 'common/fetch/in
 //导入工具
 import { getMacINfo,api_baseurl,getQueryString } from 'common/uitl.js'
 
-//导入mock数据
-//import './mock'
 //导入国际化设置
 import i18n from 'common/i18n'
-// //导入mock数据
-// import './mock'
+
+//按需引入图表
+import VeLine from 'v-charts/lib/line'
+Vue.component(VeLine.name, VeLine)
 
 //使用element-ui
 Vue.use(ElementUI)

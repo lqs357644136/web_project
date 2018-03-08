@@ -28,6 +28,11 @@
           <el-form-item class="login-item">
             <el-button size="large" class="form-submit" @click="submit_form">登录</el-button>
           </el-form-item>
+          <el-form-item label="语言" class="lang">
+            <el-select v-model="lang" placeholder="请选择">
+              <el-option v-for="item in selects.langOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+            </el-select>
+          </el-form-item>
         </el-form>
       </div>
     </div>
@@ -35,6 +40,7 @@
 </template>
 <script type="text/javascript">
 import url from "api";
+import i18n from "common/i18n";
 
 export default {
   data() {
@@ -51,13 +57,25 @@ export default {
         ip: "",
         port: ""
       },
+      lang: this.$store.getters.get_lang,
       form: {
         username: null,
         password: null
       },
+      selects: {
+        langOptions: [
+          { label: "简体中文", value: "zh-cn" },
+          { label: "繁体中文", value: "zh-tw" },
+          { label: "英文", value: "en" }
+        ]
+      },
       rules: {
-        username: [{ required: true, message: "请输入账户名！", trigger: "blur" }],
-        password: [{ required: true, message: "请输入账户密码！", trigger: "blur" }],
+        username: [
+          { required: true, message: "请输入账户名！", trigger: "blur" }
+        ],
+        password: [
+          { required: true, message: "请输入账户密码！", trigger: "blur" }
+        ],
         host: [{ validator: checkStep, trigger: "blur" }]
       },
       //请求时的loading效果
@@ -69,6 +87,7 @@ export default {
       return this.host.ip + ":" + this.host.port;
     }
   },
+  created() {},
   mounted() {
     this.login_init();
   },
@@ -80,6 +99,7 @@ export default {
         this.host.ip = host.split(":")[0];
         this.host.port = host.split(":")[1];
       }
+      let lang = this.$store.getters.getLang;
     },
     //提交
     submit_form() {
@@ -97,7 +117,6 @@ export default {
             url: url.user_login,
             data: data
           }).then(res => {
-            console.log(res)
             if (res.code != 1) {
               this.$notify.info({
                 title: "温馨提示",
@@ -109,7 +128,9 @@ export default {
               if (document.body.offsetWidth < 480) {
                 this.$router.push("/phone/home");
               } else {
-                this.$router.push("/pad");
+                this.$store.dispatch("set_lang", this.lang);
+                //this.$router.push("/specification");
+                window.location.reload()
               }
             }
           });
@@ -138,7 +159,7 @@ export default {
         font-size: 26px;
         text-align: center;
         color: #22ab6d;
-        margin-bottom:5px;
+        margin-bottom: 5px;
       }
       .msg {
         font-size: 18px;
@@ -194,6 +215,12 @@ export default {
       .port {
         margin-left: 5px;
         width: 100px;
+      }
+    }
+    .lang {
+      margin-bottom: 0;
+      .el-form-item__label {
+        width: 3rem !important;
       }
     }
   }

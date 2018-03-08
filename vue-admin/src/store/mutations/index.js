@@ -4,9 +4,8 @@ import {
 } from './type';
 import * as type from 'store/mutations/type';
 import {
-  setToken , setHost
+  setToken , setHost,setLang
 } from 'common/cookie'
-import i18n from 'common/i18n'
 import router from 'router/index.js'
 import {
   privateModule
@@ -34,7 +33,10 @@ export default {
   },
   [type.SET_LANG](state, lang) {
     state.lang = lang;
-    i18n.locale = state.lang;
+    setLang(lang);
+  },
+  [type.SET_LANGPACKAGE](state, langPackage) {
+    state.langPackage = langPackage;
   },
   [type.SET_MENUS](state, menus) {
     state.menus = roleMenus(menus);
@@ -69,6 +71,9 @@ export default {
   },
   [type.SET_SALELAM_CHARTDATA](state, chartData) {
     state.saleLamChartData = chartData;
+  },
+  [type.SET_XBAR](state, xbar) {
+    state.xbar = xbar;
   },
 }
 

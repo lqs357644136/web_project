@@ -19,6 +19,9 @@ export default {
   [actions.SET_LANG]({commit},lang){
     commit(mutations.SET_LANG,lang)
   },
+  [actions.SET_LANGPACKAGE]({commit},langPackage){
+    commit(mutations.SET_LANGPACKAGE,langPackage)
+  },
   [actions.SET_MENUS]({commit},menus){
     commit(mutations.SET_MENUS,menus)
   },
@@ -42,5 +45,8 @@ export default {
   },
   [actions.SET_SALELAM_CHARTDATA]({commit},chartData){
     commit(mutations.SET_SALELAM_CHARTDATA,chartData)
+  },
+  [actions.SET_XBAR]({commit},xbar){
+    commit(mutations.SET_XBAR,xbar)
   },
 }

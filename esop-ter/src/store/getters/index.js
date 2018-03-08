@@ -15,4 +15,7 @@ export default {
   [type.GET_SALELAM_CHARTDATA]:state =>{
     return state.saleLamChartData;
   },
+  [type.GET_XBAR]:state =>{
+    return state.xbar;
+  },
 }

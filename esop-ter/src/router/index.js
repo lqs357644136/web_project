@@ -143,6 +143,38 @@ const routes = [{
     title: messages.precautions,
     auth: false
   }
+},
+{
+  //x-r
+  path: '/ter/xr',
+  name: 'x-r',
+  component:r => require.ensure([], () => r(require('pages/terPages/x-r/x-r.vue')), 'x-r'),
+  //component: x-r,
+  meta: {
+    title: messages.x_r,
+    auth: false
+  }
+},
+{
+  //中技佳电子看板01
+  path: '/ter/zjj_demo01',
+  name: 'zjj_demo01',
+  component:r => require.ensure([], () => r(require('pages/terPages/zjj_demo/zjj_demo01.vue')), 'zjj_demo01'),
+  //component: zjj_demo01,
+  meta: {
+    title: messages.zjj_demo01,
+    auth: false
+  }
+},{
+  //中技佳电子看板02
+  path: '/ter/zjj_demo02',
+  name: 'zjj_demo02',
+  component:r => require.ensure([], () => r(require('pages/terPages/zjj_demo/zjj_demo02.vue')), 'zjj_demo02'),
+  //component: zjj_demo02,
+  meta: {
+    title: messages.zjj_demo02,
+    auth: false
+  }
 }]
 
 const router = new VueRouter({

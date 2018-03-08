@@ -6,3 +6,5 @@ export const SET_CHECKLIST ='SET_CHECKLIST'
 export const SET_PRODUCTINFO ='SET_PRODUCTINFO'
 //存储安灯报表图表数据
 export const SET_SALELAM_CHARTDATA ='SET_SALELAM_CHARTDATA'
+//保存XBAR信息
+export const SET_XBAR ='SET_XBAR'

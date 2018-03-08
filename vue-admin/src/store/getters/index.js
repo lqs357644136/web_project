@@ -16,7 +16,10 @@ export default {
     return state.leftSilde;
   },
   [type.GET_LANG]: state => {
-    return state.lang;
+    return state.lang&&state.lang.length>0?state.lang:'zh-cn';
+  },
+  [type.GET_LANGPACKAGE]: state => {
+    return state.langPackage;
   },
   [type.GET_MENUS]: state => {
     return state.menus;
@@ -38,5 +41,8 @@ export default {
   },
   [type.GET_SALELAM_CHARTDATA]:state =>{
     return state.saleLamChartData;
+  },
+  [type.GET_XBAR]:state =>{
+    return state.xbar;
   },
 }

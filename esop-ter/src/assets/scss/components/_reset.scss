@@ -84,6 +84,16 @@ button {
                 font-size: pxTorem(16px);
             }
         }
+        .right{
+            position: absolute;
+            right:pxTorem(10px);
+        }
+        .logo{
+            position: absolute;
+            left: pxTorem(20px);
+            top:50%;
+            transform: translateY(-55%);
+        }
     }
     .textCenter {
         text-align: center;

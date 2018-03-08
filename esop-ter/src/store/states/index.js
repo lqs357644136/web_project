@@ -9,4 +9,6 @@ export default {
   productInfo:null,
   //存储履历信息
   saleLamChartData:null,
+  //xbar
+  xbar:null,
 }

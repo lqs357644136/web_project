@@ -76,7 +76,22 @@ export default {
           path: '/ter/precautions?ip='+api,
           title: "注意事项",
           icon: "icon fa fa-bandcamp"
-        }
+        },
+        {
+          path: '/ter/zjj_demo01?ip='+api,
+          title: "中技佳电子看板(一)",
+          icon: "icon fa fa-bandcamp"
+        },
+        {
+          path: '/ter/zjj_demo02?ip='+api,
+          title: "中技佳电子看板(二)",
+          icon: "icon fa fa-bandcamp"
+        },
+        {
+          path: '/ter/xr?ip='+api+'&id=4028818a614115b80161412f6434000e',
+          title: "X Bar 图",
+          icon: "icon fa fa-balance-scale"
+        },
       ]
     };
   },

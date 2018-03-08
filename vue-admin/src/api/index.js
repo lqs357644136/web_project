@@ -12,6 +12,7 @@ let url = {
   check_getPartno:'/rest/kanban/getPartno', //GET 获取产品编码
   check_getPlantAndLine:'/rest/kanban/getPlantAndLine',//GET 车间和线别
   check_getGroup:'/rest/kanban/getGroup',//GET 获取组别
+  get_MutiLang:'/rest/kanban/getMutiLang',//GET 获取多语言
   //平板 //手机
   batch_List: '/rest/plant/getMaterialBatch',//GET 物料列表 parem: type=[0/1] 0（原料批次录入）,1（调和批次录入）
   batch_List_delete: '/rest/plant/deleteMaterialBatch',//GET 删除物料列表 parem: id清单号 type=[0/1] 0（原料批次录入）,1（调和批次录入）
@@ -36,6 +37,7 @@ let url = {
   bulletin_add:'/rest/message/addBulletin',  //保存电子公告
   notice_delete:'/rest/message/deleteSopNotice',  //删除消息广播
   bulletin_delete:'/rest/message/deleteBulletin',  //删除电子公告
+  get_xBar:'/rest/kanban/getXbar',//获取xBar
 }
 
 //测试环境接口地址

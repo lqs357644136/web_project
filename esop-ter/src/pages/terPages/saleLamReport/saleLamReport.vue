@@ -66,7 +66,6 @@ Vue.use(DatePicker)
 import { panelTitle } from "components";
 import saleChart from "./saleChart.vue";
 import { $dataFormat } from "common/filiter/index.js";
-import { getQueryString } from "common/uitl.js";
 import url from "api";
 export default {
   name: "saleLamReport",

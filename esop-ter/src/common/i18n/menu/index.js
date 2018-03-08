@@ -27,6 +27,9 @@ export const menu_zh = {
   saleLamReport: '安灯报表',
   specification: '检验规范',
   precautions:'注意事项',
+  zjj_demo01:'东莞市日新传导科技有限公司拉线看板',
+  zjj_demo02:'东莞市日新传导科技有限公司车间看板',
+  x_r:'x-r',
 };
 
 export const menu_en = {
@@ -58,4 +61,7 @@ export const menu_en = {
   saleLamReport: 'saleLamReport',
   specification: 'specification',
   precautions:'precautions',
+  zjj_demo01:'zjj_demo01',
+  zjj_demo02:'zjj_demo02',
+  x_r:'x-r',
 };

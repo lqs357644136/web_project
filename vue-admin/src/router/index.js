@@ -28,11 +28,11 @@ import specification from 'pages/padPages/specification/specification.vue'
 import notice from 'pages/padPages/messagePush/notice.vue'
 import bulletin from 'pages/padPages/messagePush/bulletin.vue'
 import precautions from 'pages/padPages/messagePush/precautions.vue'
-// import xbar from 'pages/padPages/x-bar/x-bar.vue'
+import x_r from 'pages/padPages/x-r/x-r.vue'
 //
 //手机版
-//import phoneLayout from 'pages/phonePages/App.vue'
-//import phoneHome from 'pages/phonePages/home/home.vue'
+import phoneLayout from 'pages/phonePages/App.vue'
+import phoneHome from 'pages/phonePages/home/home.vue'
 
 Vue.use(VueRouter)
 //获取当前语言
@@ -272,55 +272,55 @@ export const privateModule = [
 ]
 
 //手机页面功能
-// export const phoneModule = [{
-//     //手机主页
-//     path: '/phone/home',
-//     name: 'phoneHome',
-//     component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
-//     //component: phoneHome,
-//     meta: {
-//       title: messages.homePage,
-//       icon: 'fa fa-asl-interpreting',
-//       auth: true
-//     },
-//   },
-//   {
-//     //手机用户页
-//     path: '/phone/user',
-//     name: 'phoneUser',
-//     component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
-//     //component: phoneHome,
-//     meta: {
-//       title: messages.user,
-//       icon: 'fa fa-asl-interpreting',
-//       auth: true
-//     },
-//   },
-//   {
-//     //手机消息页
-//     path: '/phone/news',
-//     name: 'phoneNews',
-//     component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
-//     //component: phoneHome,
-//     meta: {
-//       title: messages.msg,
-//       icon: 'fa fa-asl-interpreting',
-//       auth: true
-//     },
-//   },
-//   {
-//     //电子看板
-//     path: '/phone/signage',
-//     name: 'phoneSignage',
-//     component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
-//     //component: phoneHome,
-//     meta: {
-//       title: messages.signage,
-//       icon: 'fa fa-asl-interpreting',
-//       auth: true
-//     },
-//   }
-// ]
+export const phoneModule = [{
+    //手机主页
+    path: '/phone/home',
+    name: 'phoneHome',
+    component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: messages.homePage,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
+  {
+    //手机用户页
+    path: '/phone/user',
+    name: 'phoneUser',
+    component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: messages.user,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
+  {
+    //手机消息页
+    path: '/phone/news',
+    name: 'phoneNews',
+    component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: messages.msg,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
+  {
+    //电子看板
+    path: '/phone/signage',
+    name: 'phoneSignage',
+    component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
+    //component: phoneHome,
+    meta: {
+      title: messages.signage,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  }
+]
 
 //公共模块
 const routes = [{
@@ -349,13 +349,13 @@ const routes = [{
   component: layout,
   children: privateModule
 }, 
-// {
-//   path: '/phone',
-//   redirect: '/phone/home',
-//   component: resolve => require(['pages/phonePages/App.vue'], resolve),
-//   //component: phoneLayout,
-//   children: phoneModule
-// }
+{
+  path: '/phone',
+  redirect: '/phone/home',
+  component: resolve => require(['pages/phonePages/App.vue'], resolve),
+  //component: phoneLayout,
+  children: phoneModule
+}
 ]
 
 const router = new VueRouter({

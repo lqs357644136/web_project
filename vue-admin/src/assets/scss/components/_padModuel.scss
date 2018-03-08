@@ -339,7 +339,10 @@
             }
         }
         .specTable {
-            flex: 1;
+            .edit {
+                justify-content: left;
+                padding-left: pxTorem(15px);
+            }
         }
         .specInfo {
             .el-collapse-item__header {
@@ -379,6 +382,14 @@
                 .no {
                     color: red;
                 }
+            }
+        }
+        .xbarDialog {
+            .el-select {
+                margin-bottom: pxTorem(25px);
+            }
+            .dialog-footer {
+                display: flex;
             }
         }
         .dialog-footer {
@@ -492,14 +503,119 @@
                     .mainBody {
                         max-height: pxTorem(300px);
                         overflow-y: auto;
-                        .el-form-item__label{
-                            width:  pxTorem(60px);
+                        .el-form-item__label {
+                            width: pxTorem(60px);
                         }
                     }
                 }
                 .el-dialog__footer {
                     text-align: center;
                 }
+            }
+        }
+    } //x-r管制图
+    .x-r {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        .tabs {
+            flex: 1;
+            .el-tab-pane {
+                height: 100%;
+            }
+            .el-tabs__content {
+                padding: 0;
+            }
+            .baseInfo {
+                padding: pxTorem(15px);
+                .el-input.is-disabled .el-input__inner {
+                    color: inherit;
+                }
+                .baseInfo-table {
+                    border: 1px solid #dfdfdf;
+                    border-collapse: collapse;
+                    width: 100%;
+                    tr,
+                    td {
+                        text-align: center;
+                        border: 1px solid #dfdfdf;
+                    }
+                    td {
+                        padding: pxTorem(5px) pxTorem(10px);
+                    }
+                }
+            }
+            .checkTable {
+                height: 100%;
+                .table-row {
+                    display: flex;
+                    flex-direction: row;
+                    height: pxTorem(60px);
+                    line-height: pxTorem(60px);
+                    border: 1px solid #dfdfdf;
+                    label {
+                        width: pxTorem(80px);
+                        min-width: pxTorem(80px);
+                        text-align: center;
+                        position: relative;
+                        overflow: hidden;
+                        .line {
+                            position: absolute;
+                            border-top: 1px solid #dfdfdf;
+                            width: pxTorem(150px);
+                            transform: rotate(216deg);
+                            -o-transform: rotate(216deg);
+                            -moz-transform: rotate(216deg);
+                            -webkit-transform: rotate(216deg);
+                            top: pxTorem(45px);
+                            left: pxTorem(-12px);
+                        }
+                        .text01,
+                        .text02 {
+                            position: absolute;
+                            font-size: pxTorem(12px);
+                        }
+                        .text01{
+                            bottom:pxTorem(-10px);
+                            left:pxTorem(5px);
+                        }
+                        
+                        .text02{
+                            top:pxTorem(-10px);
+                            right:pxTorem(5px);
+                        }
+                    }
+                    .values {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        span {
+                            border: 1px solid #dfdfdf;
+                            border-top: 0px;
+                            border-bottom: 0px;
+                            padding: pxTorem(0px) pxTorem(5px);
+                            width: pxTorem(40px);
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            .chartInfo {
+                height: 100%;
+                .xChart {
+                    height: 50%;
+                }
+                .rChart {
+                    height: 50%;
+                }
+            }
+        }
+        .backBtn {
+            height: pxTorem(60px);
+            line-height: pxTorem(65px);
+            text-align: center;
+            button {
+                padding: pxTorem(12px) pxTorem(80px);
             }
         }
     }

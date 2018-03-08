@@ -150,7 +150,6 @@
       },
       _init() {
         if (this.chart) return false
-
         this.dataLoading = true
         /**
          * 按需引入 ECharts 图表组件

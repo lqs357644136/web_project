@@ -11,6 +11,8 @@ export const LOGIN_OUT = 'LOGIN_OUT'
 export const SET_LEFTSLIDE = 'SET_LEFTSLIDE'
 //设置系统语言
 export const SET_LANG = 'SET_LANG'
+//保存系统语言包
+export const SET_LANGPACKAGE = 'SET_LANGPACKAGE'
 //设置可选菜单
 export const SET_MENUS = 'SET_MENUS'
 //设置页面加载loading
@@ -27,3 +29,5 @@ export const SET_OTHERLINK ='SET_OTHERLINK'
 export const SET_PRODUCTINFO ='SET_PRODUCTINFO'
 //存储安灯报表图表数据
 export const SET_SALELAM_CHARTDATA ='SET_SALELAM_CHARTDATA'
+//保存XBAR信息
+export const SET_XBAR ='SET_XBAR'

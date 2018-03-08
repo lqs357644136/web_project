@@ -17,4 +17,7 @@ export default {
   [actions.SET_SALELAM_CHARTDATA]({commit},chartData){
     commit(mutations.SET_SALELAM_CHARTDATA,chartData)
   },
+  [actions.SET_XBAR]({commit},xbar){
+    commit(mutations.SET_XBAR,xbar)
+  },
 }

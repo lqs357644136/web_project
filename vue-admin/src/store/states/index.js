@@ -1,6 +1,6 @@
 
 
-import { getToken,getHost } from 'common/cookie'
+import { getToken,getHost,getLang } from 'common/cookie'
 
 export default {
   //host
@@ -12,7 +12,9 @@ export default {
   //左侧菜单展开状态
   leftSilde:true,
   //系统语言  
-  lang:'zh',
+  lang:getLang(),
+  //语言包
+  langPackage:null,
   //角色可以操作的菜单
   menus:null,
   //页面加载状态
@@ -27,4 +29,6 @@ export default {
   productInfo:null,
   //存储履历信息
   saleLamChartData:null,
+  //xbar
+  xbar:null,
 }
