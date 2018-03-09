@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import store from 'store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import i18n from 'common/i18n'
+//import i18n from 'common/i18n'
 
 //预加载
 //
@@ -36,8 +36,8 @@ import phoneHome from 'pages/phonePages/home/home.vue'
 
 Vue.use(VueRouter)
 //获取当前语言
-let lang = store.getters.get_lang;
-let messages = i18n.getLocaleMessage(lang).message.menu;
+// let lang = store.getters.get_lang;
+// let messages = i18n.getLocaleMessage(lang).message.menu;
 
 //平板页面功能
 export const privateModule = [
@@ -48,7 +48,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/specification/specification.vue'], resolve),
     component: specification,
     meta: {
-      title: messages.specification,
+      //title: messages.specification,
       icon: 'fa fa-codiepie',
       auth: true
     }
@@ -59,7 +59,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/checkList/checkList.vue'], resolve),
     component: checkList,
     meta: {
-      title: messages.checkList,
+      //title: messages.checkList,
       icon: 'fa fa-commenting',
       auth: true
     }
@@ -71,7 +71,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/firstEntity/firstEntity.vue'], resolve),
     component: firstEntity,
     meta: {
-      title: messages.firstEntity,
+      //title: messages.firstEntity,
       icon: 'fa fa-area-chart',
       auth: true
     }
@@ -83,7 +83,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/tourEntity/tourEntity.vue'], resolve),
     component: tourEntity,
     meta: {
-      title: messages.tourEntity,
+      //title: messages.tourEntity,
       icon: 'fa fa-bookmark',
       auth: true
     }
@@ -93,16 +93,16 @@ export const privateModule = [
     path: '/product',
     name: 'product',
     meta: {
-      title: messages.product,
+      //title: messages.product,
       icon: 'fa fa-asl-interpreting',
       auth: true,
       children: [{
-          title: messages.productInfo,
+          //title: messages.productInfo,
           path: '/product/productInfo',
           name: 'productInfo',
         },
         {
-          title: messages.productEnter,
+          //title: messages.productEnter,
           path: '/product/productEnter',
           name: 'productEnter',
         }
@@ -116,7 +116,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/product/productInfo/productInfo.vue'], resolve),
     component: productInfo,
     meta: {
-      title: messages.productInfo,
+      //title: messages.productInfo,
       icon: 'fa fa-asl-interpreting',
       auth: true
     }
@@ -128,7 +128,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/product/productEnter/productEnter.vue'], resolve),
     component: productEnter,
     meta: {
-      title: messages.productEnter,
+      //title: messages.productEnter,
       icon: 'fa fa-asl-interpreting',
       auth: true
     }
@@ -140,7 +140,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/workonoff/workonoff.vue'], resolve),
     component: workonoff,
     meta: {
-      title: messages.workonoff,
+      //title: messages.workonoff,
       icon: 'fa fa-codiepie',
       auth: true
     }
@@ -150,21 +150,21 @@ export const privateModule = [
     path: '/signage',
     name: 'signage',
     meta: {
-      title: messages.signage,
+      //title: messages.signage,
       icon: 'fa fa-calendar-minus-o',
       auth: true,
       children: [{
-          title: messages.machineReachRate,
+          //title: messages.machineReachRate,
           path: '/signage/machineReachRate',
           name: 'machineReachRate',
         },
         {
-          title: messages.prodSchedule,
+          //title: messages.prodSchedule,
           path: '/signage/prodSchedule',
           name: 'prodSchedule',
         },
         {
-          title: messages.wholeReachRate,
+          //title: messages.wholeReachRate,
           path: '/signage/wholeReachRate',
           name: 'wholeReachRate',
         }
@@ -178,7 +178,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/signage/machineReachRate.vue'], resolve),
     component: machineReachRate,
     meta: {
-      title: messages.machineReachRate,
+      //title: messages.machineReachRate,
       icon: 'fa fa-asl-interpreting',
       auth: true
     }
@@ -190,7 +190,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/signage/prodSchedule.vue'], resolve),
     component: prodSchedule,
     meta: {
-      title: messages.prodSchedule,
+      //title: messages.prodSchedule,
       icon: 'fa fa-asl-interpreting',
       auth: true
     }
@@ -202,7 +202,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/signage/wholeReachRate.vue'], resolve),
     component: wholeReachRate,
     meta: {
-      title: messages.wholeReachRate,
+      //title: messages.wholeReachRate,
       icon: 'fa fa-asl-interpreting',
       auth: true
     }
@@ -212,21 +212,21 @@ export const privateModule = [
     path: '/messagePush',
     name: 'messagePush',
     meta: {
-      title: messages.messagePush,
+      //title: messages.messagePush,
       icon: 'fa fa-comment-o',
       auth: true,
       children: [{
-          title: messages.notice,
+          //title: messages.notice,
           path: '/messagePush/notice',
           name: 'notice',
         },
         {
-          title: messages.bulletin,
+          //title: messages.bulletin,
           path: '/messagePush/bulletin',
           name: 'bulletin',
         },
         {
-          title: messages.precautions,
+          //title: messages.precautions,
           path: '/messagePush/precautions',
           name: 'precautions',
         }
@@ -240,7 +240,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/messagePush/notice.vue'], resolve),
     component: notice,
     meta: {
-      title: messages.notice,
+      //title: messages.notice,
       icon: 'fa fa-binoculars',
       auth: true
     }
@@ -252,7 +252,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/messagePush/bulletin.vue'], resolve),
     component: bulletin,
     meta: {
-      title: messages.bulletin,
+      //title: messages.bulletin,
       icon: 'fa fa-binoculars',
       auth: true
     }
@@ -264,7 +264,7 @@ export const privateModule = [
     //component: resolve => require(['pages/padPages/messagePush/precautions.vue'], resolve),
     component: precautions,
     meta: {
-      title: messages.precautions,
+      //title: messages.precautions,
       icon: 'fa fa-binoculars',
       auth: true
     }
@@ -279,7 +279,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/home/home.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: messages.homePage,
+      //title: messages.homePage,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -291,7 +291,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/user/user.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: messages.user,
+      //title: messages.user,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -303,7 +303,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/news/news.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: messages.msg,
+      //title: messages.msg,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
@@ -315,7 +315,7 @@ export const phoneModule = [{
     component: resolve => require(['pages/phonePages/signage/signage.vue'], resolve),
     //component: phoneHome,
     meta: {
-      title: messages.signage,
+      //title: messages.signage,
       icon: 'fa fa-asl-interpreting',
       auth: true
     },

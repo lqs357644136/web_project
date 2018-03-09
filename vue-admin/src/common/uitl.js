@@ -50,3 +50,29 @@ export const getMacINfo = function () {
   //   plant:'1000',//车间
   // }
 }
+
+//处理多语言
+export const esop_i18nLang_init = function (modArr, data) {
+  return new Promise((resolve, reject) => {
+    let langObj = {}
+    for (let dataItem of data) {
+      let data_modNames = dataItem.langKey.split('.');
+      modArr.forEach((item, i) => {
+        if (data_modNames.indexOf(item) != -1) {
+          let modIndex = data_modNames.indexOf(item);
+          let keyIndex = data_modNames.indexOf(item) + 1;
+          let modName = data_modNames[modIndex];
+          let keyName = data_modNames[keyIndex];
+          let value = dataItem.langContext;
+          if (langObj[modName]) {
+            langObj[modName][keyName] = value;
+          } else {
+            langObj[modName] = {};
+            langObj[modName][keyName] = value;
+          }
+        }
+      })
+    }
+    resolve(langObj);
+  })
+}

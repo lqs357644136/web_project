@@ -38,22 +38,128 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      defaultPath: this.$router.currentRoute.path //默认选中菜单
+      defaultPath: this.$router.currentRoute.path, //默认选中菜单
+      menu_lang: null,
+      menus: []
     };
   },
   updated() {
     this.flashStyleInit();
   },
+  mounted() {
+    this.menus_init();
+  },
   computed: {
     ...mapGetters({
       isCollapse: "get_leftSlide_state",
-      menus: "get_menus",
+      lang: "get_lang",
       pageLoading: "get_pageloading",
       fromCheckList: "get_fromchecklist",
-      otherLink: "get_otherlink"
+      otherLink: "get_otherlink",
+      langPackage:'get_langpackage'
     })
   },
   methods: {
+    menus_init() {
+      console.log(this.langPackage)
+      this.menus = [
+        {
+          name: "specification",
+          path: "/specification",
+          title: this.langPackage.menu.specification,
+          icon: "fa fa-codiepie"
+        },
+        {
+          name: "checkList",
+          path: "/checkList",
+          title: this.langPackage.menu.checkList,
+          icon: "fa fa-commenting"
+        },
+        {
+          name: "firstentity",
+          path: "/firstentity",
+          title: this.langPackage.menu.firstEntity,
+          icon: "fa fa-area-chart"
+        },
+        {
+          name: "tourEntity",
+          path: "/tourEntity",
+          title: this.langPackage.menu.tourEntity,
+          icon: "fa fa-bookmark"
+        },
+        {
+          name: "product",
+          path: "/product",
+          title: this.langPackage.menu.product,
+          icon: "fa fa-asl-interpreting",
+          child: [
+            {
+              name: "productInfo",
+              path: "/product/productInfo",
+              title: this.langPackage.menu.productInfo
+            },
+            {
+              name: "productEnter",
+              path: "/product/productEnter",
+              title: this.langPackage.menu.productEnter
+            }
+          ]
+        },
+        {
+          name: "workonoff",
+          path: "/workonoff",
+          title: this.langPackage.menu.workonoff,
+          icon: "fa fa-codiepie"
+        },
+        {
+          name: "signage",
+          path: "/signage",
+          title: this.langPackage.menu.signage,
+          icon: "fa fa-calendar-minus-o",
+          child: [
+            {
+              title: this.langPackage.menu.machineReachRate,
+              path: "/signage/machineReachRate",
+              name: "machineReachRate"
+            },
+            {
+              title: this.langPackage.menu.prodSchedule,
+              path: "/signage/prodSchedule",
+              name: "prodSchedule"
+            },
+            {
+              title: this.langPackage.menu.wholeReachRate,
+              path: "/signage/wholeReachRate",
+              name: "wholeReachRate"
+            }
+          ]
+        },
+        {
+          name: "messagePush",
+          path: "/messagePush",
+          title: this.langPackage.menu.messagePush,
+          icon: "fa fa-comment-o",
+          child: [
+            {
+              title: this.langPackage.menu.notice,
+              path: "/messagePush/notice",
+              name: "notice"
+            },
+            {
+              title: this.langPackage.menu.bulletin,
+              path: "/messagePush/bulletin",
+              name: "bulletin"
+            },
+            {
+              title: this.langPackage.menu.precautions,
+              path: "/messagePush/precautions",
+              name: "precautions"
+            }
+          ]
+        },
+
+      ];
+    },
     handleOpen(key, keyPath) {
       console.log(keyPath);
     },

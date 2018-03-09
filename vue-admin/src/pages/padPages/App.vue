@@ -3,11 +3,11 @@
     <div class="mainLoading" v-if="mainLoading">
       <div class="msg">
         <i class="icon fa fa-circle-o-notch fa-spin"></i>
-        <span class="title">系统资源加载中</span>
+        <span class="title">{{loadingMsg}}</span>
       </div>
     </div>
     <div class="mainPage">
-      <div class="pad">
+      <div class="pad" v-if="main_init">
         <left-slide></left-slide>
         <main-content>
           <router-view></router-view>
@@ -19,18 +19,25 @@
 <script type="text/javascript">
 import url from "api";
 //导入国际化设置
-import i18n from 'common/i18n'
 import { mainContent, leftSlide } from "components";
-
+import { mapGetters } from "vuex";
+import { esop_i18nLang_init } from "common/uitl.js";
 export default {
   name: "padView",
   data() {
     return {
-      mainLoading: true
+      mainLoading: true,
+      loadingMsg: "加载中",
+      main_init: false
     };
   },
-  created() {
-    this.get_sys();
+  computed: {
+    ...mapGetters({
+      lang: "get_lang"
+    })
+  },
+  mounted () {
+     this.get_sys();
   },
   components: {
     mainContent,
@@ -39,58 +46,40 @@ export default {
   methods: {
     //获取系统所需资源
     get_sys() {
-      console.log(i18n)
+      this.loadingMsg = "加载用户资料";
       this.$get({
         url: url.user_info
-      }).then(res => {
-        if (res.code == 1) {
-          let userInfo = {
-            userName: res.data.userName,
-            realName: res.data.realName,
-            menuList: res.data.menuList
-          };
-          this.$store.commit("SET_USERINFO", userInfo);
-          //获取菜单
-          //let menus =this.$store.getters.get_menus
-          //菜单暂时写死
-          let menus = [
-            //检验规范
-            { name: "specification" },
-            //首件录入
-            { name: "firstEntity" },
-            //巡迴录入
-            { name: "tourEntity" },
-            //检查清单
-            { name: "checkList" },
-            //产品履历
-            {
-              name: "product",
-              child: [{ name: "productInfo" }, { name: "productEnter" }]
-            },
-            //上岗纪录
-            { name: "workonoff" },
-            //电子看板
-            {
-              name: "signage",
-              child: [
-                { name: "machineReachRate" },{ name: "prodSchedule" },{ name: "wholeReachRate" }
-              ]
-            },
-            //消息推送
-            {
-              name: "messagePush",
-              child: [
-                { name: "notice" },{ name: "bulletin" },{ name: "precautions" }
-              ]
-            },
-          ];
-
-          this.$store.dispatch("set_menus", menus);
-          this.mainLoading = false;
-        } else {
-          
-        }
-      });
+      })
+        .then(res => {
+          if (res.code == 1) {
+            let userInfo = {
+              userName: res.data.userName,
+              realName: res.data.realName,
+              menuList: res.data.menuList
+            };
+            this.$store.commit("SET_USERINFO", userInfo);
+            this.mainLoading = false;
+          } else {
+          }
+        })
+        .then(res => {
+          this.loadingMsg = "加载语言包";
+          this.$get({
+            url: url.get_MutiLang,
+            params: {
+              lang: this.lang,
+              type: "h5"
+            }
+          }).then(res => {
+            esop_i18nLang_init(
+              ["menu", "layout", "common", "specification"],
+              res.data
+            ).then(res => {
+              this.$store.dispatch("set_langpackage", res);
+              this.main_init = true;
+            });
+          });
+        });
     }
   }
 };

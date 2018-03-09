@@ -11,7 +11,7 @@
           <el-dropdown-item class="dropdown-list">
             <a href="javascript:" class="dropdown-btn" @click="user_click()">
               <i class="icon fa fa-sign-out"></i>
-              <span>安全退出</span>
+              <span>{{langPackage.layout.loginOut}}</span>
             </a>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -28,7 +28,8 @@ export default {
   computed: {
     ...mapGetters({
       get_userInfo: "get_userInfo",
-      get_token: "get_token"
+      get_token: "get_token",
+      langPackage:'get_langpackage'
     })
   },
   methods: {

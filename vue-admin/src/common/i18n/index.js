@@ -28,7 +28,7 @@ const messages = {
 
 const i18n = new VueI18n({
   locale: 'zh-cn', // 语言标识
-  messages
+  //messages
 })
 
 export default i18n

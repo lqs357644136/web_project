@@ -40,7 +40,6 @@
 </template>
 <script type="text/javascript">
 import url from "api";
-import i18n from "common/i18n";
 
 export default {
   data() {
@@ -87,7 +86,9 @@ export default {
       return this.host.ip + ":" + this.host.port;
     }
   },
-  created() {},
+  created() {
+    
+  },
   mounted() {
     this.login_init();
   },
@@ -129,8 +130,7 @@ export default {
                 this.$router.push("/phone/home");
               } else {
                 this.$store.dispatch("set_lang", this.lang);
-                //this.$router.push("/specification");
-                window.location.reload()
+                this.$router.push("/specification");
               }
             }
           });
