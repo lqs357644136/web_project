@@ -15,9 +15,22 @@
                     height: pxTorem(400px);
                 }
             }
+            @media screen and (min-width: $width-big) {
+                .el-carousel__container {
+                    height: pxTorem(600px);
+                }
+            }
         }
         .purpose {
-            padding: pxTorem(20px) pxTorem(20px);
+            @media screen and (max-width: $width-large) {
+                padding: pxTorem(20px) pxTorem(20px);
+            }
+            @media screen and (min-width: $width-large) {
+                padding: pxTorem(20px) pxTorem(40px);
+            }
+            @media screen and (min-width: $width-big) {
+                padding: pxTorem(20px) pxTorem(150px);
+            }
             text-align: center;
             h1 {
                 font-size: pxTorem(26px);
@@ -41,7 +54,11 @@
                         }
                         @media screen and (min-width: $width-large) {
                             line-height: pxTorem(40px);
-                            font-size: pxTorem(18px);
+                            font-size: pxTorem(20px);
+                        }
+                        @media screen and (min-width: $width-big) {
+                            line-height: pxTorem(40px);
+                            font-size: pxTorem(22px);
                         }
                     }
                 }
@@ -98,7 +115,7 @@
                 height: pxTorem(100px);
             }
             @media screen and (min-width: $width-large) {
-                height: pxTorem(150px);
+                height: pxTorem(250px);
             }
             img {
                 height: 100%;
@@ -160,6 +177,11 @@
                 width: pxTorem(780px);
             }
         }
+        @media screen and (min-width: $width-big) {
+            .footerMod {
+                position: absolute;
+            }
+        }
     }
     .callme {
         .banner {
@@ -168,7 +190,7 @@
                 height: pxTorem(100px);
             }
             @media screen and (min-width: $width-large) {
-                height: pxTorem(150px);
+                height: pxTorem(250px);
             }
             img {
                 height: 100%;
@@ -193,7 +215,7 @@
         }
         .callmeMain {
             margin: auto;
-            margin-top:  pxTorem(20px);
+            margin-top: pxTorem(20px);
             @media screen and (max-width: $width-large) {
                 width: 100%;
                 padding: 0 pxTorem(20px);
@@ -205,11 +227,11 @@
                 margin-bottom: pxTorem(10px);
                 display: flex;
                 flex-direction: row;
-                label{
-                    width:pxTorem(80px);
+                label {
+                    width: pxTorem(80px);
                     text-align: right;
                     margin-right: pxTorem(10px);
-                    font-weight:600;
+                    font-weight: 600;
                 }
             }
         }

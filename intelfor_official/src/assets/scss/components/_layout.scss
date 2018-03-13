@@ -1,4 +1,5 @@
 $width-large: pxTorem(683px);
+$width-big: pxTorem(1440px);
 .official {
     height: 100%;
     .navbar {
@@ -13,7 +14,7 @@ $width-large: pxTorem(683px);
         .warp {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-between;
             position: relative;
         }
         @media screen and (max-width: $width-large) {
@@ -39,6 +40,20 @@ $width-large: pxTorem(683px);
             .warp {
                 max-width: pxTorem(1128px);
                 width: 100%;
+                margin: auto;
+            }
+        }
+        @media screen and (min-width: $width-big) {
+            height: pxTorem(80px);
+            line-height: pxTorem(80px);
+            padding: 0 pxTorem(40px);
+            .navbar-right .disktop {
+                display: block !important;
+            }
+            .warp {
+                max-width: pxTorem(1128px);
+                width: 100%;
+                margin: auto;
             }
         }
         .navbar-brand {
@@ -56,6 +71,16 @@ $width-large: pxTorem(683px);
                     color: #31317f;
                     position: relative;
                     top: pxTorem(-36px);
+                }
+                @media screen and (min-width: $width-big) {
+                    .text01 {
+                        font-size: pxTorem(34px);
+                        line-height: pxTorem(70px);
+                    }
+                    .text02 {
+                        font-size: pxTorem(12px);
+                        top: pxTorem(-50px);
+                    }
                 }
             }
             .mobileLogo {
@@ -78,6 +103,12 @@ $width-large: pxTorem(683px);
                     display: block;
                 }
             }
+            @media screen and (min-width: $width-big) {
+                height: pxTorem(80px);
+                .disktopLogo {
+                    display: block;
+                }
+            }
         }
         .navbar-right {
             //flex:1;
@@ -90,6 +121,22 @@ $width-large: pxTorem(683px);
                 .nav-menu-box {
                     margin-left: pxTorem(15px);
                     cursor: pointer;
+                }
+                @media screen and (min-width: $width-large) {
+                    .nav-menu-box {
+                        margin-left: pxTorem(20px);
+                        .text {
+                            font-size: pxTorem(18px);
+                        }
+                    }
+                }
+                @media screen and (min-width: $width-big) {
+                    .nav-menu-box {
+                        margin-left: pxTorem(30px);
+                        .text {
+                            font-size: pxTorem(20px);
+                        }
+                    }
                 }
                 .nav-menu-box:hover {
                     color: #BA0511;
@@ -265,16 +312,32 @@ $width-large: pxTorem(683px);
         @media screen and (min-width: $width-large) {
             padding-top: pxTorem(60px);
         }
+        @media screen and (min-width: $width-big) {
+            padding-top: pxTorem(80px);
+        }
     }
     .footerMod {
         background: #333333;
         width: 100%;
         text-align: center;
         bottom: 0;
-        height: 40px;
-        line-height: 40px;
+        height: 60px;
+        line-height: 60px;
         p {
             color: #999999;
+        }
+        @media screen and (max-width: $width-large) {
+            height: pxTorem(45px);
+            line-height: pxTorem(45px);
+        }
+        @media screen and (min-width: $width-large) {
+            height: pxTorem(60px);
+            line-height: pxTorem(60px);
+        }
+        @media screen and (min-width: $width-big) {
+            height: pxTorem(65px);
+            line-height: pxTorem(65px);
+            font-size:pxTorem(26px);
         }
     }
 }
