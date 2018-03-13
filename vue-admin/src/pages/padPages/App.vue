@@ -36,8 +36,8 @@ export default {
       lang: "get_lang"
     })
   },
-  mounted () {
-     this.get_sys();
+  mounted() {
+    this.get_sys();
   },
   components: {
     mainContent,
@@ -71,10 +71,16 @@ export default {
               type: "h5"
             }
           }).then(res => {
-            esop_i18nLang_init(
-              ["menu", "layout", "common", "specification"],
-              res.data
-            ).then(res => {
+            let opts = [
+              "menu_pad",
+              "layout_pad",
+              "common",
+              "common_pad",
+              "specification_pad",
+              "checkList_pad",
+              "xr_pad"
+            ];
+            esop_i18nLang_init(opts, res.data).then(res => {
               this.$store.dispatch("set_langpackage", res);
               this.main_init = true;
             });

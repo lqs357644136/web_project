@@ -2,20 +2,20 @@
   <div class="x-r">
     <el-tabs type="border-card" class="tabs">
       <el-tab-pane>
-        <span @click="chartInfoTabClick()" slot="label">基础信息</span>
-        <baseInfo></baseInfo>
+        <span @click="chartInfoTabClick()" slot="label">{{langPackage.xr_pad.base}}</span>
+        <baseInfo :langPackage="langPackage"></baseInfo>
       </el-tab-pane>
       <el-tab-pane>
-        <span @click="chartInfoTabClick()" slot="label">样本测定值</span>
-        <checkTable></checkTable>
+        <span @click="chartInfoTabClick()" slot="label">{{langPackage.xr_pad.measValue}}</span>
+        <checkTable :langPackage="langPackage"></checkTable>
       </el-tab-pane>
       <el-tab-pane>
-        <span @click="chartInfoTabClick('chart')" slot="label">x-bar管制图</span>
-        <chartInfo v-if="chartShow"></chartInfo>
+        <span @click="chartInfoTabClick('chart')" slot="label">{{langPackage.xr_pad.xrChart}}</span>
+        <chartInfo v-if="chartShow" :langPackage="langPackage"></chartInfo>
       </el-tab-pane>
     </el-tabs>
     <div class="backBtn">
-      <el-button @click="backSpec()">返 回</el-button>
+      <el-button @click="backSpec()">{{langPackage.common_pad.back}}</el-button>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@
 import baseInfo from "./component/baseInfo.vue";
 import checkTable from "./component/checkTable.vue";
 import chartInfo from "./component/chartInfo.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "x-r",
   props:['xBarInfo'],
@@ -33,7 +34,10 @@ export default {
       chartShow: false,
     };
   },
-  mounted() {
+  computed: {
+    ...mapGetters({
+      langPackage:'get_langpackage'
+    })
   },
   methods: {
     //点击图表

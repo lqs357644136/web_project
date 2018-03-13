@@ -1,0 +1,220 @@
+.official {
+    .home {
+        .banner {
+            .bannerImg {
+                height: 100%;
+                width: 100%;
+            }
+            @media screen and (max-width: $width-large) {
+                .el-carousel__container {
+                    height: pxTorem(250px);
+                }
+            }
+            @media screen and (min-width: $width-large) {
+                .el-carousel__container {
+                    height: pxTorem(400px);
+                }
+            }
+        }
+        .purpose {
+            padding: pxTorem(20px) pxTorem(20px);
+            text-align: center;
+            h1 {
+                font-size: pxTorem(26px);
+                cursor: pointer;
+                margin: pxTorem(10px) 0;
+            }
+            h1:hover {
+                color: #BA0511;
+                transition: color 1s ease;
+            }
+            p {
+                //line-height: pxTorem(24px);
+            }
+            .body {
+                .texts {
+                    margin-top: pxTorem(20px);
+                    padding: 0 pxTorem(10px);
+                    p {
+                        @media screen and (max-width: $width-large) {
+                            line-height:pxTorem(30px);
+                        }
+                        @media screen and (min-width: $width-large) {
+                            line-height: pxTorem(40px);
+                            font-size: pxTorem(18px);
+                        }
+                    }
+                }
+                .info {
+                    .title {
+                        height: pxTorem(30px);
+                        line-height: pxTorem(30px);
+                    }
+                    .imgs {
+                        margin-left: 0;
+                        margin-right: 0;
+                        .imgBox {
+                            margin-bottom: pxTorem(20px);
+                            img {
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .success {
+            padding: pxTorem(20px) pxTorem(20px);
+            text-align: center;
+            h1 {
+                font-size: pxTorem(26px);
+                cursor: pointer;
+                margin: pxTorem(10px) 0;
+            }
+            h1:hover {
+                color: #BA0511;
+                transition: color 1s ease;
+            }
+            .successImg {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+    .plan {
+        .planBox {
+            padding: pxTorem(20px);
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+    .success {
+        .banner {
+            position: relative;
+            @media screen and (max-width: $width-large) {
+                height: pxTorem(100px);
+            }
+            @media screen and (min-width: $width-large) {
+                height: pxTorem(150px);
+            }
+            img {
+                height: 100%;
+                width: 100%;
+            }
+            .text {
+                position: absolute;
+                color: white;
+                font-weight: 800;
+                padding: 0 pxTorem(20px);
+                @media screen and (max-width: $width-large) {
+                    top: 5%;
+                    width: 100%;
+                }
+                @media screen and (min-width: $width-large) {
+                    top: 25%;
+                    width: pxTorem(580px);
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+        .successMain {
+            margin: auto;
+            padding-top: pxTorem(20px);
+            .box-card {
+                margin-bottom: pxTorem(20px);
+                .img {
+                    @media screen and (min-width: $width-large) {
+                        padding-right: pxTorem(20px) !important;
+                        border-right: 1px solid #dfdfdf;
+                        img {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    @media screen and (max-width: $width-large) {
+                        margin-bottom: pxTorem(20px);
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+                .text {
+                    height: 100%;
+                    p {
+                        margin-bottom: pxTorem(10px);
+                        line-height: pxTorem(20px)
+                    }
+                    p:last-child {
+                        margin-bottom: pxTorem(0px)
+                    }
+                }
+            }
+            @media screen and (max-width: $width-large) {
+                width: 100%;
+            }
+            @media screen and (min-width: $width-large) {
+                width: pxTorem(780px);
+            }
+        }
+    }
+    .callme {
+        .banner {
+            position: relative;
+            @media screen and (max-width: $width-large) {
+                height: pxTorem(100px);
+            }
+            @media screen and (min-width: $width-large) {
+                height: pxTorem(150px);
+            }
+            img {
+                height: 100%;
+                width: 100%;
+            }
+            .text {
+                position: absolute;
+                color: white;
+                font-weight: 800;
+                padding: 0 pxTorem(20px);
+                @media screen and (max-width: $width-large) {
+                    top: 5%;
+                    width: 100%;
+                }
+                @media screen and (min-width: $width-large) {
+                    top: 25%;
+                    width: pxTorem(580px);
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+        .callmeMain {
+            margin: auto;
+            margin-top:  pxTorem(20px);
+            @media screen and (max-width: $width-large) {
+                width: 100%;
+                padding: 0 pxTorem(20px);
+            }
+            @media screen and (min-width: $width-large) {
+                width: pxTorem(780px);
+            }
+            .callmeText {
+                margin-bottom: pxTorem(10px);
+                display: flex;
+                flex-direction: row;
+                label{
+                    width:pxTorem(80px);
+                    text-align: right;
+                    margin-right: pxTorem(10px);
+                    font-weight:600;
+                }
+            }
+        }
+        .footerMod {
+            position: absolute;
+        }
+    }
+}

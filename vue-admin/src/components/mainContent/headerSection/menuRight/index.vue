@@ -11,7 +11,7 @@
           <el-dropdown-item class="dropdown-list">
             <a href="javascript:" class="dropdown-btn" @click="user_click()">
               <i class="icon fa fa-sign-out"></i>
-              <span>{{langPackage.layout.loginOut}}</span>
+              <span>{{langPackage.layout_pad.loginout}}</span>
             </a>
           </el-dropdown-item>
         </el-dropdown-menu>

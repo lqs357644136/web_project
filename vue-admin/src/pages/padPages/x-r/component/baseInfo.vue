@@ -2,23 +2,23 @@
   <el-form class="baseInfo">
     <el-row justify="center" :gutter="10">
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="制品名称">
-          <el-input :disabled="true" v-model="inputs.ptno" placeholder="制品名称"></el-input>
+        <el-form-item :label="langPackage.xr_pad.ptno">
+          <el-input :disabled="true" v-model="inputs.ptno" :placeholder="langPackage.xr_pad.ptno"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="管制项目">
-          <el-input :disabled="true" v-model="inputs.item" placeholder="管制项目"></el-input>
+        <el-form-item :label="langPackage.xr_pad.item">
+          <el-input :disabled="true" v-model="inputs.item" :placeholder="langPackage.xr_pad.item"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="测量单位">
-          <el-input :disabled="true" v-model="inputs.unit" placeholder="测量单位"></el-input>
+        <el-form-item :label="langPackage.xr_pad.unit">
+          <el-input :disabled="true" v-model="inputs.unit" :placeholder="langPackage.xr_pad.unit"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="制造部门">
-          <el-input :disabled="true" v-model="inputs.line" placeholder="制造部门"></el-input>
+        <el-form-item :label="langPackage.xr_pad.line">
+          <el-input :disabled="true" v-model="inputs.line" :placeholder="langPackage.xr_pad.line"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
@@ -87,6 +87,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "baseInfo",
+  props:['langPackage'],
   data() {
     return {};
   },

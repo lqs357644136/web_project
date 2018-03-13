@@ -1,13 +1,13 @@
 <template>
   <div class="panel">
-    <panel-title :title="langPackage.menu.specification"></panel-title>
+    <panel-title :title="langPackage.menu_pad.specification"></panel-title>
     <div v-if="!xbarVisible"  class="panel-body specification">
       <!-- 规范查询 -->
       <el-form :model="searchInput" :inline="true" status-icon :rules="rules" ref="inputs" class="specForm">
         <el-row class="selectForm" :gutter="10">
           <el-col :xs="24" :sm="24" :md="7" :lg="6">
             <el-form-item class="plant" :label="langPackage.common.plant" prop="plantInput">
-              <el-select @change="plantSelectChange()" v-model="searchInput.plantInput" :placeholder="langPackage.common.choose">
+              <el-select @change="plantSelectChange()" v-model="searchInput.plantInput" :placeholder="langPackage.common_pad.choose">
                 <el-option v-for="item in searchSelect.plantOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
               </el-select>
             </el-form-item>
@@ -28,7 +28,7 @@
           </el-col>
         </el-row>
         <div class="subBtn">
-          <el-button type="primary" @click="search('searchInput')">{{langPackage.common.search}}</el-button>
+          <el-button type="primary" @click="search('searchInput')">{{langPackage.common_pad.search}}</el-button>
         </div>
       </el-form>
 
@@ -36,38 +36,38 @@
       <el-table :stripe="true" class="specTable" :data="tableData" height="100%" border style="width: 100%">
         <el-table-column prop="ptno" :label="langPackage.common.ptno"></el-table-column>
         <el-table-column prop="line" :label="langPackage.common.line"></el-table-column>
-        <el-table-column prop="item" :label="langPackage.specification.item"></el-table-column>
-        <el-table-column prop="itemValue" :label="langPackage.specification.itemNo"></el-table-column>
-        <el-table-column prop="method" :label="langPackage.specification.method"></el-table-column>
-        <el-table-column :label="langPackage.common.operate" width="200px">
+        <el-table-column prop="item" :label="langPackage.specification_pad.item"></el-table-column>
+        <el-table-column prop="itemValue" :label="langPackage.specification_pad.itemNo"></el-table-column>
+        <el-table-column prop="method" :label="langPackage.specification_pad.method"></el-table-column>
+        <el-table-column :label="langPackage.common_pad.operate" width="200px">
           <template slot-scope="scope">
             <div class="edit">
-              <el-button @click="getInfo(scope.$index,scope.row)" type="primary">{{langPackage.common.info}}</el-button>
-              <el-button v-if="scope.row.xBar=='Y'&&scope.row.specificationType==0" @click="getXbar(scope.$index,scope.row)" type="success">{{langPackage.specification.xbar}}</el-button>
+              <el-button @click="getInfo(scope.$index,scope.row)" type="primary">{{langPackage.common_pad.info}}</el-button>
+              <el-button v-if="scope.row.xBar=='Y'&&scope.row.specificationType==0" @click="getXbar(scope.$index,scope.row)" type="success">{{langPackage.specification_pad.xbar}}</el-button>
             </div>
           </template>
         </el-table-column>
       </el-table>
 
       <!-- xbar查询条件 -->
-      <el-dialog :title="langPackage.specification.searchxbarDialog_title" class="xbarDialog" :visible.sync="xbarSearchDialog" width="50%">
+      <el-dialog :title="langPackage.specification_pad.searchxbarDialog_title" class="xbarDialog" :visible.sync="xbarSearchDialog" width="50%">
         <span>
-          <el-select v-model="searchXbarInput.processInput" :placeholder="langPackage.specification.chooseProssce">
+          <el-select v-model="searchXbarInput.processInput" :placeholder="langPackage.specification_pad.chooseProssce">
             <el-option v-for="item in searchSelect.processOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
           </el-select>
-          <el-date-picker v-model="searchXbarInput.dates" :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" type="datetimerange" :start-placeholder="langPackage.common.startTime" :end-placeholder="langPackage.common.startTime">
+          <el-date-picker v-model="searchXbarInput.dates" :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" type="datetimerange" :start-placeholder="langPackage.common_pad.startTime" :end-placeholder="langPackage.common_pad.startTime">
           </el-date-picker>
         </span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="xbarSearch()" type="primary">{{langPackage.common.enter}}</el-button>
-          <el-button @click="xbarSearchDialog = false">{{langPackage.common.cancel}}</el-button>
+          <el-button @click="xbarSearch()" type="primary">{{langPackage.common_pad.enter}}</el-button>
+          <el-button @click="xbarSearchDialog = false">{{langPackage.common_pad.cancel}}</el-button>
         </span>
       </el-dialog>
 
       <!-- 规范详情  -->
       <el-dialog class="specInfo" :show-close="false" :visible.sync="dialogFormVisible">
         <el-collapse accordion>
-          <el-collapse-item class="normal" :title="langPackage.specification.base" name="1">
+          <el-collapse-item class="normal" :title="langPackage.specification_pad.base" name="1">
             <p>
               <span class="name">{{langPackage.common.ptno}}</span>
               <span class="value">{{info.ptno}}</span>
@@ -77,72 +77,72 @@
               <span class="value">{{info.line}}</span>
             </p>
             <p>
-              <span class="name">{{langPackage.specification.item}}</span>
+              <span class="name">{{langPackage.specification_pad.item}}</span>
               <span class="value">{{info.item}}</span>
             </p>
             <p>
-              <span class="name">{{langPackage.specification.itemNo}}</span>
+              <span class="name">{{langPackage.specification_pad.itemNo}}</span>
               <span class="value">{{info.itemValue}}</span>
             </p>
           </el-collapse-item>
-          <el-collapse-item :title="langPackage.specification.rule" name="2">
+          <el-collapse-item :title="langPackage.specification_pad.rule" name="2">
             <p>
-              <span class="name">{{langPackage.specification.method}}</span>
+              <span class="name">{{langPackage.specification_pad.method}}</span>
               <span class="value">{{info.method}}</span>
             </p>
             <p>
-              <span class="name">{{langPackage.specification.inspectSpecification}}</span>
+              <span class="name">{{langPackage.specification_pad.inspectSpecification}}</span>
               <span class="value">{{info.inspectSpecification}}</span>
             </p>
             <p>
-              <span class="name">{{langPackage.specification.specificationType}}</span>
-              <span class="value">{{info.specificationType=='0'?langPackage.specification.range:langPackage.specification.tolerance}}</span>
+              <span class="name">{{langPackage.specification_pad.specificationType}}</span>
+              <span class="value">{{info.specificationType=='0'?langPackage.specification_pad.range:langPackage.specification_pad.tolerance}}</span>
             </p>
             <p>
-              <span class="name">{{langPackage.specification.itemNo}}</span>
+              <span class="name">{{langPackage.specification_pad.itemNo}}</span>
               <span class="value">{{info.itemValue}}</span>
             </p>
             <template v-if="info.specificationType==0">
               <p>
-                <span class="name">{{info.specificationType=='0'?langPackage.specification.range:langPackage.specification.tolerance}}</span>:
+                <span class="name">{{info.specificationType=='0'?langPackage.specification_pad.range:langPackage.specification_pad.tolerance}}</span>:
                 <span class="value">{{info.lowerLimit}}~{{info.upperLimit}}</span>
               </p>
             </template>
             <template v-else>
               <p>
-                <span class="name">{{langPackage.specification.stdValue}}</span>
+                <span class="name">{{langPackage.specification_pad.stdValue}}</span>
                 <span class="value">{{info.stdValue}}</span>
               </p>
               <p>
-                <span class="name">{{langPackage.specification.stdValue}}-</span>
+                <span class="name">{{langPackage.specification_pad.stdValue}}-</span>
                 <span class="value">{{info.stdValueMinus}}</span>
               </p>
               <p>
-                <span class="name">{{langPackage.specification.stdValue}}+</span>
+                <span class="name">{{langPackage.specification_pad.stdValue}}+</span>
                 <span class="value">{{info.stdValuePlus}}</span>
               </p>
             </template>
           </el-collapse-item>
-          <el-collapse-item class="type" :title="langPackage.specification.specType" name="3">
+          <el-collapse-item class="type" :title="langPackage.specification_pad.specType" name="3">
             <div class="typeItem">
-              <span class="item-name">{{langPackage.specification.firstChek}}:</span>
+              <span class="item-name">{{langPackage.specification_pad.firstCheck}}:</span>
               <i v-if="info.selfInspect=='Y'" class="fa fa-check yes"></i>
               <i v-else class="fa fa-close no"></i>
             </div>
             <div class="typeItem">
-              <span class="item-name">{{langPackage.specification.tourCheck}}:</span>
+              <span class="item-name">{{langPackage.specification_pad.tourCheck}}:</span>
               <i v-if="info.routingInspect=='Y'" class="fa fa-check yes"></i>
               <i v-else class="fa fa-close no"></i>
             </div>
             <div class="typeItem">
-              <span class="item-name">{{langPackage.specification.xbar}}:</span>
+              <span class="item-name">{{langPackage.specification_pad.xbar}}:</span>
               <i v-if="info.xBar=='Y'" class="fa fa-check yes"></i>
               <i v-else class="fa fa-close no"></i>
             </div>
           </el-collapse-item>
         </el-collapse>
         <div slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogFormVisible = false">{{langPackage.common.enter}}</el-button>
+          <el-button type="primary" @click="dialogFormVisible = false">{{langPackage.common_pad.enter}}</el-button>
         </div>
       </el-dialog>
     </div>
@@ -153,7 +153,7 @@
 
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import { panelTitle } from "components";
 import xr from "pages/padPages/x-r/x-r.vue";
 import url from "api";
@@ -162,7 +162,7 @@ export default {
   data() {
     var checkStep = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error(this.langPackage.common.pleaseChoose));
+        return callback(new Error(this.langPackage.common_pad.pleaseChoose));
       } else {
         callback();
       }

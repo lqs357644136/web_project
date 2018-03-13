@@ -1,13 +1,13 @@
 <template>
   <div class="panel checkList">
-    <panel-title :title="$route.meta.title"></panel-title>
+    <panel-title :title="langPackage.menu.checkList"></panel-title>
     <div class="panel-body" style="padding:0">
 
       <el-table :stripe="true" :data="tableData" height="100%" border style="width: 100%">
-        <el-table-column align="center" type="index" label="序号" width="70px"></el-table-column>
-        <el-table-column align="center" prop="company" label="公司"></el-table-column>
-        <el-table-column align="center" prop="plantdesc" label="车间"></el-table-column>
-        <el-table-column align="center" prop="processname" label="机台"></el-table-column>
+        <el-table-column align="center" type="index" :label="langPackage.common.order" width="70px"></el-table-column>
+        <el-table-column align="center" prop="company" :label="langPackage.common.company"></el-table-column>
+        <el-table-column align="center" prop="plantdesc" :label="langPackage.common.plant"></el-table-column>
+        <el-table-column align="center" prop="processname" :label="langPackage.common.process"></el-table-column>
         <el-table-column align="center" prop="ptno" label="产品编码"></el-table-column>
         <el-table-column align="center" prop="startTime" label="发出时间"></el-table-column>
         <el-table-column align="center" width="120px" prop="duration" label="时长(分钟)"></el-table-column>
@@ -30,6 +30,7 @@ import check from "components/check/check.vue";
 import { panelTitle } from "components";
 import { $dataFormat } from "common/filiter/index.js";
 import url from "api/index.js";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -42,6 +43,11 @@ export default {
   },
   components: {
     panelTitle
+  },
+  computed: {
+    ...mapGetters({
+      langPackage:'get_langpackage'
+    })
   },
   methods: {
     //获取检查清单

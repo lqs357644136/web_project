@@ -24,7 +24,7 @@ import { $get,$post,$get_file,$post_noToken,$get_noToken } from 'common/fetch/in
 import { getMacINfo,api_baseurl,getQueryString } from 'common/uitl.js'
 
 //导入国际化设置
-import i18n from 'common/i18n'
+//import i18n from 'common/i18n'
 
 //按需引入图表
 import VeLine from 'v-charts/lib/line'
@@ -53,6 +53,6 @@ Vue.config.devtools = process.env.NODE_ENV === 'development'
 new Vue({
   router,
   store,
-  i18n,
+  //i18n,
   ...App
 }).$mount('mainbody')

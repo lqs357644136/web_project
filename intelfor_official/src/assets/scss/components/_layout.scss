@@ -1,0 +1,280 @@
+$width-large: pxTorem(683px);
+.official {
+    height: 100%;
+    .navbar {
+        background: rgba(255, 255, 255, 0.84);
+        position: fixed;
+        width: 100%;
+        z-index: 3;
+        border-bottom: 1px solid #dfdfdf;
+        &:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+        .warp {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            position: relative;
+        }
+        @media screen and (max-width: $width-large) {
+            height: pxTorem(45px);
+            line-height: pxTorem(45px);
+            padding: 0 pxTorem(2px);
+            .navbar-right .mobile {
+                display: block !important;
+            }
+            .warp {
+                width: 100%;
+                justify-content: space-between;
+                padding: 0 pxTorem(20px);
+            }
+        }
+        @media screen and (min-width: $width-large) {
+            height: pxTorem(60px);
+            line-height: pxTorem(60px);
+            padding: 0 pxTorem(40px);
+            .navbar-right .disktop {
+                display: block !important;
+            }
+            .warp {
+                max-width: pxTorem(1128px);
+                width: 100%;
+            }
+        }
+        .navbar-brand {
+            width: pxTorem(200px);
+            .disktopLogo {
+                display: none;
+                .text01 {
+                    font-size: pxTorem(22px);
+                    font-weight: 800;
+                    color: #0e0e6f;
+                    line-height: pxTorem(55px);
+                }
+                .text02 {
+                    font-size: pxTorem(8px);
+                    color: #31317f;
+                    position: relative;
+                    top: pxTorem(-36px);
+                }
+            }
+            .mobileLogo {
+                display: none;
+                .text01 {
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: #0e0e6f;
+                }
+            }
+            @media screen and (max-width: $width-large) {
+                height: pxTorem(45px);
+                .mobileLogo {
+                    display: block;
+                }
+            }
+            @media screen and (min-width: $width-large) {
+                height: pxTorem(60px);
+                .disktopLogo {
+                    display: block;
+                }
+            }
+        }
+        .navbar-right {
+            //flex:1;
+        }
+        .disktop {
+            display: none;
+            .navbar-menu {
+                display: flex;
+                flex-direction: row;
+                .nav-menu-box {
+                    margin-left: pxTorem(15px);
+                    cursor: pointer;
+                }
+                .nav-menu-box:hover {
+                    color: #BA0511;
+                    .more {
+                        display: block;
+                    }
+                }
+                .isChoose {
+                    .text {
+                        color: #BA0511;
+                    }
+                }
+                .more {
+                    padding: pxTorem(10px) pxTorem(10px);
+                    position: absolute;
+                    display: none;
+                    width: 100%;
+                    background-color: white;
+                    left: 0;
+                }
+                .plant {
+                    display: flex;
+                    flex-direction: row;
+                    .plantImg {
+                        padding: pxTorem(20px) pxTorem(20px);
+                        padding-right: pxTorem(20px) pxTorem(20px);
+                        border-right: 1px solid #dfdfdf;
+                        height: pxTorem(220px);
+                        width: pxTorem(220px);
+                        margin-right: pxTorem(20px);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    .ptBoxs {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        .ptBox {
+                            display: flex;
+                            flex-direction: column;
+                            width: 28%;
+                            margin-bottom: pxTorem(10px);
+                            .img {
+                                text-align: center;
+                                img {
+                                    position: relative;
+                                    top: 0;
+                                    height: pxTorem(80px);
+                                    width: pxTorem(80px);
+                                    border-radius: 999px;
+                                }
+                            }
+                            .text {
+                                height: pxTorem(30px);
+                                line-height: pxTorem(30px);
+                                text-align: center;
+                                font-weight: 800;
+                                color: initial;
+                            }
+                            &:hover {
+                                .text {
+                                    color: inherit;
+                                }
+                                .img {
+                                    img {
+                                        position: relative;
+                                        top: pxTorem(-5px);
+                                        transition: top 0.2s ease;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .success {
+                    display: flex;
+                    flex-direction: row;
+                    .plantImg {
+                        padding: pxTorem(20px) pxTorem(20px);
+                        padding-right: pxTorem(20px) pxTorem(20px);
+                        border-right: 1px solid #dfdfdf;
+                        height: pxTorem(220px);
+                        width: pxTorem(220px);
+                        margin-right: pxTorem(20px);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    .ptBoxs {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        .ptBox {
+                            display: flex;
+                            flex-direction: column;
+                            width: 28%;
+                            margin-bottom: pxTorem(5px);
+                            margin-right: pxTorem(5px);
+                            .img {
+                                text-align: center;
+                                img {
+                                    position: relative;
+                                    top: 0;
+                                    height: pxTorem(40px);
+                                    width: pxTorem(150px);
+                                }
+                            }
+                            .text {
+                                height: pxTorem(20px);
+                                line-height: pxTorem(20px);
+                                text-align: center;
+                                font-weight: 800;
+                                color: initial;
+                            }
+                            &:hover {
+                                .text {
+                                    color: inherit;
+                                }
+                                .img {
+                                    img {
+                                        position: relative;
+                                        top: pxTorem(-5px);
+                                        transition: top 0.2s ease;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mobile {
+            display: none;
+            .btn {
+                font-size: pxTorem(26px);
+                line-height: pxTorem(45px);
+            }
+            .rightMenu {
+                position: fixed;
+                right: 0;
+                background-color: white;
+                top: 0;
+                min-width: pxTorem(150px);
+                height: 100%;
+                border-left: 1px solid #dfdfdf;
+                border-bottom: 1px solid #dfdfdf;
+                box-shadow: -1px 0px 24px black;
+                .cancel {
+                    font-size: pxTorem(30px);
+                    padding: pxTorem(5px) pxTorem(15px);
+                    border-bottom: 1px solid #dfdfdf;
+                    .text {}
+                }
+                .menuBox {
+                    padding: pxTorem(0px) pxTorem(15px);
+                    border-bottom: 1px solid #dfdfdf;
+                    text-align: center;
+                    font-size: 800;
+                }
+            }
+        }
+    }
+    .body-warp {
+        height: 100%;
+        @media screen and (max-width: $width-large) {
+            padding-top: pxTorem(45px);
+        }
+        @media screen and (min-width: $width-large) {
+            padding-top: pxTorem(60px);
+        }
+    }
+    .footerMod {
+        background: #333333;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        height: 40px;
+        line-height: 40px;
+        p {
+            color: #999999;
+        }
+    }
+}
