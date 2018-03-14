@@ -102,6 +102,12 @@
     .plan {
         .planBox {
             padding: pxTorem(20px);
+            @media screen and (min-width: $width-large) {
+                padding: pxTorem(20px) pxTorem(150px);
+            }
+            @media screen and (min-width: $width-big) {
+                padding: pxTorem(20px) pxTorem(250px);
+            }
             img {
                 height: 100%;
                 width: 100%;
@@ -132,7 +138,7 @@
                 }
                 @media screen and (min-width: $width-large) {
                     top: 25%;
-                    width: pxTorem(580px);
+                    width: pxTorem(780px);
                     left: 50%;
                     transform: translateX(-50%);
                 }
@@ -147,9 +153,11 @@
                     @media screen and (min-width: $width-large) {
                         padding-right: pxTorem(20px) !important;
                         border-right: 1px solid #dfdfdf;
+                        height: pxTorem(150px);
+                        display: flex;
                         img {
-                            height: 100%;
-                            width: 100%;
+                            //height: 100%;
+                            //width: 100%;
                         }
                     }
                     @media screen and (max-width: $width-large) {
@@ -160,13 +168,29 @@
                     }
                 }
                 .text {
-                    height: 100%;
-                    p {
-                        margin-bottom: pxTorem(10px);
-                        line-height: pxTorem(20px)
-                    }
-                    p:last-child {
-                        margin-bottom: pxTorem(0px)
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .textGourp {
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: pxTorem(20px);
+                        &:last-child {
+                            margin-bottom: pxTorem(0px);
+                        }
+                        &>* {
+                            font-size: pxTorem(20px);
+                            line-height: pxTorem(30px);
+                        }
+                        label {
+                            width: pxTorem(200px);
+                            text-align: right;
+                            margin-right: pxTorem(10px);
+                            font-weight: 600;
+                        }
+                        .value {
+                            flex: 1;
+                        }
                     }
                 }
             }
@@ -175,11 +199,6 @@
             }
             @media screen and (min-width: $width-large) {
                 width: pxTorem(780px);
-            }
-        }
-        @media screen and (min-width: $width-big) {
-            .footerMod {
-                position: absolute;
             }
         }
     }
@@ -191,6 +210,9 @@
             }
             @media screen and (min-width: $width-large) {
                 height: pxTorem(250px);
+            }
+            @media screen and (min-width: $width-big) {
+                height: pxTorem(350px);
             }
             img {
                 height: 100%;
@@ -227,11 +249,22 @@
                 margin-bottom: pxTorem(10px);
                 display: flex;
                 flex-direction: row;
+                &>* {
+                    font-size: pxTorem(20px);
+                }
+                @media screen and (max-width: $width-large) {
+                    &>* {
+                        font-size: pxTorem(16px);
+                    }
+                }
                 label {
-                    width: pxTorem(80px);
+                    width: pxTorem(90px);
                     text-align: right;
                     margin-right: pxTorem(10px);
                     font-weight: 600;
+                }
+                .value {
+                    flex: 1;
                 }
             }
         }

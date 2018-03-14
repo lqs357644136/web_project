@@ -14,15 +14,15 @@
             <el-card class="box-card">
                 <el-row :gutter="30">
                     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="callmeText">
-                        <label>公司名称:</label>
+                        <label>公司名称 :</label>
                         <span class="value">广州智企信息科技有限公司</span>
                     </el-col>
                     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="callmeText">
-                        <label>电话:</label>
+                        <label>电话 :</label>
                         <span class="value">020-888888888</span>
                     </el-col>
                     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="callmeText">
-                        <label>地址:</label>
+                        <label>地址 :</label>
                         <span class="value">广州市萝岗区偃月路萝岗万达C1栋2905</span>
                     </el-col>
                 </el-row>
