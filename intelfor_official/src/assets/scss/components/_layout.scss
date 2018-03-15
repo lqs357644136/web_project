@@ -61,7 +61,7 @@ $width-big: pxTorem(1440px);
             .disktopLogo {
                 display: none;
                 .text01 {
-                    font-size: pxTorem(22px);
+                    font-size: pxTorem(28px);
                     font-weight: 800;
                     color: #0e0e6f;
                     line-height: pxTorem(55px);
@@ -74,7 +74,7 @@ $width-big: pxTorem(1440px);
                 }
                 @media screen and (min-width: $width-big) {
                     .text01 {
-                        font-size: pxTorem(34px);
+                        font-size: pxTorem(28px);
                         line-height: pxTorem(70px);
                     }
                     .text02 {
@@ -118,6 +118,14 @@ $width-big: pxTorem(1440px);
             .navbar-menu {
                 display: flex;
                 flex-direction: row;
+                .tel {
+                    font-size: pxTorem(18px);
+                    margin-left: pxTorem(25px);
+                    a {
+                        color: #1c4094;
+                        font-size: pxTorem(18px);
+                    }
+                }
                 .nav-menu-box {
                     margin-left: pxTorem(15px);
                     cursor: pointer;
@@ -300,7 +308,16 @@ $width-big: pxTorem(1440px);
                     border-bottom: 1px solid #dfdfdf;
                     text-align: center;
                     font-size: 800;
+                    text-align: left;
+                    .fa{
+                        margin-right:pxTorem(10px);
+                    }
                 }
+            }
+            .tel {
+                position: absolute;
+                bottom: 0;
+                left:pxTorem(10px);
             }
         }
     }
@@ -337,7 +354,7 @@ $width-big: pxTorem(1440px);
         @media screen and (min-width: $width-big) {
             height: pxTorem(65px);
             line-height: pxTorem(65px);
-            font-size:pxTorem(26px);
+            font-size: pxTorem(26px);
         }
     }
 }

@@ -2,7 +2,7 @@
   <div class="home">
     <!-- banner -->
     <div class="banner">
-      <el-carousel :interval="5000" arrow="always" >
+      <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="(item,index) in bannerImgs" :key="index">
           <img class="bannerImg" :src="item.img" alt="图片">
         </el-carousel-item>
@@ -16,10 +16,10 @@
           <p>智企信息专注数字工厂的解决方案、软件设计与开发、数据采集和显示设备，具备电子、电器、通信、五金、注塑、汽车、汽配、家具等行业的解决方案。目前有APS高级计划与排程、E-SOP、电子看板、安灯预警、电子叫料、数字车间管理、移动质量管理等软件系统和数字设备。 公司总部位于广州，业务遍布全国，在华北、华东、华南、中部地区、西部地区设立支持中心，为您提供全覆盖、全方位的服务和支持。智企车间数字化整体方案将为您的工厂实现全面的数字化、无纸化、目视化、无线移动式的管理，让您的工厂向智能化挺进！</p>
         </el-col>
         <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="info">
-          <div class="title">生产现场</div>
+          <div class="title"> </div>
           <el-row class="imgs" :gutter="30">
             <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="imgBox" v-for="(item,index) in purposeImgs" :key="index">
-              <img :src="item.img" alt="图片">
+              <a @click="$router.push('/plan')"><img :src="item.img" alt="图片"></a>
             </el-col>
           </el-row>
         </el-col>
@@ -42,7 +42,7 @@
 <script>
 import Vue from "vue";
 import footerMod from "components/layout/footerMod.vue";
-import { Carousel, CarouselItem,Row,Col } from "element-ui";
+import { Carousel, CarouselItem, Row, Col } from "element-ui";
 Vue.use(Carousel);
 Vue.use(CarouselItem);
 Vue.use(Row);
@@ -61,10 +61,10 @@ export default {
         { img: "https://picsum.photos/1024/400/?image=608" }
       ],
       purposeImgs: [
-        { img: "https://picsum.photos/1024/500/?image=616" },
-        { img: "https://picsum.photos/1024/500/?image=617" },
-        { img: "https://picsum.photos/1024/500/?image=618" },
-        { img: "https://picsum.photos/1024/500/?image=619" }
+        { img: require("assets/images/plan/live/1.png") },
+        { img: require("assets/images/plan/live/2.png") },
+        { img: require("assets/images/plan/live/3.png") },
+        { img: require("assets/images/plan/live/4.png") }
       ],
       successImgs: [
         { img: "https://picsum.photos/1024/500/?image=609" },

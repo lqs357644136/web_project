@@ -1,189 +1,311 @@
-.official {
-    .home {
-        .banner {
-            .bannerImg {
-                height: 100%;
-                width: 100%;
-            }
-            @media screen and (max-width: $width-large) {
-                .el-carousel__container {
-                    height: pxTorem(250px);
+        .official {
+            .home {
+                .banner {
+                    .bannerImg {
+                        height: 100%;
+                        width: 100%;
+                    }
+                    @media screen and (max-width: $width-large) {
+                        .el-carousel__container {
+                            height: pxTorem(250px);
+                        }
+                    }
+                    @media screen and (min-width: $width-large) {
+                        .el-carousel__container {
+                            height: pxTorem(400px);
+                        }
+                    }
+                    @media screen and (min-width: $width-big) {
+                        .el-carousel__container {
+                            height: pxTorem(600px);
+                        }
+                    }
                 }
-            }
-            @media screen and (min-width: $width-large) {
-                .el-carousel__container {
-                    height: pxTorem(400px);
-                }
-            }
-            @media screen and (min-width: $width-big) {
-                .el-carousel__container {
-                    height: pxTorem(600px);
-                }
-            }
-        }
-        .purpose {
-            @media screen and (max-width: $width-large) {
-                padding: pxTorem(20px) pxTorem(20px);
-            }
-            @media screen and (min-width: $width-large) {
-                padding: pxTorem(20px) pxTorem(40px);
-            }
-            @media screen and (min-width: $width-big) {
-                padding: pxTorem(20px) pxTorem(150px);
-            }
-            text-align: center;
-            h1 {
-                font-size: pxTorem(26px);
-                cursor: pointer;
-                margin: pxTorem(10px) 0;
-            }
-            h1:hover {
-                color: #BA0511;
-                transition: color 1s ease;
-            }
-            p {
-                //line-height: pxTorem(24px);
-            }
-            .body {
-                .texts {
-                    margin-top: pxTorem(20px);
-                    padding: 0 pxTorem(10px);
+                .purpose {
+                    @media screen and (max-width: $width-large) {
+                        padding: pxTorem(20px) pxTorem(20px);
+                    }
+                    @media screen and (min-width: $width-large) {
+                        padding: pxTorem(20px) pxTorem(40px);
+                    }
+                    @media screen and (min-width: $width-big) {
+                        padding: pxTorem(20px) pxTorem(150px);
+                    }
+                    text-align: center;
+                    h1 {
+                        font-size: pxTorem(26px);
+                        cursor: pointer;
+                        margin: pxTorem(10px) 0;
+                    }
+                    h1:hover {
+                        color: #BA0511;
+                        transition: color 1s ease;
+                    }
                     p {
-                        @media screen and (max-width: $width-large) {
-                            line-height:pxTorem(30px);
-                        }
-                        @media screen and (min-width: $width-large) {
-                            line-height: pxTorem(40px);
-                            font-size: pxTorem(20px);
-                        }
-                        @media screen and (min-width: $width-big) {
-                            line-height: pxTorem(40px);
-                            font-size: pxTorem(22px);
-                        }
+                        //line-height: pxTorem(24px);
                     }
-                }
-                .info {
-                    .title {
-                        height: pxTorem(30px);
-                        line-height: pxTorem(30px);
-                    }
-                    .imgs {
-                        margin-left: 0;
-                        margin-right: 0;
-                        .imgBox {
-                            margin-bottom: pxTorem(20px);
-                            img {
-                                height: 100%;
-                                width: 100%;
+                    .body {
+                        .texts {
+                            margin-top: pxTorem(20px);
+                            padding: 0 pxTorem(10px);
+                            p {
+                                @media screen and (max-width: $width-large) {
+                                    line-height:pxTorem(30px);
+                                }
+                                @media screen and (min-width: $width-large) {
+                                    line-height: pxTorem(40px);
+                                    font-size: pxTorem(20px);
+                                }
+                                @media screen and (min-width: $width-big) {
+                                    line-height: pxTorem(40px);
+                                    font-size: pxTorem(22px);
+                                }
+                            }
+                        }
+                        .info {
+                            .title {
+                                height: pxTorem(30px);
+                                line-height: pxTorem(30px);
+                            }
+                            .imgs {
+                                margin-left: 0;
+                                margin-right: 0;
+                                .imgBox {
+                                    margin-bottom: pxTorem(20px);
+                                    img {
+                                        height: 100%;
+                                        width: 100%;
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-        }
-        .success {
-            padding: pxTorem(20px) pxTorem(20px);
-            text-align: center;
-            h1 {
-                font-size: pxTorem(26px);
-                cursor: pointer;
-                margin: pxTorem(10px) 0;
-            }
-            h1:hover {
-                color: #BA0511;
-                transition: color 1s ease;
-            }
-            .successImg {
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
-    .plan {
-        .planBox {
-            padding: pxTorem(20px);
-            @media screen and (min-width: $width-large) {
-                padding: pxTorem(20px) pxTorem(150px);
-            }
-            @media screen and (min-width: $width-big) {
-                padding: pxTorem(20px) pxTorem(250px);
-            }
-            img {
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
-    .success {
-        .banner {
-            position: relative;
-            @media screen and (max-width: $width-large) {
-                height: pxTorem(100px);
-            }
-            @media screen and (min-width: $width-large) {
-                height: pxTorem(250px);
-            }
-            img {
-                height: 100%;
-                width: 100%;
-            }
-            .text {
-                position: absolute;
-                color: white;
-                font-weight: 800;
-                padding: 0 pxTorem(20px);
-                @media screen and (max-width: $width-large) {
-                    top: 5%;
-                    width: 100%;
-                }
-                @media screen and (min-width: $width-large) {
-                    top: 25%;
-                    width: pxTorem(780px);
-                    left: 50%;
-                    transform: translateX(-50%);
+                .success {
+                    padding: pxTorem(20px) pxTorem(20px);
+                    text-align: center;
+                    h1 {
+                        font-size: pxTorem(26px);
+                        cursor: pointer;
+                        margin: pxTorem(10px) 0;
+                    }
+                    h1:hover {
+                        color: #BA0511;
+                        transition: color 1s ease;
+                    }
+                    .successImg {
+                        height: 100%;
+                        width: 100%;
+                    }
                 }
             }
-        }
-        .successMain {
-            margin: auto;
-            padding-top: pxTorem(20px);
-            .box-card {
-                margin-bottom: pxTorem(20px);
-                .img {
+            .plan {
+                .planBox {
+                    padding: pxTorem(20px) pxTorem(30px);
                     @media screen and (min-width: $width-large) {
-                        padding-right: pxTorem(20px) !important;
-                        border-right: 1px solid #dfdfdf;
-                        height: pxTorem(150px);
-                        display: flex;
-                        img {
-                            //height: 100%;
-                            //width: 100%;
+                        padding: pxTorem(20px) pxTorem(150px);
+                    }
+                    @media screen and (min-width: $width-big) {
+                        padding: pxTorem(20px) pxTorem(250px);
+                    }
+                    .el-col {
+                        margin-bottom: pxTorem(30px);
+                        @media screen and (max-width: $width-large) {
+                            .pc{
+                                display:none;
+                            }
+                        }
+                        @media screen and (min-width: $width-large) {
+                            .mobile{
+                                display:none;
+                            }
+                        }
+                    }
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 23px;
+                        overflow: hidden;
+                        box-shadow: 2px 2px 20px #8e8e8e;
+                    }
+                }
+                h1 {
+                    text-align: center;
+                }
+            }
+            .success {
+                .banner {
+                    position: relative;
+                    @media screen and (max-width: $width-large) {
+                        height: pxTorem(100px);
+                    }
+                    @media screen and (min-width: $width-large) {
+                        height: pxTorem(250px);
+                    }
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .text {
+                        position: absolute;
+                        color: white;
+                        font-weight: 800;
+                        padding: 0 pxTorem(20px);
+                        @media screen and (max-width: $width-large) {
+                            top: 5%;
+                            width: 100%;
+                        }
+                        @media screen and (min-width: $width-large) {
+                            top: 25%;
+                            width: pxTorem(780px);
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                    }
+                }
+                .successMain {
+                    margin: auto;
+                    padding-top: pxTorem(20px);
+                    .box-card {
+                        margin-bottom: pxTorem(20px);
+                        .img {
+                            @media screen and (min-width: $width-large) {
+                                padding-right: pxTorem(20px) !important;
+                                border-right: 1px solid #dfdfdf;
+                                height: pxTorem(150px);
+                                display: flex;
+                                img {
+                                    //height: 100%;
+                                    //width: 100%;
+                                }
+                            }
+                            @media screen and (max-width: $width-large) {
+                                margin-bottom: pxTorem(20px);
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        .text {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            .textGourp {
+                                display: flex;
+                                flex-direction: row;
+                                margin-bottom: pxTorem(20px);
+                                &:last-child {
+                                    margin-bottom: pxTorem(0px);
+                                }
+                                &>* {
+                                    font-size: pxTorem(20px);
+                                    line-height: pxTorem(30px);
+                                }
+                                label {
+                                    width: pxTorem(200px);
+                                    text-align: right;
+                                    margin-right: pxTorem(10px);
+                                    font-weight: 600;
+                                }
+                                .value {
+                                    flex: 1;
+                                }
+                            }
                         }
                     }
                     @media screen and (max-width: $width-large) {
-                        margin-bottom: pxTorem(20px);
-                        img {
-                            width: 100%;
+                        width: 100%;
+                    }
+                    @media screen and (min-width: $width-large) {
+                        width: pxTorem(780px);
+                    }
+                }
+            }
+            .callme {
+                .banner {
+                    position: relative;
+                    @media screen and (max-width: $width-large) {
+                        height: pxTorem(150px);
+                    }
+                    @media screen and (min-width: $width-large) {
+                        height: pxTorem(250px);
+                    }
+                    @media screen and (min-width: $width-big) {
+                        height: pxTorem(350px);
+                    }
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .text {
+                        position: absolute;
+                        color: white;
+                        font-weight: 800;
+                        padding: 0 1.25rem;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        background: rgba(12, 12, 12, 0.25);
+                        @media screen and (max-width: $width-large) {
+                            font-size: pxTorem(10px);
+                        }
+                        @media screen and (min-width: $width-large) {
+                            font-size: pxTorem(16px);
+                        }
+                        &>* {
+                            position: absolute;
+                        }
+                        .text01 {
+                            @media screen and (max-width: $width-large) {
+                                right:pxTorem(36px);
+                                top: pxTorem(9px);
+                            }
+                            @media screen and (min-width: $width-large) {
+                                right: pxTorem(36px);
+                                top: pxTorem(9px);
+                            }
+                        }
+                        .text02 {
+                            @media screen and (max-width: $width-large) {
+                                right:pxTorem(79px);
+                                top: pxTorem(38px);
+                            }
+                            @media screen and (min-width: $width-large) {
+                                right: pxTorem(99px);
+                                top: pxTorem(58px);
+                            }
+                        }
+                        .text03 {
+                            @media screen and (max-width: $width-large) {
+                                right:pxTorem(109px);
+                                top: pxTorem(67px);
+                            }
+                            @media screen and (min-width: $width-large) {
+                                right: pxTorem(159px);
+                                top: pxTorem(107px);
+                            }
                         }
                     }
                 }
-                .text {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    .textGourp {
+                .callmeMain {
+                    margin: auto;
+                    margin-top: pxTorem(20px);
+                    @media screen and (max-width: $width-large) {
+                        width: 100%;
+                        padding: 0 pxTorem(20px);
+                    }
+                    @media screen and (min-width: $width-large) {
+                        width: pxTorem(780px);
+                    }
+                    .callmeText {
+                        margin-bottom: pxTorem(15px);
                         display: flex;
                         flex-direction: row;
-                        margin-bottom: pxTorem(20px);
-                        &:last-child {
-                            margin-bottom: pxTorem(0px);
-                        }
                         &>* {
                             font-size: pxTorem(20px);
-                            line-height: pxTorem(30px);
                         }
                         label {
-                            width: pxTorem(200px);
+                            width: pxTorem(100px);
                             text-align: right;
                             margin-right: pxTorem(10px);
                             font-weight: 600;
@@ -191,85 +313,28 @@
                         .value {
                             flex: 1;
                         }
+                        @media screen and (max-width: $width-large) {
+                            &>* {
+                                font-size: pxTorem(14px);
+                            }
+                            label {
+                                width: pxTorem(80px);
+                            }
+                            padding-left: pxTorem(0px) !important;
+                            padding-right: pxTorem(0px) !important;
+                        }
+                        @media screen and (min-width: $width-large) {
+                            padding-left: pxTorem(50px) !important;
+                            padding-right: pxTorem(50px) !important;
+                        }
+                        @media screen and (min-width: $width-big) {
+                            padding-left: pxTorem(50px) !important;
+                            padding-right: pxTorem(50px) !important;
+                        }
                     }
                 }
-            }
-            @media screen and (max-width: $width-large) {
-                width: 100%;
-            }
-            @media screen and (min-width: $width-large) {
-                width: pxTorem(780px);
-            }
-        }
-    }
-    .callme {
-        .banner {
-            position: relative;
-            @media screen and (max-width: $width-large) {
-                height: pxTorem(100px);
-            }
-            @media screen and (min-width: $width-large) {
-                height: pxTorem(250px);
-            }
-            @media screen and (min-width: $width-big) {
-                height: pxTorem(350px);
-            }
-            img {
-                height: 100%;
-                width: 100%;
-            }
-            .text {
-                position: absolute;
-                color: white;
-                font-weight: 800;
-                padding: 0 pxTorem(20px);
-                @media screen and (max-width: $width-large) {
-                    top: 5%;
-                    width: 100%;
-                }
-                @media screen and (min-width: $width-large) {
-                    top: 25%;
-                    width: pxTorem(580px);
-                    left: 50%;
-                    transform: translateX(-50%);
+                .footerMod {
+                    position: absolute;
                 }
             }
         }
-        .callmeMain {
-            margin: auto;
-            margin-top: pxTorem(20px);
-            @media screen and (max-width: $width-large) {
-                width: 100%;
-                padding: 0 pxTorem(20px);
-            }
-            @media screen and (min-width: $width-large) {
-                width: pxTorem(780px);
-            }
-            .callmeText {
-                margin-bottom: pxTorem(10px);
-                display: flex;
-                flex-direction: row;
-                &>* {
-                    font-size: pxTorem(20px);
-                }
-                @media screen and (max-width: $width-large) {
-                    &>* {
-                        font-size: pxTorem(16px);
-                    }
-                }
-                label {
-                    width: pxTorem(90px);
-                    text-align: right;
-                    margin-right: pxTorem(10px);
-                    font-weight: 600;
-                }
-                .value {
-                    flex: 1;
-                }
-            }
-        }
-        .footerMod {
-            position: absolute;
-        }
-    }
-}

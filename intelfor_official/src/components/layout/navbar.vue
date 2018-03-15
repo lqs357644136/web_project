@@ -15,10 +15,12 @@
         <div class="disktop">
           <div class="navbar-menu">
             <div @click="menuClick('home')" :class="isChoose=='home'?menuBoxStype.isChoose:menuBoxStype.noChoose">
-              <span class="text">智企首页</span>
+              <span class="text">
+                <i class="fa fa-bank"></i> 智企首页</span>
             </div>
             <div @click="menuClick('plan')" :class="isChoose=='plan'?menuBoxStype.isChoose:menuBoxStype.noChoose">
-              <span class="text">产品方案</span>
+              <span class="text">
+                <i class="fa fa-sign-language"></i> 产品&解决方案</span>
               <i class="fa fa-angle-down"></i>
               <div class="more fadeIn">
                 <div class="plant">
@@ -35,7 +37,8 @@
               </div>
             </div>
             <div @click="menuClick('success')" :class="isChoose=='success'?menuBoxStype.isChoose:menuBoxStype.noChoose">
-              <span class="text">成功方案</span>
+              <span class="text">
+                <i class="fa fa-line-chart"></i> 成功案例</span>
               <i class="fa fa-angle-down"></i>
               <div class="more fadeIn">
                 <div class="success">
@@ -52,7 +55,13 @@
               </div>
             </div>
             <div @click="menuClick('callme')" :class="isChoose=='callme'?menuBoxStype.isChoose:menuBoxStype.noChoose">
-              <span class="text">联系我们</span>
+              <span class="text">
+                <i class="fa fa-tty"></i> 联系我们</span>
+            </div>
+            <div class="tel">
+              <i class="fa fa-phone"></i>
+              电话:
+              <a href="#">400-8166-116</a>
             </div>
           </div>
         </div>
@@ -62,10 +71,14 @@
             <div @click="rightMenuShow=false" class="cancel">
               <span class="fa fa-remove"></span>
             </div>
-            <div @click="$router.push('/home');rightMenuShow=false" class="menuBox">智企首页</div>
-            <div @click="$router.push('/plan');rightMenuShow=false" class="menuBox">产品方案</div>
-            <div @click="$router.push('/success');rightMenuShow=false" class="menuBox">成功方案</div>
-            <div @click="$router.push('/callme');rightMenuShow=false" class="menuBox">联系我们</div>
+            <div @click="$router.push('/home');rightMenuShow=false" class="menuBox"><i class="fa fa-bank"></i>智企首页</div>
+            <div @click="$router.push('/plan');rightMenuShow=false" class="menuBox"><i class="fa fa-sign-language"></i>产品&解决方案</div>
+            <div @click="$router.push('/success');rightMenuShow=false" class="menuBox"><i class="fa fa-line-chart"></i>成功案例</div>
+            <div @click="$router.push('/callme');rightMenuShow=false" class="menuBox"><i class="fa fa-tty"></i>联系我们</div>
+            <div class="tel">
+              <i class="fa fa-phone"></i>:
+              <a href="#">400-8166-116</a>
+            </div>
           </div>
         </div>
       </div>
