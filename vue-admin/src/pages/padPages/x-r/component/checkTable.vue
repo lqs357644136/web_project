@@ -2,8 +2,8 @@
   <div class="checkTable">
     <div class="table-row">
       <label for="">
-        <div class="text01">批次</div>
-        <div class="text02">序号</div>
+        <div class="text01">{{langPackage.xr_pad.batch}}</div>
+        <div class="text02">{{langPackage.xr_pad.id}}</div>
         <div class="line"></div>
       </label>
       <div class="values">
@@ -15,8 +15,8 @@
       <el-tooltip placement="top">
         <div slot="content">
           <div>∑ X : {{item.sum}}</div>
-          <div>X平均值 : {{item.x}}</div>
-          <div>R平均值 : {{item.r}}</div>
+          <div>{{langPackage.xr_pad.xavg}} : {{item.x}}</div>
+          <div>{{langPackage.xr_pad.ravg}} : {{item.r}}</div>
         </div>
         <div class="values">
           <span v-for="(itemVal,indexVal) in item.valueList" :key="indexVal">{{itemVal}}</span>
@@ -24,21 +24,21 @@
       </el-tooltip>
     </div>
     <div class="table-row">
-      <label for="">∑X总和</label>
+      <label for="">{{langPackage.xr_pad.xtotal}} </label>
       <div class="values">
         <span>{{datas.sum_x}}</span>
       </div>
-      <label for="">∑R总和</label>
+      <label for="">{{langPackage.xr_pad.rtotal}}</label>
       <div class="values">
         <span>{{datas.sum_r}}</span>
       </div>
     </div>
     <div class="table-row">
-      <label for="">X平均</label>
+      <label for="">{{langPackage.xr_pad.xavg_total}}</label>
       <div class="values">
         <span>{{datas.avg_x}}</span>
       </div>
-      <label for="">R平均</label>
+      <label for="">{{langPackage.xr_pad.ravg_total}}</label>
       <div class="values">
         <span>{{datas.avg_r}}</span>
       </div>
@@ -50,6 +50,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "checkTable",
+  props: ["langPackage"],
   data() {
     return {};
   },

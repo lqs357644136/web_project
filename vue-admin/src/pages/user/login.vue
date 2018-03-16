@@ -110,7 +110,7 @@ export default {
         this.load_data = true;
         this.$store.dispatch("set_host", this.subHost).then(() => {
           let data = {
-            username: this.form.username,
+            userName: this.form.username,
             password: this.form.password
           };
           //登录提交
@@ -119,10 +119,7 @@ export default {
             data: data
           }).then(res => {
             if (res.code != 1) {
-              this.$notify.info({
-                title: "温馨提示",
-                message: "测试账号:admin , 密码:123456"
-              });
+              this.$message.error(res.msg);
               this.load_data = false;
             } else {
               this.$store.commit("SET_TOKEN", res.data.token);

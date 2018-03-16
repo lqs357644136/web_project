@@ -6,10 +6,6 @@
 </template>
 
 <script>
-import echart from "echarts/lib/echarts";
-import "echarts/lib/chart/bar";
-import "echarts/lib/component/grid";
-import "echarts/lib/component/title";
 import { mapGetters } from "vuex";
 export default {
   name: "chartInfo",
@@ -62,7 +58,7 @@ export default {
       this.rChart_init();
     },
     xChart_init() {
-      this.xchart = echart.init(this.$refs.xChart);
+      this.xchart = this.$echart.init(this.$refs.xChart);
       let option = {
         backgroundColor: "#333333",
         title: {
@@ -107,7 +103,7 @@ export default {
       this.xchart.setOption(option);
     },
     rChart_init() {
-      this.rchart = echart.init(this.$refs.rChart);
+      this.rchart = this.$echart.init(this.$refs.rChart);
       let option = {
         backgroundColor: "#333333",
         title: {

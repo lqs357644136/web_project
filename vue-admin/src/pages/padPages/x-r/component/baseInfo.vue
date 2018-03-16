@@ -22,57 +22,57 @@
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="机别">
-          <el-input :disabled="true" v-model="inputs.plantInput" placeholder="制品名称"></el-input>
+        <el-form-item :label="langPackage.xr_pad.process">
+          <el-input :disabled="true" v-model="inputs.plantInput" :placeholder="langPackage.xr_pad.process"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="测定者">
-          <el-input :disabled="true" v-model="inputs.tester" placeholder="测定者"></el-input>
+        <el-form-item :label="langPackage.xr_pad.tester">
+          <el-input :disabled="true" v-model="inputs.tester" :placeholder="langPackage.xr_pad.tester"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="8" :lg="6">
-        <el-form-item label="抽样方法">
-          <el-input :disabled="true" v-model="inputs.method" placeholder="抽样方法"></el-input>
+        <el-form-item :label="langPackage.xr_pad.method">
+          <el-input :disabled="true" v-model="inputs.method" :placeholder="langPackage.xr_pad.method"></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="24" :md="16" :lg="12">
-        <el-form-item label="期间">
-          <el-date-picker v-model="inputs.dates" :disabled="true" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" value-format="yyyy-MM-dd hh:mm:ss" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期">
+        <el-form-item :label="langPackage.xr_pad.dates">
+          <el-date-picker v-model="inputs.dates" :disabled="true" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" value-format="yyyy-MM-dd hh:mm:ss" type="datetimerange" :start-placeholder="langPackage.common_pad.startTime" :end-placeholder="langPackage.common_pad.startTime">
           </el-date-picker>
         </el-form-item>
       </el-col>
     </el-row>
     <table class="baseInfo-table">
       <tr>
-        <td>规格</td>
-        <td>标准</td>
-        <td>群组数大小</td>
-        <td>管制</td>
-        <td>X 图</td>
-        <td>R 图</td>
+        <td>{{langPackage.xr_pad.spec}}</td>
+        <td>{{langPackage.xr_pad.stand}}</td>
+        <td>{{langPackage.xr_pad.groupSize}}</td>
+        <td>{{langPackage.xr_pad.control}}</td>
+        <td>{{langPackage.xr_pad.xChart}}</td>
+        <td>{{langPackage.xr_pad.rChart}}</td>
       </tr>
       <tr>
-        <td>上限USL</td>
+        <td>{{langPackage.xr_pad.stdUpperLimit}}</td>
         <td>{{inputs.stdUpperLimit}}</td>
         <td>{{inputs.groupSize}}</td>
-        <td>上限USL</td>
-        <td>{{inputs.xUpperLimit }}</td>
-        <td>{{inputs.rUpperLimit }}</td>
+        <td>{{langPackage.xr_pad.stdUpperLimit}}</td>
+        <td>{{inputs.xUpperLimit}}</td>
+        <td>{{inputs.rUpperLimit}}</td>
       </tr>
       <tr>
-        <td>中心限UL</td>
+        <td>{{langPackage.xr_pad.stdCenterLimit}}</td>
         <td>{{inputs.stdCenterLimit}}</td>
-        <td>总组数</td>
-        <td>中心限UL</td>
+        <td>{{langPackage.xr_pad.totalGroup}}</td>
+        <td>{{langPackage.xr_pad.stdCenterLimit}}</td>
         <td>{{inputs.xCenterLimit}}</td>
         <td>{{inputs.rCenterLimit}}</td>
       </tr>
       <tr>
-        <td>下限LSL</td>
+        <td>{{langPackage.xr_pad.stdLowerLimit}}</td>
         <td>{{inputs.stdLowerLimit}}</td>
         <td>{{inputs.totalGroup}}</td>
-        <td>下限LSL</td>
+        <td>{{langPackage.xr_pad.stdLowerLimit}}</td>
         <td>{{inputs.xLowerLimit}}</td>
         <td>{{inputs.rLowerLimit}}</td>
       </tr>
@@ -87,7 +87,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "baseInfo",
-  props:['langPackage'],
+  props: ["langPackage"],
   data() {
     return {};
   },

@@ -46,6 +46,11 @@ Vue.prototype.$get_file = $get_file;
 Vue.prototype.$api_baseurl = api_baseurl;
 //终端获取机器信息注册到全局
 Window.GETMACINFO = getMacINfo;
+//加载echarts
+import echart from "echarts/lib/echarts";
+import "echarts/lib/chart/bar";
+import "echarts/lib/component/grid";
+import "echarts/lib/component/title";
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'
