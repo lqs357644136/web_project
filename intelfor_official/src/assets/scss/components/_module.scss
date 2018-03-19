@@ -42,7 +42,11 @@
                         transition: color 1s ease;
                     }
                     p {
-                        //line-height: pxTorem(24px);
+                        text-align: left;
+                        text-indent: pxTorem(40px);
+                        @media screen and (max-width: $width-large) {
+                            text-indent: pxTorem(28px);
+                        }
                     }
                     .body {
                         .texts {
@@ -97,6 +101,16 @@
                         height: 100%;
                         width: 100%;
                     }
+                    @media screen and (max-width: $width-large) {
+                        .el-carousel__container {
+                            height: pxTorem(100px) !important;
+                        }
+                    }
+                    @media screen and (min-width: $width-big) {
+                        .el-carousel__container {
+                            height: pxTorem(250px) !important;
+                        }
+                    }
                 }
             }
             .plan {
@@ -111,13 +125,13 @@
                     .el-col {
                         margin-bottom: pxTorem(30px);
                         @media screen and (max-width: $width-large) {
-                            .pc{
+                            .pc {
                                 display:none;
                             }
                         }
                         @media screen and (min-width: $width-large) {
-                            .mobile{
-                                display:none;
+                            .mobile {
+                                display: none;
                             }
                         }
                     }

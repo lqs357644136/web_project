@@ -253,7 +253,7 @@ $width-big: pxTorem(1440px);
                                 img {
                                     position: relative;
                                     top: 0;
-                                    height: pxTorem(40px);
+                                    height: pxTorem(60px);
                                     width: pxTorem(150px);
                                 }
                             }
@@ -307,17 +307,31 @@ $width-big: pxTorem(1440px);
                     padding: pxTorem(0px) pxTorem(15px);
                     border-bottom: 1px solid #dfdfdf;
                     text-align: center;
-                    font-size: 800;
+                    font-weight: 800;
                     text-align: left;
-                    .fa{
-                        margin-right:pxTorem(10px);
+                    .fa {
+                        margin-right: pxTorem(10px);
                     }
+                }
+                .menuBoxChilds {
+                    border-bottom: 1px solid #dfdfdf;
+                    padding-left:pxTorem(35px);
+                    border-bottom: 1px solid #dfdfdf;
+                    font-size: pxTorem(16px);
+                    text-align: left;
+                    .menuBoxChild {
+                        border-bottom: 1px solid #dfdfdf;
+                        &:last-child{
+                            border-bottom: 0px solid #dfdfdf;
+                        }
+                    }
+
                 }
             }
             .tel {
                 position: absolute;
                 bottom: 0;
-                left:pxTorem(10px);
+                left: pxTorem(10px);
             }
         }
     }

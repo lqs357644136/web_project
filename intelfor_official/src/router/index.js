@@ -11,26 +11,38 @@ const routes = [{
   redirect: '/home',
   component: r => require.ensure([], () => r(require('src/pages/App.vue')), 'App'),
   children: [{
-    //官网主页
-    path: '/home',
-    name: 'home',
-    component: r => require.ensure([], () => r(require('pages/home/home.vue')), 'home'),
-  }, {
-    //产品方案
-    path: '/plan',
-    name: 'plan',
-    component: r => require.ensure([], () => r(require('pages/plan/plan.vue')), 'plan'),
-  }, {
-    //成功案例
-    path: '/success',
-    name: 'success',
-    component: r => require.ensure([], () => r(require('pages/success/success.vue')), 'success'),
-  }, {
-    //联系我们
-    path: '/callme',
-    name: 'callme',
-    component: r => require.ensure([], () => r(require('pages/callme/callme.vue')), 'callme'),
-  }]
+      //官网主页
+      path: '/home',
+      name: 'home',
+      component: r => require.ensure([], () => r(require('pages/home/home.vue')), 'home'),
+    },
+    {
+      //成功案例
+      path: '/success',
+      name: 'success',
+      component: r => require.ensure([], () => r(require('pages/success/success.vue')), 'success'),
+    }, {
+      //联系我们
+      path: '/callme',
+      name: 'callme',
+      component: r => require.ensure([], () => r(require('pages/callme/callme.vue')), 'callme'),
+    }, {
+      //esop
+      path: '/esop',
+      name: 'esop',
+      component: r => require.ensure([], () => r(require('pages/esop/esop.vue')), 'esop'),
+    }, {
+      //看板
+      path: '/kanban',
+      name: 'kanban',
+      component: r => require.ensure([], () => r(require('pages/kanban/kanban.vue')), 'kanban'),
+    }, {
+      //安灯预警
+      path: '/safeLight',
+      name: 'safeLight',
+      component: r => require.ensure([], () => r(require('pages/safeLight/safeLight.vue')), 'safeLight'),
+    }
+  ]
 }]
 
 const router = new VueRouter({

@@ -18,7 +18,7 @@
               <span class="text">
                 <i class="fa fa-bank"></i> 智企首页</span>
             </div>
-            <div @click="menuClick('plan')" :class="isChoose=='plan'?menuBoxStype.isChoose:menuBoxStype.noChoose">
+            <div  :class="ptIconEx.indexOf(isChoose)!=-1?menuBoxStype.isChoose:menuBoxStype.noChoose">
               <span class="text">
                 <i class="fa fa-sign-language"></i> 产品&解决方案</span>
               <i class="fa fa-angle-down"></i>
@@ -28,7 +28,7 @@
                     <img src="~assets/images/navbar/plant.png" alt="解决方案">
                   </div>
                   <div class="ptBoxs">
-                    <div class="ptBox" v-for="(item,index) in ptImgs" :key="index">
+                    <div @click="menuClick(item.name)" class="ptBox" v-for="(item,index) in ptImgs" :key="index">
                       <span class="img"><img :src="item.img" alt="图片"></span>
                       <span class="text">{{item.name}}</span>
                     </div>
@@ -48,7 +48,7 @@
                   <div class="ptBoxs">
                     <div class="ptBox" v-for="(item,index) in scImgs" :key="index">
                       <span class="img"><img :src="item.img" alt="图片"></span>
-                      <span class="text">{{item.name}}</span>
+                      <!-- <span class="text">{{item.name}}</span> -->
                     </div>
                   </div>
                 </div>
@@ -72,7 +72,12 @@
               <span class="fa fa-remove"></span>
             </div>
             <div @click="$router.push('/home');rightMenuShow=false" class="menuBox"><i class="fa fa-bank"></i>智企首页</div>
-            <div @click="$router.push('/plan');rightMenuShow=false" class="menuBox"><i class="fa fa-sign-language"></i>产品&解决方案</div>
+            <div @click="!mobile_planShow?mobile_planShow=true:mobile_planShow=false" class="menuBox plan"><i class="fa fa-sign-language"></i>产品&解决方案</div>
+            <div class="menuBoxChilds" v-show="mobile_planShow">
+              <div @click="$router.push('/esop');rightMenuShow=false" class="menuBoxChild">Esop</div>
+              <div @click="$router.push('/kanban');rightMenuShow=false" class="menuBoxChild">电子看板</div>
+              <div @click="$router.push('/safeLight');rightMenuShow=false" class="menuBoxChild">安灯预警</div>
+            </div>
             <div @click="$router.push('/success');rightMenuShow=false" class="menuBox"><i class="fa fa-line-chart"></i>成功案例</div>
             <div @click="$router.push('/callme');rightMenuShow=false" class="menuBox"><i class="fa fa-tty"></i>联系我们</div>
             <div class="tel">
@@ -94,28 +99,30 @@ export default {
   data() {
     return {
       rightMenuShow: false,
+      mobile_planShow:false,
       menuBoxStype: {
         isChoose: "nav-menu-box isChoose",
         noChoose: "nav-menu-box"
       },
+      ptIconEx:['esop','kanban','safeLight','quality','ecm','dworkspace'],
       ptImgs: [
-        { img: "https://picsum.photos/300/200/?image=702", name: "产品方案" },
-        { img: "https://picsum.photos/300/200/?image=703", name: "产品方案" },
-        { img: "https://picsum.photos/300/200/?image=704", name: "产品方案" },
-        { img: "https://picsum.photos/300/200/?image=705", name: "产品方案" },
-        { img: "https://picsum.photos/300/200/?image=606", name: "产品方案" },
-        { img: "https://picsum.photos/300/200/?image=607", name: "产品方案" }
+        { img: require("assets/images/navbar/pt/esop.png"), title: "Esop",name:'esop' },
+        { img: require("assets/images/navbar/pt/kanban.png"), title: "电子看板",name:'kanban' },
+        { img: require("assets/images/navbar/pt/andengyujing.png"), title: "安灯预警",name:'safeLight' },
+        { img: require("assets/images/navbar/pt/yidongzhiliangguanli.png"), title: "质量管理",name:'quality' },
+        { img: require("assets/images/navbar/pt/dianzijiaoliao.png"), title: "电子叫料" ,name:'ecm' },
+        { img: require("assets/images/navbar/pt/shouji_kanban.png"), title: "数字车间" ,name:'dworkspace' },
       ],
       scImgs: [
-        { img: "https://picsum.photos/300/200/?image=610", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=611", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=612", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=613", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=614", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=615", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=616", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=617", name: "企业项目" },
-        { img: "https://picsum.photos/300/200/?image=618", name: "企业项目" }
+        { img: require("assets/images/partner/logo1.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo2.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo3.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo4.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo5.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo6.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo7.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo8.jpg"), name: "企业项目" },
+        { img: require("assets/images/partner/logo9.jpg"), name: "企业项目" }
       ]
     };
   },

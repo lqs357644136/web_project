@@ -46,7 +46,7 @@ export default {
     return {
       successImgs: [
         {
-          img: "https://picsum.photos/1024/400/?image=602",
+          img:require("assets/images/partner/logo1.jpg"),
           text01: {
             label: "E-SOP",
             value:
@@ -59,7 +59,7 @@ export default {
           }
         },
         {
-          img: "https://picsum.photos/1024/400/?image=603",
+          img:require("assets/images/partner/logo2.jpg"),
           text01: {
             label: "E-SOP",
             value:
@@ -72,7 +72,7 @@ export default {
           }
         },
         {
-          img: "https://picsum.photos/1024/400/?image=604",
+          img:require("assets/images/partner/logo3.jpg"),
           text01: {
             label: "E-SOP",
             value:
@@ -85,7 +85,7 @@ export default {
           }
         },
         {
-          img: "https://picsum.photos/1024/400/?image=605",
+          img:require("assets/images/partner/logo4.jpg"),
           text01: {
             label: "E-SOP",
             value:
