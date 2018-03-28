@@ -13,26 +13,26 @@
           </div>
           <div class="form_body">
             <el-row class="forms" :gutter="10">
-              <el-col :xs="24" :sm="24" :md="8" :lg="6">
+              <el-col :xs="24" :sm="8" :md="8" :lg="6">
                 <el-form-item label="文件名称">
                   <el-select v-model="inputs.fileId" placeholder="请选择">
                     <el-option v-for="item in selects.fileIdOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="8" :lg="6">
+              <el-col :xs="24" :sm="8" :md="8" :lg="6">
                 <el-form-item label="等级">
                   <el-select v-model="inputs.showLevel" placeholder="请选择">
                     <el-option v-for="item in selects.showLevelOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="8" :lg="6">
+              <el-col :xs="24" :sm="8" :md="8" :lg="6">
                 <el-form-item label="所选条件">
-                  <el-input type="text" v-model="inputs.levelCond" placeholder="请输入内容" auto-complete="off"></el-input>
+                  <el-input type="text" v-model="inputs.levelCond" placeholder="请输入内容"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="8" :lg="6">
+              <el-col :xs="24" :sm="8" :md="8" :lg="6">
                 <el-form-item label="状态">
                   <el-select v-model="inputs.status" placeholder="请选择">
                     <el-option v-for="item in selects.statusOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>

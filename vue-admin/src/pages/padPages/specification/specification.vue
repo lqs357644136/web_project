@@ -5,21 +5,21 @@
       <!-- 规范查询 -->
       <el-form :model="searchInput" :inline="true" status-icon :rules="rules" ref="inputs" class="specForm">
         <el-row class="selectForm" :gutter="10">
-          <el-col :xs="24" :sm="24" :md="7" :lg="6">
+          <el-col :xs="24" :sm="7" :md="7" :lg="6">
             <el-form-item class="plant" :label="langPackage.common.plant" prop="plantInput">
               <el-select @change="plantSelectChange()" v-model="searchInput.plantInput" :placeholder="langPackage.common_pad.choose">
                 <el-option v-for="item in searchSelect.plantOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :xs="24" :sm="24" :md="7" :lg="6">
+          <el-col :xs="24" :sm="7" :md="7" :lg="6">
             <el-form-item class="line" :label="langPackage.common.line" prop="lineInput">
               <el-select v-model="searchInput.lineInput" :placeholder="langPackage.common.choose">
                 <el-option v-for="item in searchSelect.lineOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :xs="24" :sm="24" :md="8" :lg="8">
+          <el-col :xs="24" :sm="8" :md="8" :lg="8">
             <el-form-item class="ptno" :label="langPackage.common.ptno" prop="ptnoInput">
               <el-select v-model="searchInput.ptnoInput" :placeholder="langPackage.common.choose">
                 <el-option v-for="item in searchSelect.ptnoOption" :key="item.value" :label="item.label" :value="item.value"></el-option>

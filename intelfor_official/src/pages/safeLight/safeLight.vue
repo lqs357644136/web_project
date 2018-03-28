@@ -12,6 +12,7 @@
         <img class="mobile" :src="item.img" alt="图片">
       </el-col>
     </el-row> -->
+    <bottom></bottom>
     <footerMod></footerMod>
   </div>
 </template>
@@ -19,6 +20,7 @@
 <script>
 import Vue from "vue";
 import { Row, Col } from "element-ui";
+import bottom from "components/layout/bottom.vue";
 import footerMod from "components/layout/footerMod.vue";
 Vue.use(Row);
 Vue.use(Col);
@@ -47,7 +49,8 @@ export default {
     };
   },
   components: {
-    footerMod
+    footerMod,
+    bottom
   }
 };
 </script>

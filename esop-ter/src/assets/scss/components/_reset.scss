@@ -1,3 +1,5 @@
+$border:#545454;
+
 * {
     word-break: break-all;
     word-wrap: break-word;
@@ -157,6 +159,7 @@ button {
     height: 100% !important;
     display: flex;
     flex-direction: column;
+    border: 1px solid black !important;
     td {
         text-align: center;
     }
@@ -186,10 +189,12 @@ button {
     }
 } //卡片
 .el-card {
+    border: 1px solid $border;
     .el-card__header {
         padding: 0 pxTorem(15px);
         height: pxTorem(42px);
         line-height: pxTorem(42px);
+        border-bottom: 1px solid $border;
         span {
             font-weight: 800;
         }
@@ -310,4 +315,9 @@ button {
             }
         }
     }
+}
+
+
+.el-input__inner{
+    border:1px solid $border !important;
 }

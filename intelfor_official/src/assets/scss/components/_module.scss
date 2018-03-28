@@ -12,7 +12,7 @@
                     }
                     @media screen and (min-width: $width-large) {
                         .el-carousel__container {
-                            height: pxTorem(400px);
+                            height: pxTorem(530px);
                         }
                     }
                     @media screen and (min-width: $width-big) {
@@ -49,6 +49,17 @@
                         }
                     }
                     .body {
+                        .purpose-ptno {
+                            font-weight: 800;
+                        }
+                        .ptno {
+                            .el-col {
+                                font-size: pxTorem(16px);
+                                line-height: pxTorem(30px);
+                                text-align: left;
+                                padding-left: pxTorem(40px);
+                            }
+                        }
                         .texts {
                             margin-top: pxTorem(20px);
                             padding: 0 pxTorem(10px);
@@ -76,9 +87,14 @@
                                 margin-right: 0;
                                 .imgBox {
                                     margin-bottom: pxTorem(20px);
-                                    img {
-                                        height: 100%;
-                                        width: 100%;
+                                    a {
+                                        height: pxTorem(210px);
+                                        width: pxTorem(300px);
+                                        display: block;
+                                        margin: auto;
+                                        img {
+                                            height: 100%;
+                                        }
                                     }
                                 }
                             }
@@ -103,7 +119,7 @@
                     }
                     @media screen and (max-width: $width-large) {
                         .el-carousel__container {
-                            height: pxTorem(100px) !important;
+                            height: pxTorem(150px) !important;
                         }
                     }
                     @media screen and (min-width: $width-big) {
@@ -143,8 +159,43 @@
                         box-shadow: 2px 2px 20px #8e8e8e;
                     }
                 }
+                .live {
+                    .el-col {
+                        @media screen and (min-width: $width-large) {
+                            height: pxTorem(185px);
+                        }
+                    }
+                }
                 h1 {
                     text-align: center;
+                }
+                @media screen and (max-width: $width-large) {
+                    .dworkspaceBox {
+                        img {
+                            height: pxTorem(200px);
+                        }
+                    }
+                }
+                .fullImg {
+                    position: fixed;
+                    top: 0;
+                    height: 100vh;
+                    width: 100%;
+                    z-index: 999;
+                    background: rgba(0, 0, 0, 0.6);
+                    .el-carousel__container {
+                        height: 100vh !important;
+                        .el-carousel__item {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        }
+                    }
+                    &,
+                    html,
+                    body {
+                        overflow: hidden;
+                    }
                 }
             }
             .success {
@@ -189,14 +240,15 @@
                                 height: pxTorem(150px);
                                 display: flex;
                                 img {
-                                    //height: 100%;
-                                    //width: 100%;
+                                    height: 100%;
+                                    width: 100%;
                                 }
                             }
                             @media screen and (max-width: $width-large) {
                                 margin-bottom: pxTorem(20px);
                                 img {
                                     width: 100%;
+                                    height: 100%;
                                 }
                             }
                         }
@@ -216,7 +268,7 @@
                                     line-height: pxTorem(30px);
                                 }
                                 label {
-                                    width: pxTorem(200px);
+                                    width: pxTorem(90px);
                                     text-align: right;
                                     margin-right: pxTorem(10px);
                                     font-weight: 600;
@@ -278,6 +330,11 @@
                                 right: pxTorem(36px);
                                 top: pxTorem(9px);
                             }
+                            @media screen and (min-width: $width-big) {
+                                right: pxTorem(36px);
+                                top: pxTorem(9px);
+                                font-size: pxTorem(45px);
+                            }
                         }
                         .text02 {
                             @media screen and (max-width: $width-large) {
@@ -285,8 +342,13 @@
                                 top: pxTorem(38px);
                             }
                             @media screen and (min-width: $width-large) {
-                                right: pxTorem(99px);
-                                top: pxTorem(58px);
+                                right: pxTorem(98px);
+                                top: pxTorem(90px);
+                            }
+                            @media screen and (min-width: $width-big) {
+                                right: pxTorem(126px);
+                                top: pxTorem(127px);
+                                font-size: pxTorem(45px);
                             }
                         }
                         .text03 {
@@ -295,8 +357,13 @@
                                 top: pxTorem(67px);
                             }
                             @media screen and (min-width: $width-large) {
-                                right: pxTorem(159px);
-                                top: pxTorem(107px);
+                                right: pxTorem(162px);
+                                top: pxTorem(159px);
+                            }
+                            @media screen and (min-width: $width-big) {
+                                right: pxTorem(223px);
+                                top: pxTorem(220px);
+                                font-size: pxTorem(45px);
                             }
                         }
                     }
@@ -304,6 +371,7 @@
                 .callmeMain {
                     margin: auto;
                     margin-top: pxTorem(20px);
+                    margin-bottom: pxTorem(80px);
                     @media screen and (max-width: $width-large) {
                         width: 100%;
                         padding: 0 pxTorem(20px);
@@ -345,10 +413,22 @@
                             padding-left: pxTorem(50px) !important;
                             padding-right: pxTorem(50px) !important;
                         }
+                        img {
+                            height: pxTorem(330px);
+                            @media screen and (max-width: $width-large) {
+                                height:pxTorem(170px);
+                            }
+                        }
                     }
                 }
                 .footerMod {
-                    position: absolute;
+                    position: fixed;
+                    bottom: 0
+                }
+                @media screen and (max-height: pxTorem(700px)) {
+                    .footerMod {
+                        position: relative;
+                    }
                 }
             }
         }

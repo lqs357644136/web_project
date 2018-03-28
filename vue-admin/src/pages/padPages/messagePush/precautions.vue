@@ -13,21 +13,21 @@
           </div>
           <div class="form_body">
             <el-row class="forms" :gutter="30">
-              <el-col :xs="24" :sm="24" :md="8" :lg="8">
+              <el-col :xs="24" :sm="8" :md="8" :lg="8">
                 <el-form-item label="产品编码">
                   <el-select v-model="inputs.ptno" placeholder="请选择">
                     <el-option v-for="item in selects.ptnoOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="8" :lg="8">
+              <el-col :xs="24" :sm="8" :md="8" :lg="8">
                 <el-form-item label="机台">
                   <el-select v-model="inputs.process" placeholder="请选择">
                     <el-option v-for="item in selects.processOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="8" :lg="8">
+              <el-col :xs="24" :sm="8" :md="8" :lg="8">
                 <el-form-item label="状态">
                   <el-select v-model="inputs.status" placeholder="请选择">
                     <el-option v-for="item in selects.statusOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>

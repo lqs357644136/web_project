@@ -15,7 +15,7 @@ import 'common/filiter'
 //导入axios请求方法
 import {$get_file,$post_noToken,$get_noToken } from 'common/fetch/index.js'
 //导入工具
-import { getMacINfo,api_baseurl } from 'common/uitl.js'
+import { getMacINfo,api_baseurl,kanBanUrl } from 'common/uitl.js'
 //导入国际化设置
 import i18n from 'common/i18n'
 
@@ -81,6 +81,7 @@ Vue.prototype.$post_noToken = $post_noToken;
 Vue.prototype.$get_file = $get_file;
 //注册接口地址生成方法
 Vue.prototype.$api_baseurl = api_baseurl;
+Vue.prototype.$kanBanUrl = kanBanUrl;
 //终端获取机器信息注册到全局
 Window.GETMACINFO = getMacINfo;
 

@@ -22,11 +22,7 @@
           </div>
           <div class="tolerance" v-else-if="tabCheck.specificationType==1">
             <label>公差:</label>
-            <span class="stdValue">{{tabCheck.stdValue}}{{tabCheck.symbol}}</span>
-            <span class="tolText">
-              <span class="stdValuePlus">+{{tabCheck.stdValuePlus}}</span>
-              <span class="stdValueMinus">-{{tabCheck.stdValueMinus}}</span>
-            </span>
+            <span class="stdValue">{{tabCheck.inspectSpecification}}</span>
           </div>
           <div class="seeCheck" v-else-if="tabCheck.specificationType==2">
             <label>目测</label>
@@ -71,7 +67,6 @@
 <script>
 import { mapGetters } from "vuex";
 import url from "api";
-import qs from "qs";
 export default {
   props: ["tabCheck"],
   data() {

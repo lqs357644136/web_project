@@ -11,8 +11,8 @@
 
 <script>
 //测试请求接口地址
-let api = '192.168.1.10:8080';
-
+let api = '192.168.60.230:8080';
+let kanbanApi = '192.168.62.63';
 export default {
   data() {
     return {
@@ -78,12 +78,12 @@ export default {
           icon: "icon fa fa-bandcamp"
         },
         {
-          path: '/ter/zjj_demo01?ip='+api,
+          path: '/ter/zjj_demo01?ip='+kanbanApi+'&Plant=ZSA&Line=A',
           title: "中技佳电子看板(一)",
           icon: "icon fa fa-bandcamp"
         },
         {
-          path: '/ter/zjj_demo02?ip='+api,
+          path: '/ter/zjj_demo02?ip='+kanbanApi+'&Plant=ZSA&Line=A',
           title: "中技佳电子看板(二)",
           icon: "icon fa fa-bandcamp"
         },

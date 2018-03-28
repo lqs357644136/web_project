@@ -35,6 +35,9 @@ let url = {
   //esop
   saleLam_get:'/rest/Andon/getAndonList',//GET 
   get_xBar:'/rest/kanban/getXbar',//GET 获取xBar
+  //日星看板
+  lxkanban:'/IntelforESOPService/KanbanService.asmx/Zhgd_GetLineKB',
+  plantkanban:'/IntelforESOPService/KanbanService.asmx/Zhgd_GetPlantKB'
 }
 
 export default url

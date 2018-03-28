@@ -29,15 +29,15 @@
             <span slot="label">
               <span v-if="check.noPass==0">
                 <i class="failPassIcon fa fa-close"></i>
-                <span class="failPassIcon">{{check.itemDescription}}</span>
+                <span class="failPassIcon">{{check.itemDescription}}({{check.itemValue}})</span>
               </span>
               <span v-else-if="check.noPass==1">
                 <i class="isPassIcon fa fa-check"></i>
-                <span class="isPassIcon">{{check.itemDescription}}</span>
+                <span class="isPassIcon">{{check.itemDescription}}({{check.itemValue}})</span>
               </span>
               <span v-else>
                 <i class="fa fa-wrench"></i>
-                <span>{{check.itemDescription}}</span>
+                <span>{{check.itemDescription}}({{check.itemValue}})</span>
               </span>
             </span>
             <checkStep v-on:checkEndListen="checkEndView" :tabCheck="check"></checkStep>
@@ -141,6 +141,7 @@ export default {
           specId: spec.id, //检验规范ID
           code: spec.item.code, //项目代号
           itemDescription: spec.item.description, //项目名称
+          itemValue: spec.itemValue, //项目代号
           methodDescription: spec.method.description, //检测方法
           specificationType: specificationType, //规格类型：0(范围),1(公差) ,
           inspectSpecification: spec.inspectSpecification, //检验规格

@@ -40,6 +40,7 @@
 </template>
 <script type="text/javascript">
 import url from "api";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -84,11 +85,9 @@ export default {
   computed: {
     subHost: function() {
       return this.host.ip + ":" + this.host.port;
-    }
+    },
   },
-  created() {
-    
-  },
+  created() {},
   mounted() {
     this.login_init();
   },

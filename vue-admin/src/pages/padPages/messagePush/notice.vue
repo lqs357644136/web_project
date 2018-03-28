@@ -13,26 +13,26 @@
           </div>
           <div class="form_body">
             <el-row class="forms" :gutter="10">
-              <el-col :xs="24" :sm="24" :md="9" :lg="9">
+              <el-col :xs="24" :sm="9" :md="9" :lg="9">
                 <el-form-item label="主题">
                   <el-input type="text" v-model="inputs.title" placeholder="请输入主题" auto-complete="off"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="9" :lg="9">
+              <el-col :xs="24" :sm="9" :md="9" :lg="9">
                 <el-form-item label="内容">
                   <el-input type="text" v-model="inputs.context" placeholder="请输入内容" auto-complete="off"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="6" :lg="6">
+              <el-col :xs="24" :sm="6" :md="6" :lg="6">
                 <el-form-item label="状态">
                   <el-select v-model="inputs.status" placeholder="请选择">
                     <el-option v-for="item in selects.statusOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :xs="24" :sm="24" :md="18" :lg="18">
+              <el-col :xs="24" :sm="18" :md="18" :lg="18">
                 <el-form-item label="日期">
-                  <el-date-picker v-model="inputs.dates" :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" value-format="yyyy-MM-dd hh:mm:ss" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期">
+                  <el-date-picker v-model="inputs.dates" :editable="false" :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" value-format="yyyy-MM-dd hh:mm:ss" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期">
                   </el-date-picker>
                 </el-form-item>
               </el-col>

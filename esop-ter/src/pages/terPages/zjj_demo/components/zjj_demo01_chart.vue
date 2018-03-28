@@ -14,22 +14,28 @@ import "echarts/lib/component/title";
 import { $dataFormat } from "common/filiter/index.js";
 export default {
   name: "zjj_demo01_chart",
+  props: ["chartData"],
   data() {
-    return {};
+    return {
+      chart01: null,
+      chart02: null
+    };
   },
   mounted() {
+    setTimeout(() => {
     this.totalChart_init();
     this.hourChart_init();
+    }, 1000);
   },
   methods: {
     totalChart_init() {
-      let chart = echart.init(this.$refs.totalChart);
+      this.chart01 = echart.init(this.$refs.totalChart);
       let option = {
         backgroundColor: "#333333",
-       
+        animation: false,
         xAxis: {
           type: "category",
-          data: ["总计划", "总产量"],
+          data: this.chartData.chart01.xAxis,
           axisLine: {
             lineStyle: {
               color: "#fff"
@@ -51,7 +57,7 @@ export default {
         },
         series: [
           {
-            data: [120, 200],
+            data: this.chartData.chart01.data,
             type: "bar",
             label: {
               normal: {
@@ -75,12 +81,13 @@ export default {
           }
         ]
       };
-      chart.setOption(option);
+      this.chart01.setOption(option);
     },
     hourChart_init() {
-      let chart = echart.init(this.$refs.hourChart);
+      this.chart02 = echart.init(this.$refs.hourChart);
       let option = {
         backgroundColor: "#333333",
+        animation: false,
         title: {
           show: false,
           text: "每两小时产量",
@@ -89,18 +96,7 @@ export default {
         },
         xAxis: {
           type: "category",
-          data: [
-            "0:00",
-            "2:00",
-            "4:00",
-            "6:00",
-            "8:00",
-            "10:00",
-            "12:00",
-            "14:00",
-            "16:00",
-            "18:00"
-          ],
+          data: this.chartData.chart02.xAxis,
           axisLine: {
             lineStyle: {
               color: "#fff"
@@ -123,7 +119,7 @@ export default {
         },
         series: [
           {
-            data: [120, 200, 123, 435, 534, 345, 234, 34, 355, 123],
+            data: this.chartData.chart02.data,
             type: "bar",
             label: {
               normal: {
@@ -147,7 +143,7 @@ export default {
           }
         ]
       };
-      chart.setOption(option);
+      this.chart02.setOption(option);
     }
   }
 };

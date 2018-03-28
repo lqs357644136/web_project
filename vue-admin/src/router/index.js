@@ -13,10 +13,10 @@ import notPage from 'pages/error/404'
 //
 //平板端
 import layout from 'pages/padPages/App.vue'
-import firstEntity from 'pages/padPages/firstEntity/firstEntity.vue'
+import firstEntity from 'pages/padPages/entity/firstEntity.vue'
 import productInfo from 'pages/padPages/product/productInfo/productInfo.vue'
 import productEnter from 'pages/padPages/product/productEnter/productEnter.vue'
-import tourEntity from 'pages/padPages/tourEntity/tourEntity.vue'
+import tourEntity from 'pages/padPages/entity/tourEntity.vue'
 import checkList from 'pages/padPages/checkList/checkList.vue'
 import workonoff from 'pages/padPages/workonoff/workonoff.vue'
 import batchEnterRaw from 'pages/padPages/batchEnter/batchEnterRaw.vue'

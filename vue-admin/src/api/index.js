@@ -37,7 +37,8 @@ let url = {
   bulletin_add:'/rest/message/addBulletin',  //保存电子公告
   notice_delete:'/rest/message/deleteSopNotice',  //删除消息广播
   bulletin_delete:'/rest/message/deleteBulletin',  //删除电子公告
-  get_xBar:'/rest/kanban/getXbar',//获取xBar
+  get_xBar:'/rest/kanban/getXbar',//GET 获取xBar
+  getProdSchedule:'/rest/qc/getProdSchedule',//GET 获取正在执行的生产排程
 }
 
 //测试环境接口地址

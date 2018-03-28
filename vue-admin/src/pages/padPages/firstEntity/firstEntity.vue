@@ -138,7 +138,7 @@ export default {
     //请求检查页面信息
     get_checkInfo(params) {
       let self = this;
-      self.$get({
+      this.$get({
         url: url.firstCheck_info,
         params: params
       }).then(res => {
@@ -152,14 +152,6 @@ export default {
           this.getPlantSelect();
           this.fromCheckList = true;
           this.$store.dispatch("set_checklist", null);
-          // let path = params.type == "0" ? "/firstEntity" : "/tourEntity";
-          // self.$message.error("没有找到对应检测信息,请手动录入");
-          // self.fromCheckList = true;
-          // if (!self.fromCheckList) {
-          //   setTimeout(res => {
-          //     self.$router.push(path);
-          //   }, 200);
-          // }
         }
       });
     },

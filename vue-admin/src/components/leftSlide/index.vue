@@ -43,10 +43,10 @@ export default {
       menus: []
     };
   },
-  updated() {
-    this.flashStyleInit();
-  },
   mounted() {
+    this.$nextTick(() => {
+      this.flashStyleInit();
+    });
     this.menus_init();
   },
   computed: {
@@ -56,7 +56,7 @@ export default {
       pageLoading: "get_pageloading",
       fromCheckList: "get_fromchecklist",
       otherLink: "get_otherlink",
-      langPackage:'get_langpackage'
+      langPackage: "get_langpackage"
     })
   },
   methods: {
@@ -155,8 +155,7 @@ export default {
               name: "precautions"
             }
           ]
-        },
-
+        }
       ];
     },
     handleOpen(key, keyPath) {
@@ -184,13 +183,24 @@ export default {
       for (let item of menuItems) {
         item.classList.remove("active");
       }
-      let targerDom = this.$refs[name][0];
-      targerDom.classList.add("active");
+      let flag = true;
+      while (flag) {
+        if (this.$refs[name][0]) {
+          flag = false;
+          let targerDom = this.$refs[name][0];
+          targerDom.classList.add("active");
+        }
+      }
     },
     //页面刷新后样式处理
     flashStyleInit() {
-      let name = this.$router.currentRoute.name;
-      this.menuItemActive(name);
+      try {
+        let name = this.$router.currentRoute.name;
+        let targerDom = this.$refs[name][0];
+        targerDom.classList.add("active");
+      } catch (error) {
+        console.log('左侧菜单默认选中失败')
+      }
     }
   },
   watch: {

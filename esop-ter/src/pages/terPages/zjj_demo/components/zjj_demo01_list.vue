@@ -4,22 +4,22 @@
             <el-row>
                 <el-col :xs="24" :sm="24" :md="7" :lg="7">
                     <el-form-item label="拉线" class="line">
-                        <el-input :disabled="true" v-model="baseInfo.line" placeholder="线别"></el-input>
+                        <el-input :disabled="true" v-model="tableList.baseInfo.line" placeholder="线别"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="7" :lg="7">
                     <el-form-item label="应出勤人数" class="onlineNum">
-                        <el-input :disabled="true" v-model="baseInfo.onlineNum" placeholder="应出勤人数"></el-input>
+                        <el-input :disabled="true" v-model="tableList.baseInfo.onlineNum" placeholder="应出勤人数"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="7" :lg="7">
                     <el-form-item label="实际出勤人数" class="realOnlineNum">
-                        <el-input :disabled="true" v-model="baseInfo.realOnlineNum" placeholder="实际出勤人数"></el-input>
+                        <el-input :disabled="true" v-model="tableList.baseInfo.realOnlineNum" placeholder="实际出勤人数"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
         </el-form>
-        <el-table  :highlight-current-row="true" :row-class-name="tableRowClassName" :data="list_data" height="100%" border style="width: 100%">
+        <el-table  :highlight-current-row="true" :row-class-name="tableRowClassName" :data="tableList.list" height="100%" border style="width: 100%">
             <el-table-column align="center" prop="orderNo" label="订单编号"></el-table-column>
             <el-table-column align="center" prop="customer" label="客户名称"></el-table-column>
             <el-table-column align="center" prop="ptno" label="产品名称"></el-table-column>
@@ -33,6 +33,7 @@
                     <div v-else-if="scope.row.reachRate>70&&scope.row.reachRate<=90" class="reachRate">
                         <div class="rh rhColor02">{{ scope.row.reachRate }}%</div>
                     </div>
+                    <div v-else-if="scope.row.reachRate.length<=0" class="reachRate"></div>
                     <div v-else class="reachRate">
                         <div class="rh rhColor03">{{ scope.row.reachRate }}%</div>
                     </div>
@@ -41,7 +42,8 @@
             <el-table-column align="center" prop="notGoodNum" label="不良数"></el-table-column>
             <el-table-column align="center" width="100px" prop="notGood" label="不良率%">
                 <template slot-scope="scope">
-                    <div>{{ scope.row.notGood }}%</div>
+                    <div v-if="scope.row.reachRate.length<=0"></div>
+                    <div v-else>{{ scope.row.notGood }}%</div>
                 </template>
             </el-table-column>
         </el-table>
@@ -74,8 +76,7 @@ export default {
   props: ["tableList"],
   data() {
     return {
-      list_data: this.tableList.list,
-      baseInfo: this.tableList.baseInfo
+
     };
   },
   methods: {

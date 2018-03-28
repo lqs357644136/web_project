@@ -20,7 +20,7 @@
                     </el-col>
                     <el-col :xs="24" :sm="24" :md="16" :lg="12">
                         <el-form-item label="日期" prop="dates">
-                            <el-date-picker v-model="inputs.dates" :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期">
+                            <el-date-picker v-model="inputs.dates" :editable="false"  :picker-options="dateRangeOpt" :unlink-panels="true" range-separator=" - " format="yyyy-MM-dd hh:mm:ss" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期">
                             </el-date-picker>
                         </el-form-item>
                     </el-col>

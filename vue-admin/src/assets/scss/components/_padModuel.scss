@@ -282,6 +282,10 @@
         .reachRate {
             height: pxTorem(60px);
             line-height: pxTorem(60px);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0px;
             .rh {
                 height: 100%;
                 width: 100%;
@@ -304,7 +308,8 @@
         .specForm {
             display: flex;
             flex-direction: row;
-            padding-bottom: pxTorem(20px);
+            margin: 1.25rem 0;
+            padding-right: pxTorem(20px);
             border-bottom: 1px solid #dfdfdf;
             height: pxTorem(58px);
             .el-form-item {
@@ -575,14 +580,13 @@
                             position: absolute;
                             font-size: pxTorem(12px);
                         }
-                        .text01{
-                            bottom:pxTorem(-10px);
-                            left:pxTorem(5px);
+                        .text01 {
+                            bottom: pxTorem(-10px);
+                            left: pxTorem(5px);
                         }
-                        
-                        .text02{
-                            top:pxTorem(-10px);
-                            right:pxTorem(5px);
+                        .text02 {
+                            top: pxTorem(-10px);
+                            right: pxTorem(5px);
                         }
                     }
                     .values {
@@ -616,6 +620,100 @@
             text-align: center;
             button {
                 padding: pxTorem(12px) pxTorem(80px);
+            }
+        }
+    } //检查录入
+    .checkEntity {
+        height: 100%;
+        .entityList {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .listForm {
+                display: flex;
+                flex-direction: row;
+                padding: 0 pxTorem(20px);
+                padding-top: pxTorem(20px);
+                margin-bottom: pxTorem(0px);
+                background-color: white;
+                border-bottom: 1px solid #dfdfdf;
+                .selectForm {
+                    .el-form-item {
+                        .el-form-item__label {
+                            width: pxTorem(60px);
+                        }
+                    }
+                }
+                .subBtn {
+                    margin-left: pxTorem(10px);
+                }
+            }
+            .prodschTable {
+                .el-table__expanded-cell {
+                    background-color: #efefef;
+                    padding: pxTorem(20px);
+                    .el-form {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        label {
+                            color: #99a9bf;
+                        }
+                        .el-form-item {
+                            margin: 0;
+                            width: 50%;
+                        }
+                        .listInfoContent {
+                            display: block;
+                            text-align: left;
+                        }
+                    }
+                }
+                .listInfoContent {
+                    display: block;
+                    text-align: left;
+                }
+            }
+        } //检查主体
+        .checkMain {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .checkInfo {
+                //margin-bottom:pxTorem(10px);
+                box-shadow: 0px;
+                border-radius: 0px;
+                .infoItem .is-disabled input {
+                    color: initial;
+                }
+            }
+            .checkProject {
+                flex: 1;
+                .el-card__body {
+                    padding: 0
+                }
+                .checkProjectBody {
+                    .isPassIcon {
+                        color: #67C23A !important;
+                    }
+                    .failPassIcon {
+                        color: #F56C6C !important;
+                    }
+                    .isPass {
+                        display: flex;
+                        flex-direction: column;
+                        text-align: center;
+                        color: #67C23A;
+                        height: 100%;
+                        justify-content: center;
+                        .icon {
+                            font-size: pxTorem(120px)
+                        }
+                        .text {
+                            font-size: pxTorem(24px)
+                        }
+                    }
+                }
             }
         }
     }

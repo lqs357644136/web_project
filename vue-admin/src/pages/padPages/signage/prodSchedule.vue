@@ -5,7 +5,7 @@
       <el-table :highlight-current-row="false" :data="tableList" height="100%" border style="width:100%">
           <el-table-column align="center" prop="process" label="机台型号"></el-table-column>
           <el-table-column align="center" prop="partNo" label="产品编号"></el-table-column>
-          <el-table-column align="center" prop="schQty" label="计划生产总数PCS"></el-table-column>
+          <el-table-column align="center" prop="schQty" width="200px"  label="计划生产总数PCS"></el-table-column>
           <el-table-column align="center" prop="finishQty" label="完工数"></el-table-column>
           <el-table-column prop="schEnd" width="240px" label="预计完成时间">
             <template slot-scope="scope">

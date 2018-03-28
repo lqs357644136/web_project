@@ -93,10 +93,10 @@ export const $get = function (options) {
       console.log('错误信息')
       console.log(error)
       Message.error('服务器请求失败！');
-      store.dispatch("login_out");
-      setTimeout(() => {
-        router.push("/user/login");
-      }, 500);
+      // store.dispatch("login_out");
+      // setTimeout(() => {
+      //   router.push("/user/login");
+      // }, 500);
       reject(error);
     })
 

@@ -27,6 +27,11 @@ export const api_baseurl = function (apiUrl) {
   return 'http://' + this.$route.query.ip + '/esop' + apiUrl
 }
 
+//日星看板请求路径
+export const kanBanUrl = function (apiUrl) {
+  return 'http://' + this.$route.query.ip + apiUrl
+}
+
 //终端获取机器信息方法
 export const getMacINfo = function () {
   try {
@@ -49,11 +54,11 @@ export const getMacINfo = function () {
       backUp: function () {
         console.log("返回上一页(只能在终端上生效)");
       },
-      equipNo: 'C01', //工位
+      equipNo: 'ZSA20T-1', //工位
       empNo: 30031, //工号
-      line: 'BC1', //制程
-      plant: '1000', //车间
-      ptno: '06873008', //产品编码
+      line: 'A', //制程
+      plant: 'ZSA', //车间
+      ptno: '10.100.200', //产品编码
     }
   }
 

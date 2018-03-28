@@ -6,7 +6,7 @@
 
             <el-row :gutter="10">
 
-                <el-col class="productFroms" :xs="24" :sm="24" :md="16" :lg="16">
+                <el-col class="productFroms" :xs="24" :sm="16" :md="16" :lg="16">
                     <!-- 信息 -->
                     <el-tabs type="border-card">
 
@@ -15,7 +15,7 @@
                             <div class="productFromsItem-body">
 
                                 <el-row class="norm" :gutter="30">
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="案号" prop="caseNo">
                                             <el-select v-if="isInfo" v-model="productInputs.caseNo" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.caseList" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -23,7 +23,7 @@
                                             <el-input :disabled="!isInfo" v-model="productInputs.caseNo" v-else placeholder="案号"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="客户" prop="customerName">
                                             <el-select v-if="isInfo" v-model="productInputs.customerName" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.customerList" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -31,7 +31,7 @@
                                             <el-input :disabled="!isInfo" v-model="productInputs.customerName" v-else placeholder="客户"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="品名" prop="productName">
                                             <el-select v-if="isInfo" v-model="productInputs.productName" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.partnoList" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -39,12 +39,12 @@
                                             <el-input :disabled="!isInfo" v-model="productInputs.productName" v-else placeholder="品名"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="不良数" prop="badNumber">
                                             <el-input :disabled="!isInfo" v-model="productInputs.badNumber" type="number" placeholder="不良数"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="不良代码" prop="badCode">
                                             <el-select v-if="isInfo" v-model="productInputs.badCode" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.badCodeList" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -52,7 +52,7 @@
                                             <el-input :disabled="!isInfo" v-model="productInputs.badCode" v-else placeholder="不良代码"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="履历类型" prop="resumeType">
                                             <el-select v-if="isInfo" v-model="productInputs.resumeType" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.resumeTypeList" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -60,7 +60,7 @@
                                             <el-input :disabled="!isInfo" v-model="productInputs.resumeType" v-else placeholder="履历类型"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12">
                                         <el-form-item label="发生频度" prop="happenFrequency">
                                             <el-select v-if="isInfo" v-model="productInputs.happenFrequency" placeholder="请选择">
                                                 <el-option v-for="item in productSelects.happenFrequencyList" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -68,7 +68,7 @@
                                             <el-input :disabled="!isInfo" v-else v-model="productInputs.happenFrequency" placeholder="发生频度"></el-input>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :xs="24" :sm="24" :md="12" :lg="12" prop="happenDate">
+                                    <el-col :xs="24" :sm="12" :md="12" :lg="12" prop="happenDate">
                                         <el-form-item label="发生日期">
                                             <el-date-picker :disabled="!isInfo" :editable="false" v-model="productInputs.happenDate" type="date" placeholder="发生日期">
                                             </el-date-picker>
@@ -173,7 +173,7 @@
 
                 </el-col>
 
-                <el-col class="productImg" :xs="24" :sm="24" :md="8" :lg="8">
+                <el-col class="productImg" :xs="24" :sm="8" :md="8" :lg="8">
                     <!-- 产品图片 -->
                     <div>
                         <!-- 查看 -->

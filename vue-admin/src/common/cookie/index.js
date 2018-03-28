@@ -17,6 +17,7 @@ export function removeToken() {
 }
 
 export function getHost() {
+  console.log(Cookies.get(HostKey))
   return Cookies.get(HostKey)
 }
 

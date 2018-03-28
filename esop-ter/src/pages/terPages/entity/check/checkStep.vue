@@ -12,19 +12,16 @@
           <span :style="needCheck>0?'color:red':'color:green'">{{needCheck}}</span>
         </div>
         <div class="testType">
-          <label>方式:</label>{{tabCheck.methodDescription}}</div>
+          <label>方式:</label>{{tabCheck.methodDescription}}
+        </div>
         <div class="deviation">
           <div class="range" v-if="tabCheck.specificationType==0">
             <label>范围:</label>
-            <span>{{tabCheck.lowerLimit}}~{{tabCheck.upperLimit}}{{tabCheck.symbol}}</span>
+            <span>{{inspectSpecification}}</span>
           </div>
           <div class="tolerance" v-else-if="tabCheck.specificationType==1">
             <label>公差:</label>
-            <span class="stdValue">{{tabCheck.stdValue}}{{tabCheck.symbol}}</span>
-            <span class="tolText">
-              <span class="stdValuePlus">+{{tabCheck.stdValuePlus}}</span>
-              <span class="stdValueMinus">-{{tabCheck.stdValueMinus}}</span>
-            </span>
+            <span class="stdValue">{{tabCheck.inspectSpecification}}</span>
           </div>
           <div class="seeCheck" v-else-if="tabCheck.specificationType==2">
             <label>目测</label>
@@ -52,7 +49,6 @@
       </template>
     </div>
 
-    
     <el-form-item class="stepBtn" v-if="isPass&&passType==1">
       <el-button type="success">{{tabCheck.itemDescription}}检验通过</el-button>
     </el-form-item>
@@ -96,7 +92,7 @@ export default {
     return {
       //是否有检测通过
       isPass: false,
-      passType:'',
+      passType: "",
       //范围与公差
       computRang: {
         // minVal: 0,
@@ -146,7 +142,8 @@ export default {
     //初始化输入框数值
     checkInput_init() {
       let details = this.tabCheck.details ? this.tabCheck.details : null;
-      let passType = this.tabCheck.noPass!=undefined ? this.tabCheck.noPass : -1;
+      let passType =
+        this.tabCheck.noPass != undefined ? this.tabCheck.noPass : -1;
       this.specType = this.tabCheck.specificationType;
       this.passType = passType;
       if (details != null) {
@@ -211,7 +208,7 @@ export default {
       return arr.indexOf(0) != -1 ? 0 : 1;
     },
     submitForm() {
-      if(this.isPass) return;
+      if (this.isPass) return;
       let inspect = this.checkList.inspect;
       let spec = this.tabCheck;
       let params = {
@@ -239,7 +236,7 @@ export default {
       }).then(res => {
         if (res.code == 1) {
           this.isPass = true;
-          this.passType = params.result.flag
+          this.passType = params.result.flag;
           let finalView = {
             index: this.tabCheck.index,
             isPass: this.passType

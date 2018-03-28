@@ -5,7 +5,7 @@
       <div class="navbar-brand" @click="menuClick('home')">
         <div class="disktopLogo">
           <p class="text01">INTELFOR</p>
-          <p class="text02">广州市智企信息科技有限公司</p>
+          <p class="text02">智企信息</p>
         </div>
         <div class="mobileLogo">
           <p class="text01">INTELFOR</p>
@@ -30,7 +30,7 @@
                   <div class="ptBoxs">
                     <div @click="menuClick(item.name)" class="ptBox" v-for="(item,index) in ptImgs" :key="index">
                       <span class="img"><img :src="item.img" alt="图片"></span>
-                      <span class="text">{{item.name}}</span>
+                      <span class="text">{{item.title}}</span>
                     </div>
                   </div>
                 </div>
@@ -56,11 +56,11 @@
             </div>
             <div @click="menuClick('callme')" :class="isChoose=='callme'?menuBoxStype.isChoose:menuBoxStype.noChoose">
               <span class="text">
-                <i class="fa fa-tty"></i> 联系我们</span>
+                <i class="fa fa-user-plus"></i> 联系我们</span>
             </div>
             <div class="tel">
-              <i class="fa fa-phone"></i>
-              电话:
+              咨询热线:
+              <img class="icon" src="~assets/images/navbar/tel.png" alt="tel">
               <a href="#">400-8166-116</a>
             </div>
           </div>
@@ -74,15 +74,16 @@
             <div @click="$router.push('/home');rightMenuShow=false" class="menuBox"><i class="fa fa-bank"></i>智企首页</div>
             <div @click="!mobile_planShow?mobile_planShow=true:mobile_planShow=false" class="menuBox plan"><i class="fa fa-sign-language"></i>产品&解决方案</div>
             <div class="menuBoxChilds" v-show="mobile_planShow">
-              <div @click="$router.push('/esop');rightMenuShow=false" class="menuBoxChild">Esop</div>
-              <div @click="$router.push('/kanban');rightMenuShow=false" class="menuBoxChild">电子看板</div>
-              <div @click="$router.push('/safeLight');rightMenuShow=false" class="menuBoxChild">安灯预警</div>
+              <div v-for="(item,index) in ptImgs" :key="index" @click="$router.push('/'+item.name);rightMenuShow=false" class="menuBoxChild">{{item.title}}</div>
             </div>
             <div @click="$router.push('/success');rightMenuShow=false" class="menuBox"><i class="fa fa-line-chart"></i>成功案例</div>
-            <div @click="$router.push('/callme');rightMenuShow=false" class="menuBox"><i class="fa fa-tty"></i>联系我们</div>
+            <div @click="$router.push('/callme');rightMenuShow=false" class="menuBox"><i class="fa fa-user-plus"></i>联系我们</div>
+            <div v-if="!mobile_planShow" class="ewm">
+              <img src="~assets/images/bottom/ewm.png" alt="ewm">
+            </div>
             <div class="tel">
-              <i class="fa fa-phone"></i>:
-              <a href="#">400-8166-116</a>
+              <img class="icon" src="~assets/images/navbar/tel.png" alt="tel">
+              <a href="tel:400-8166-116">400-8166-116</a>
             </div>
           </div>
         </div>
@@ -104,14 +105,16 @@ export default {
         isChoose: "nav-menu-box isChoose",
         noChoose: "nav-menu-box"
       },
-      ptIconEx:['esop','kanban','safeLight','quality','ecm','dworkspace'],
+      ptIconEx:['esop','kanban','safeLight','quality','ecm','dworkspace','intelDev'],
       ptImgs: [
-        { img: require("assets/images/navbar/pt/esop.png"), title: "Esop",name:'esop' },
+        { img: require("assets/images/navbar/pt/esop.png"), title: "E-SOP",name:'esop' },
         { img: require("assets/images/navbar/pt/kanban.png"), title: "电子看板",name:'kanban' },
         { img: require("assets/images/navbar/pt/andengyujing.png"), title: "安灯预警",name:'safeLight' },
-        { img: require("assets/images/navbar/pt/yidongzhiliangguanli.png"), title: "质量管理",name:'quality' },
-        { img: require("assets/images/navbar/pt/dianzijiaoliao.png"), title: "电子叫料" ,name:'ecm' },
         { img: require("assets/images/navbar/pt/shouji_kanban.png"), title: "数字车间" ,name:'dworkspace' },
+        { img: require("assets/images/navbar/pt/dianzijiaoliao.png"), title: "电子叫料" ,name:'ecm' },
+        { img: require("assets/images/navbar/pt/yidongzhiliangguanli.png"), title: "质量管理",name:'ecm' },
+        { img: require("assets/images/navbar/pt/shebeishuzijiankong.png"), title: "APS",name:'APS' },
+        { img: require("assets/images/navbar/pt/kanban.png"), title: "智能终端",name:'intelDev' },
       ],
       scImgs: [
         { img: require("assets/images/partner/logo1.jpg"), name: "企业项目" },

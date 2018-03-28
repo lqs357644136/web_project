@@ -12,17 +12,25 @@ import "echarts/lib/component/legendScroll";
 import { $dataFormat } from "common/filiter/index.js";
 export default {
   name: "zjj_demo02_chart",
+  props: ["chartData"],
   data() {
-    return {};
+    return {
+      chart01: null
+    };
   },
+ 
   mounted() {
-    this.plantChart_init();
+    setTimeout(() => {
+      this.plantChart_init();
+    }, 1000);
   },
   methods: {
+    reLoadChart() {},
     plantChart_init() {
-      let chart = echart.init(this.$refs.plantChart);
+      this.chart01 = echart.init(this.$refs.plantChart);
       let option = {
         backgroundColor: "#333333",
+        animation: false,
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -47,7 +55,7 @@ export default {
         xAxis: [
           {
             type: "category",
-            data: ["L1线", "L2线", "L3线", "L4线", "L5线", "L6线", "L7线"],
+            data: this.chartData.xAxis,
             axisLine: {
               lineStyle: {
                 color: "#fff"
@@ -69,7 +77,7 @@ export default {
           {
             name: "计划产量",
             type: "bar",
-            data: [320, 332, 301, 334, 390, 330, 320],
+            data: this.chartData.planNum,
             label: {
               normal: {
                 show: true,
@@ -93,7 +101,7 @@ export default {
           {
             name: "实际产量",
             type: "bar",
-            data: [120, 132, 101, 134, 90, 230, 210],
+            data: this.chartData.realNum,
             label: {
               normal: {
                 show: true,
@@ -116,7 +124,7 @@ export default {
           }
         ]
       };
-      chart.setOption(option);
+      this.chart01.setOption(option);
     }
   }
 };

@@ -41,6 +41,26 @@ const routes = [{
       path: '/safeLight',
       name: 'safeLight',
       component: r => require.ensure([], () => r(require('pages/safeLight/safeLight.vue')), 'safeLight'),
+    }, {
+      //数字车间
+      path: '/dworkspace',
+      name: 'dworkspace',
+      component: r => require.ensure([], () => r(require('pages/dworkspace/dworkspace.vue')), 'dworkspace'),
+    }, {
+      //电子叫料
+      path: '/ecm',
+      name: 'ecm',
+      component: r => require.ensure([], () => r(require('pages/ecm/ecm.vue')), 'ecm'),
+    }, {
+      //智能设备
+      path: '/intelDev',
+      name: 'intelDev',
+      component: r => require.ensure([], () => r(require('pages/intelDev/intelDev.vue')), 'intelDev'),
+    }, {
+      //APS
+      path: '/APS',
+      name: 'APS',
+      component: r => require.ensure([], () => r(require('pages/APS/APS.vue')), 'APS'),
     }
   ]
 }]
