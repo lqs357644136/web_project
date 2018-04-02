@@ -48,11 +48,6 @@ export default {
       tableList: []
     };
   },
-  computed: {
-    totalPage: function() {
-      return Math.ceil(this.count / this.pageSize);
-    }
-  },
   created() {
     this.list_init();
   },

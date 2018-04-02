@@ -1,5 +1,6 @@
 //启动全屏
-export const launchFullscreen = function (element) {
+export const launchFullscreen = function () {
+  let element = document.querySelector('html')
   if (element.requestFullscreen) {
     element.requestFullscreen();
   } else if (element.mozRequestFullScreen) {

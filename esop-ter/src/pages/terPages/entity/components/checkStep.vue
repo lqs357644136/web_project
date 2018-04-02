@@ -59,7 +59,7 @@
     <div class="stepSubmit">
       <el-button type="success" v-if="isPass&&passType==1">{{tabCheck.itemDescription}}检验通过</el-button>
       <el-button type="danger" v-else-if="isPass&&passType==0">{{tabCheck.itemDescription}}检验失败</el-button>
-      <el-button type="primary" v-else :disabled="needCheck!=0||isPass" @click="submitForm()">提交</el-button>
+      <el-button type="primary" v-else :disabled="needCheck!=0||isPass" @click="submitForm()" ref="sub">提交</el-button>
     </div>
   </div>
 </template>
@@ -115,6 +115,11 @@ export default {
   mounted() {
     this.checkInputs_input();
     this.computRang_init();
+    document.addEventListener("keydown", $event => {
+      if ($event.code == "Enter" && this.needCheck == 0 && !this.isPass) {
+        this.submitForm();
+      }
+    });
   },
   methods: {
     //提交结果
@@ -141,13 +146,13 @@ export default {
       };
       console.log(params);
       let urlPath = -1;
-      if (inspect.type == 1) {
-        urlPath = url.firstCheck_add;
-      } else if (inspect.type == 3) {
-        urlPath = url.tourCheck_add;
+      if(inspect.type == 0){
+        urlPath = url.terFirstCheck_add
+      }else if(inspect.type == 2){
+        urlPath = url.terSelfCheck_add
       }
-      this.$post({
-        url: urlPath,
+      this.$post_noToken({
+        url: this.$api_baseurl(urlPath),
         data: params
       }).then(res => {
         if (res.code == 1) {

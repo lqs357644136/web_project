@@ -10,7 +10,9 @@
       <div class="pad" v-if="main_init">
         <left-slide></left-slide>
         <main-content>
-          <router-view></router-view>
+          <transition name="fade">
+            <router-view></router-view>
+          </transition>
         </main-content>
       </div>
     </div>

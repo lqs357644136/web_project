@@ -1,9 +1,9 @@
 <template>
   <div class="header-section">
     <div class="menu-left">
-      <div class="logo" v-show="!isCollapse">
-        ESOP-ADMIN
-      </div>
+        <div class="logo" v-show="!isCollapse">
+          ESOP-ADMIN
+        </div>
       <i @click="leftSlideChange()" class="fa fa-bars fa-2x"></i>
     </div>
     <menu-right></menu-right>
@@ -12,7 +12,7 @@
 <script type="text/javascript">
 import menuRight from "./menuRight";
 import search from "components/search";
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   computed: {

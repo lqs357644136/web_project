@@ -1,36 +1,39 @@
 <template>
   <!-- 左侧菜单 -->
-  <div class="left-side" v-show="isCollapse">
-    <div class="logo">
-      ESOP-ADMIN
-    </div>
+    <div class="left-side" v-show="isCollapse">
+      <div class="logo">
+        ESOP-ADMIN
+      </div>
 
-    <div class="esop-leftMenu" ref="esopLeftSlide">
-      <div v-for="(menu,index) in menus" :key="index">
+      <div class="esop-leftMenu" ref="esopLeftSlide">
+        <div v-for="(menu,index) in menus" :key="index">
 
-        <div class="singleItem menuItem" :ref="menu.name" v-if="typeof menu.child === 'undefined'" @click="gopagefn(menu.path,menu.name)">
-          <i :class="menu.icon"></i>
-          <span class="title">{{menu.title}}</span>
-        </div>
-
-        <div class="subItem" v-else>
-
-          <div class="subTitle" :ref="menu.name" @click="subItemHandle(menu.name)">
+          <div class="singleItem menuItem" :ref="menu.name" v-if="typeof menu.child === 'undefined'" @click="gopagefn(menu.path,menu.name)">
             <i :class="menu.icon"></i>
             <span class="title">{{menu.title}}</span>
-            <span class="arrow fa fa-angle-down"></span>
           </div>
-          <ul class="subChild">
-            <li class="menuItem" :ref="sub_menu.name" @click="gopagefn(sub_menu.path,sub_menu.name)" v-for="(sub_menu,sub_index) in menu.child" :key="sub_index">{{sub_menu.title}}</li>
-          </ul>
+
+          <div class="subItem" v-else>
+
+            <div class="subTitle" :ref="menu.name" @click="subItemHandle(menu.name)">
+              <i :class="menu.icon"></i>
+              <span class="title">{{menu.title}}</span>
+              <span class="arrow fa fa-angle-down"></span>
+            </div>
+            <ul class="subChild">
+              <li class="menuItem" :ref="sub_menu.name" @click="gopagefn(sub_menu.path,sub_menu.name)" v-for="(sub_menu,sub_index) in menu.child" :key="sub_index">{{sub_menu.title}}</li>
+            </ul>
+
+          </div>
 
         </div>
-
       </div>
+
     </div>
 
-  </div>
 </template>
+
+
 
 <script type="text/javascript">
 import { mapGetters } from "vuex";
@@ -69,9 +72,9 @@ export default {
           icon: "fa fa-codiepie"
         },
         {
-          name: "checkList",
-          path: "/checkList",
-          title: this.langPackage.menu_pad.checkList,
+          name: "inspecRecord",
+          path: "/inspecRecord",
+          title: this.langPackage.menu_pad.inspecRecord,
           icon: "fa fa-commenting"
         },
         {
@@ -199,7 +202,7 @@ export default {
         let targerDom = this.$refs[name][0];
         targerDom.classList.add("active");
       } catch (error) {
-        console.log('左侧菜单默认选中失败')
+        console.log("左侧菜单默认选中失败");
       }
     }
   },

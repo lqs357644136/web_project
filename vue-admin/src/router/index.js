@@ -17,7 +17,7 @@ import firstEntity from 'pages/padPages/entity/firstEntity.vue'
 import productInfo from 'pages/padPages/product/productInfo/productInfo.vue'
 import productEnter from 'pages/padPages/product/productEnter/productEnter.vue'
 import tourEntity from 'pages/padPages/entity/tourEntity.vue'
-import checkList from 'pages/padPages/checkList/checkList.vue'
+import inspecRecord from 'pages/padPages/inspecRecord/inspecRecord.vue'
 import workonoff from 'pages/padPages/workonoff/workonoff.vue'
 import batchEnterRaw from 'pages/padPages/batchEnter/batchEnterRaw.vue'
 import batchEnterBlend from 'pages/padPages/batchEnter/batchEnterBlend.vue'
@@ -53,13 +53,13 @@ export const privateModule = [
       auth: true
     }
   },{
-    //检查清单
-    path: '/checkList',
-    name: 'checkList',
-    //component: resolve => require(['pages/padPages/checkList/checkList.vue'], resolve),
-    component: checkList,
+    //检验纪录
+    path: '/inspecRecord',
+    name: 'inspecRecord',
+    //component: resolve => require(['pages/padPages/inspecRecord/inspecRecord.vue'], resolve),
+    component: inspecRecord,
     meta: {
-      //title: messages.checkList,
+      //title: messages.inspecRecord,
       icon: 'fa fa-commenting',
       auth: true
     }

@@ -11,7 +11,7 @@
 
 <script>
 //测试请求接口地址
-let api = '192.168.60.230:8080';
+let api = '192.168.60.231:8080';
 let kanbanApi = '192.168.62.63';
 export default {
   data() {
@@ -40,12 +40,17 @@ export default {
         {
           path: "/ter/firstEntity?ip="+api,
           title: "首检录入",
-          icon: "icon fa fa-pie-chart"
+          icon: "icon fa fa-bicycle"
         },
         {
           path: "/ter/selfEntity?ip="+api,
           title: "自主检验",
           icon: "icon fa fa-id-card-o"
+        },
+        {
+          path: "/ter/inspecRecord?ip="+api,
+          title: "检验纪录",
+          icon: "icon fa fa-cutlery"
         },
         {
           path: '/ter/productInfo?ip='+api,
@@ -55,17 +60,17 @@ export default {
         {
           path: '/ter/saleLamReport?ip='+api,
           title: "安灯报表",
-          icon: "icon fa fa-pie-chart"
+          icon: "icon fa fa-fighter-jet"
         },
         {
           path: '/ter/machineReachRate?ip='+api,
           title: "机台电子看板",
-          icon: "icon fa fa-pie-chart"
+          icon: "icon fa fa-flask"
         },
         {
           path: '/ter/prodSchedule?ip='+api,
           title: "总排程电子看板",
-          icon: "icon fa fa-pie-chart"
+          icon: "icon fa fa-headphones"
         },
         {
           path: '/ter/wholeReachRate?ip='+api,
@@ -75,22 +80,22 @@ export default {
         {
           path: '/ter/precautions?ip='+api,
           title: "注意事项",
-          icon: "icon fa fa-bandcamp"
+          icon: "icon fa fa-minus-circle"
         },
         {
           path: '/ter/zjj_demo01?ip='+kanbanApi+'&Plant=ZSA&Line=A',
           title: "中技佳电子看板(一)",
-          icon: "icon fa fa-bandcamp"
+          icon: "icon fa fa-key"
         },
         {
           path: '/ter/zjj_demo02?ip='+kanbanApi+'&Plant=ZSA&Line=A',
           title: "中技佳电子看板(二)",
-          icon: "icon fa fa-bandcamp"
+          icon: "icon fa fa-rss"
         },
         {
           path: '/ter/xr?ip='+api+'&id=4028818a614115b80161412f6434000e',
           title: "X Bar 图",
-          icon: "icon fa fa-balance-scale"
+          icon: "icon fa fa-smile-o"
         },
       ]
     };

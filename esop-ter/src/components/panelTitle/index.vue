@@ -40,6 +40,7 @@ export default {
         window.android.finish()
       }catch(e){
         console.log(e)
+        this.$router.push('/ter/home')
       }
     }
   }

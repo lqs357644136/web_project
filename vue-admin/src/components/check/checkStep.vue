@@ -50,7 +50,6 @@
       </template>
     </div>
 
-    
     <el-form-item class="stepBtn" v-if="isPass&&passType==1">
       <el-button type="success">{{tabCheck.itemDescription}}检验通过</el-button>
     </el-form-item>
@@ -93,7 +92,7 @@ export default {
     return {
       //是否有检测通过
       isPass: false,
-      passType:'',
+      passType: "",
       //范围与公差
       computRang: {
         // minVal: 0,
@@ -143,7 +142,7 @@ export default {
     //初始化输入框数值
     checkInput_init() {
       let details = this.tabCheck.details ? this.tabCheck.details : null;
-      let passType = this.tabCheck.noPass!=undefined ? this.tabCheck.noPass : -1;
+      let passType =this.tabCheck.noPass != undefined ? this.tabCheck.noPass : -1;
       this.specType = this.tabCheck.specificationType;
       this.passType = passType;
       if (details != null) {
@@ -208,7 +207,7 @@ export default {
       return arr.indexOf(0) != -1 ? 0 : 1;
     },
     submitForm() {
-      if(this.isPass) return;
+      if (this.isPass) return;
       let inspect = this.checkList.inspect;
       let spec = this.tabCheck;
       let params = {
@@ -229,14 +228,15 @@ export default {
         }
       };
       console.log(params);
-      let urlPath = inspect.type == "1" ? url.firstCheck_add : url.tourCheck_add;
+      let urlPath =
+        inspect.type == "1" ? url.firstCheck_add : url.tourCheck_add;
       this.$post({
         url: urlPath,
         data: params
       }).then(res => {
         if (res.code == 1) {
           this.isPass = true;
-          this.passType = params.result.flag
+          this.passType = params.result.flag;
           let finalView = {
             index: this.tabCheck.index,
             isPass: this.passType

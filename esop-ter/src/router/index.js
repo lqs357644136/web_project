@@ -63,17 +63,17 @@ const routes = [{
     title: messages.batchEnterBlend,
     auth: false
   },
-}, {
-  //首件录入
+},{
+  //首检录入
   path: '/ter/firstEntity',
   name: 'firstEntity',
   component:r => require.ensure([], () => r(require('pages/terPages/entity/firstEntity.vue')), 'firstEntity'),
-  //component: phoneHome,
+  //component: firstEntity,
   meta: {
     title: messages.firstEntity,
     auth: false
   }
-}, {
+},{
   //自检录入
   path: '/ter/selfEntity',
   name: 'selfEntity',
@@ -81,6 +81,16 @@ const routes = [{
   //component: phoneHome,
   meta: {
     title: messages.selfEntity,
+    auth: false
+  }
+},{
+  //检验纪录
+  path: '/ter/inspecRecord',
+  name: 'inspecRecord',
+  component:r => require.ensure([], () => r(require('pages/terPages/inspecRecord/inspecRecord.vue')), 'inspecRecord'),
+  //component: inspecRecord,
+  meta: {
+    title: messages.inspecRecord,
     auth: false
   }
 }, {

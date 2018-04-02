@@ -32,6 +32,7 @@ let url = {
   daily_shiftType:'/rest/kanban/getShiftType',//GET 获取班次类型
   getMaterial:'/rest/kanban/getMaterial',//GET 获取当前工位对应原料
   precautions_list:'/rest/kanban/getPrecautions',//GET 获取注意事项列表
+  getInspectRecord: '/rest/kanban/getInspectRecord', //GET 获取检验纪录
   //esop
   saleLam_get:'/rest/Andon/getAndonList',//GET 
   get_xBar:'/rest/kanban/getXbar',//GET 获取xBar
