@@ -40,6 +40,7 @@ export default {
   },
   mounted() {
     this.get_sys();
+    this.checkTour();
   },
   components: {
     mainContent,
@@ -88,6 +89,33 @@ export default {
             });
           });
         });
+    },
+    //定时获取巡检通知
+    checkTour() {
+      setInterval(() => {
+        this.$get({
+          url: url.getRoutNoticeList
+        }).then(res => {
+          if (res.code == 1) {
+            if (res.data.length>0) {
+              this.$notify({
+                title: "巡检提醒",
+                type:'warning',
+                dangerouslyUseHTMLString: true,
+                duration:50000,
+                message: 
+                '<div class="tourTips">'+
+                  '<p>你有'+res.data.length+'个巡检任务</p>'+
+                  '<p>请点击前往查看</p>'+
+                '</div>',
+                onClick: () => {
+                  this.$router.push("/tourEntity");
+                }
+              });
+            }
+          }
+        });
+      }, 60000);
     }
   }
 };

@@ -43,12 +43,6 @@ export default {
   },
   [type.SET_PAGELOADING](state, path) {
     if (path) {
-      let routerName = router.currentRoute.name;
-      if(routerName=='firstEntity'||routerName=='tourEntity'){
-        setTimeout(()=>{
-          state.fromCheckList = false
-        },200);
-      }
       setTimeout(router.push({
         path: path
       }), 500);

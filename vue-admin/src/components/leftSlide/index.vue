@@ -41,8 +41,6 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      defaultPath: this.$router.currentRoute.path, //默认选中菜单
-      menu_lang: null,
       menus: []
     };
   },
@@ -55,10 +53,7 @@ export default {
   computed: {
     ...mapGetters({
       isCollapse: "get_leftSlide_state",
-      lang: "get_lang",
       pageLoading: "get_pageloading",
-      fromCheckList: "get_fromchecklist",
-      otherLink: "get_otherlink",
       langPackage: "get_langpackage"
     })
   },
@@ -206,10 +201,5 @@ export default {
       }
     }
   },
-  watch: {
-    otherLink: function(a, b) {
-      this.menuItemActive(this.$router.currentRoute.name);
-    }
-  }
 };
 </script>

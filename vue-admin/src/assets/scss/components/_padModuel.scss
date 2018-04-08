@@ -73,7 +73,7 @@
                 .el-textarea.is-disabled .el-textarea__inner {
                     color: initial;
                 }
-            }
+            } 
             .productImg {
                 height: 100%;
                 &>* {
@@ -348,6 +348,7 @@
                 padding-left: pxTorem(15px);
             }
         }
+        
         .specInfo {
             .el-collapse-item__header {
                 height: pxTorem(60px);
@@ -355,6 +356,7 @@
                 font-size: pxTorem(18px);
             }
             .el-collapse-item__content {
+                
                 p {
                     height: pxTorem(40px);
                     line-height: pxTorem(40px);
@@ -455,6 +457,8 @@
                         }
                     }
                 }
+
+
                 .listContent {
                     text-align: left;
                     display: block;

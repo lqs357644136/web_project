@@ -67,7 +67,7 @@ const routes = [{
 
 const router = new VueRouter({
   routes,
-  mode: 'hash', //default: hash ,history
+  mode: 'history', //default: hash ,history
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition

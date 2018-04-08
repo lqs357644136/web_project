@@ -14,9 +14,9 @@ let url = {
   check_getGroup: '/rest/kanban/getGroup', //GET 获取组别
   get_MutiLang: '/rest/kanban/getMutiLang', //GET 获取多语言
   //平板 //手机
-  batch_List: '/rest/plant/getMaterialBatch', //GET 物料列表 parem: type=[0/1] 0（原料批次录入）,1（调和批次录入）
-  batch_List_delete: '/rest/plant/deleteMaterialBatch', //GET 删除物料列表 parem: id清单号 type=[0/1] 0（原料批次录入）,1（调和批次录入）
-  batch_List_add: '/rest/plant/addMaterialBatch', //POST 添加物料列表 parem:{"batchNo": "string","materialNo": "string","quantity": 0,"type": 0 }
+  batch_List: '/rest/plant/getMaterialBatch', //GET 物料列表
+  batch_List_delete: '/rest/plant/deleteMaterialBatch', //GET 删除物料列表
+  batch_List_add: '/rest/plant/addMaterialBatch', //POST 添加物料列表
   check_list: '/rest/qc/getInspectList', //GET 检查清单
   firstCheck_info: '/rest/qc/getFirstInspectInfo', //GET 获取首件QC录入信息
   firstCheck_add: '/rest/qc/addFirstInspectResult', //POST 首件QC录入提交检测结果
