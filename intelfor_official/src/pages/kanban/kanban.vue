@@ -1,15 +1,15 @@
 <template>
   <div class="plan">
-    <el-row :gutter="30" class="planBox">
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" v-for="(item,index) in planImgs" :key="index">
-        <img :src="item.img" alt="图片">
-      </el-col>
-    </el-row>
     <h1>看板案例</h1>
     <el-row :gutter="30" class="planBox">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" v-for="(item,index) in liveImgs" :key="index">
         <a class="pc" :href="item.img"><img :src="item.img" alt="图片"></a>
         <img class="mobile" :src="item.img" alt="图片">
+      </el-col>
+    </el-row>
+    <el-row :gutter="30" class="planBox">
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" v-for="(item,index) in planImgs" :key="index">
+        <img :src="item.img" alt="图片">
       </el-col>
     </el-row>
     <bottom></bottom>

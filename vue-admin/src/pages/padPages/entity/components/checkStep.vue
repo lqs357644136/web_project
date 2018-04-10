@@ -61,6 +61,22 @@
       <el-button type="danger" v-else-if="isPass&&passType==0">{{tabCheck.itemDescription}}检验失败</el-button>
       <el-button type="primary" v-else :disabled="needCheck!=0||isPass" @click="submitForm()">提交</el-button>
     </div>
+
+    <!-- 提交前填写备注和上传图片 -->
+    <el-dialog title="检测备注" :visible.sync="subDialogVisible" width="50%" center>
+      <span>
+        <el-upload :action="imgUpload.uploadUrl" :headers="imgUpload.headers" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="improvePicture__Success">
+          <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-dialog :visible.sync="dialogVisible">
+          <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+      </span>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="postCheckData()">提交检测</el-button>
+        <el-button @click="subDialogVisible = false">取消检测</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -84,6 +100,24 @@ export default {
       position: {
         row: this.tabCheck.positionCount,
         col: this.tabCheck.inspectCount
+      },
+      //提交前备注框
+      subDialogVisible: false,
+      //上传图片
+      dialogImageUrl: "",
+      dialogVisible: false,
+
+      //图片上传
+      imgUpload: {
+        uploadUrl:
+          this.$api_baseurl(
+            this.$store.getters.get_host ? this.$store.getters.get_host : ""
+          ) + url.file_POST, //上传地址
+        headers: {
+          token: this.$store.getters.get_token,
+          Accept: "application/json"
+        },
+        urlList:[],
       }
     };
   },
@@ -117,11 +151,29 @@ export default {
     this.computRang_init();
   },
   methods: {
+    //--------上传图片处理--------- 
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePictureCardPreview(file) {
+      console.log(file);
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+    improvePicture__Success(res, file) {
+      console.log(res);
+      this.imgUpload.urlList.push(res.data);
+    },
+    //--------上传图片处理---------
+
     //提交结果
     submitForm() {
       if (this.isPass) return;
 
-      
+      this.subDialogVisible = true;
+    },
+    //保存检测数据
+    postCheckData() {
       let inspect = this.checkList.inspect;
       let spec = this.tabCheck;
       let params = {
@@ -139,7 +191,8 @@ export default {
         result: {
           flag: this.checkFinal().projectFlag * 1, //检验结论 ,
           specId: spec.specId //检验规范ID
-        }
+        },
+        urlList:this.imgUpload.urlList,
       };
       console.log(params);
       let urlPath = -1;
@@ -159,6 +212,7 @@ export default {
             index: this.tabCheck.index,
             isPass: this.passType
           };
+          this.subDialogVisible = false;
           this.$emit("checkEndListen", finalView);
         } else {
           this.$message.error(res.msg);

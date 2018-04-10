@@ -81,8 +81,13 @@
             <el-form-item label="检验时间">
               <span class="listInfoContent">{{ props.row.inspectTime | dataFormat('yyyy-MM-dd hh:mm:ss') }}</span>
             </el-form-item>
-            <el-form-item label="备注信息">
+            <el-form-item label="审核备注">
               <span class="listInfoContent">{{ props.row.remark }}</span>
+            </el-form-item>
+            <el-form-item label="检测备注">
+              <span class="listInfoContent">
+                <el-button size="mini" type="primary" @click="showImageSlide(props.row.pictures)">备注图</el-button>
+              </span>
             </el-form-item>
           </el-form>
         </template>
@@ -134,11 +139,19 @@
         <el-button type="primary" @click="audiSub()">确 定</el-button>
       </div>
     </el-dialog>
+
+    <!-- 图片轮播 -->
+    <transition name="slide-fade" class="fadeView">
+      <div v-if="imgInfoShow">
+        <image-view class="imgViewBox" :imgArr="imgArr" :showImageView="true" :imageIndex="imageIndex" v-on:hideImage="imgInfoHidefn"></image-view>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import url from "api";
+import imageView from "vue-imageview";
 
 export default {
   name: "notice",
@@ -157,7 +170,7 @@ export default {
         ptno: "",
         flag: "",
         id: "",
-        audiTextareas:'',
+        audiTextareas: ""
       },
       selects: {
         plantOptions: [],
@@ -174,7 +187,11 @@ export default {
             value: "0"
           }
         ]
-      }
+      },
+      //图片查看
+      imgInfoShow: false,
+      imgArr: [],
+      imageIndex: 0
     };
   },
   created() {
@@ -222,22 +239,22 @@ export default {
     //审核
     audi(scope) {
       this.inputs.id = scope.row.id;
-       this.dialogFormVisible = true;
+      this.dialogFormVisible = true;
     },
     //通过审核
-    audiSub(){
+    audiSub() {
       let data = {
-        id:this.inputs.id,
-        remark:this.inputs.audiTextareas
-      }
+        id: this.inputs.id,
+        remark: this.inputs.audiTextareas
+      };
       this.$post({
         url: url.aduitInspect,
-        data:data
+        data: data
       }).then(res => {
         if (res.code == 1) {
           this.get_list(1);
           this.dialogFormVisible = false;
-        }else {
+        } else {
           this.$message.error(res.msg);
         }
       });
@@ -333,8 +350,27 @@ export default {
       if (this.inputs.line != "") {
         this.getProcessSelect(plant, line);
       }
+    },
+    //展示备注图
+    showImageSlide(imgs) {
+      for (let imgPath of imgs) {
+        console.log(imgPath)
+        this.$get_file({
+          url: url.file_get,
+          params: { path: imgPath }
+        }).then(res => {
+          console.log(res)
+          this.imgArr.push(res);
+        });
+      }
+      this.imgInfoShow = true;
+    },
+    imgInfoHidefn() {
+      this.imgInfoShow = false;
     }
   },
-  components: {}
+  components: {
+    imageView
+  }
 };
 </script>

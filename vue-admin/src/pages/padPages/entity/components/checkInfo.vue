@@ -25,7 +25,8 @@ export default {
   data() {
     return {
       formShow: false,
-      checkInfo: []
+      checkInfo: [],
+      baseUrl:this.$api_baseurl(this.$store.getters.get_host)
     };
   },
   computed: {
@@ -81,6 +82,7 @@ export default {
           value: this.checkList.inspect.reconcile
         } //调合
       ];
+      this.imgs = this.checkList.urlList;
     }
   }
 };
