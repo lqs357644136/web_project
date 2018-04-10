@@ -38,14 +38,14 @@ const routes = [{
       component: r => require.ensure([], () => r(require('pages/kanban/kanban.vue')), 'kanban'),
     }, {
       //安灯预警
-      path: '/safeLight',
-      name: 'safeLight',
-      component: r => require.ensure([], () => r(require('pages/safeLight/safeLight.vue')), 'safeLight'),
+      path: '/andon',
+      name: 'andon',
+      component: r => require.ensure([], () => r(require('pages/andon/andon.vue')), 'andon'),
     }, {
       //数字车间
-      path: '/dworkspace',
-      name: 'dworkspace',
-      component: r => require.ensure([], () => r(require('pages/dworkspace/dworkspace.vue')), 'dworkspace'),
+      path: '/EMS',
+      name: 'EMS',
+      component: r => require.ensure([], () => r(require('pages/EMS/EMS.vue')), 'EMS'),
     }, {
       //电子叫料
       path: '/ecm',
@@ -53,9 +53,9 @@ const routes = [{
       component: r => require.ensure([], () => r(require('pages/ecm/ecm.vue')), 'ecm'),
     }, {
       //智能设备
-      path: '/intelDev',
-      name: 'intelDev',
-      component: r => require.ensure([], () => r(require('pages/intelDev/intelDev.vue')), 'intelDev'),
+      path: '/terminal',
+      name: 'terminal',
+      component: r => require.ensure([], () => r(require('pages/terminal/terminal.vue')), 'terminal'),
     }, {
       //APS
       path: '/APS',
@@ -67,7 +67,7 @@ const routes = [{
 
 const router = new VueRouter({
   routes,
-  mode: 'history', //default: hash ,history
+  mode: 'hash', //default: hash ,history
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition

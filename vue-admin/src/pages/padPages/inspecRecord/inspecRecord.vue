@@ -204,7 +204,7 @@ export default {
         if (res.code == 1) {
           this.count = res.data.count;
           this.tableList = [];
-          for (let item of res.data) {
+          for (let item of res.data.resultList) {
             this.tableList.push(item);
           }
         } else {

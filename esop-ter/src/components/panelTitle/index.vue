@@ -7,7 +7,7 @@
      <span class="logo" v-if="logoInfo">
       <img :src="logoInfo" alt="">
     </span>
-    <span v-if="title" v-text="title"></span>
+    <span v-if="title" v-text="title" class="title"></span>
     <span v-if="right" class="right" v-text="rightContext"></span>
   </div>
 </template>

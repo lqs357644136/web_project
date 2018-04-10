@@ -210,7 +210,7 @@ export default {
         id: info.id
       };
       this.$get({
-        url: url.firstCheck_info,
+        url: url.tourCheck_info,
         params: params
       }).then(res => {
         if (res.code == 1) {

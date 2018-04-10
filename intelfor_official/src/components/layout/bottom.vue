@@ -32,10 +32,10 @@
                                 <a href="#" @click="$router.push('/kanban');">电子看板</a>
                             </td>
                             <td>
-                                <a href="#" @click="$router.push('/safeLight');">安灯预警</a>
+                                <a href="#" @click="$router.push('/andon');">安灯预警</a>
                             </td>
                             <td>
-                                <a href="#" @click="$router.push('/dworkspace');">数字车间</a>
+                                <a href="#" @click="$router.push('/EMS');">数字车间</a>
                             </td>
                         </tr>
                         <tr>
@@ -49,7 +49,7 @@
                                 <a href="#" @click="$router.push('/APS');">ASP</a>
                             </td>
                             <td>
-                                <a href="#" @click="$router.push('/intelDev');">智能终端</a>
+                                <a href="#" @click="$router.push('/terminal');">智能终端</a>
                             </td>
                         </tr>
                     </table>

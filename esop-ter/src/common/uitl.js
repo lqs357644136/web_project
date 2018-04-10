@@ -54,7 +54,7 @@ export const getMacINfo = function () {
       backUp: function () {
         console.log("返回上一页(只能在终端上生效)");
       },
-      equipNo: 'ZSA20T-1', //工位
+      equipNo: 'ZSA20T-2', //工位
       empNo: 30031, //工号
       line: 'A', //制程
       plant: 'ZSA', //车间

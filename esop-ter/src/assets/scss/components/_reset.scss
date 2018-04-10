@@ -1,5 +1,4 @@
 $border:#545454;
-
 * {
     word-break: break-all;
     word-wrap: break-word;
@@ -69,6 +68,10 @@ button {
         font-weight: 800;
         text-transform: uppercase;
         border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+        .title {
+            font-size: pxTorem(26px);
+            letter-spacing: pxTorem(2px);
+        }
         .back {
             position: absolute;
             left: pxTorem(10px);
@@ -86,14 +89,20 @@ button {
                 font-size: pxTorem(16px);
             }
         }
-        .right{
-            position: absolute;
-            right:pxTorem(10px);
+        .back:active {
+            i,.text {
+                color: burlywood;
+                transition: all 0.25s ease;
+            }
         }
-        .logo{
+        .right {
+            position: absolute;
+            right: pxTorem(10px);
+        }
+        .logo {
             position: absolute;
             left: pxTorem(20px);
-            top:50%;
+            top: 50%;
             transform: translateY(-55%);
         }
     }
@@ -249,7 +258,7 @@ button {
 } //下拉框
 .el-select {
     width: 100%;
-}//用户下拉
+} //用户下拉
 .el-dropdown-menu {
     min-width: pxTorem(100px);
 }
@@ -317,7 +326,6 @@ button {
     }
 }
 
-
-.el-input__inner{
-    border:1px solid $border !important;
+.el-input__inner {
+    border: 1px solid $border !important;
 }

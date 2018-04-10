@@ -105,16 +105,16 @@ export default {
         isChoose: "nav-menu-box isChoose",
         noChoose: "nav-menu-box"
       },
-      ptIconEx:['esop','kanban','safeLight','quality','ecm','dworkspace','intelDev'],
+      ptIconEx:['esop','kanban','andon','quality','ecm','EMS','terminal'],
       ptImgs: [
         { img: require("assets/images/navbar/pt/esop.png"), title: "E-SOP",name:'esop' },
         { img: require("assets/images/navbar/pt/kanban.png"), title: "电子看板",name:'kanban' },
-        { img: require("assets/images/navbar/pt/andengyujing.png"), title: "安灯预警",name:'safeLight' },
-        { img: require("assets/images/navbar/pt/shouji_kanban.png"), title: "数字车间" ,name:'dworkspace' },
+        { img: require("assets/images/navbar/pt/andengyujing.png"), title: "安灯预警",name:'andon' },
+        { img: require("assets/images/navbar/pt/shouji_kanban.png"), title: "数字车间" ,name:'EMS' },
         { img: require("assets/images/navbar/pt/dianzijiaoliao.png"), title: "电子叫料" ,name:'ecm' },
         { img: require("assets/images/navbar/pt/yidongzhiliangguanli.png"), title: "质量管理",name:'ecm' },
         { img: require("assets/images/navbar/pt/shebeishuzijiankong.png"), title: "APS",name:'APS' },
-        { img: require("assets/images/navbar/pt/kanban.png"), title: "智能终端",name:'intelDev' },
+        { img: require("assets/images/navbar/pt/kanban.png"), title: "智能终端",name:'terminal' },
       ],
       scImgs: [
         { img: require("assets/images/partner/logo1.jpg"), name: "企业项目" },

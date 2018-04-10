@@ -73,7 +73,7 @@ export default {
         {
           title: "人员",
           name: "operator",
-          value: this.checkList.inspect.operator
+          value: Window.GETMACINFO().empNo
         }, //人员
         {
           title: "调合",
