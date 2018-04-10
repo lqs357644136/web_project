@@ -120,6 +120,8 @@ export default {
     //提交结果
     submitForm() {
       if (this.isPass) return;
+
+      
       let inspect = this.checkList.inspect;
       let spec = this.tabCheck;
       let params = {

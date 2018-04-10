@@ -15,7 +15,7 @@ import App from './App'
 //import ElementUI from 'element-ui'
 //使用element-ui
 //Vue.use(ElementUI)
-// import {
+import {
 //   Input,
 //   InputNumber,
 //   Select,
@@ -33,11 +33,11 @@ import App from './App'
 //   Icon,
 //   Row,
 //   Col,
-//   Card,
-//   MessageBox,
+     Card,
+     MessageBox,
 //   Message,
 //   Notification
-// } from 'element-ui'
+} from 'element-ui'
 
 // Vue.use(Input)
 // Vue.use(InputNumber)
@@ -50,19 +50,17 @@ import App from './App'
 // Vue.use(Form)
 // Vue.use(FormItem)
 // Vue.use(Tabs)
-// Vue.use(TabPane)
-// Vue.use(Alert)
+//Vue.use(TabPane)
+//Vue.use(Alert)
 // Vue.use(Row)
 // Vue.use(Col)
-// Vue.use(Card)
+   Vue.use(Card)
 
-// Vue.prototype.$msgbox = MessageBox
-// Vue.prototype.$alert = MessageBox.alert
+//Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
 // Vue.prototype.$confirm = MessageBox.confirm
 // Vue.prototype.$prompt = MessageBox.prompt
 // Vue.prototype.$notify = Notification
-import {Card} from 'element-ui'
-Vue.use(Card)
 
 //发布后是否显示提示
 Vue.config.productionTip = false

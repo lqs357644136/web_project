@@ -9,27 +9,27 @@
     <h1>家电、电子、通信、家具、注塑、五金、汽配、汽车等</h1>
     <el-row :gutter="30" class="planBox live">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="(item,index) in liveImgs" :key="index">
-        <img class="pc" @click="liveImgShow(index)" :src="item.img" alt="图片">
+        <img class="pc" @click="liveImgShow(index,item.img)" :src="item.img" alt="图片">
         <img class="mobile" :src="item.img" alt="图片">
       </el-col>
     </el-row>
     <bottom></bottom>
     <footerMod></footerMod>
 
-    <div class="fullImg" v-if="fullImgShow">
-      <el-carousel :autoplay="false" height="200px" arrow="always" :initial-index="liveImgIndex">
+    <!-- <el-dialog :visible.sync="fullImgShow" width="100%" center>
+        <el-carousel :autoplay="false" height="200px" arrow="always" :initial-index="liveImgIndex">
         <el-carousel-item v-for="(item,index) in liveImgs" :key="index">
           <img @click="liveImgHide()" class="successImg" :src="item.img" alt="图片">
         </el-carousel-item>
       </el-carousel>
-    </div>
+    </el-dialog> -->
 
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import { Carousel, CarouselItem, Row, Col } from "element-ui";
+import {Carousel, CarouselItem, Row, Col } from "element-ui";
 import footerMod from "components/layout/footerMod.vue";
 import bottom from "components/layout/bottom.vue";
 Vue.use(Carousel);
@@ -61,22 +61,29 @@ export default {
         { img: require("assets/images/plan/esop/live/2.png") },
         { img: require("assets/images/plan/esop/live/1.png") },
         { img: require("assets/images/plan/esop/live/12.png") },
-        { img: require("assets/images/plan/esop/live/13.png") },
+        { img: require("assets/images/plan/esop/live/13.png") }
       ],
-      fullImgShow:false,
-      liveImgIndex:0,
+      fullImgShow: false,
+      liveImgIndex: 0
     };
   },
   methods: {
-    liveImgShow(index){
-      this.liveImgIndex = index;
-      document.querySelector('html').classList.add("ofh");
-      this.fullImgShow = true;
+    liveImgShow(index,imgUrl) {
+      // this.liveImgIndex = index;
+      // document.querySelector("html").classList.add("ofh");
+      // this.fullImgShow = true;
+
+      this.$alert('<img src="'+imgUrl+'">', {
+        dangerouslyUseHTMLString: true,
+        showCancelButton:false,
+        closeOnClickModal:true,
+        showConfirmButton:false,
+      });
     },
-    liveImgHide(){
-      document.querySelector('html').classList.remove("ofh");
+    liveImgHide() {
+      document.querySelector("html").classList.remove("ofh");
       this.fullImgShow = false;
-    },
+    }
   },
   components: {
     footerMod,
