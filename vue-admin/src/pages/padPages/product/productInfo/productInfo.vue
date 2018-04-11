@@ -3,7 +3,7 @@
     <panel-title :title="$route.meta.title"></panel-title>
     <div class="panel-body" style="padding:0">
       <productListComponent v-on:chioceListen="chioceList" v-if="chioce"></productListComponent>
-      <productComponent v-on:chioceListen="chioceList" v-else productType="Info"></productComponent>
+      <productComponent v-on:chioceListen="chioceList" v-else productType="Info" class="animated slideInRight"></productComponent>
     </div>
   </div>
 </template>

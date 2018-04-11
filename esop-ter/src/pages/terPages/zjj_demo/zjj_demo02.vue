@@ -123,7 +123,7 @@ export default {
               notGoodlack: "", //不良来料
               macError: "", //设备故障
               changeLine: "", //转线
-              haveBron: "" //生成状态(生产 暂停 已生产)
+              haveBron: "" //生成状态(生产 '')
             };
             list.push(obj);
           }

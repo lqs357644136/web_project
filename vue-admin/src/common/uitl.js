@@ -77,3 +77,17 @@ export const esop_i18nLang_init = function (modArr, data) {
     resolve(langObj);
   })
 }
+
+//展示加载菊花
+export const mainLoadingShow = function(){
+  setTimeout(() => {
+    document.querySelector('.mainLoading').classList.add('mainLoadingShow');
+  }, 100);
+}
+
+//关闭加载菊花
+export const mainLoadingClose = function(){
+  setTimeout(() => {
+    document.querySelector('.mainLoading').classList.remove('mainLoadingShow');
+  }, 1000);
+}

@@ -19,10 +19,10 @@
                 </el-col>
             </el-row>
         </el-form>
-        <el-table  :highlight-current-row="true" :row-class-name="tableRowClassName" :data="tableList.list" height="100%" border style="width: 100%">
+        <el-table :highlight-current-row="true" :row-class-name="tableRowClassName" :data="tableList.list" border style="width: 100%">
             <el-table-column align="center" prop="orderNo" label="订单编号"></el-table-column>
             <el-table-column align="center" prop="customer" label="客户名称"></el-table-column>
-            <el-table-column align="center" prop="ptno" label="产品名称"></el-table-column>
+            <el-table-column align="center" prop="prno" label="产品名称"></el-table-column>
             <el-table-column align="center" prop="plantNo" label="计划产量"></el-table-column>
             <el-table-column align="center" prop="realNo" label="实际产量"></el-table-column>
             <el-table-column align="center" width="100px" prop="reachRate" label="达成率%">
@@ -76,7 +76,80 @@ export default {
   props: ["tableList"],
   data() {
     return {
-
+    //   testList: [
+    //     {
+    //       line: 123, //拉线
+    //       orderNo:123, //订单编号
+    //       customer: 123, //客户名称
+    //       prno: 123, //产品名称
+    //       ptno: 123, //产品编号
+    //       plantNo: 123, //计划产量
+    //       realNo: 123, //实际产量
+    //       reachRate: 123, //达成率
+    //       notGoodNum: 123, //不良数
+    //       notGood: 123 //不良率
+    //     },
+    //     {
+    //       line: 123, //拉线
+    //       orderNo:123, //订单编号
+    //       customer: 123, //客户名称
+    //       prno: 123, //产品名称
+    //       ptno: 123, //产品编号
+    //       plantNo: 123, //计划产量
+    //       realNo: 123, //实际产量
+    //       reachRate: 123, //达成率
+    //       notGoodNum: 123, //不良数
+    //       notGood: 123 //不良率
+    //     },
+    //     {
+    //       line: 123, //拉线
+    //       orderNo:123, //订单编号
+    //       customer: 123, //客户名称
+    //       prno: 123, //产品名称
+    //       ptno: 123, //产品编号
+    //       plantNo: 123, //计划产量
+    //       realNo: 123, //实际产量
+    //       reachRate: 123, //达成率
+    //       notGoodNum: 123, //不良数
+    //       notGood: 123 //不良率
+    //     },
+    //     {
+    //       line: 123, //拉线
+    //       orderNo:123, //订单编号
+    //       customer: 123, //客户名称
+    //       prno: 123, //产品名称
+    //       ptno: 123, //产品编号
+    //       plantNo: 123, //计划产量
+    //       realNo: 123, //实际产量
+    //       reachRate: 123, //达成率
+    //       notGoodNum: 123, //不良数
+    //       notGood: 123 //不良率
+    //     },
+    //     {
+    //       line: 123, //拉线
+    //       orderNo:123, //订单编号
+    //       customer: 123, //客户名称
+    //       prno: 123, //产品名称
+    //       ptno: 123, //产品编号
+    //       plantNo: 123, //计划产量
+    //       realNo: 123, //实际产量
+    //       reachRate: 123, //达成率
+    //       notGoodNum: 123, //不良数
+    //       notGood: 123 //不良率
+    //     },
+    //     {
+    //       line: 123, //拉线
+    //       orderNo:123, //订单编号
+    //       customer: 123, //客户名称
+    //       prno: 123, //产品名称
+    //       ptno: 123, //产品编号
+    //       plantNo: 123, //计划产量
+    //       realNo: 123, //实际产量
+    //       reachRate: 123, //达成率
+    //       notGoodNum: 123, //不良数
+    //       notGood: 123 //不良率
+    //     },
+    //   ]
     };
   },
   methods: {

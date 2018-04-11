@@ -1,9 +1,8 @@
-
-
 //导入样式
 import 'normalize.css'
 import 'font-awesome/scss/font-awesome.scss'
 import 'element-ui/lib/theme-chalk/index.css'
+import "assets/css/animate.min.css";
 //导入Vue框架
 import Vue from 'vue'
 //导入element组件
@@ -19,9 +18,21 @@ import App from './App'
 //导入过滤器
 import 'common/filiter'
 //导入axios请求方法
-import { $get,$post,$get_file,$post_noToken,$get_noToken } from 'common/fetch/index.js'
+import {
+  $get,
+  $post,
+  $get_file,
+  $post_noToken,
+  $get_noToken
+} from 'common/fetch/index.js'
 //导入工具
-import { getMacINfo,api_baseurl,getQueryString } from 'common/uitl.js'
+import {
+  getMacINfo,
+  api_baseurl,
+  getQueryString,
+  mainLoadingShow,
+  mainLoadingClose
+} from 'common/uitl.js'
 
 //使用element-ui
 Vue.use(ElementUI)
@@ -39,6 +50,9 @@ Vue.prototype.$get_file = $get_file;
 Vue.prototype.$api_baseurl = api_baseurl;
 //终端获取机器信息注册到全局
 Window.GETMACINFO = getMacINfo;
+//加载中动画注册
+Vue.prototype.$mainLoadingShow = mainLoadingShow;
+Vue.prototype.$mainLoadingClose = mainLoadingClose;
 //加载echarts
 import echart from "echarts/lib/echarts";
 import "echarts/lib/chart/bar";

@@ -73,7 +73,7 @@
                 .el-textarea.is-disabled .el-textarea__inner {
                     color: initial;
                 }
-            } 
+            }
             .productImg {
                 height: 100%;
                 &>* {
@@ -304,11 +304,14 @@
     .specification {
         display: flex;
         flex-direction: column;
+        .el-dialog__wrapper {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
         .specForm {
             display: flex;
             flex-direction: row;
             margin: 1.25rem 0;
-            padding:0 pxTorem(20px);
+            padding: 0 pxTorem(20px);
             .el-form-item {
                 display: flex;
                 flex-direction: row;
@@ -336,18 +339,16 @@
                 flex: 1;
             }
             .subBtn {
-                margin-left: pxTorem(20px);
-                //width: pxTorem(70px);
+                margin-left: pxTorem(20px); //width: pxTorem(70px);
             }
         }
         .specTable {
-            border-top:1px solid #dfdfdf;
+            border-top: 1px solid #dfdfdf;
             .edit {
                 justify-content: left;
                 padding-left: pxTorem(15px);
             }
         }
-        
         .specInfo {
             .el-collapse-item__header {
                 height: pxTorem(60px);
@@ -355,7 +356,6 @@
                 font-size: pxTorem(18px);
             }
             .el-collapse-item__content {
-                
                 p {
                     height: pxTorem(40px);
                     line-height: pxTorem(40px);
@@ -456,8 +456,6 @@
                         }
                     }
                 }
-
-
                 .listContent {
                     text-align: left;
                     display: block;
@@ -474,7 +472,8 @@
             flex-direction: column;
             .forms {
                 flex: 1;
-                margin-bottom: pxTorem(20px);
+                box-shadow: 0px 0px;
+                border:0;
                 .el-row {
                     margin: 0 !important;
                 }
@@ -485,7 +484,7 @@
                 }
             }
             .subBtn {
-                margin-bottom: 0;
+                margin:pxTorem(20px) 0;
                 .el-form-item__content {
                     display: flex;
                     justify-content: center;
@@ -846,6 +845,9 @@
                 button {
                     width: pxTorem(408px);
                 }
+            }
+            .el-dialog__wrapper {
+                background-color: rgba(0, 0, 0, 0.5);
             }
         }
     } //检验纪录

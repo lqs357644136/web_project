@@ -63,7 +63,7 @@
     </div>
 
     <!-- 提交前填写备注和上传图片 -->
-    <el-dialog title="检测备注" :visible.sync="subDialogVisible" width="50%" center>
+    <el-dialog title="检测备注" :visible.sync="subDialogVisible" width="50%" center :modal="false">
       <span>
         <el-upload :action="imgUpload.uploadUrl" :headers="imgUpload.headers" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="improvePicture__Success">
           <i class="el-icon-plus"></i>

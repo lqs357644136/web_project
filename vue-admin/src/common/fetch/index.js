@@ -1,16 +1,8 @@
-/**
- * @file: index.
- * @intro: 数据请求统一封装.
- * @author: zzmhot.
- * @email: zzmhot@163.com.
- * @Date: 2017/5/8 14:52.
- * @Copyright(©) 2017 by zzmhot.
- *
- */
-
 //导入模块
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import {
+  mainLoadingShow,
+  mainLoadingClose
+} from 'common/uitl.js'
 import axios from 'axios'
 import router from 'src/router'
 import {
@@ -26,7 +18,7 @@ import {
 import qs from "qs";
 //---------需要token请求 start-------------
 export const $post = function (options) {
-  NProgress.done().start();
+  mainLoadingShow()
   let url = options.url;
   let data = options.data;
   let token = store.getters.get_token ? store.getters.get_token : "";
@@ -38,10 +30,10 @@ export const $post = function (options) {
     axios.post(path, data).then((res) => {
         //请求成功时,根据业务判断状态
         if (res.data.code != -1) {
-          NProgress.done();
+          mainLoadingClose();
           resolve(res.data)
         } else { //code等于-1表示token失效,跳转到登录
-          NProgress.done();
+          mainLoadingClose();
           Message.error('token失效')
           if (router.currentRoute.name != 'login') {
             store.dispatch('login_out');
@@ -52,7 +44,7 @@ export const $post = function (options) {
         }
       })
       .catch((error) => {
-        NProgress.done();
+        mainLoadingClose();
         console.log('错误信息')
         Message.error('服务器请求失败！')
         reject(error);
@@ -60,7 +52,7 @@ export const $post = function (options) {
   })
 }
 export const $get = function (options) {
-  NProgress.done().start();
+  mainLoadingShow()
   let url = options.url;
   let params = options.params ? options.params : {};
   let token = store.getters.get_token ? store.getters.get_token : "";
@@ -76,10 +68,10 @@ export const $get = function (options) {
     }).then((res) => {
       //请求成功时,根据业务判断状态
       if (res.data.code != -1) {
-        NProgress.done();
+        mainLoadingClose();
         resolve(res.data)
       } else { //code等于-1表示token失效,跳转到登录
-        NProgress.done();
+        mainLoadingClose();
         Message.error('token失效')
         if (router.currentRoute.name != 'login') {
           store.dispatch('login_out');
@@ -89,7 +81,7 @@ export const $get = function (options) {
         }
       }
     }).catch((error) => {
-      NProgress.done();
+      mainLoadingClose();
       console.log('错误信息')
       console.log(error)
       Message.error('服务器请求失败！');
@@ -103,7 +95,7 @@ export const $get = function (options) {
   })
 }
 export const $get_file = function (options) {
-  NProgress.done().start();
+  mainLoadingShow()
   let url = options.url;
   let params = options.params ? options.params : {};
   let token = store.getters.get_token ? store.getters.get_token : "";
@@ -113,7 +105,7 @@ export const $get_file = function (options) {
   return new Promise((resolve, reject) => {
 
     let data = path + "?path=" + params.path + "&token=" + token;
-    NProgress.done();
+    mainLoadingClose();
     resolve(data)
 
   })
@@ -122,7 +114,7 @@ export const $get_file = function (options) {
 
 //---------不需要token请求 start-------------
 export const $post_noToken = function (options) {
-  NProgress.done().start();
+  mainLoadingShow()
   let url = options.url;
   let data = options.data;
   axios.defaults.headers["Content-Type"] = 'application/json';
@@ -132,14 +124,15 @@ export const $post_noToken = function (options) {
     axios.post(path, data).then((res) => {
         //请求成功时,根据业务判断状态
         if (res.data.code != -1) {
-          NProgress.done();
+          mainLoadingClose();
           resolve(res.data)
         } else {
-          NProgress.done();
+          mainLoadingClose();
           Message.error('请求失败')
         }
       })
       .catch((error) => {
+        mainLoadingClose();
         console.log('错误信息')
         Message.error('服务器请求失败！')
         reject(error);
@@ -147,7 +140,7 @@ export const $post_noToken = function (options) {
   })
 }
 export const $get_noToken = function (options) {
-  NProgress.done().start();
+  mainLoadingShow();
   let url = options.url;
   let params = options.params ? options.params : {};
   axios.defaults.headers["Content-Type"] = 'application/json';
@@ -162,14 +155,14 @@ export const $get_noToken = function (options) {
     }).then((res) => {
       //请求成功时,根据业务判断状态
       if (res.data.code != -1) {
-        NProgress.done();
+        mainLoadingClose();
         resolve(res.data);
       } else {
-        NProgress.done();
+        mainLoadingClose();
         Message.error('请求失败')
       }
     }).catch((error) => {
-      NProgress.done();
+      mainLoadingClose();
       console.log('错误信息')
       console.log(error)
       Message.error('服务器请求失败！')

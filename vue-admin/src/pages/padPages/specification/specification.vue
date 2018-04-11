@@ -50,7 +50,7 @@
       </el-table>
 
       <!-- xbar查询条件 -->
-      <el-dialog :title="langPackage.specification_pad.searchxbarDialog_title" class="xbarDialog" :visible.sync="xbarSearchDialog" width="50%">
+      <el-dialog :modal="false" :title="langPackage.specification_pad.searchxbarDialog_title" class="xbarDialog" :visible.sync="xbarSearchDialog" width="50%">
         <span>
           <el-select v-model="searchXbarInput.processInput" :placeholder="langPackage.specification_pad.chooseProssce">
             <el-option v-for="item in searchSelect.processOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -65,7 +65,7 @@
       </el-dialog>
 
       <!-- 规范详情  -->
-      <el-dialog class="specInfo" :show-close="false" :visible.sync="dialogFormVisible">
+      <el-dialog :modal="false" class="specInfo" :show-close="false" :visible.sync="dialogFormVisible" >
         <el-collapse accordion>
           <el-collapse-item class="normal" :title="langPackage.specification_pad.base" name="1">
             <p>

@@ -101,8 +101,9 @@ export default {
               notGoodNum:res.Plan[i].Reach_Rate!= undefined?res.Plan[i].Reach_Rate:"",//不良数
               notGood:res.Plan[i].Bad_Rate!= undefined?res.Plan[i].Bad_Rate.substring(0,res.Plan[i].Bad_Rate.length - 1): "", //不良率
             };
-            planTotal+= res.Plan[i].Sch_Qty*1;
-            realTotal+= res.Plan[i].Output_Qty*1;
+
+            planTotal+= 1;
+            realTotal+= 1;
             list.push(obj);
           } else {
             let obj = {

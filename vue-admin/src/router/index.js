@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from 'store'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 //import i18n from 'common/i18n'
 
 //预加载
@@ -381,7 +379,6 @@ router.beforeEach((to, from, next) => {
     let base_url = to.query.ip
     store.dispatch('set_host', base_url)
   }
-  NProgress.done().start();
   let isLogin = to.meta.auth; //是否需要登录
   if (isLogin) {
     let toName = to.name //当前页面name
@@ -413,7 +410,6 @@ router.beforeEach((to, from, next) => {
 
 //路由完成之后的操作
 router.afterEach(route => {
-  NProgress.done()
 })
 
 export default router

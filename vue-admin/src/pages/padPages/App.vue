@@ -10,9 +10,7 @@
       <div class="pad" v-if="main_init">
         <left-slide></left-slide>
         <main-content>
-          <transition name="fade">
-            <router-view></router-view>
-          </transition>
+          <router-view class="animated fadeIn"></router-view>
         </main-content>
       </div>
     </div>
@@ -91,9 +89,12 @@ export default {
         });
     },
     //定时获取巡检通知
-    checkTour() { 
+    checkTour() {
       this.checkTour = setInterval(() => {
-        if(!this.$store.getters.get_token||this.$store.getters.get_token==""){
+        if (
+          !this.$store.getters.get_token ||
+          this.$store.getters.get_token == ""
+        ) {
           clearInterval(this.checkTour);
           return;
         }

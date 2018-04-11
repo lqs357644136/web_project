@@ -89,7 +89,7 @@
       </el-table>
     </div>
     <div class="panel-body" v-else>
-      <noticeInfo :type="openInfoType" :statusOption="selects.statusOptions" :info="info" v-on:chioceListen="chioceListen"></noticeInfo>
+      <noticeInfo class="animated slideInRight" :type="openInfoType" :statusOption="selects.statusOptions" :info="info" v-on:chioceListen="chioceListen"></noticeInfo>
     </div>
   </div>
 </template>

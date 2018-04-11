@@ -15,7 +15,9 @@
             <el-col :xs="24" :sm="24" :md="8" :lg="6">
               <el-form-item :label="materialNo" class="" prop="materialNo">
                 <el-input type="text" v-if="batchType == 0" v-model="inputs.materialNo" auto-complete="off"></el-input>
-                <el-input type="text" :disabled="true" v-else v-model="inputs.matRawDesc"></el-input>
+                <el-select v-model="inputs.materialNo" placeholder="请选择" v-else>
+                  <el-option v-for="item in selects.matRawDescOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="24" :md="8" :lg="6">
@@ -98,7 +100,8 @@ export default {
         unit: ""
       },
       selects: {
-        blendUnit: [{ label: "g", value: "g" }, { label: "kg", value: "kg" }]
+        blendUnit: [{ label: "g", value: "g" }, { label: "kg", value: "kg" }],
+        matRawDescOption: []
       },
       rules: {
         materialNo: [{ validator: checkStep, trigger: "blur" }],
@@ -150,11 +153,15 @@ export default {
           process: this.macInfo.process
         }
       }).then(res => {
+        console.log(res);
         if (res.code == 1) {
-          this.inputs.materialNo = res.data.matNo;
-          this.inputs.unit = res.data.unit;
-          this.inputs.matRawDesc =
-            res.data.matDesc + "(" + this.inputs.unit + ")";
+          for (let item of res.data) {
+            let obj = {
+              label: item.matNo + "-" + item.matDesc + "(" + item.unit + ")",
+              value: item.matNo + "," + item.unit
+            };
+            this.selects.matRawDescOption.push(obj);
+          }
         } else {
           this.$message.error(res.msg);
         }
@@ -165,19 +172,31 @@ export default {
       let self = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          let params = {
-            batchNo: self.inputs.batchNo,
-            materialNo: self.inputs.materialNo,
-            quantity: self.inputs.quantity,
-            type: self.batchType,
-            unit:self.inputs.unit
-          };
+          let params = null;
+          if (this.type == 0) {
+            params = {
+              batchNo: self.inputs.batchNo,
+              materialNo: self.inputs.materialNo,
+              quantity: self.inputs.quantity,
+              type: self.batchType,
+              unit: self.inputs.unit
+            };
+          } else {
+            params = {
+              batchNo: self.inputs.batchNo,
+              materialNo: self.inputs.materialNo.split(",")[0],
+              quantity: self.inputs.quantity,
+              type: self.batchType,
+              unit: self.inputs.materialNo.split(",")[1]
+            };
+          }
+          console.log(params)
           this.$post_noToken({
             url: this.$api_baseurl(url.terBatch_List_add),
             data: params
           }).then(res => {
             if (res.code == 1) {
-              if(this.batchType == 0){
+              if (this.batchType == 0) {
                 this.inputs.materialNo = "";
               }
               this.inputs.batchNo = "";

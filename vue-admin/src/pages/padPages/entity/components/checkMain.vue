@@ -1,5 +1,5 @@
 <template>
-  <div class="checkMain">
+  <div class="checkMain animated slideInRight">
     <!-- 基础信息 -->
     <checkInfo></checkInfo>
     <!-- 检测项目 -->
