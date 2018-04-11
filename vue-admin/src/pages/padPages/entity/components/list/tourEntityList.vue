@@ -103,9 +103,9 @@ export default {
     //获取正在执行的生产排程
     tableList_init() {
       let params = {
-        plant: this.checkInfoInputs.plant,
-        line: this.checkInfoInputs.line,
-        process: this.checkInfoInputs.process
+        plant: this.checkInfoInputs.plantInput,
+        line: this.checkInfoInputs.lineInput,
+        process: this.checkInfoInputs.processInput
       };
       this.$get({
         url: url.check_list,

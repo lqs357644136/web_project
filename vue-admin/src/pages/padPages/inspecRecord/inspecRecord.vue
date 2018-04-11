@@ -353,6 +353,10 @@ export default {
     },
     //展示备注图
     showImageSlide(imgs) {
+      if(imgs.length<1){
+        this.$message.error('没有相关备注图');
+        return;
+      }
       for (let imgPath of imgs) {
         console.log(imgPath)
         this.$get_file({

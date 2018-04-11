@@ -308,9 +308,7 @@
             display: flex;
             flex-direction: row;
             margin: 1.25rem 0;
-            padding-right: pxTorem(20px);
-            border-bottom: 1px solid #dfdfdf;
-            height: pxTorem(58px);
+            padding:0 pxTorem(20px);
             .el-form-item {
                 display: flex;
                 flex-direction: row;
@@ -338,11 +336,12 @@
                 flex: 1;
             }
             .subBtn {
-                //margin-left: pxTorem(20px);
+                margin-left: pxTorem(20px);
                 //width: pxTorem(70px);
             }
         }
         .specTable {
+            border-top:1px solid #dfdfdf;
             .edit {
                 justify-content: left;
                 padding-left: pxTorem(15px);

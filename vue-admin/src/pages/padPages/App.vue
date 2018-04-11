@@ -91,23 +91,29 @@ export default {
         });
     },
     //定时获取巡检通知
-    checkTour() {
-      setInterval(() => {
+    checkTour() { 
+      this.checkTour = setInterval(() => {
+        if(!this.$store.getters.get_token||this.$store.getters.get_token==""){
+          clearInterval(this.checkTour);
+          return;
+        }
         this.$get({
           url: url.getRoutNoticeList
         }).then(res => {
           if (res.code == 1) {
-            if (res.data.length>0) {
+            if (res.data.length > 0) {
               this.$notify({
                 title: "巡检提醒",
-                type:'warning',
+                type: "warning",
                 dangerouslyUseHTMLString: true,
-                duration:50000,
-                message: 
-                '<div class="tourTips">'+
-                  '<p>你有'+res.data.length+'个巡检任务</p>'+
-                  '<p>请点击前往查看</p>'+
-                '</div>',
+                duration: 120000,
+                message:
+                  '<div class="tourTips">' +
+                  "<p>你有" +
+                  res.data.length +
+                  "个巡检任务</p>" +
+                  "<p>请点击前往查看</p>" +
+                  "</div>",
                 onClick: () => {
                   this.$router.push("/tourEntity");
                 }
@@ -115,7 +121,7 @@ export default {
             }
           }
         });
-      }, 60000);
+      }, 180000);
     }
   }
 };
