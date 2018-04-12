@@ -18,6 +18,11 @@ export default {
     return {
       menus: [
         {
+          path: "/ter/specification?ip="+api,
+          title: "检验规范",
+          icon: "icon fa fa-object-ungroup"
+        },
+        {
           path: "/ter/dailywork/adnDailywork?ip="+api,
           title: "异常报工",
           icon: "icon fa fa-bandcamp"

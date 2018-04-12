@@ -60,7 +60,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <div class="edit">
-            <el-button @click="deteleBatchEnter(scope.$index,scope.row.id)" type="danger">删除</el-button>
+            <el-button v-if="scope.$index==0" @click="deteleBatchEnter(scope.$index,scope.row.id)" type="danger">删除</el-button>
           </div>
         </template>
       </el-table-column>

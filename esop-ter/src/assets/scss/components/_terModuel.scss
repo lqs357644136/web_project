@@ -1170,5 +1170,128 @@
             .inspecRecord-list-goPage {
                 height: pxTorem(60px);
             }
+        } //检验规范
+        .specification {
+            display: flex;
+            flex-direction: column;
+            .el-dialog__wrapper {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .specForm {
+                display: flex;
+                flex-direction: row;
+                margin-bottom:pxTorem(20px);
+                .el-form-item__label{
+                    width:pxTorem(60px);
+                }
+                .el-form-item {
+                    display: flex;
+                    flex-direction: row;
+                    margin: 0;
+                    .el-select {
+                        display: block;
+                    }
+                }
+                .plant {
+                    .el-form-item__label {
+                        width: pxTorem(50px);
+                    }
+                }
+                .line {
+                    .el-form-item__label {
+                        width: pxTorem(50px);
+                    }
+                }
+                .ptno {
+                    .el-form-item__label {
+                        width: pxTorem(80px);
+                    }
+                }
+                .selectForm {
+                    flex: 1;
+                }
+                .subBtn {
+                    margin-left: pxTorem(20px); //width: pxTorem(70px);
+                }
+            }
+            .specTable {
+                border-top: 1px solid #dfdfdf;
+                .el-table__expanded-cell {
+                    background-color: #efefef;
+                    padding: pxTorem(20px);
+                    .el-form {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        label {
+                            color: #99a9bf;
+                        }
+                        .el-form-item {
+                            margin: 0;
+                            width: 50%;
+                        }
+                        .listInfoContent {
+                            display: block;
+                            text-align: left;
+                        }
+                    }
+                }
+                .edit {
+                    justify-content: center;
+                }
+            }
+            .specInfo {
+                .el-collapse-item__header {
+                    height: pxTorem(60px);
+                    line-height: pxTorem(60px);
+                    font-size: pxTorem(18px);
+                }
+                .el-collapse-item__content {
+                    p {
+                        height: pxTorem(40px);
+                        line-height: pxTorem(40px);
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: pxTorem(5px);
+                        .name {
+                            width: pxTorem(80px);
+                            text-align: right;
+                            margin-right: pxTorem(10px);
+                            font-weight: 800;
+                        }
+                        .value {
+                            flex: 1;
+                            padding: 0 10px;
+                            border-bottom: 1px solid #dfdfdf;
+                        }
+                    }
+                }
+                .type {
+                    .el-collapse-item__content {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                    }
+                    .yes {
+                        color: green;
+                    }
+                    .no {
+                        color: red;
+                    }
+                }
+            }
+            .xbarDialog {
+                .el-select {
+                    margin-bottom: pxTorem(25px);
+                }
+                .dialog-footer {
+                    display: flex;
+                }
+            }
+            .dialog-footer {
+                button {
+                    width: 100%;
+                }
+            }
         }
     }

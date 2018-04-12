@@ -185,7 +185,19 @@ const routes = [{
     title: messages.zjj_demo02,
     auth: false
   }
-}]
+},//specification
+{
+  //检验规范
+  path: '/ter/specification',
+  name: 'specification',
+  component:r => require.ensure([], () => r(require('pages/terPages/specification/specification.vue')), 'specification'),
+  //component: specification,
+  meta: {
+    title: messages.specification,
+    auth: false
+  }
+}
+]
 
 const router = new VueRouter({
   routes,
