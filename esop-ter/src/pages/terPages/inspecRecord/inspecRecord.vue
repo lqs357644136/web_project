@@ -70,6 +70,11 @@
                             <el-form-item label="备注信息">
                                 <span class="listInfoContent">{{ props.row.remark }}</span>
                             </el-form-item>
+                            <el-form-item label="检测备注">
+                                <span class="listInfoContent">
+                                    <el-button size="mini" type="primary" @click="showImageSlide(props.row.pictures)">备注图</el-button>
+                                </span>
+                            </el-form-item>
                         </el-form>
                     </template>
                 </el-table-column>
@@ -107,6 +112,13 @@
             </div>
 
         </div>
+
+        <!-- 图片轮播 -->
+        <transition name="slide-fade" class="fadeView">
+            <div v-if="imgInfoShow">
+                <image-view class="imgViewBox" :imgArr="imgArr" :showImageView="true" :imageIndex="imageIndex" v-on:hideImage="imgInfoHidefn"></image-view>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -138,6 +150,7 @@ Vue.use(Pagination);
 /////////////////////////////
 import { panelTitle } from "components";
 import url from "api";
+import imageView from "vue-imageview";
 export default {
   name: "inspecRecord",
   data() {
@@ -152,7 +165,11 @@ export default {
         line: "",
         process: "",
         ptno: ""
-      }
+      },
+      //图片查看
+      imgInfoShow: false,
+      imgArr: [],
+      imageIndex: 0
     };
   },
   created() {
@@ -179,8 +196,8 @@ export default {
         params: {
           plant: this.inputs.plant,
           line: this.inputs.line,
-        //   process: this.inputs.process,
-        //   ptno: this.inputs.ptno,
+          process: this.inputs.process,
+          //  ptno: this.inputs.ptno,
           page: page,
           pageSize: this.pageSize
         }
@@ -199,10 +216,30 @@ export default {
     },
     goPage(curPage) {
       this.get_list(curPage);
+    },
+    //展示备注图
+    showImageSlide(imgs) {
+      if (imgs.length < 1) {
+        this.$message.error("没有相关备注图");
+        return;
+      }
+      for (let imgPath of imgs) {
+        this.$get_file({
+          url: this.$api_baseurl(url.file_get),
+          params: { path: imgPath }
+        }).then(res => {
+          this.imgArr.push(res);
+        });
+      }
+      this.imgInfoShow = true;
+    },
+    imgInfoHidefn() {
+      this.imgInfoShow = false;
     }
   },
   components: {
-      panelTitle
+    panelTitle,
+    imageView
   }
 };
 </script>
