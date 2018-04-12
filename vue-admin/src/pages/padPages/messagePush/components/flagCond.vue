@@ -1,5 +1,5 @@
 <template>
-    <el-dialog :visible.sync="dialogVisible" :before-close="closeDialog" :show-close="false">
+    <el-dialog  :modal="false" :visible.sync="dialogVisible" :before-close="closeDialog" :show-close="false">
         <div v-if=" 'Plant' == flagType " class="mainBody">
             <el-tree :data="plantData" ref="Plant" show-checkbox node-key="id" :props="defaultProps">
             </el-tree>

@@ -125,7 +125,7 @@
           </el-collapse-item>
           <el-collapse-item class="type" :title="langPackage.specification_pad.specType" name="3">
             <div class="typeItem">
-              <span class="item-name">{{langPackage.specification_pad.firstCheck}}:</span>
+              <span class="item-name">{{langPackage.specification_pad.firstChek}}:</span>
               <i v-if="info.selfInspect=='Y'" class="fa fa-check yes"></i>
               <i v-else class="fa fa-close no"></i>
             </div>

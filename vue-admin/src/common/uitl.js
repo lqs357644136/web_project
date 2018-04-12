@@ -79,15 +79,21 @@ export const esop_i18nLang_init = function (modArr, data) {
 }
 
 //展示加载菊花
-export const mainLoadingShow = function(){
-  setTimeout(() => {
-    document.querySelector('.mainLoading').classList.add('mainLoadingShow');
-  }, 100);
+export const mainLoadingShow = function () {
+  try {
+    document.querySelector('.mainContentLoading').classList.add('mainContentLoading-show');
+  } catch (e) {
+
+  }
 }
 
 //关闭加载菊花
-export const mainLoadingClose = function(){
-  setTimeout(() => {
-    document.querySelector('.mainLoading').classList.remove('mainLoadingShow');
-  }, 1000);
+export const mainLoadingClose = function () {
+  try {
+    //document.querySelector('.mainContentLoading').classList.remove('mainContentLoading-show');
+    document.querySelector('.mainContentLoading').classList.remove('mainContentLoading-show');
+  } catch (e) {
+
+  }
+
 }

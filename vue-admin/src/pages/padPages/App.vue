@@ -11,6 +11,15 @@
         <left-slide></left-slide>
         <main-content>
           <router-view class="animated fadeIn"></router-view>
+          <div class="mainContentLoading">
+            <div class="csshub-loading">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
         </main-content>
       </div>
     </div>

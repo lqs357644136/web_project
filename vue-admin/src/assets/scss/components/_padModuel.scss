@@ -473,7 +473,7 @@
             .forms {
                 flex: 1;
                 box-shadow: 0px 0px;
-                border:0;
+                border: 0;
                 .el-row {
                     margin: 0 !important;
                 }
@@ -484,7 +484,7 @@
                 }
             }
             .subBtn {
-                margin:pxTorem(20px) 0;
+                margin: pxTorem(20px) 0;
                 .el-form-item__content {
                     display: flex;
                     justify-content: center;
@@ -855,6 +855,11 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        .el-dialog__wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .listForm {}
         .tabelList {
             flex: 1;

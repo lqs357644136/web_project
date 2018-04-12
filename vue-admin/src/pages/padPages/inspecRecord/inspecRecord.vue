@@ -131,7 +131,7 @@
       </el-pagination>
     </div>
 
-    <el-dialog title="是否允许将此纪录审核通过?" :visible.sync="dialogFormVisible">
+    <el-dialog :modal="false" title="是否允许将此纪录审核通过?" :visible.sync="dialogFormVisible">
       <el-input type="textarea" :autosize="{ minRows: 2}" placeholder="请输入审核备注信息" v-model="inputs.audiTextareas">
       </el-input>
       <div slot="footer" class="dialog-footer">
