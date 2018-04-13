@@ -317,6 +317,10 @@ button {
     img{
         width: 100%;
     }
+    img:after{
+        content: '图片加载中....';
+        color: white;
+    }
 }
 //重写dialog弹窗
 .el-dialog__wrapper {
@@ -327,4 +331,9 @@ button {
     .el-dialog{
         margin-top: 0 !important;
     }
+}
+
+//按钮点击效果
+.el-button{
+    
 }

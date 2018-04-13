@@ -5,7 +5,10 @@
       <el-card :class="formShow?'box-card':'box-card card-body-hidden'">
 
         <div slot="header" class="clearfix detectionFrom-header">
-          <div class="name">批次录入</div>
+          <div class="name">
+            <span>批次录入 </span>
+            <el-button type="primary" size="mini" @click="batchChoose()">{{batchType == 0?'点击切换到原料':'点击切换到调合'}}</el-button>
+          </div>
           <span class="card-hidden-btn" @click="formShow=!formShow">
             <i :class="formShow?'fa fa-angle-double-up':'fa fa-angle-double-down'"></i>
           </span>
@@ -190,7 +193,7 @@ export default {
               unit: self.inputs.materialNo.split(",")[1]
             };
           }
-          console.log(params)
+          console.log(params);
           this.$post_noToken({
             url: this.$api_baseurl(url.terBatch_List_add),
             data: params
@@ -246,6 +249,15 @@ export default {
           this.tableData = res.data;
         }
       });
+    },
+    //录入类型快速跳转
+    batchChoose(){
+      let ip = '?ip='+this.$route.query.ip;
+      if(this.batchType==0){
+        this.$router.push('/ter/batch/batchEnterRaw'+ip);
+      }else{
+        this.$router.push('/ter/batch/batchEnterBlend'+ip);
+      }
     }
   }
 };
