@@ -33,7 +33,6 @@ import {
   mainLoadingShow,
   mainLoadingClose
 } from 'common/uitl.js'
-
 //使用element-ui
 Vue.use(ElementUI)
 //使用api

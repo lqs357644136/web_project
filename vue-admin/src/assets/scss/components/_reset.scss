@@ -96,8 +96,7 @@ button {
         position: relative;
         $panelBodyHeight: pxTorem(45px);
         height: calc(100%);
-
-        @media screen and(max-height:pxTorem(400px)){
+        @media screen and(max-height: pxTorem(400px)) {
             height:initial;
         }
         .bottom-toolbar {
@@ -312,28 +311,119 @@ button {
         }
     }
 }
+
 //图片放大插件
-.imageBox{
-    img{
+.imageBox {
+    img {
         width: 100%;
     }
-    img:after{
+    img:after {
         content: '图片加载中....';
         color: white;
     }
 }
+
 //重写dialog弹窗
 .el-dialog__wrapper {
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    .el-dialog{
+    .el-dialog {
         margin-top: 0 !important;
     }
 }
 
 //按钮点击效果
-.el-button{
-    
+.el-button {
+    position: relative;
+    overflow: hidden;
+    &:after {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        box-shadow: 0 0 33px 33px rgba(39, 29, 79, 0.97);
+        top: 50%;
+        left: 50%;
+        margin-top: -60px;
+        margin-left: -60px;
+        z-index: 3;
+        opacity: 0;
+    }
+}
+
+.el-button:active:after {
+    -webkit-animation: halo 1s 1.5s infinite ease-out;
+    -moz-animation: halo 1s 1.5s infinite ease-out;
+    animation: halo 1s 1.5s infinite ease-out;
+}
+
+@-webkit-keyframes halo {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.1);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(1.2);
+    }
+}
+
+@-moz-keyframes halo {
+    0% {
+        opacity: 0;
+        -moz-transform: scale(0.1);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -moz-transform: scale(1.2);
+    }
+}
+
+@-ms-keyframes halo {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes halo {
+    0% {
+        opacity: 0;
+        -o-transform: scale(0.1);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -o-transform: scale(1.2);
+    }
+}
+
+@keyframes halo {
+    0% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
 }

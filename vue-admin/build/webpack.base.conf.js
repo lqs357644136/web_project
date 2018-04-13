@@ -47,7 +47,7 @@ module.exports = {
         exclude: resolve('node_modules')
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
+        test: /\.(png|jpe?g|gif|svg|pdf)(\?.*)?$/i,
         loader: 'url-loader',
         query: {
           limit: 1000,

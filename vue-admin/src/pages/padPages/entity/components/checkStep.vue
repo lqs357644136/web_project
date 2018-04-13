@@ -117,8 +117,8 @@ export default {
           token: this.$store.getters.get_token,
           Accept: "application/json"
         },
-        urlList:[],
-      }
+        urlList: []
+      },
     };
   },
   computed: {
@@ -147,11 +147,12 @@ export default {
     }
   },
   mounted() {
+    console.log(this.pdfurls)
     this.checkInputs_input();
     this.computRang_init();
   },
   methods: {
-    //--------上传图片处理--------- 
+    //--------上传图片处理---------
     handleRemove(file, fileList) {
       console.log(file, fileList);
     },
@@ -192,7 +193,7 @@ export default {
           flag: this.checkFinal().projectFlag * 1, //检验结论 ,
           specId: spec.specId //检验规范ID
         },
-        urlList:this.imgUpload.urlList,
+        urlList: this.imgUpload.urlList
       };
       console.log(params);
       let urlPath = -1;
@@ -457,7 +458,9 @@ export default {
     //按输入检测所有结果
     checkType_allInput(arr) {
       return arr.indexOf(0) != -1 ? 0 : 1;
-    }
+    },
+  },
+  components: {
   }
 };
 </script>

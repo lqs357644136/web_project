@@ -90,11 +90,11 @@
               <span class="name">{{langPackage.specification_pad.method}}</span>
               <span class="value">{{info.method}}</span>
             </p>
-            <p>
+            <p v-if="info.specificationType!='2'">
               <span class="name">{{langPackage.specification_pad.inspectSpecification}}</span>
               <span class="value">{{info.inspectSpecification}}</span>
             </p>
-            <p>
+            <p v-if="info.specificationType!='2'">
               <span class="name">{{langPackage.specification_pad.specificationType}}</span>
               <span class="value">{{info.specificationType=='0'?langPackage.specification_pad.range:langPackage.specification_pad.tolerance}}</span>
             </p>
@@ -102,26 +102,6 @@
               <span class="name">{{langPackage.specification_pad.itemNo}}</span>
               <span class="value">{{info.itemValue}}</span>
             </p>
-            <template v-if="info.specificationType==0">
-              <p>
-                <span class="name">{{info.specificationType=='0'?langPackage.specification_pad.range:langPackage.specification_pad.tolerance}}</span>:
-                <span class="value">{{info.lowerLimit}}~{{info.upperLimit}}</span>
-              </p>
-            </template>
-            <template v-else>
-              <p>
-                <span class="name">{{langPackage.specification_pad.stdValue}}</span>
-                <span class="value">{{info.stdValue}}</span>
-              </p>
-              <p>
-                <span class="name">{{langPackage.specification_pad.stdValue}}-</span>
-                <span class="value">{{info.stdValueMinus}}</span>
-              </p>
-              <p>
-                <span class="name">{{langPackage.specification_pad.stdValue}}+</span>
-                <span class="value">{{info.stdValuePlus}}</span>
-              </p>
-            </template>
           </el-collapse-item>
           <el-collapse-item class="type" :title="langPackage.specification_pad.specType" name="3">
             <div class="typeItem">
