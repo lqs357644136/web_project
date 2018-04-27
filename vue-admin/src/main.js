@@ -57,10 +57,11 @@ import echart from "echarts/lib/echarts";
 import "echarts/lib/chart/bar";
 import "echarts/lib/component/grid";
 import "echarts/lib/component/title";
+//使用PDF
 
 //是否开启工具调试
 Vue.config.devtools = process.env.NODE_ENV === 'development'
-
+Window.VueLocation = window.location;
 new Vue({
   router,
   store,

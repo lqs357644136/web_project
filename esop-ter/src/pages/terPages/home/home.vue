@@ -11,11 +11,12 @@
 
 <script>
 //测试请求接口地址
-let api = '192.168.60.230:8080';
-let kanbanApi = '127.0.0.1';
+let api = 'localhost:8080';
+let kanbanApi = '192.168.1.10:80';
 export default {
   data() {
     return {
+      src:'http://192.168.1.10/UploadFile/img/ad43a65e3bda34fc186850a3efe5d667_2.Jpeg',
       menus: [
         {
           path: "/ter/specification?ip="+api,
@@ -88,12 +89,12 @@ export default {
           icon: "icon fa fa-minus-circle"
         },
         {
-          path: '/ter/zjj_demo01?ip='+kanbanApi+'&Plant=ZSA&Line=A',
+          path: '/ter/zjj_demo01?ip='+kanbanApi+'&Plant=1000&Line=BC1',
           title: "中技佳电子看板(一)",
           icon: "icon fa fa-key"
         },
         {
-          path: '/ter/zjj_demo02?ip='+kanbanApi+'&Plant=ZSA&Line=A',
+          path: '/ter/zjj_demo02?ip='+kanbanApi+'&Plant=1000&Line=BC1',
           title: "中技佳电子看板(二)",
           icon: "icon fa fa-rss"
         },
@@ -115,7 +116,7 @@ export default {
           message: "功能尚未开发完成"
         });
       }
-    }
+    },
   }
 };
 </script>

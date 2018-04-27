@@ -23,6 +23,7 @@
           <label v-else-if="tabCheck.specificationType==2">目测:</label>
           <span>{{tabCheck.inspectSpecification}}</span>
         </div>
+        <fileWatch class="infoGroup"></fileWatch>
       </div>
       <div class="crlBtn" v-if="!isPass">
         <el-button type="primary" @click="addBtn()">添加</el-button>
@@ -82,6 +83,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import fileWatch from "./fileWatch.vue";
 import url from "api";
 export default {
   name: "checkStep",
@@ -106,7 +108,6 @@ export default {
       //上传图片
       dialogImageUrl: "",
       dialogVisible: false,
-
       //图片上传
       imgUpload: {
         uploadUrl:
@@ -147,7 +148,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.pdfurls)
     this.checkInputs_input();
     this.computRang_init();
   },
@@ -458,9 +458,10 @@ export default {
     //按输入检测所有结果
     checkType_allInput(arr) {
       return arr.indexOf(0) != -1 ? 0 : 1;
-    },
+    }
   },
   components: {
+    fileWatch
   }
 };
 </script>

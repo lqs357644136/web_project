@@ -1,0 +1,368 @@
+@import '~assets/scss/components/computed.scss';
+//海尔线看板
+.kanbanView .haier_line {
+    $color01: #00844F;
+    $color02: #BFBFBF;
+    $color03: #FC0201;
+    $color04: #FEFD04;
+    $color05: #FDFEC3;
+    $color06: #66cbff;
+    $color07: #8EB4E3;
+    $color08: #E3C1AC;
+    $color09: #FDEAD9;
+    .kanban-body {
+        display: flex;
+        flex-direction: column;
+    }
+    .haier-line-list {
+        flex: 0.6;
+        display: flex;
+        flex-direction: row;
+        .table01 {
+            flex: 0.7;
+        }
+        .table02 {
+            flex: 0.3;
+            background-color: black;
+        }
+        .el-table__body {
+            td {
+                height: pxTorem(57.5px);
+            }
+        }
+        thead th,
+        tr td {
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            color: black;
+        }
+        .onLine {
+            background-color: $color06;
+        } //重写头部样式
+        .table01 .el-table__header {
+            thead {
+                tr th {
+                    &:nth-child(-n+7) {
+                        background-color: $color07;
+                    }
+                    &:nth-child(n+8) {
+                        background-color: $color08;
+                    }
+                }
+            }
+        }
+        .table02 .el-table__header {
+            thead {
+                tr th {
+                    &:nth-child(-n+7) {
+                        background-color: $color08;
+                    }
+                }
+            }
+        } //重写主体样式
+        .table02 .el-table__body-wrapper {
+            tr td {
+                &:nth-child(-n+7) {
+                    background-color: $color09;
+                }
+            }
+        } //安灯样式
+        .td_text {
+            position: absolute;
+            top: 0;
+            text-align: left;
+            height: 100%;
+            width: 100%;
+            padding: 0 pxTorem(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .andon {
+            position: absolute;
+            top: 0;
+            text-align: left;
+            height: 100%;
+            width: 100%;
+            padding: 0 pxTorem(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+    }
+    .line_canvas {
+        padding: 0 pxTorem(5px);
+        flex: 0.4;
+        display: flex;
+        flex-direction: column;
+        .process_boxs {
+            height: pxTorem(80px);
+            position: relative;
+            .box {
+                position: absolute;
+                background-color: $color01;
+                color: white;
+                height: pxTorem(40px);
+                width: pxTorem(40px);
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: pxTorem(5px);
+                overflow: hidden;
+                box-shadow: 4px 4px 2px black;
+                .info {
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                    border-radius: pxTorem(5px);
+                    transition: all 5s ease;
+                    background-color: none;
+                }
+            }
+        }
+        .line_png {
+            flex: 1;
+            img {
+                height: 100%;
+            }
+        }
+    }
+    .news {
+        border: 1px solid black;
+        .states {
+            border: 1px solid black;
+            height: pxTorem(40px);
+            display: flex;
+            flex-direction: row;
+            .running {
+                color: white;
+                position: relative;
+                flex: 0.6;
+                border-right: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                .text {
+                    position: absolute;
+                    width: 100%;
+                    b,
+                    i {
+                        letter-spacing: 5px;
+                        font-size: pxTorem(30px);
+                        font-weight: 1200;
+                    }
+                }
+                .begin_animation {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    .warning {
+                        height: 100%;
+                        position: relative;
+                        border-radius: 10px;
+                        background-size: 3em 3em;
+                        background-image: linear-gradient(-45deg, transparent 0em, transparent 0.8em, #96D923 0.9em, #96D923 2.1em, transparent 2.1em, transparent 2.9em, #96D923 3.1em);
+                        -webkit-animation: warning-animation 750ms infinite linear;
+                        -moz-animation: warning-animation 750ms infinite linear;
+                        animation: warning-animation 750ms infinite linear;
+                    }
+                    .warning:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        height: 100%;
+                        border-radius: 0px;
+                    }
+                    @-webkit-keyframes warning-animation {
+                        0% {
+                            background-position: 0 0;
+                        }
+                        100% {
+                            background-position: 3em 0;
+                        }
+                    }
+                    @-moz-keyframes warning-animation {
+                        0% {
+                            background-position: 0 0;
+                        }
+                        100% {
+                            background-position: 3em 0;
+                        }
+                    }
+                    @keyframes warning-animation {
+                        0% {
+                            background-position: 0 0;
+                        }
+                        100% {
+                            background-position: 3em 0;
+                        }
+                    }
+                }
+            }
+            .isBegin {
+                animation: colorChange_running 7s infinite;
+                .warning {
+                    background-color: #6DA807;
+                    border: 1px solid #6DA807;
+                    background-image: linear-gradient(-45deg, transparent 0em, transparent 0.8em, #96D923 0.9em, #96D923 2.1em, transparent 2.1em, transparent 2.9em, #96D923 3.1em);
+                    box-shadow: 1vw 3vh 10vh rgba(109, 168, 7, 0.8);
+                }
+                .warning:before {
+                    background-image: linear-gradient(to bottom, #6DA807, rgba(171, 226, 77, 0.6) 15%, transparent 60%, #6DA807);
+                }
+            }
+            .isResset {
+                animation: colorChange_resset 6s infinite;
+            }
+            .isStop {
+                animation: colorChange_stop 2s infinite;
+            }
+            .isBuild {
+                animation: colorChange_build 6s infinite;
+            }
+            .isKeep {
+                animation: colorChange_keep 6s infinite;
+            }
+            @keyframes colorChange_running {
+                0% {
+                    background-color: white;
+                    color: black;
+                }
+                50% {
+                    background-color: $color01;
+                }
+                100% {
+                    background-color: white;
+                    color: black;
+                }
+            }
+            @keyframes colorChange_resset {
+                0% {
+                    background-color: white;
+                    color: black;
+                }
+                50% {
+                    background-color: $color02;
+                }
+                100% {
+                    background-color: white;
+                    color: black;
+                }
+            }
+            @keyframes colorChange_stop {
+                0% {
+                    background-color: white;
+                    color: black;
+                }
+                50% {
+                    background-color: $color03;
+                }
+                100% {
+                    background-color: white;
+                    color: black;
+                }
+            }
+            @keyframes colorChange_build {
+                0% {
+                    background-color: white;
+                    color: black;
+                }
+                50% {
+                    background-color: $color04;
+                }
+                100% {
+                    background-color: white;
+                    color: black;
+                }
+            }
+            @keyframes colorChange_keep {
+                0% {
+                    background-color: white;
+                    color: black;
+                }
+                50% {
+                    background-color: $color05;
+                }
+                100% {
+                    background-color: white;
+                    color: black;
+                }
+            }
+            .statesBtns {
+                flex: 0.4;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                &>div {
+                    text-align: center;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    border-right: 1px solid black;
+                    font-weight: 800;
+                }
+                .btn:last-child {
+                    border-right: 0px;
+                }
+                .bron {
+                    background-color: $color01;
+                    color: white;
+                }
+                .resset {
+                    background-color: $color02;
+                }
+                .error {
+                    background-color: $color03;
+                    color: white;
+                }
+                .build {
+                    background-color: $color04;
+                }
+                .keep {
+                    background-color: $color05;
+                }
+            }
+        }
+        .msg {
+            height: pxTorem(75px);
+            background-color: black;
+            color: yellow;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            .text {
+                letter-spacing: pxTorem(3px);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: absolute;
+                font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+                // left: -100%;
+                white-space: nowrap;
+                width: 100%;
+                text-align: center;
+            }
+            @keyframes msgMove {
+                0% {
+                    left: -100%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+        }
+    }
+}

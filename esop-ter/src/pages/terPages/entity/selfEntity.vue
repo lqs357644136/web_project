@@ -21,7 +21,9 @@ import {
   Col,
   Tabs,
   TabPane,
-  MessageBox
+  MessageBox,
+  Select,
+  Option,
 } from 'element-ui'
 Vue.use(Input)
 Vue.use(Button)
@@ -31,6 +33,8 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Select)
+Vue.use(Option)
 Vue.prototype.$alert = MessageBox.alert
 export default {
   name: "selfEntity",

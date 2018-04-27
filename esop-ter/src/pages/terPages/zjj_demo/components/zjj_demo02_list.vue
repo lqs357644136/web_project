@@ -15,13 +15,29 @@
             </el-row>
         </el-form>
         <el-table :highlight-current-row="false" :row-class-name="tableRowClassName" :data="tableList.list" border style="width: 100%">
-            <el-table-column align="center" prop="line" label="拉线"></el-table-column>
-            <el-table-column align="center" prop="orderNo" label="订单编号"></el-table-column>
-            <el-table-column align="center" prop="customer" label="客户名称"></el-table-column>
-            <el-table-column align="center" prop="prno" label="产品名称"></el-table-column>
-            <el-table-column align="center" prop="planNo" label="计划产量"></el-table-column>
-            <el-table-column align="center" prop="realNo" label="实际产量"></el-table-column>
-            <el-table-column align="center" prop="reachRate" label="达成率%">
+            <el-table-column align="center" prop="line" label="拉线">
+                <template slot-scope="scope">
+                    <div class="td_text">{{ scope.row.line }}</div>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" width="140rem" prop="orderNo" label="订单编号">
+                <template slot-scope="scope">
+                    <div class="td_text">{{ scope.row.orderNo }}</div>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" prop="customer" label="客户名称">
+                <template slot-scope="scope">
+                    <div class="td_text">{{ scope.row.customer }}</div>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" prop="prno" label="产品名称">
+                <template slot-scope="scope">
+                    <div class="td_text prno">{{ scope.row.prno }}</div>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" width="90rem" prop="planNo" label="计划产量"></el-table-column>
+            <el-table-column align="center" width="90rem" prop="realNo" label="实际产量"></el-table-column>
+            <el-table-column align="center" width="90rem" prop="reachRate" label="达成率%">
                 <template slot-scope="scope">
                     <div v-if="scope.row.reachRate>90" class="reachRate">
                         <div class="rh rhColor01">{{ scope.row.reachRate }}%</div>
@@ -35,7 +51,7 @@
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column align="center" prop="lack" label="缺料">
+            <el-table-column align="center" width="90rem" prop="lack" label="缺料">
                 <template slot-scope="scope">
                     <div v-if="scope.row.lack>30" class="reachRate">
                         <div class="rh rhColor03">{{ scope.row.lack }}</div>
@@ -46,7 +62,7 @@
                     <div v-else></div>
                 </template>
             </el-table-column>
-            <el-table-column align="center" prop="notGoodlack" label="不良来料">
+            <el-table-column align="center" width="90rem" prop="notGoodlack" label="不良来料">
                 <template slot-scope="scope">
                     <div v-if="scope.row.notGoodlack>30" class="reachRate">
                         <div class="rh rhColor03">{{ scope.row.notGoodlack }}</div>
@@ -57,7 +73,7 @@
                     <div v-else></div>
                 </template>
             </el-table-column>
-            <el-table-column align="center" prop="macError" label="设备故障">
+            <el-table-column align="center" width="90rem" prop="macError" label="设备故障">
                 <template slot-scope="scope">
                     <div v-if="scope.row.macError>30" class="reachRate">
                         <div class="rh rhColor03">{{ scope.row.macError }}</div>
@@ -68,7 +84,7 @@
                     <div v-else></div>
                 </template>
             </el-table-column>
-            <el-table-column align="center" prop="changeLine" label="转线">
+            <el-table-column align="center" width="90rem" prop="changeLine" label="转线">
                 <template slot-scope="scope">
                     <div v-if="scope.row.changeLine>30" class="reachRate">
                         <div class="rh rhColor03">{{ scope.row.changeLine }}</div>
@@ -79,7 +95,7 @@
                     <div v-else></div>
                 </template>
             </el-table-column>
-            <el-table-column align="center" prop="haveBron" label="生产状态">
+            <el-table-column align="center" width="90rem" prop="haveBron" label="生产状态">
                 <template slot-scope="scope">
                     <div v-if="scope.row.haveBron=='生产'" class="reachRate">
                         <div class="rh rhColor01">{{scope.row.haveBron}}</div>
@@ -120,104 +136,104 @@ export default {
   props: ["tableList"],
   data() {
     return {
-    //   tableList: {
-    //     baseInfo:{
-    //         plantNum:123,
-    //         onlineNum:123
-    //     },
-    //     list: [
-    //       {
-    //         line: 123, //拉线
-    //         orderNo: 123, //订单编号
-    //         customer: 123, //客户名称
-    //         prno: 123, //产品名称
-    //         ptno: 123, //产品编号
-    //         planNo: 123, //计划产量
-    //         realNo: 123, //实际产量
-    //         reachRate: 123, //达成率
-    //         lack: 123, //缺料
-    //         notGoodlack: 123, //不良来料
-    //         macError: 123, //设备故障
-    //         changeLine: 123, //转线
-    //         haveBron: "3" //生成状态(生产 '')
-    //       },
-    //       {
-    //         line: 123, //拉线
-    //         orderNo: 123, //订单编号
-    //         customer: 123, //客户名称
-    //         prno: 123, //产品名称
-    //         ptno: 123, //产品编号
-    //         planNo: 123, //计划产量
-    //         realNo: 123, //实际产量
-    //         reachRate: 123, //达成率
-    //         lack: 123, //缺料
-    //         notGoodlack: 123, //不良来料
-    //         macError: 123, //设备故障
-    //         changeLine: 123, //转线
-    //         haveBron: "3" //生成状态(生产 '')
-    //       },
-    //       {
-    //         line: 123, //拉线
-    //         orderNo: 123, //订单编号
-    //         customer: 123, //客户名称
-    //         prno: 123, //产品名称
-    //         ptno: 123, //产品编号
-    //         planNo: 123, //计划产量
-    //         realNo: 123, //实际产量
-    //         reachRate: 123, //达成率
-    //         lack: 123, //缺料
-    //         notGoodlack: 123, //不良来料
-    //         macError: 123, //设备故障
-    //         changeLine: 123, //转线
-    //         haveBron: "" //生成状态(生产 '')
-    //       },
-    //       {
-    //         line: 123, //拉线
-    //         orderNo: 123, //订单编号
-    //         customer: 123, //客户名称
-    //         prno: 123, //产品名称
-    //         ptno: 123, //产品编号
-    //         planNo: 123, //计划产量
-    //         realNo: 123, //实际产量
-    //         reachRate: 123, //达成率
-    //         lack: 123, //缺料
-    //         notGoodlack: 123, //不良来料
-    //         macError: 123, //设备故障
-    //         changeLine: 123, //转线
-    //         haveBron: "" //生成状态(生产 '')
-    //       },
-    //       {
-    //         line: 123, //拉线
-    //         orderNo: 123, //订单编号
-    //         customer: 123, //客户名称
-    //         prno: 123, //产品名称
-    //         ptno: 123, //产品编号
-    //         planNo: 123, //计划产量
-    //         realNo: 123, //实际产量
-    //         reachRate: 123, //达成率
-    //         lack: 123, //缺料
-    //         notGoodlack: 123, //不良来料
-    //         macError: 123, //设备故障
-    //         changeLine: 123, //转线
-    //         haveBron: "生产" //生成状态(生产 '')
-    //       },
-    //       {
-    //         line: 123, //拉线
-    //         orderNo: 123, //订单编号
-    //         customer: 123, //客户名称
-    //         prno: 123, //产品名称
-    //         ptno: 123, //产品编号
-    //         planNo: 123, //计划产量
-    //         realNo: 123, //实际产量
-    //         reachRate: 123, //达成率
-    //         lack: 123, //缺料
-    //         notGoodlack: 123, //不良来料
-    //         macError: 123, //设备故障
-    //         changeLine: 123, //转线
-    //         haveBron: "3" //生成状态(生产 '')
-    //       }
-    //     ]
-    //   }
+      //   tableList: {
+      //     baseInfo:{
+      //         plantNum:123,
+      //         onlineNum:123
+      //     },
+      //     list: [
+      //       {
+      //         line: 123, //拉线
+      //         orderNo: 123, //订单编号
+      //         customer: 123, //客户名称
+      //         prno: 123, //产品名称
+      //         ptno: 123, //产品编号
+      //         planNo: 123, //计划产量
+      //         realNo: 123, //实际产量
+      //         reachRate: 123, //达成率
+      //         lack: 123, //缺料
+      //         notGoodlack: 123, //不良来料
+      //         macError: 123, //设备故障
+      //         changeLine: 123, //转线
+      //         haveBron: "3" //生成状态(生产 '')
+      //       },
+      //       {
+      //         line: 123, //拉线
+      //         orderNo: 123, //订单编号
+      //         customer: 123, //客户名称
+      //         prno: 123, //产品名称
+      //         ptno: 123, //产品编号
+      //         planNo: 123, //计划产量
+      //         realNo: 123, //实际产量
+      //         reachRate: 123, //达成率
+      //         lack: 123, //缺料
+      //         notGoodlack: 123, //不良来料
+      //         macError: 123, //设备故障
+      //         changeLine: 123, //转线
+      //         haveBron: "3" //生成状态(生产 '')
+      //       },
+      //       {
+      //         line: 123, //拉线
+      //         orderNo: 123, //订单编号
+      //         customer: 123, //客户名称
+      //         prno: 123, //产品名称
+      //         ptno: 123, //产品编号
+      //         planNo: 123, //计划产量
+      //         realNo: 123, //实际产量
+      //         reachRate: 123, //达成率
+      //         lack: 123, //缺料
+      //         notGoodlack: 123, //不良来料
+      //         macError: 123, //设备故障
+      //         changeLine: 123, //转线
+      //         haveBron: "" //生成状态(生产 '')
+      //       },
+      //       {
+      //         line: 123, //拉线
+      //         orderNo: 123, //订单编号
+      //         customer: 123, //客户名称
+      //         prno: 123, //产品名称
+      //         ptno: 123, //产品编号
+      //         planNo: 123, //计划产量
+      //         realNo: 123, //实际产量
+      //         reachRate: 123, //达成率
+      //         lack: 123, //缺料
+      //         notGoodlack: 123, //不良来料
+      //         macError: 123, //设备故障
+      //         changeLine: 123, //转线
+      //         haveBron: "" //生成状态(生产 '')
+      //       },
+      //       {
+      //         line: 123, //拉线
+      //         orderNo: 123, //订单编号
+      //         customer: 123, //客户名称
+      //         prno: 123, //产品名称
+      //         ptno: 123, //产品编号
+      //         planNo: 123, //计划产量
+      //         realNo: 123, //实际产量
+      //         reachRate: 123, //达成率
+      //         lack: 123, //缺料
+      //         notGoodlack: 123, //不良来料
+      //         macError: 123, //设备故障
+      //         changeLine: 123, //转线
+      //         haveBron: "生产" //生成状态(生产 '')
+      //       },
+      //       {
+      //         line: 123, //拉线
+      //         orderNo: 123, //订单编号
+      //         customer: 123, //客户名称
+      //         prno: 123, //产品名称
+      //         ptno: 123, //产品编号
+      //         planNo: 123, //计划产量
+      //         realNo: 123, //实际产量
+      //         reachRate: 123, //达成率
+      //         lack: 123, //缺料
+      //         notGoodlack: 123, //不良来料
+      //         macError: 123, //设备故障
+      //         changeLine: 123, //转线
+      //         haveBron: "3" //生成状态(生产 '')
+      //       }
+      //     ]
+      //   }
     };
   },
   mounted() {},

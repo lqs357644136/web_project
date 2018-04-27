@@ -31,6 +31,7 @@
 import { mapGetters } from "vuex";
 import checkInfo from "./checkInfo.vue";
 import checkStep from "./checkStep.vue";
+import url from "api";
 export default {
   name: "checkMain",
   data() {
@@ -46,6 +47,7 @@ export default {
   },
   mounted() {
     this.checkStepData_init();
+    this.get_filePath();
   },
   methods: {
     checkStepData_init() {
@@ -80,8 +82,37 @@ export default {
       }
     },
     //提交后子组件响应回来
-    checkEndListen(obj){
+    checkEndListen(obj) {
       this.checkStepData[obj.index].noPass = obj.isPass;
+    },
+    //获取查阅文档地址
+    get_filePath() {
+      let params = {
+        fileClass: "FC04",
+        partNo: this.checkList.inspect.ptno,
+        plant: this.checkList.inspect.plant,
+        line: this.checkList.inspect.line,
+        process: this.checkList.inspect.process
+      };
+      this.$get_noToken({
+        url: this.$api_baseurl(url.getFilePath),
+        params: params
+      }).then(res => {
+        console.log(res)
+        if (res.code == 1) {
+          let fileOption = [];
+          for (let item of res.data) {
+            let obj = {
+              label: item.fileName,
+              value: item.filePath
+            };
+            fileOption.push(obj);
+          }
+          this.$store.dispatch('set_entity_filePaths',fileOption)
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
     }
   },
   components: {

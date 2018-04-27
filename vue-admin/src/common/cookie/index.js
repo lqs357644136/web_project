@@ -5,38 +5,37 @@ const HostKey = 'host';
 const LangKey = 'lang';
 
 export function getToken() {
-  return Cookies.get(TokenKey)
+  return window.localStorage.getItem(TokenKey);
 }
 
 export function setToken(token) {
-  return Cookies.set(TokenKey, token)
+   window.localStorage.setItem(TokenKey, token);
 }
 
 export function removeToken() {
-  return Cookies.remove(TokenKey)
+  window.localStorage.remove(TokenKey);
 }
 
 export function getHost() {
-  console.log(Cookies.get(HostKey))
-  return Cookies.get(HostKey)
+  return window.localStorage.getItem(HostKey);
 }
 
 export function setHost(host) {
-  return Cookies.set(HostKey, host)
+  window.localStorage.setItem(HostKey, host);
 }
 
 export function removeHost() {
-  return Cookies.remove(HostKey)
+  window.localStorage.remove(HostKey);
 }
 
 export function getLang() {
-  return Cookies.get(LangKey)
+  return window.localStorage.getItem(LangKey);
 }
 
 export function setLang(lang) {
-  return Cookies.set(LangKey, lang)
+  window.localStorage.setItem(LangKey, lang);
 }
 
 export function removeLang() {
-  return Cookies.remove(LangKey)
+  window.localStorage.remove(LangKey);
 }

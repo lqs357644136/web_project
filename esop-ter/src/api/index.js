@@ -33,6 +33,7 @@ let url = {
   getMaterial:'/rest/kanban/getMaterial',//GET 获取当前工位对应原料
   precautions_list:'/rest/kanban/getPrecautions',//GET 获取注意事项列表
   getInspectRecord: '/rest/kanban/getInspectRecord', //GET 获取检验纪录
+  getFilePath:'/rest/kanban/getFilePath',//GET 获取产品编码对应文档分类的文档
   //esop
   saleLam_get:'/rest/Andon/getAndonList',//GET 
   get_xBar:'/rest/kanban/getXbar',//GET 获取xBar

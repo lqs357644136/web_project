@@ -4,21 +4,20 @@
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: left;
                 .menuBox {
-                    height: pxTorem(220px);
-                    width: pxTorem(220px);
-                    margin-top: pxTorem(20px);
-                    margin-bottom: pxTorem(20px);
+                    height: pxTorem(200px);
+                    width: pxTorem(200px);
+                    margin-top: pxTorem(20px); // margin-bottom: pxTorem(20px);
                     display: flex;
                     flex-direction: column;
                     text-align: center;
                     justify-content: center;
                     cursor: pointer;
                     .icon {
-                        height: pxTorem(130px);
-                        line-height: pxTorem(130px);
-                        width: pxTorem(130px);
+                        height: pxTorem(140px);
+                        line-height: pxTorem(140px);
+                        width: pxTorem(140px);
                         text-align: center;
                         margin: 0 auto;
                         margin-bottom: pxTorem(10px);
@@ -30,7 +29,7 @@
                         transition: all 2s ease;
                     }
                     .text {
-                        font-size: pxTorem(24px);
+                        font-size: pxTorem(20px);
                         color: #5a5a5a;
                     }
                 }
@@ -738,9 +737,21 @@
                 .el-table__body {
                     height: 100%;
                 }
+                .td_text {
+                    font-size: pxTorem(18px);
+                    position: absolute;
+                    top: 0;
+                    text-align: left;
+                    height: 100%;
+                    width: 100%;
+                    padding: 0 pxTorem(10px);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
             }
             .zjjdemo01chart {
-                height: 30% !important; 
+                height: 30% !important;
                 display: flex;
                 flex-direction: row;
                 .totalChart {
@@ -790,6 +801,23 @@
                 height: 65% !important;
                 display: flex;
                 flex-direction: column;
+                .td_text {
+                    font-size: pxTorem(18px);
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    padding: 0 pxTorem(0px);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .prno {
+                    font-size: pxTorem(14px);
+                    line-height: pxTorem(16px);
+                    padding: pxTorem(2px);
+                    text-align: left;
+                }
                 .baseInfo {
                     padding-top: pxTorem(5px);
                     .el-form-item {
@@ -1041,6 +1069,17 @@
                         .deviation {}
                     }
                     .crlBtn {}
+                    .fileWatch {
+                        display: flex;
+                        flex-direction: row;
+                        .el-button {
+                            overflow: initial;
+                            margin-left: pxTorem(10px);
+                        }
+                        .el-select{
+                            width: pxTorem(160px);
+                        }
+                    }
                 }
                 .stepMain {
                     flex: 1;
@@ -1182,9 +1221,9 @@
             .specForm {
                 display: flex;
                 flex-direction: row;
-                margin-bottom:pxTorem(20px);
-                .el-form-item__label{
-                    width:pxTorem(60px);
+                margin-bottom: pxTorem(20px);
+                .el-form-item__label {
+                    width: pxTorem(60px);
                 }
                 .el-form-item {
                     display: flex;

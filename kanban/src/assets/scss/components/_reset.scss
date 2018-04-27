@@ -1,0 +1,94 @@
+$border:#545454;
+* {
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: pxTorem(18px);
+}
+
+a {
+    font-weight: 300;
+    text-decoration: none;
+    &:active,
+    &:hover {
+        outline: 0;
+    }
+}
+
+i {
+    font-style: normal;
+}
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 100% !important;
+    vertical-align: middle;
+    -ms-interpolation-mode: bicubic;
+    &:not([src*="/"]) {
+        display: none !important;
+    }
+}
+
+ol,
+ul,
+li {
+    list-style-type: none;
+    list-style: none;
+}
+
+input,
+textarea,
+button {
+    border: 0;
+    border-radius: 0;
+    appearance: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.2s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0;
+}
+
+//重写样式与公共样式
+// 列表
+.el-table {
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black !important;
+    td {
+        text-align: center;
+    }
+    thead .cell {
+        text-align: center;
+    }
+    .cell,
+    th>div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .edit {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .el-table__header-wrapper {
+        height: pxTorem(50px);
+    }
+    .el-table__body-wrapper {
+        flex: 1;
+    }
+    td,
+    th {
+        height: pxTorem(50px);
+    }
+}

@@ -69,6 +69,9 @@ export default {
   [type.SET_XBAR](state, xbar) {
     state.xbar = xbar;
   },
+  [type.SET_ENTITY_FILEPATHS](state, paths) {
+    state.entity_filePaths = paths;
+  },
 }
 
 //根绝用户信息的菜单信息生成菜单目录数据

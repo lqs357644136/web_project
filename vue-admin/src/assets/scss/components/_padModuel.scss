@@ -759,6 +759,17 @@
                     .deviation {}
                 }
                 .crlBtn {}
+                .fileWatch{
+                    display: flex;
+                    flex-direction: row;
+                    .el-button{
+                        overflow: initial;
+                        margin-left:pxTorem(10px);
+                    }
+                    .el-select{
+                        width: pxTorem(160px);
+                    }
+                }
             }
             .stepMain {
                 flex: 1;

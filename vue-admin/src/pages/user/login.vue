@@ -41,7 +41,6 @@
 <script type="text/javascript">
 import url from "api";
 import { mapGetters } from "vuex";
-
 export default {
   data() {
     var checkStep = (rule, value, callback) => {
@@ -85,20 +84,18 @@ export default {
   computed: {
     subHost: function() {
       return this.host.ip + ":" + this.host.port;
-    },
+    }
   },
-  created() {},
+  created() {
+    this.host.ip = Window.VueLocation.hostname;
+    this.host.port = Window.VueLocation.port;
+  },
   mounted() {
     this.login_init();
   },
   methods: {
     // 初始化登录信息
     login_init() {
-      let host = this.$store.getters.get_host;
-      if (host) {
-        this.host.ip = host.split(":")[0];
-        this.host.port = host.split(":")[1];
-      }
       let lang = this.$store.getters.getLang;
     },
     //提交
@@ -132,7 +129,7 @@ export default {
           });
         });
       });
-    },
+    }
   }
 };
 </script>
