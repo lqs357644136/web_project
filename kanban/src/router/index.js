@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
-//获取当前语言
 
 //公共模块
 const routes = [{
@@ -19,16 +18,46 @@ const routes = [{
     auth: false
   },
 }, {
-  //海尔看板
-  path: '/haierLine',
+  //海尔线看板
+  path: '/haier/haierLine',
   name: 'haierLine',
-  component: r => require.ensure([], () => r(require('pages/haierLine/haierLine.vue')), 'haierLine'),
+  component: r => require.ensure([], () => r(require('pages/haier/haierLine.vue')), 'haierLine'),
   //component: haierLine,
   meta: {
     title: '海尔线看板',
     auth: false
   },
-}, ]
+}, {
+  //科斯达深圳线看板
+  path: '/ksd/ksd_line_sz',
+  name: 'ksd_line_sz',
+  component: r => require.ensure([], () => r(require('pages/ksd/ksd_line_sz.vue')), 'ksd_line_sz'),
+  //component: ksd_line_sz,
+  meta: {
+    title: '科斯达深圳线看板',
+    auth: false
+  },
+}, {
+  //科斯达惠州总看板
+  path: '/ksd/ksd_build_hz',
+  name: 'ksd_build_hz',
+  component: r => require.ensure([], () => r(require('pages/ksd/ksd_build_hz.vue')), 'ksd_build_hz'),
+  //component: ksd_build_hz,
+  meta: {
+    title: '科斯达惠州总看板',
+    auth: false
+  },
+}, {
+  //上海智汇仓库看板
+  path: '/als/alsWare',
+  name: 'alsWare',
+  component: r => require.ensure([], () => r(require('pages/als/alsWare.vue')), 'alsWare'),
+  //component: alsWare,
+  meta: {
+    title: '上海智汇仓库看板',
+    auth: false
+  },
+} ]
 
 const router = new VueRouter({
   routes,

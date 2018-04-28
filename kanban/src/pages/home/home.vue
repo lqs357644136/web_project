@@ -18,25 +18,25 @@ export default {
     return {
       menus: [
         {
-          path: "/haierLine?ip="+api,
-          title: "海尔看板",
+          path: "/haier/haierLine?ip="+api,
+          title: "海尔线看板",
           icon: "icon fa fa-object-ungroup"
         },
-        // {
-        //   path: "/ter/dailywork/adnDailywork?ip="+api,
-        //   title: "异常报工",
-        //   icon: "icon fa fa-bandcamp"
-        // },
-        // {
-        //   path: "/ter/dailywork/proDailywork?ip="+api,
-        //   title: "生产报工",
-        //   icon: "icon fa fa-snowflake-o"
-        // },
-        // {
-        //   path: "/ter/batch/batchEnterRaw?ip="+api,
-        //   title: "原料批次录入",
-        //   icon: "icon fa fa-address-book-o"
-        // },
+        {
+          path: "/ksd/ksd_line_sz?ip="+api,
+          title: "科斯达深圳线看板",
+          icon: "icon fa fa-bandcamp"
+        },
+        {
+          path: "/ksd/ksd_build_hz?ip="+api,
+          title: "科斯达惠州总看板",
+          icon: "icon fa fa-snowflake-o"
+        },
+        {
+          path: "/als/alsWare?ip="+api,
+          title: "上海智汇货位看板",
+          icon: "icon fa fa-address-book-o"
+        },
         // {
         //   path: "/ter/batch/batchEnterBlend?ip="+api,
         //   title: "调合批次录入",

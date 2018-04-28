@@ -1,0 +1,66 @@
+@import '~assets/scss/components/computed.scss';
+.kanbanView .alsWare {
+    $color01: #8DB4E2;
+    $color02: #CCC0DA;
+    .titleStyle {
+        background-color: $color01;
+    }
+    .kanban-body {
+        display: flex;
+        flex-direction: column;
+        .ware_list {
+            flex: 1;
+            table {
+                height: 100%;
+                width: 100%;
+                thead td,
+                tbody td {
+                    text-align: center;
+                }
+                thead {
+                    td {
+                        height: pxTorem(45px);
+                        background-color: $color02;
+                        font-size: pxTorem(26px);
+                        font-weight:800;
+                    }
+                }
+                tbody {
+                    td {
+                    }
+                }
+            }
+        }
+        .msg {
+            height: pxTorem(75px);
+            background-color: black;
+            color: yellow;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            .text {
+                letter-spacing: pxTorem(3px);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: absolute;
+                font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+                // left: -100%;
+                white-space: nowrap;
+                width: 100%;
+                text-align: center;
+            }
+            @keyframes msgMove {
+                0% {
+                    left: -100%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+        }
+    }
+}

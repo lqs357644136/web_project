@@ -1,32 +1,38 @@
 <template>
-  <div class="haier_line">
-    <kanbanTitle :logo="logo" title="L1线看板" :right="date"></kanbanTitle>
+  <div class="alsWare">
+    <kanbanTitle class="titleStyle" :logo="logo" title="原料仓货位电子看板" :right="date"></kanbanTitle>
     <div class="kanban-body">
-      <tables :tables="tablesList"></tables>
-      <lineCanvas :lineCanvas="lineData"></lineCanvas>
-      <news :newsData="newsState"></news>
+      <div class="ware_list">
+        <table class="ware_list" border="1" cellspacing="0">
+          <thead>
+            <tr>
+              <td>货架</td>
+              <td colspan="24">货位号</td>
+            </tr>
+          </thead>
+          <tbody>
+              <tr v-for="(rowItem,rowIndex) of 32" :key="rowIndex">
+                <td v-if="rowIndex%4==0||rowIndex==0" rowspan="4">{{'01A0'+rowItem}}</td>
+                <td :style="ramdonColor()" v-for="(item,index) of 24" :key="index">012</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="msg"></div>
     </div>
   </div>
 </template>
 
 <script>
 //////////UI组件加载//////////
-import "./style.scss";
-import Vue from "vue";
-import { Table, TableColumn, Input } from "element-ui";
-Vue.use(Table);
-Vue.use(TableColumn);
-Vue.use(Input);
+import "./style/alsWare.scss";
 /////////////////////////////
 import kanbanTitle from "components/kanbanTitle.vue";
 import { $dataFormat } from "common/filiter/index.js";
-import tables from "./component/tables.vue";
-import lineCanvas from "./component/line_canvas.vue";
-import news from "./component/news.vue";
 import logoPng from "./img/logo.png";
 import url from "api";
 export default {
-  name: "haier_line",
+  name: "alsWare",
   data() {
     return {
       //date:$dataFormat(new Date(),'yyyy-MM-dd hh:mm:ss')
@@ -35,33 +41,18 @@ export default {
       macInfo: {
         plant: "",
         line: ""
-      },
-      //列表数据
-      tablesList: {
-        table01: [],
-        table02: {
-          title: {
-            titleKey: [],
-            titleKeyCode: {}
-          },
-          data: []
-        }
-      },
-      //生产线工位状态数据
-      lineData: [],
-      //生产信息数据
-      newsState: "1"
+      }
     };
   },
   mounted() {
     this.mac_init();
     this.dateUpdate();
-    this.get_data();
-    setTimeout(() => {
-      setInterval(() => {
-        this.get_data();
-      }, 20000);
-    }, 20000);
+    //this.get_data();
+    // setTimeout(() => {
+    //   setInterval(() => {
+    //     this.get_data();
+    //   }, 20000);
+    // }, 20000);
   },
   methods: {
     //获取数据
@@ -178,15 +169,10 @@ export default {
         }
       });
     },
-
-    //处理安灯数据
-    andonList_data_init() {},
     //动态刷新时间
     dateUpdate() {
-      setInterval(() => {
-        let date = $dataFormat(new Date(), "yyyy-MM-dd hh:mm:ss");
+      let date = $dataFormat(new Date(), "yyyy-MM-dd hh:mm:ss");
         this.date = date;
-      }, 1000);
     },
     //获取机台信息
     mac_init() {
@@ -201,87 +187,24 @@ export default {
         this.macInfo.line = Window.GETMACINFO().line;
       }
     },
-    //生产线状态灯
-    line_state() {
-      return [
-        {
-          name: "P01",
-          title: "P01",
-          color: "",
-          xAxis: 4,
-          colorLevel: 0
-        },
-        {
-          name: "P02",
-          title: "P02",
-          color: "",
-          xAxis: 10,
-          colorLevel: 0
-        },
-        {
-          name: "P03",
-          title: "P03",
-          color: "",
-          xAxis: 16,
-          colorLevel: 0
-        },
-        {
-          name: "P04",
-          title: "P04",
-          color: "",
-          xAxis: 22.5,
-          colorLevel: 0
-        },
-        {
-          name: "P05",
-          title: "P05",
-          color: "",
-          xAxis: 29,
-          colorLevel: 0
-        },
-        {
-          name: "P06",
-          title: "P06",
-          color: "",
-          xAxis: 35.5,
-          colorLevel: 0
-        },
-        {
-          name: "P07",
-          title: "P07",
-          color: "",
-          xAxis: 59,
-          colorLevel: 0
-        },
-        {
-          name: "P08",
-          title: "P08",
-          color: "",
-          xAxis: 64.5,
-          colorLevel: 0
-        },
-        {
-          name: "P09",
-          title: "P09",
-          color: "",
-          xAxis: 76.5,
-          colorLevel: 0
-        },
-        {
-          name: "P10",
-          title: "P10",
-          color: "",
-          xAxis: 96.5,
-          colorLevel: 0
-        }
-      ];
+    //随机颜色
+    ramdonColor(){
+      let num = Math.random();
+      let color = '';
+      if(0.2>num){
+        color = 'red';
+      }else if(0.2<num&&0.4>num){
+        color = 'green';
+      }else if(0.4<num&&0.6>num){
+        color = 'blue';
+      }else if(0.8<num&&1>num){
+        color = 'none';
+      }
+      return 'background:'+color;
     }
   },
   components: {
-    kanbanTitle,
-    tables,
-    lineCanvas,
-    news
+    kanbanTitle
   }
 };
 </script>

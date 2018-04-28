@@ -15,7 +15,9 @@ let url = {
   lxkanban:'/IntelforESOPService/KanbanService.asmx/Zhgd_GetLineKB',
   plantkanban:'/IntelforESOPService/KanbanService.asmx/Zhgd_GetPlantKB',
   //海尔看板
-  haierkanban:'/rest/Andon/getSopProdScheduleList',//GET 
+  haierkanban:'/rest/Andon/getSopProdScheduleList',//GET 海尔线看板
+  //科斯达看板
+  getAttendanceScheduleList:'/rest/Andon/getAttendanceScheduleList',//GET 车间生产管理看板01
 }
 
 export default url

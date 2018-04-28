@@ -1,35 +1,32 @@
 <template>
   <div class="panel">
     <panel-title :title="langPackage.menu_pad.specification"></panel-title>
-    <div v-if="!xbarVisible"  class="panel-body specification">
+    <div v-if="!xbarVisible" class="panel-body specification">
       <!-- 规范查询 -->
       <el-form :model="searchInput" :inline="true" status-icon :rules="rules" ref="inputs" class="specForm">
         <el-row class="selectForm" :gutter="10">
-          <el-col :xs="24" :sm="8" :md="8" :lg="8">
+          <!-- <el-col :xs="24" :sm="8" :md="8" :lg="8">
             <el-form-item class="plant" :label="langPackage.common.plant" prop="plantInput">
               <el-select @change="plantSelectChange()" v-model="searchInput.plantInput" :placeholder="langPackage.common_pad.choose">
                 <el-option v-for="item in searchSelect.plantOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
               </el-select>
             </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="8" :md="8" :lg="8">
-            <el-form-item class="line" :label="langPackage.common.line" prop="lineInput">
-              <el-select v-model="searchInput.lineInput" :placeholder="langPackage.common.choose">
-                <el-option v-for="item in searchSelect.lineOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="8" :md="8" :lg="8">
+          </el-col> -->
+          <el-col :xs="24" :sm="12" :md="12" :lg="12">
             <el-form-item class="ptno" :label="langPackage.common.ptno" prop="ptnoInput">
-              <el-select v-model="searchInput.ptnoInput" :placeholder="langPackage.common.choose">
+              <el-select @change="selectChange()" v-model="searchInput.ptnoInput" :placeholder="langPackage.common.choose">
                 <el-option v-for="item in searchSelect.ptnoOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
+          <el-col :xs="24" :sm="12" :md="12" :lg="12">
+            <el-form-item class="line" :label="langPackage.common.line" prop="lineInput">
+              <el-select @change="selectChange()" v-model="searchInput.lineInput" :placeholder="langPackage.common.choose">
+                <el-option v-for="item in searchSelect.lineOption" :key="item.value" :label="item.label" :value="item.value"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
         </el-row>
-        <div class="subBtn">
-          <el-button type="primary" @click="search('searchInput')">{{langPackage.common_pad.search}}</el-button>
-        </div>
       </el-form>
 
       <!-- 规范列表 -->
@@ -65,7 +62,7 @@
       </el-dialog>
 
       <!-- 规范详情  -->
-      <el-dialog :modal="false" class="specInfo" :show-close="false" :visible.sync="dialogFormVisible" >
+      <el-dialog :modal="false" class="specInfo" :show-close="false" :visible.sync="dialogFormVisible">
         <el-collapse accordion>
           <el-collapse-item class="normal" :title="langPackage.specification_pad.base" name="1">
             <p>
@@ -151,7 +148,7 @@ export default {
       dialogFormVisible: false,
       xbarSearchDialog: false,
       xbarVisible: false,
-      xBarInfo:null,
+      xBarInfo: null,
       searchInput: {
         plantInput: "",
         lineInput: "",
@@ -201,7 +198,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      langPackage:'get_langpackage'
+      langPackage: "get_langpackage"
     })
   },
   components: {
@@ -213,40 +210,18 @@ export default {
   },
   methods: {
     spec_init() {
+      this.get_ptnoSelect();
+      this.get_lineSelect();
+    },
+    //下拉发生选择
+    selectChange(){
       this.get_specList();
-      this.get_plantSelect();
-    },
-    //车间发生选择
-    plantSelectChange() {
-      let plant = this.searchInput.plantInput;
-      this.searchInput.lineInput = "";
-      this.searchInput.ptnoInput = "";
-      this.get_lineSelect(plant);
-      this.get_ptnoSelect(plant);
-    },
-    //获取车间下拉数据
-    get_plantSelect() {
-      this.searchSelect.plantOption = [];
-      this.$get({
-        url: url.check_getPlant
-      }).then(res => {
-        if (res.code == 1) {
-          for (let opt of res.data) {
-            let option = {
-              label: opt.plant + "-" + opt.plantdesc,
-              value: opt.plant
-            };
-            this.searchSelect.plantOption.push(option);
-          }
-        }
-      });
     },
     //获取制程下拉数据
-    get_lineSelect(plant) {
+    get_lineSelect() {
       this.searchSelect.lineOption = [];
       this.$get({
-        url: url.check_getLine,
-        params: plant
+        url: url.check_getLine
       }).then(res => {
         if (res.code == 1) {
           for (let opt of res.data) {
@@ -260,11 +235,10 @@ export default {
       });
     },
     //获取产品编号下拉数据
-    get_ptnoSelect(plant) {
+    get_ptnoSelect() {
       this.searchSelect.ptnoOption = [];
       this.$get({
-        url: url.check_getPartno,
-        params: plant
+        url: url.check_getPartno
       }).then(res => {
         if (res.code == 1) {
           for (let opt of res.data) {
@@ -273,6 +247,10 @@ export default {
               value: opt.ptno
             };
             this.searchSelect.ptnoOption.push(option);
+          }
+          if (this.searchSelect.ptnoOption[0]) {
+            this.searchInput.ptnoInput = this.searchSelect.ptnoOption[0].value;
+            this.get_specList();
           }
         }
       });
@@ -287,6 +265,7 @@ export default {
         url: url.inspectSpec_list,
         params: params
       }).then(res => {
+        console.log(res)
         if (res.code == 1) {
           this.tableData = [];
           for (let item of res.data) {
@@ -364,13 +343,13 @@ export default {
         url: url.get_xBar,
         params: params
       }).then(res => {
-        console.log(res)
+        console.log(res);
         if (res.code == 1) {
           this.xBarInfo = res.data;
-          this.$store.dispatch('set_xbar',res.data)
+          this.$store.dispatch("set_xbar", res.data);
           this.xbarSearchDialog = false;
           this.xbarVisible = true;
-        }else{
+        } else {
           this.$message.error(res.msg);
         }
       });
