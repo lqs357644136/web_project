@@ -56,7 +56,7 @@ export default {
           value: this.checkList.inspect.orderNo
         }, //工令单号
         {
-          title: "制程",
+          title: "产品",
           name: "line",
           value: this.checkList.inspect.line
         }, //制程

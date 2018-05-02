@@ -759,14 +759,14 @@
                     .deviation {}
                 }
                 .crlBtn {}
-                .fileWatch{
+                .fileWatch {
                     display: flex;
                     flex-direction: row;
-                    .el-button{
+                    .el-button {
                         overflow: initial;
-                        margin-left:pxTorem(10px);
+                        margin-left: pxTorem(10px);
                     }
-                    .el-select{
+                    .el-select {
                         width: pxTorem(160px);
                     }
                 }
@@ -901,6 +901,25 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap
+            }
+            .tourErrorRow {
+                td {
+                    background-color: #f56c6c;
+                    color: white;
+                    i {
+                        color: white;
+                    }
+                }
+                td:nth-child(2) {
+                    .cell {
+                        span {
+                            color: white !important;
+                        }
+                    }
+                }
+            }
+            .otherRow {
+          
             }
         }
         .inspecRecord-list-goPage {

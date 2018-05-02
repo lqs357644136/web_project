@@ -1,5 +1,7 @@
 <template>
-  <div class="plantChart" ref="plantChart"></div>
+    <div class="buildHzChart" ref="buildHzChart">
+
+    </div>
 </template>
 
 <script>
@@ -8,25 +10,22 @@ import "echarts/lib/chart/bar";
 import "echarts/lib/component/grid";
 import "echarts/lib/component/title";
 import "echarts/lib/component/legendScroll";
-import { $dataFormat } from "common/filiter/index.js";
 export default {
-  name: "zjj_demo02_chart",
+  name: "buildHzChart",
   props: ["chartData"],
   data() {
     return {
-      chart01: null
+      chart: null
     };
   },
- 
   mounted() {
     setTimeout(() => {
-      this.plantChart_init();
+      this.buildHzChart_init();
     }, 1000);
   },
   methods: {
-    reLoadChart() {},
-    plantChart_init() {
-      this.chart01 = echart.init(this.$refs.plantChart);
+    buildHzChart_init() {
+      this.chart01 = echart.init(this.$refs.buildHzChart);
       let option = {
         backgroundColor: "#333333",
         animation: false,
@@ -38,27 +37,33 @@ export default {
           }
         },
         legend: {
-          top: "10px",
+          orient: "vertical",
+          top: "50%",
+          right: "1%",
           data: ["计划产量", "实际产量"],
           textStyle: {
             color: "#fff",
-            fontSize: "16"
+            fontSize: "26"
           }
         },
         grid: {
-          left: "2%",
-          right: "2%",
+          left: "10%",
+          right: "10%",
           bottom: "5px",
           containLabel: true
         },
         xAxis: [
           {
             type: "category",
-            data: this.chartData.xAxis,
+            //data: this.chartData.xAxis,
+            data: ["1线", "2线", "3线", "4线"],
             axisLine: {
               lineStyle: {
                 color: "#fff"
               }
+            },
+            axisLabel: {
+              fontSize: 26
             }
           }
         ],
@@ -69,6 +74,9 @@ export default {
               lineStyle: {
                 color: "#fff"
               }
+            },
+            axisLabel: {
+              fontSize: 26
             }
           }
         ],
@@ -76,11 +84,14 @@ export default {
           {
             name: "计划产量",
             type: "bar",
-            data: this.chartData.planNum,
+            //data: this.chartData.planNum,
+            data: [123, 234, 345, 456],
             label: {
               normal: {
                 show: true,
-                position: "top"
+                position: "insideTop",
+                fontWeight: 100,
+                fontSize: 20
               }
             },
             itemStyle: {
@@ -94,17 +105,20 @@ export default {
                   color: "#fff"
                 }
               }
-            },
-            barWidth: "40"
+            }
+            //barWidth: "40"
           },
           {
             name: "实际产量",
             type: "bar",
-            data: this.chartData.realNum,
+            //data: this.chartData.realNum,
+            data: [234, 345, 456, 567],
             label: {
               normal: {
                 show: true,
-                position: "top"
+                position: "insideTop",
+                fontWeight: 100,
+                fontSize: 20
               }
             },
             itemStyle: {
@@ -117,9 +131,9 @@ export default {
                 textStyle: {
                   color: "#fff"
                 }
-              }
-            },
-            barWidth: "40"
+              },
+            }
+            //barWidth: "40"
           }
         ]
       };
@@ -128,4 +142,3 @@ export default {
   }
 };
 </script>
-

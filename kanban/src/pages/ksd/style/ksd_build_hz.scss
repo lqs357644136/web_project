@@ -1,0 +1,79 @@
+@import '~assets/scss/components/computed.scss';
+//科斯达惠州生产管理看板
+.kanbanView .ksd_build_hz {
+    $color01: #00B0F0;
+    $color02: #FFFF00;
+    .kanban-title {
+        background-color: $color01;
+        color: black;
+    }
+    .kanban-body {
+        display: flex;
+        flex-direction: column;
+        .buildHzList {
+            flex: 0.6;
+            table {
+                width: 100%;
+                height:100%;
+                thead td,
+                tbody td {
+                    position: relative;
+                    text-align: center;
+                    font-weight: 800;
+                    color: black;
+                    font-size: pxTorem(22px);
+                }
+                thead {
+                    td {
+                        background-color: $color02;
+                        height: pxTorem(65px);
+                    }
+                    tr:nth-child(1) td {
+                        text-align: left;
+                        padding-left: pxTorem(5px);
+                    }
+                }
+                tbody {
+                    td {
+                        background-color: $color01;
+                    }
+                }
+            }
+        }
+        .buildHzChart {
+            flex: 0.4;
+            background-color: black;
+        }
+        .msg {
+            height: pxTorem(75px);
+            background-color: black;
+            color: yellow;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            .text {
+                letter-spacing: pxTorem(3px);
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: absolute;
+                font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+                // left: -100%;
+                white-space: nowrap;
+                width: 100%;
+                text-align: center;
+            }
+            @keyframes msgMove {
+                0% {
+                    left: -100%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+        }
+    }
+}

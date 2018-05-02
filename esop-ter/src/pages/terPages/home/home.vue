@@ -11,7 +11,7 @@
 
 <script>
 //测试请求接口地址
-let api = 'localhost:8080';
+let api = '192.168.1.10:8080';
 let kanbanApi = '192.168.1.10:80';
 export default {
   data() {

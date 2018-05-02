@@ -171,8 +171,15 @@ export default {
     },
     //动态刷新时间
     dateUpdate() {
-      let date = $dataFormat(new Date(), "yyyy-MM-dd hh:mm:ss");
-        this.date = date;
+      //setInterval(() => {
+        let date = $dataFormat(new Date(), "yyyy年MM月dd日 hh:mm:ss");
+        let mydate=new Date();
+        let myddy = mydate.getDay(); //获取存储当前日期
+        let weekday = [
+          "星期日","星期一","星期二","星期三","星期四","星期五","星期六"
+        ];
+        this.date = date + " " + weekday[myddy];
+      //}, 1000);
     },
     //获取机台信息
     mac_init() {

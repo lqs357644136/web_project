@@ -232,7 +232,7 @@ export default {
             this.macInfo.recType = res.data.unFinishList[0].recType;
             this.macInfo.id = res.data.unFinishList[0].id;
             this.macInfo.createTime = res.data.unFinishList[0].createTime;
-            this.macInfo.endTime = res.data.unFinishList[0].endTime;
+            //this.macInfo.endTime = res.data.unFinishList[0].endTime;
             this.macInfo.abnormalTime = res.data.unFinishList[0].abnormalTime
               ? Math.floor(res.data.unFinishList[0].abnormalTime / 60 * 100) /
                 100

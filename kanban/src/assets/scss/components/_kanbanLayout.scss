@@ -28,10 +28,14 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
-            .right {}
+            .right {
+                span {
+                    font-size: pxTorem(24px);
+                }
+            }
         }
         .kanban-body {
-            flex:1;
+            flex: 1;
         }
     }
 }

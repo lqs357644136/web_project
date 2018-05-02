@@ -10,7 +10,7 @@
         </div>
         <div class="form_body">
           <el-row class="forms" :gutter="10">
-            <el-col :xs="8" :sm="8" :md="8" :lg="8">
+            <!-- <el-col :xs="8" :sm="8" :md="8" :lg="8">
               <el-form-item label="车间">
                 <el-select @change="plantSelectChange()" v-model="inputs.plant" placeholder="请选择">
                   <el-option v-for="item in selects.plantOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -37,7 +37,7 @@
                   <el-option v-for="item in selects.ptnoOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
+            </el-col> -->
             <el-col :xs="8" :sm="8" :md="8" :lg="8">
               <el-form-item label="检验结果">
                 <el-select v-model="inputs.flag" placeholder="请选择">
@@ -53,7 +53,7 @@
       </el-card>
     </el-form>
 
-    <el-table :highlight-current-row="false" :data="tableList" align="center" height="100%" border class="tabelList">
+    <el-table :highlight-current-row="false" :data="tableList" align="center" height="100%" :row-class-name="tourErrorRow" border class="tabelList">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline>
@@ -92,14 +92,14 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column align="center" width="100px" prop="flag" label="结果">
+      <el-table-column sortable align="center" width="100px" prop="flag" label="结果">
         <template slot-scope="scope">
           <div>
             <span :style="scope.row.flag==0?'color:red':'color:green'">{{ scope.row.flag==0?'不合格':'合格' }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column width="150px" align="center" prop="type" label="类型">
+      <el-table-column sortable width="150px" align="center" prop="type" label="类型">
         <template slot-scope="scope">
           <div>
             <span v-if="scope.row.type==0">终端首检</span>
@@ -109,7 +109,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="inspectTime " label="检验时间">
+      <el-table-column sortable align="center" prop="inspectTime " label="检验时间">
         <template slot-scope="scope">
           <div>
             <i v-if="scope.row.inspectTime" class="el-icon-time"></i>
@@ -117,7 +117,12 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="操作" width="200px">
+      
+      <el-table-column sortable prop="plant" label="车间"></el-table-column>
+      <el-table-column sortable prop="process" label="机台"></el-table-column>
+      <el-table-column sortable prop="ptno" label="产品"></el-table-column>
+
+      <el-table-column align="center" label="操作" width="120px">
         <template slot-scope="scope">
           <div class="audi">
             <el-button v-if="scope.row.flag==0&&scope.row.isFinish==1" @click="audi(scope)" type="primary">审核</el-button>
@@ -200,7 +205,7 @@ export default {
   methods: {
     //初始化
     init() {
-      this.getPlantSelect();
+      //this.getPlantSelect();
       this.get_list(1);
     },
     //请求列表信息
@@ -371,6 +376,14 @@ export default {
     },
     imgInfoHidefn() {
       this.imgInfoShow = false;
+    },
+    //巡回检验不合格
+    tourErrorRow(row){
+      if(2==row.type&&0==row.flag){
+        return 'tourErrorRow'
+      }else{
+        return 'otherRow'
+      }
     }
   },
   components: {

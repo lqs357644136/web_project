@@ -29,7 +29,7 @@
                     </el-select>
                   </el-form-item>
                 </el-col>
-                <!-- 是否换模具 start -->
+                <!-- 可配置 start -->
                 <el-col v-show="recTypeMenu.qty==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="生产数量">
                     <el-input @change="qtyChange()" type="number" v-model="macInfo.qty" placeholder="请输入生产数量"></el-input>
@@ -56,7 +56,15 @@
                     <el-input @change="bottomChange()" type="text" v-model="macInfo.bottomMould" placeholder="请输入下模"></el-input>
                   </el-form-item>
                 </el-col>
-                <!-- 是否换模具 end -->
+
+                <el-col v-show="true" :xs="24" :sm="24" :md="6" :lg="6">
+                  <el-form-item label="休息时间">
+                    <el-select @change="restTimeChange()" v-model="macInfo.restTime" placeholder="请输入休息时间">
+                      <el-option v-for="item in restTimeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                <!-- 可配置 end -->
                 <el-col :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="工号/姓名">
                     <el-input :disabled="true" v-model="macInfo.empNo" placeholder="工号/姓名"></el-input>
@@ -153,8 +161,9 @@
 
 </template>
 
-<script>//////////UI组件加载//////////
-import Vue from 'vue'
+<script>
+//////////UI组件加载//////////
+import Vue from "vue";
 import {
   Input,
   Select,
@@ -166,19 +175,19 @@ import {
   Form,
   FormItem,
   Row,
-  Col,
-} from 'element-ui'
+  Col
+} from "element-ui";
 
-Vue.use(Input)
-Vue.use(Select)
-Vue.use(Option)
-Vue.use(Button)
-Vue.use(Table)
-Vue.use(TableColumn)
-Vue.use(Form)
-Vue.use(FormItem)
-Vue.use(Row)
-Vue.use(Col)
+Vue.use(Input);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Button);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Row);
+Vue.use(Col);
 /////////////////////////////
 import { panelTitle } from "components";
 import url from "api";
@@ -226,11 +235,13 @@ export default {
         scrapQty: "", //报废数
         topMould: "", //上模
         middleMould: "", //中模
-        bottomMould: "" //下模
+        bottomMould: "", //下模
+        restTime: ""
       },
       typeSelect: [],
       partNoSelect: [],
       shiftSelect: [],
+      restTimeSelect:[],
       dailyworkList: [],
       rules: {
         //验证规则
@@ -238,7 +249,7 @@ export default {
         shift: [{ validator: checkSelect, trigger: "blur" }]
       },
       //动态菜单
-      recTypeMenu:[]
+      recTypeMenu: []
     };
   },
   computed: {
@@ -311,7 +322,7 @@ export default {
         url: this.$api_baseurl(url.proDailywork_list),
         params: { equipNo: this.macInfo.equipNo }
       }).then(res => {
-        console.log(res)
+        console.log(res);
         if (res.code == 1) {
           this.dailyworkList = [];
           for (let obj of res.data.allList) {
@@ -356,7 +367,9 @@ export default {
             this.dailyworkList[0].scrapQty = null;
             this.isDailyStart = false;
             this.recTypeMenu = finish.recType ? finish.recType : [];
-            this.macInfo.recType = finish.recType.name ? finish.recType.name : "";
+            this.macInfo.recType = finish.recType.name
+              ? finish.recType.name
+              : "";
             this.macInfo.empNo = finish.empNo ? finish.empNo : "";
             this.macInfo.equipNo = finish.equipNo ? finish.equipNo : "";
             this.macInfo.resNo = finish.resNo ? finish.resNo : "";
@@ -390,6 +403,29 @@ export default {
             this.dailyStartHidden = true;
             this.typeSelect_init();
             this.shiftSelect_init();
+            this.restTimeSelect_init();
+          }
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
+    //初始化休息时间
+    restTimeSelect_init(){
+       this.$get_noToken({
+        url: this.$api_baseurl(url.daily_shiftType)
+      }).then(res => {
+        if (res.code == 1) {
+          this.restTimeSelect = [];
+          for (let obj of res.data) {
+            let option = {
+              label: obj.typename,
+              value: obj.typename
+            };
+            this.restTimeSelect.push(option);
+          }
+          if (this.restTimeSelect.length > 0) {
+            this.macInfo.restTime = this.restTimeSelect[0].label;
           }
         } else {
           this.$message.error(res.msg);
@@ -399,7 +435,7 @@ export default {
     //初始化班次号
     shiftSelect_init() {
       this.$get_noToken({
-        url: this.$api_baseurl(url.daily_shiftType),
+        url: this.$api_baseurl(url.daily_shiftType)
       }).then(res => {
         if (res.code == 1) {
           this.shiftSelect = [];
@@ -421,7 +457,7 @@ export default {
     //初始化类型下拉列表
     typeSelect_init() {
       this.$get_noToken({
-        url: this.$api_baseurl(url.proDailywork_type),
+        url: this.$api_baseurl(url.proDailywork_type)
       }).then(res => {
         if (res.code == 1) {
           this.typeSelect = [];
@@ -445,7 +481,7 @@ export default {
       };
       if (this.isDailyStart && recType) {
         this.$get_noToken({
-          url:this.$api_baseurl(url.proDailywork_forOne),
+          url: this.$api_baseurl(url.proDailywork_forOne),
           params: params
         }).then(res => {
           if (res.code == 1) {
@@ -518,6 +554,14 @@ export default {
         this.isDailyStart = true;
       }
     },
+    //休息时间发生改变
+    restTimeChange() {
+      let flag = this.dailyStartFlag();
+      if (flag) {
+        this.dailyStartHidden = false;
+        this.isDailyStart = true;
+      }
+    },
     //是否允许点击开始报工
     dailyStartFlag() {
       let flag = false;
@@ -542,7 +586,7 @@ export default {
         middleMould: this.macInfo.middleMould,
         bottomMould: this.macInfo.bottomMould
       };
-      console.log(data)
+      console.log(data);
       this.$post_noToken({
         url: this.$api_baseurl(url.proDailywork_add),
         data
@@ -586,7 +630,7 @@ export default {
       });
     },
     //列表状态
-    tableRowClassName({row}) {
+    tableRowClassName({ row }) {
       if (row.pro) {
         return "noDaily";
       } else {
