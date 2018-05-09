@@ -17,7 +17,9 @@ let url = {
   //海尔看板
   haierkanban:'/rest/Andon/getSopProdScheduleList',//GET 海尔线看板
   //科斯达看板
-  getAttendanceScheduleList:'/rest/Andon/getAttendanceScheduleList',//GET 车间生产管理看板01
+  getAttendanceScheduleList:'/rest/Andon/getAttendanceScheduleList',//GET 深圳车间生产管理看板
+  //上海智汇看板
+  getZhiHuiElecKanban:'/rest/kanban/getZhiHuiElecKanban',//GET 上海智汇仓库看板
 }
 
 export default url

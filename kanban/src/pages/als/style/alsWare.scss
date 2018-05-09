@@ -18,15 +18,65 @@
                     text-align: center;
                 }
                 thead {
+                    .shelveNo{
+                        width:pxTorem(90px);
+                    }
                     td {
                         height: pxTorem(45px);
                         background-color: $color02;
                         font-size: pxTorem(26px);
-                        font-weight:800;
+                        font-weight: 800;
+                    }
+                    .noName {
+                        position: relative;
+                        .Legend {
+                            position: absolute;
+                            right: pxTorem(10px);
+                            top: 50%;
+                            transform: translateY(-50%);
+                            display: flex;
+                            flex-direction: row;
+                            >* {
+                                display: inline-block;
+                            }
+                            .box {
+                                height: pxTorem(20px);
+                                width: pxTorem(20px);
+                                margin-right: pxTorem(5px);
+                                border:1px solid #dfdfdf;
+                                border-radius:2px;
+                            }
+                            .full {
+                                background-color: white;
+                            }
+                            .empty {
+                                background-color: white;
+                                background-color: #F56C6C;
+                            }
+                            .text {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                margin-right: pxTorem(10px);
+                            }
+                        }
                     }
                 }
                 tbody {
                     td {
+                        border:1px solid black;
+                    }
+                    .colBoxsTd{
+                        border:0;
+                    }
+                    .colBoxs{
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        .colBox{
+                            width: 5%;
+                            border:1px solid black;
+                        }
                     }
                 }
             }

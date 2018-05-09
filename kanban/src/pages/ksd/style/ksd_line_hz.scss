@@ -1,0 +1,43 @@
+@import '~assets/scss/components/computed.scss';
+//科斯达惠州线看板
+.kanbanView .ksd_line_hz {
+    $color01: #00B0F0;
+    $color02: #FFFF00;
+  .kanban-title {
+    background-color: $color01;
+    color: black;
+  }
+  .kanban-body {
+    .msg {
+      height: pxTorem(75px);
+      background-color: black;
+      color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      .text {
+        letter-spacing: pxTorem(3px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+        // left: -100%;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+      }
+      @keyframes msgMove {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    }
+  }
+}

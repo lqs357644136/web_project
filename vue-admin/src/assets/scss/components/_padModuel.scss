@@ -866,64 +866,273 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        .el-dialog__wrapper {
+        .rcordList {
+            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-        }
-        .listForm {}
-        .tabelList {
-            flex: 1;
-            .el-table__expanded-cell {
-                background-color: #efefef;
-                padding: pxTorem(20px);
-                .el-form {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    label {
-                        color: #99a9bf;
-                    }
-                    .el-form-item {
-                        margin: 0;
-                        width: 50%;
-                    }
-                    .listInfoContent {
-                        display: block;
-                        text-align: left;
-                    }
-                }
+            .el-dialog__wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
-            .listContent {
-                text-align: left;
-                display: block;
-                padding: 0 pxTorem(10px);
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap
-            }
-            .tourErrorRow {
-                td {
-                    background-color: #f56c6c;
-                    color: white;
-                    i {
-                        color: white;
-                    }
-                }
-                td:nth-child(2) {
-                    .cell {
-                        span {
-                            color: white !important;
+            .listForm {}
+            .tabelList {
+                flex: 1;
+                .el-table__expanded-cell {
+                    background-color: #efefef;
+                    padding: pxTorem(20px);
+                    .el-form {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        label {
+                            color: #99a9bf;
+                        }
+                        .el-form-item {
+                            margin: 0;
+                            width: 50%;
+                        }
+                        .listInfoContent {
+                            display: block;
+                            text-align: left;
                         }
                     }
                 }
+                .listContent {
+                    text-align: left;
+                    display: block;
+                    padding: 0 pxTorem(10px);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap
+                }
+                .tourErrorRow {
+                    td {
+                        background-color: #f56c6c;
+                        color: white;
+                        i {
+                            color: white;
+                        }
+                    }
+                    td:nth-child(2) {
+                        .cell {
+                            span {
+                                color: white !important;
+                            }
+                        }
+                    }
+                }
+                .otherRow {}
             }
-            .otherRow {
-          
+            .inspecRecord-list-goPage {
+                height: pxTorem(60px);
             }
         }
-        .inspecRecord-list-goPage {
-            height: pxTorem(60px);
+        .rcordInfo {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .backBtn {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin: 20px 0px;
+                button {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: pxTorem(200px);
+                    height: pxTorem(50px);
+                    span {
+                        width:100%;
+                        text-align: center;
+                    }
+                }
+            }
+            .checkMain {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                .checkInfo {
+                    //margin-bottom:pxTorem(10px);
+                    box-shadow: 0px;
+                    border-radius: 0px;
+                    .infoItem .is-disabled input {
+                        color: initial;
+                    }
+                }
+                .checkProject {
+                    flex: 1;
+                    .el-card__body {
+                        padding: 0;
+                        height: 100%;
+                    }
+                    .checkProjectBody {
+                        height: 100%; //----tabs 头部样式----
+                        .el-tab-pane {
+                            height: 100%;
+                        }
+                        .isPassIcon {
+                            color: #67C23A !important;
+                        }
+                        .failPassIcon {
+                            color: #F56C6C !important;
+                        }
+                        .isPass {
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            color: #67C23A;
+                            height: 100%;
+                            justify-content: center;
+                            .icon {
+                                font-size: pxTorem(120px)
+                            }
+                            .text {
+                                font-size: pxTorem(24px)
+                            }
+                        }
+                    }
+                }
+            } //检查步骤
+            .checkStep {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                .stepMsg {
+                    border-bottom: 1px solid #dfdfdf;
+                    margin-bottom: pxTorem(20px);
+                    display: flex;
+                    flex-direction: row;
+                    padding: pxTorem(10px) pxTorem(0px);
+                    .infoGroup {
+                        display: flex;
+                        flex-direction: row;
+                        margin-right: pxTorem(20px);
+                        &>* {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        }
+                        label {}
+                        span {}
+                    }
+                    .info {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        .checkNum {
+                            display: flex;
+                            flex-direction: row;
+                            .total {}
+                            .needCheck {}
+                        }
+                        .methodDesc {}
+                        .deviation {}
+                    }
+                    .crlBtn {}
+                    .fileWatch {
+                        display: flex;
+                        flex-direction: row;
+                        .el-button {
+                            overflow: initial;
+                            margin-left: pxTorem(10px);
+                        }
+                        .el-select {
+                            width: pxTorem(160px);
+                        }
+                    }
+                }
+                .stepMain {
+                    flex: 1;
+                    overflow-y: auto;
+                    .positionRow {
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 20px;
+                        border-bottom: 1px dashed #dfdfdf;
+                        &:last-child {
+                            border-bottom: 0px solid #dfdfdf;
+                        }
+                        .name {
+                            width: pxTorem(80px);
+                            font-weight: 800;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        .inputs {
+                            flex: 1;
+                            .el-col {
+                                display: flex;
+                                flex-direction: row;
+                                margin-bottom: pxTorem(10px);
+                                .inputForm {
+                                    input {
+                                        height: 100%;
+                                        text-align: center;
+                                        font-size: pxTorem(18px);
+                                        min-height: 45px;
+                                        width: 95%;
+                                    }
+                                }
+                                .airFlag {
+                                    margin: 0 pxTorem(10px);
+                                    i {
+                                        font-size: pxTorem(24px);
+                                    }
+                                    .none {
+                                        color: #6a6a6a;
+                                    }
+                                }
+                                .airFlagNotNum {
+                                    display: flex;
+                                    flex-direction: row;
+                                    border: 1px solid #000;
+                                    margin: auto;
+                                    width: 90%;
+                                    justify-content: space-around;
+                                    padding: pxTorem(2px);
+                                    border-radius: pxTorem(10px);
+                                    i {
+                                        font-size: pxTorem(36px);
+                                    }
+                                    .none {
+                                        color: #6a6a6a;
+                                    }
+                                }
+                                .inputSuccess {
+                                    input {
+                                        color: white;
+                                        background-color: #67C23A;
+                                        height: 100%;
+                                        text-align: center;
+                                    }
+                                }
+                                .inputFail {
+                                    input {
+                                        color: white;
+                                        background-color: #F56C6C;
+                                        height: 100%;
+                                        text-align: center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .stepSubmit {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    height: pxTorem(50px);
+                    button {
+                        width: 100%;
+                    }
+                }
+                .el-dialog__wrapper {
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+            }
         }
     }
 }

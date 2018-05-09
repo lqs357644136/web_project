@@ -7,9 +7,13 @@ import { AppComponent } from './app.component';
 
 import { ElModule } from 'element-angular'
 
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
-  declarations: [
+  
+ 
+ declarations: [
+    HomeComponent,
     AppComponent
   ],
   imports: [

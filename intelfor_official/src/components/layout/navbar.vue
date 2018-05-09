@@ -61,7 +61,7 @@
             <div class="tel">
               咨询热线:
               <img class="icon" src="~assets/images/navbar/tel.png" alt="tel">
-              <a href="#">400-8166-116</a>
+              <a href="#">400-816-6116</a>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
             </div>
             <div class="tel">
               <img class="icon" src="~assets/images/navbar/tel.png" alt="tel">
-              <a href="tel:400-8166-116">400-8166-116</a>
+              <a href="tel:400-8166-116">400-816-6116</a>
             </div>
           </div>
         </div>

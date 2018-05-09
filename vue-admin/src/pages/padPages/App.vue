@@ -48,12 +48,43 @@ export default {
   mounted() {
     this.get_sys();
     this.checkTour();
+    this.esop_Websocket();
   },
   components: {
     mainContent,
     leftSlide
   },
   methods: {
+    /////////////
+    /////////////
+    //测试websocket
+    esop_Websocket() {
+      let ws = new WebSocket("ws://192.168.1.10:8080/esop/websocket/pad");
+      ws.onopen = () => {
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        ws.send("admin");
+        console.log("数据发送中...");
+      };
+      ws.onmessage = evt => {
+        let obj = JSON.parse(evt.data);
+        let ptno = obj.ptno;
+        let process = obj.process;
+        let type = obj.type;
+        if (type == 2) {
+          this.$store.dispatch('set_menu_warning',true);
+          this.$notify({
+            title: `自主检验(${ptno})失败`,
+            message: "有新的自检失败信息,点击查看",
+            onClick: () => {
+              this.$router.push("/inspecRecord");
+              this.$store.dispatch('set_menu_warning',false);
+            },
+            type: "warning",
+            duration: 180000
+          });
+        }
+      };
+    },
     //获取系统所需资源
     get_sys() {
       this.loadingMsg = "加载用户资料";

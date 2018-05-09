@@ -1,0 +1,69 @@
+/*
+:host
+使用:host伪类选择器，用来选择组件宿主元素中的元素（相对于组件模板内部的元素）
+
+
+
+
+::ng-deep
+
+style its child component, we can use '::ng-deep':
+*/
+
+
+:host ::ng-deep .logo {
+    height: 32px;
+    background: #333;
+    border-radius: 6px;
+    margin: 16px;
+  }
+
+  :host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+    display: none;
+  }
+
+  :host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+    display: none;
+  }
+
+  :host ::ng-deep .ant-layout-sider-collapsed .anticon {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  :host ::ng-deep .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  :host ::ng-deep .trigger:hover {
+    color: #108ee9;
+  }
+
+  /*右浮动*/
+
+
+  .fr{
+      float: right;
+      padding-right: 10px;
+  }
+
+  /*设置logo*/
+
+  :host ::ng-deep .logo{
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+  }
+  
+  :host ::ng-deep .logo img{
+    
+      height: 32px;
+      float: left;
+  }
+  :host ::ng-deep .logo span{
+    color: #fff;
+  }

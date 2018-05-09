@@ -58,7 +58,7 @@ export const getMacINfo = function () {
       empNo: 30031, //工号
       line: 'A', //制程
       plant: 'ZSA', //车间
-      ptno: '10.100.200', //产品编码
+      ptno: 'LEDN32D50', //产品编码
     }
   }
 }

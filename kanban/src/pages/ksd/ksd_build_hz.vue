@@ -1,6 +1,6 @@
 <template>
   <div class="ksd_build_hz">
-    <kanbanTitle :logo="logo" title="车间生产管理看板" :right="date"></kanbanTitle>
+    <kanbanTitle :logo="logo" title="车间生产管理看板" ></kanbanTitle>
     <div class="kanban-body">
       <buildHzList :tableList="list"></buildHzList>
       <buildHzChart :chartData="charts"></buildHzChart>
@@ -18,6 +18,7 @@ import { $dataFormat } from "common/filiter/index.js";
 import logoPng from "./img/logo.png";
 import buildHzList from "./component/buildHzList.vue";
 import buildHzChart from "./component/buildHzChart.vue";
+import url from "api";
 export default {
   name: "ksd_build_hz",
   data() {
@@ -49,17 +50,17 @@ export default {
         plant: this.macInfo.plant,
         line: this.macInfo.line
       };
-      // this.$get_noToken({
-      //   url: this.$api_baseurl(url.getAttendanceScheduleList),
-      //   params: params
-      // }).then(res => {
-      //   console.log(res);
-      //   if (res.code == 1) {
+      this.$get_noToken({
+        url: this.$api_baseurl(url.getAttendanceScheduleList),
+        params: params
+      }).then(res => {
+        console.log(res);
+        if (res.code == 1) {
 
-      //   } else {
-      //     this.$message.error(res.msg);
-      //   }
-      // });
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
     },
     //动态刷新时间
     dateUpdate() {

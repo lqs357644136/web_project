@@ -1,0 +1,83 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- <div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  
+  <a routerLink="/home" routerLinkActive="active">首页</a>
+  <a routerLink="/shop" routerLinkActive="active">商铺</a>
+  <a routerLink="/product" routerLinkActive="active">商品</a>
+  <a routerLink="/user" routerLinkActive="active">用户</a>
+</div> -->
+
+
+
+
+
+
+<nz-layout>
+
+  <!-- 侧边栏 -->
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo">
+        <img alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+        <span class="logo_title">Angular后台管理系统</span>
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user"></i><span class="nav-text">用户管理</span></span>
+        <ul>
+          <li nz-menu-item> <a routerLink="/user/list" routerLinkActive="active">用户列表</a></li>
+          <li nz-menu-item><a routerLink="/user/vip" routerLinkActive="active">Vip用户</a></li>         
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-team"></i><span class="nav-text">Team</span></span>
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+      <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">File</span></span></li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+
+    <!-- 头部区域 -->
+    <nz-header style="background: #fff; padding:0;">
+      <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+
+      <nz-dropdown class="fr">
+          <a class="ant-dropdown-link" nz-dropdown>
+           管理员<i class="anticon anticon-down"></i>
+          </a>
+          <ul nz-menu>
+            <li nz-menu-item>
+              <a target="_blank" rel="noopener noreferrer" href="#">退出</a>
+            </li>
+           
+          </ul>
+        </nz-dropdown>
+
+    </nz-header>
+
+    <!-- 内容区域 -->
+    <nz-content style="margin:0 16px;">
+      <!-- 历史导航 -->
+      <nz-breadcrumb style="margin:12px 0;">
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+
+      <!-- 右侧内容区域 -->
+
+      <div style="padding:24px; background: #fff; min-height: 360px;">
+      
+          <router-outlet></router-outlet>
+          
+
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>

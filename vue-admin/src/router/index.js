@@ -38,8 +38,7 @@ Vue.use(VueRouter)
 // let messages = i18n.getLocaleMessage(lang).message.menu;
 
 //平板页面功能
-export const privateModule = [
-  {
+export const privateModule = [{
     //检验规范
     path: '/specification',
     name: 'specification',
@@ -50,7 +49,7 @@ export const privateModule = [
       icon: 'fa fa-codiepie',
       auth: true
     }
-  },{
+  }, {
     //检验纪录
     path: '/inspecRecord',
     name: 'inspecRecord',
@@ -322,38 +321,38 @@ export const phoneModule = [{
 
 //公共模块
 const routes = [{
-  path: '/404',
-  name: 'notPage',
-  //component: resolve => require(['pages/error/404'], resolve),
-  component :notPage,
-}, {
-  path: '*',
-  redirect: '/404'
-}, {
-  path: '/user/login',
-  name: 'login',
-  //component: resolve => require(['pages/user/login.vue'], resolve),
-  component: login,
-  meta: {
-    auth: true
+    path: '/404',
+    name: 'notPage',
+    //component: resolve => require(['pages/error/404'], resolve),
+    component: notPage,
+  }, {
+    path: '*',
+    redirect: '/404'
+  }, {
+    path: '/user/login',
+    name: 'login',
+    //component: resolve => require(['pages/user/login.vue'], resolve),
+    component: login,
+    meta: {
+      auth: true
+    }
+  }, {
+    path: '/',
+    redirect: '/user/login',
+  }, {
+    path: '/pad',
+    redirect: '/specification',
+    //component: resolve => require(['pages/padPages/App.vue'], resolve),
+    component: layout,
+    children: privateModule
+  },
+  {
+    path: '/phone',
+    redirect: '/phone/home',
+    component: resolve => require(['pages/phonePages/App.vue'], resolve),
+    //component: phoneLayout,
+    children: phoneModule
   }
-}, {
-  path: '/',
-  redirect: '/user/login',
-}, {
-  path: '/pad',
-  redirect: '/specification',
-  //component: resolve => require(['pages/padPages/App.vue'], resolve),
-  component: layout,
-  children: privateModule
-}, 
-{
-  path: '/phone',
-  redirect: '/phone/home',
-  component: resolve => require(['pages/phonePages/App.vue'], resolve),
-  //component: phoneLayout,
-  children: phoneModule
-}
 ]
 
 const router = new VueRouter({
@@ -375,9 +374,8 @@ const router = new VueRouter({
 //路由开始之前的操作
 router.beforeEach((to, from, next) => {
   //判断是否需要获取接口地址
-  if (to.path.indexOf('/ter/') != -1) {
-    let base_url = to.query.ip
-    store.dispatch('set_host', base_url)
+  if (to.name == 'inspecRecord') {
+    store.dispatch('set_menu_warning', false);
   }
   let isLogin = to.meta.auth; //是否需要登录
   if (isLogin) {
@@ -409,7 +407,6 @@ router.beforeEach((to, from, next) => {
 })
 
 //路由完成之后的操作
-router.afterEach(route => {
-})
+router.afterEach(route => {})
 
 export default router

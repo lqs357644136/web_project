@@ -72,6 +72,9 @@ export default {
   [type.SET_ENTITY_FILEPATHS](state, paths) {
     state.entity_filePaths = paths;
   },
+  [type.SET_MENU_WARNING](state, flag) {
+    state.menuWarning = flag;
+  },
 }
 
 //根绝用户信息的菜单信息生成菜单目录数据

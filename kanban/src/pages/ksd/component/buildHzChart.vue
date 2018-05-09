@@ -1,7 +1,8 @@
 <template>
-    <div class="buildHzChart" ref="buildHzChart">
-
-    </div>
+  <div class="buildHzChart">
+    <div class="chart" ref="buildHzChart01"></div>
+    <div class="chart" ref="buildHzChart02"></div>
+  </div>
 </template>
 
 <script>
@@ -20,15 +21,26 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.buildHzChart_init();
+      this.buildHzChart_init01();
+      this.buildHzChart_init02();
     }, 1000);
   },
   methods: {
-    buildHzChart_init() {
-      this.chart01 = echart.init(this.$refs.buildHzChart);
+    buildHzChart_init01() {
+      this.chart01 = echart.init(this.$refs.buildHzChart01);
       let option = {
         backgroundColor: "#333333",
         animation: false,
+        title: {
+          show: true,
+          text: "总产出",
+          top:'2px',
+          left:'center',
+          textStyle: {
+            color: "#fff",
+            fontSize: "26"
+          }
+        },
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -37,6 +49,7 @@ export default {
           }
         },
         legend: {
+          show: false,
           orient: "vertical",
           top: "50%",
           right: "1%",
@@ -47,8 +60,8 @@ export default {
           }
         },
         grid: {
-          left: "10%",
-          right: "10%",
+          left: "5%",
+          right: "5%",
           bottom: "5px",
           containLabel: true
         },
@@ -82,7 +95,7 @@ export default {
         ],
         series: [
           {
-            name: "计划产量",
+            name: "总产出",
             type: "bar",
             //data: this.chartData.planNum,
             data: [123, 234, 345, 456],
@@ -107,18 +120,94 @@ export default {
               }
             }
             //barWidth: "40"
-          },
+          }
+        ]
+      };
+      this.chart01.setOption(option);
+    },
+    buildHzChart_init02() {
+      this.chart01 = echart.init(this.$refs.buildHzChart02);
+      let option = {
+        backgroundColor: "#333333",
+        animation: false,
+        title: {
+          show: true,
+          text: "总达成率",
+          top:'2px',
+          left:'center',
+          textStyle: {
+            color: "#fff",
+            fontSize: "26"
+          }
+        },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
+        legend: {
+          show: false,
+          orient: "vertical",
+          top: "50%",
+          right: "1%",
+          data: ["计划产量", "实际产量"],
+          textStyle: {
+            color: "#fff",
+            fontSize: "26"
+          }
+        },
+        grid: {
+          left: "5%",
+          right: "5%",
+          bottom: "5px",
+          containLabel: true
+        },
+        xAxis: [
           {
-            name: "实际产量",
+            type: "category",
+            //data: this.chartData.xAxis,
+            data: ["1线", "2线", "3线", "4线"],
+            axisLine: {
+              lineStyle: {
+                color: "#fff"
+              }
+            },
+            axisLabel: {
+              fontSize: 26
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: "value",
+            axisLine: {
+              lineStyle: {
+                color: "#fff"
+              }
+            },
+            min: 0,
+            max: 100,
+            axisLabel: {
+              fontSize: 26,
+              formatter: '{value} %'
+            }
+          }
+        ],
+        series: [
+          {
+            name: "总达成率",
             type: "bar",
             //data: this.chartData.realNum,
-            data: [234, 345, 456, 567],
+            data: [20, 20, 30, 50],
             label: {
               normal: {
                 show: true,
                 position: "insideTop",
                 fontWeight: 100,
-                fontSize: 20
+                fontSize: 20,
+                formatter: '{c}%'
               }
             },
             itemStyle: {
@@ -131,7 +220,7 @@ export default {
                 textStyle: {
                   color: "#fff"
                 }
-              },
+              }
             }
             //barWidth: "40"
           }

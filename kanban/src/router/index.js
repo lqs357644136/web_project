@@ -48,6 +48,16 @@ const routes = [{
     auth: false
   },
 }, {
+  //科斯达惠州线看板
+  path: '/ksd/ksd_line_hz',
+  name: 'ksd_line_hz',
+  component: r => require.ensure([], () => r(require('pages/ksd/ksd_line_hz.vue')), 'ksd_line_hz'),
+  //component: ksd_line_hz,
+  meta: {
+    title: '科斯达惠州线看板',
+    auth: false
+  },
+}, {
   //上海智汇仓库看板
   path: '/als/alsWare',
   name: 'alsWare',
@@ -57,7 +67,7 @@ const routes = [{
     title: '上海智汇仓库看板',
     auth: false
   },
-} ]
+}]
 
 const router = new VueRouter({
   routes,

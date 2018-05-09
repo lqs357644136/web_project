@@ -15,7 +15,7 @@
         flex-direction: column;
     }
     .haier-line-list {
-        flex: 0.6;
+        flex: 0.7;
         display: flex;
         flex-direction: row;
         .table01 {
@@ -27,7 +27,7 @@
         }
         .el-table__body {
             td {
-                height: pxTorem(57.5px);
+                height: pxTorem(54.5px);
             }
         }
         thead th,
@@ -95,18 +95,21 @@
     }
     .line_canvas {
         padding: 0 pxTorem(5px);
-        flex: 0.4;
+        flex: 0.3;
         display: flex;
         flex-direction: column;
+        position: relative;
         .process_boxs {
-            height: pxTorem(80px);
-            position: relative;
+            position: absolute;
+            width: 100%;
+            top: 15%;
+            z-index: 2;
             .box {
                 position: absolute;
                 background-color: $color01;
                 color: white;
-                height: pxTorem(40px);
-                width: pxTorem(40px);
+                height: pxTorem(35px);
+                width: pxTorem(35px);
                 top: 50%;
                 transform: translateY(-50%);
                 border-radius: pxTorem(5px);
@@ -122,11 +125,18 @@
                     border-radius: pxTorem(5px);
                     transition: all 5s ease;
                     background-color: none;
+                    position: relative;
+                    font-size: pxTorem(20px);
                 }
             }
         }
         .line_png {
             flex: 1;
+            position: absolute;
+            height: 100%;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
             img {
                 height: 100%;
             }
@@ -136,7 +146,7 @@
         border: 1px solid black;
         .states {
             border: 1px solid black;
-            height: pxTorem(40px);
+            height: pxTorem(60px);
             display: flex;
             flex-direction: row;
             .running {

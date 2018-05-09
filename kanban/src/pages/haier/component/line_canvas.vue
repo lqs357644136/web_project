@@ -22,12 +22,12 @@ export default {
           name: "P01",
           title: "P01",
           color: "red",
-          xAxis:4,
+          xAxis:0,
         },{
           name: "P02",
           title: "P02",
           color: "red",
-          xAxis:10,
+          xAxis:2,
         },
         {
           name: "P03",
@@ -67,6 +67,26 @@ export default {
         },{
           name: "P10",
           title: "P10",
+          color: "",
+          xAxis:96.5,
+        },{
+          name: "P11",
+          title: "P11",
+          color: "",
+          xAxis:96.5,
+        },{
+          name: "P12",
+          title: "P12",
+          color: "",
+          xAxis:96.5,
+        },{
+          name: "P13",
+          title: "P13",
+          color: "",
+          xAxis:96.5,
+        },{
+          name: "P14",
+          title: "P14",
           color: "",
           xAxis:96.5,
         },

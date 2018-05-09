@@ -54,4 +54,7 @@ export default {
   }, paths) {
     commit(mutations.SET_ENTITY_FILEPATHS, paths)
   },
+  [actions.SET_MENU_WARNING]({commit},flag){
+    commit(mutations.SET_MENU_WARNING,flag)
+  },
 }

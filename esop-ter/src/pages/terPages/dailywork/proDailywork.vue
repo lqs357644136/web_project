@@ -57,7 +57,7 @@
                   </el-form-item>
                 </el-col>
 
-                <el-col v-show="true" :xs="24" :sm="24" :md="6" :lg="6">
+                <el-col v-show="recTypeMenu.restTime==1" :xs="24" :sm="24" :md="6" :lg="6">
                   <el-form-item label="休息时间">
                     <el-select @change="restTimeChange()" v-model="macInfo.restTime" placeholder="请输入休息时间">
                       <el-option v-for="item in restTimeSelect" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -241,7 +241,7 @@ export default {
       typeSelect: [],
       partNoSelect: [],
       shiftSelect: [],
-      restTimeSelect:[],
+      restTimeSelect: [],
       dailyworkList: [],
       rules: {
         //验证规则
@@ -411,16 +411,16 @@ export default {
       });
     },
     //初始化休息时间
-    restTimeSelect_init(){
-       this.$get_noToken({
-        url: this.$api_baseurl(url.daily_shiftType)
+    restTimeSelect_init() {
+      this.$get_noToken({
+        url: this.$api_baseurl(url.getRestTime)
       }).then(res => {
         if (res.code == 1) {
           this.restTimeSelect = [];
           for (let obj of res.data) {
             let option = {
-              label: obj.typename,
-              value: obj.typename
+              label: obj.typecode,
+              value: obj.typecode
             };
             this.restTimeSelect.push(option);
           }
@@ -484,6 +484,7 @@ export default {
           url: this.$api_baseurl(url.proDailywork_forOne),
           params: params
         }).then(res => {
+          console.log(res);
           if (res.code == 1) {
             //允许开始报工
             this.recTypeMenu = res.data;
@@ -492,6 +493,7 @@ export default {
             this.macInfo.topMould = 0;
             this.macInfo.middleMould = 0;
             this.macInfo.bottomMould = 0;
+            //this.macInfo.restTime = 0;
             this.dailyStartHidden = true;
             let flag = this.dailyStartFlag();
             if (flag) {
@@ -573,8 +575,8 @@ export default {
     //开始报工
     dailyStart() {
       let data = {
-        empNo: this.macInfo.empNo,
-        equipNo: this.macInfo.equipNo,
+        empNo: this.macInfo.empNo.toString(),
+        equipNo: this.macInfo.equipNo.toString(),
         recType: this.macInfo.recType,
         partNo: this.macInfo.ptno,
         resNo: this.macInfo.line,
@@ -582,11 +584,11 @@ export default {
         qty: this.macInfo.qty,
         shift: this.macInfo.shift,
         scrapQty: this.macInfo.scrapQty,
-        topMould: this.macInfo.topMould,
-        middleMould: this.macInfo.middleMould,
-        bottomMould: this.macInfo.bottomMould
+        topMould: this.macInfo.topMould.toString(),
+        middleMould: this.macInfo.middleMould.toString(),
+        bottomMould: this.macInfo.bottomMould.toString(),
+        restTime: this.macInfo.restTime
       };
-      console.log(data);
       this.$post_noToken({
         url: this.$api_baseurl(url.proDailywork_add),
         data
@@ -605,9 +607,11 @@ export default {
         qty: this.macInfo.qty,
         shift: this.macInfo.shift,
         scrapQty: this.macInfo.scrapQty,
-        topMould: this.macInfo.topMould,
-        middleMould: this.macInfo.middleMould,
-        bottomMould: this.macInfo.bottomMould
+        topMould: this.macInfo.topMould.toString(),
+        middleMould: this.macInfo.middleMould.toString(),
+        bottomMould: this.macInfo.bottomMould.toString(),
+        recType: this.macInfo.recType,
+        restTime: this.macInfo.restTime
       };
       this.$post_noToken({
         url: this.$api_baseurl(url.proDailywork_add),

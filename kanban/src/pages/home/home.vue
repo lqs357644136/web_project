@@ -33,15 +33,15 @@ export default {
           icon: "icon fa fa-snowflake-o"
         },
         {
-          path: "/als/alsWare?ip="+api,
+          path: "/als/alsWare?ip="+api+'&wareHouse=01&shelves=A01_A02_A03',
           title: "上海智汇货位看板",
           icon: "icon fa fa-address-book-o"
         },
-        // {
-        //   path: "/ter/batch/batchEnterBlend?ip="+api,
-        //   title: "调合批次录入",
-        //   icon: "icon fa fa-area-chart"
-        // },
+        {
+          path: "/ksd/ksd_build_hz?ip="+api,
+          title: "科斯达惠州总看板",
+          icon: "icon fa fa-area-chart"
+        },
         // {
         //   path: "/ter/firstEntity?ip="+api,
         //   title: "首检录入",

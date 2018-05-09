@@ -33,4 +33,6 @@ export default {
   xbar:null,
   //检查录入文档地址
   entity_filePaths:null,
+  //菜单警告样式
+  menuWarning:false,
 }

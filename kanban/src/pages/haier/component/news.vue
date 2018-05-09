@@ -43,6 +43,16 @@
           </span>
         </span>
       </div>
+      <div v-show="newsData==-1" class="running">
+        <span class="begin_animation">
+          <!-- <div class="warning"></div> -->
+        </span>
+        <span class="text">
+          <span>
+            <!-- <b>正在生产</b> -->
+          </span>
+        </span>
+      </div>
       <div class="statesBtns">
         <div :class="newsData=='0'?'bron':''">生产</div>
         <div :class="newsData=='1'?'resset':''">休息</div>
@@ -61,6 +71,11 @@
 <script>
 export default {
   name: "news",
-  props: ["newsData"]
+  props: ["newsData"],
+  data() {
+    return {
+      //newsData: -1
+    };
+  }
 };
 </script>

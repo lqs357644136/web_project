@@ -212,68 +212,96 @@ export default {
           name: "P01",
           title: "P01",
           color: "",
-          xAxis: 4,
+          xAxis: 0.5,
           colorLevel: 0
         },
         {
           name: "P02",
           title: "P02",
           color: "",
-          xAxis: 10,
+          xAxis: 3.5,
           colorLevel: 0
         },
         {
           name: "P03",
           title: "P03",
           color: "",
-          xAxis: 16,
+          xAxis: 7,
           colorLevel: 0
         },
         {
           name: "P04",
           title: "P04",
           color: "",
-          xAxis: 22.5,
+          xAxis: 10,
           colorLevel: 0
         },
         {
           name: "P05",
           title: "P05",
           color: "",
-          xAxis: 29,
+          xAxis: 13.5,
           colorLevel: 0
         },
         {
           name: "P06",
           title: "P06",
           color: "",
-          xAxis: 35.5,
+          xAxis: 16.5,
           colorLevel: 0
         },
         {
           name: "P07",
           title: "P07",
           color: "",
-          xAxis: 59,
+          xAxis: 20,
           colorLevel: 0
         },
         {
           name: "P08",
           title: "P08",
           color: "",
-          xAxis: 64.5,
+          xAxis: 23,
           colorLevel: 0
         },
         {
           name: "P09",
           title: "P09",
           color: "",
-          xAxis: 76.5,
+          xAxis: 26.5,
           colorLevel: 0
         },
         {
           name: "P10",
           title: "P10",
+          color: "",
+          xAxis: 29.5,
+          colorLevel: 0
+        },
+        {
+          name: "P11",
+          title: "P11",
+          color: "",
+          xAxis: 44.5,
+          colorLevel: 0
+        },
+        {
+          name: "P12",
+          title: "P12",
+          color: "",
+          xAxis: 53.5,
+          colorLevel: 0
+        },
+        {
+          name: "P13",
+          title: "P13",
+          color: "",
+          xAxis: 69.5,
+          colorLevel: 0
+        },
+        {
+          name: "P14",
+          title: "P14",
           color: "",
           xAxis: 96.5,
           colorLevel: 0

@@ -48,4 +48,7 @@ export default {
   [type.GET_ENTITY_FILEPATHS]:state =>{
     return state.entity_filePaths;
   },
+  [type.GET_MENU_WARNING]:state =>{
+    return state.menuWarning;
+  },
 }

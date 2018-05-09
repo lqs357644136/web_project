@@ -8,7 +8,12 @@
     <div class="esop-leftMenu" ref="esopLeftSlide">
       <div v-for="(menu,index) in menus" :key="index">
 
-        <div class="singleItem menuItem" :ref="menu.name" v-if="typeof menu.child === 'undefined'" @click="gopagefn(menu.path,menu.name)">
+        <div v-if="menu.name=='inspecRecord'" :class="menuWarning&&$route.name!='inspecRecord' ?'singleItem menuItem colorWarning':$route.name!='inspecRecord'?'singleItem menuItem ':'singleItem menuItem active'" :ref="menu.name"  @click="gopagefn(menu.path,menu.name)">
+          <i :class="menu.icon"></i>
+          <span class="title">{{menu.title}}</span>
+        </div>
+
+        <div v-else-if="menu.name!='inspecRecord'&&typeof menu.child === 'undefined'" class="singleItem menuItem" :ref="menu.name" @click="gopagefn(menu.path,menu.name)">
           <i :class="menu.icon"></i>
           <span class="title">{{menu.title}}</span>
         </div>
@@ -54,7 +59,8 @@ export default {
     ...mapGetters({
       isCollapse: "get_leftSlide_state",
       pageLoading: "get_pageloading",
-      langPackage: "get_langpackage"
+      langPackage: "get_langpackage",
+      menuWarning: "get_menu_warning"
     })
   },
   watch: {
@@ -80,69 +86,69 @@ export default {
         {
           name: "specification",
           path: "/specification",
-          title: this.langPackage.menu_pad.specification,
+          title: "检验规范",
           icon: "fa fa-codiepie"
         },
         {
           name: "inspecRecord",
           path: "/inspecRecord",
-          title: this.langPackage.menu_pad.inspecRecord,
+          title: "检验记录",
           icon: "fa fa-commenting"
         },
         {
           name: "firstEntity",
           path: "/firstEntity",
-          title: this.langPackage.menu_pad.firstEntity,
+          title: "首检录入",
           icon: "fa fa-area-chart"
         },
         {
           name: "tourEntity",
           path: "/tourEntity",
-          title: this.langPackage.menu_pad.tourEntity,
+          title: "巡回录入",
           icon: "fa fa-bookmark"
         },
         {
           name: "product",
           path: "/product",
-          title: this.langPackage.menu_pad.product,
+          title: "产品履历",
           icon: "fa fa-asl-interpreting",
           child: [
             {
               name: "productInfo",
               path: "/product/productInfo",
-              title: this.langPackage.menu_pad.productInfo
+              title: "履历详情"
             },
             {
               name: "productEnter",
               path: "/product/productEnter",
-              title: this.langPackage.menu_pad.productEnter
+              title: "履历录入"
             }
           ]
         },
         {
           name: "workonoff",
           path: "/workonoff",
-          title: this.langPackage.menu_pad.workonoff,
+          title: "上岗纪录",
           icon: "fa fa-codiepie"
         },
         {
           name: "signage",
           path: "/signage",
-          title: this.langPackage.menu_pad.signage,
+          title: "电子看板",
           icon: "fa fa-calendar-minus-o",
           child: [
             {
-              title: this.langPackage.menu_pad.machineReachRate,
+              title: "机台看板",
               path: "/signage/machineReachRate",
               name: "machineReachRate"
             },
             {
-              title: this.langPackage.menu_pad.prodSchedule,
+              title: "总排程看板",
               path: "/signage/prodSchedule",
               name: "prodSchedule"
             },
             {
-              title: this.langPackage.menu_pad.wholeReachRate,
+              title: "整体达成率看板",
               path: "/signage/wholeReachRate",
               name: "wholeReachRate"
             }
@@ -151,21 +157,21 @@ export default {
         {
           name: "messagePush",
           path: "/messagePush",
-          title: this.langPackage.menu_pad.messagePush,
+          title: "消息推送",
           icon: "fa fa-comment-o",
           child: [
             {
-              title: this.langPackage.menu_pad.notice,
+              title: "消息广播",
               path: "/messagePush/notice",
               name: "notice"
             },
             {
-              title: this.langPackage.menu_pad.bulletin,
+              title: "电子公告",
               path: "/messagePush/bulletin",
               name: "bulletin"
             },
             {
-              title: this.langPackage.menu_pad.precautions,
+              title: "注意事项",
               path: "/messagePush/precautions",
               name: "precautions"
             }

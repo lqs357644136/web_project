@@ -43,6 +43,7 @@ let url = {
   aduitInspect: '/rest/qc/aduitInspect', //POST 审核不合格检验纪录
   getRoutNoticeList:'/rest/qc/getRoutNoticeList',//GET 获取巡检通知
   getFilePath:'/rest/kanban/getFilePath',//GET 获取产品编码对应文档分类的文档
+  getInspectRecordDetail:'/rest/kanban/getInspectRecordDetail',//GET 获取检验纪录明细
 }
 
 //测试环境接口地址

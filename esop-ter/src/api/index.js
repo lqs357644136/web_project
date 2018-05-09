@@ -34,6 +34,8 @@ let url = {
   precautions_list:'/rest/kanban/getPrecautions',//GET 获取注意事项列表
   getInspectRecord: '/rest/kanban/getInspectRecord', //GET 获取检验纪录
   getFilePath:'/rest/kanban/getFilePath',//GET 获取产品编码对应文档分类的文档
+  getInspectRecordDetail:'/rest/kanban/getInspectRecordDetail',//GET 获取检验纪录明细
+  getRestTime:'/rest/kanban/getRestTime',//GET 获取作息时间
   //esop
   saleLam_get:'/rest/Andon/getAndonList',//GET 
   get_xBar:'/rest/kanban/getXbar',//GET 获取xBar

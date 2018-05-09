@@ -1,0 +1,66 @@
+<!-- 
+  
+  nzAjaxData   远程异步数据，与nzDataSource二选一
+
+
+  [nzLoading]="_loading"    loading 是否显示
+  [nzTotal]="_total"    总数     
+  [(nzPageIndex)]="_current"     当前是第几页  必须写
+  (nzPageIndexChange)="refreshData()"   点击每一页的时候触发的方法
+
+  [(nzPageSize)]="_pageSize"    每页的数量
+
+
+
+
+
+
+
+  ngModelChange   checkbox改变的时候触发的回调函数
+
+
+
+  (ngModelChange)="_checkAll($event)"  获取是否选中
+
+
+
+   [nzIndeterminate]="_indeterminate"  部分选中显示  -
+
+   
+-->
+
+<nz-table #nzTable [nzAjaxData]="_displayData"  [nzLoading]="_loading" [nzTotal]="_total" [(nzPageIndex)]="_page"   [(nzPageSize)]="_pageSize"    (nzPageIndexChange)="requestData()">
+  <thead nz-thead>
+    <tr>
+      <th nz-th nzCheckbox>
+        <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
+        </label>
+      </th>
+      <th nz-th><span>标题</span></th>
+      <th nz-th><span>用户名</span></th>
+      <th nz-th><span>分类id</span></th>
+      <th nz-th><span>操作</span></th>
+    </tr>
+  </thead>
+  <tbody nz-tbody>
+    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+      <td nz-td nzCheckbox>
+        <label nz-checkbox [(ngModel)]="data.checked" (ngModelChange)="_refreshStatus($event)">
+        </label>
+      </td>
+      <td nz-td>
+        <a>{{data.title}}</a>
+      </td>
+      <td nz-td>{{data.username}}</td>
+      <td nz-td>{{data.cid}}</td>
+
+      <td nz-td>
+          <a routerLink="/user/edit" routerLinkActive="active">
+            <button nz-button [nzType]="'primary'">
+              <span>编辑</span>
+            </button>
+         </a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

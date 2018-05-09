@@ -33,3 +33,5 @@ export const SET_SALELAM_CHARTDATA ='SET_SALELAM_CHARTDATA'
 export const SET_XBAR ='SET_XBAR'
 //检查录入文档地址
 export const SET_ENTITY_FILEPATHS = 'SET_ENTITY_FILEPATHS'
+//菜单警告样式
+export const SET_MENU_WARNING = 'SET_MENU_WARNING'
