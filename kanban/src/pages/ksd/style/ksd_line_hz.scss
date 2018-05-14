@@ -1,13 +1,80 @@
 @import '~assets/scss/components/computed.scss';
-//科斯达惠州线看板
+//科斯达惠州车间看板
 .kanbanView .ksd_line_hz {
-    $color01: #00B0F0;
-    $color02: #FFFF00;
+  $color01: #00B0F0;
+  $color02: #FFFF00;
   .kanban-title {
     background-color: $color01;
     color: black;
+    .logo {
+      position: absolute;
+      height: 100%;
+      width: 300px;
+      left: 0;
+      img{
+        width: 100%;
+      }
+    }
   }
   .kanban-body {
+    display: flex;
+    flex-direction: column;
+    .lineHzList {
+      flex: 0.7;
+      table {
+        height: 100%;
+        width: 100%;
+        thead {
+          .theadBox {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+          }
+          .picture {
+            img {
+              height: 100%;
+              width: 100%;
+            }
+          }
+          tr {
+            td {
+              position: relative;
+              background: $color02;
+              width: 8%;
+              text-align: center;
+            }
+            td:nth-child(1) {
+              width: 6%;
+            }
+          }
+          tr:nth-child(1) {
+            td {
+              height: pxTorem(120px);
+            }
+          }
+          tr:nth-child(2) {
+            td {
+              height: pxTorem(45px);
+            }
+          }
+        }
+        tbody {
+          tr {
+            td {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .lineHzChart {
+      flex: 0.3;
+    }
     .msg {
       height: pxTorem(75px);
       background-color: black;

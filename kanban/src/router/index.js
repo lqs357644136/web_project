@@ -67,6 +67,16 @@ const routes = [{
     title: '上海智汇仓库看板',
     auth: false
   },
+}, {
+  //上海智汇生产看板
+  path: '/als/alsBuild',
+  name: 'alsBuild',
+  component: r => require.ensure([], () => r(require('pages/als/alsBuild.vue')), 'alsBuild'),
+  //component: alsWare,
+  meta: {
+    title: '上海智汇生产看板',
+    auth: false
+  },
 }]
 
 const router = new VueRouter({

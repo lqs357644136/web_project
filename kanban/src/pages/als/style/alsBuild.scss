@@ -1,0 +1,163 @@
+@import '~assets/scss/components/computed.scss';
+.kanbanView .alsBuild {
+  $color01: #8DB4E2;
+  $color02: #CCC0DA;
+  $color03: #FEFD04;
+  .titleStyle {
+    background-color: $color01;
+  }
+  .kanban-body {
+    display: flex;
+    flex-direction: column;
+    .alsBuildInfo {
+      flex: 0.3;
+      display: flex;
+      background: $color02;
+      table {
+        height: 100%;
+      }
+      .table01 {
+        height: 100%;
+        background-color: $color03;
+      }
+      .table02 {
+        flex: 1;
+        background-color: black;
+        color: white;
+        td {}
+        thead {
+          td {
+            text-align: center;
+            font-weight: 800;
+            height: pxTorem(40px);
+          }
+        }
+        tbody {
+          td {
+            text-align: center;
+          }
+        }
+      }
+      display: flex;
+      .managerTd {
+        width: pxTorem(400px);
+        padding-left: pxTorem(10px);
+        position: relative;
+        &>div {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          flex-direction: row;
+          .title {
+            width: pxTorem(70px);
+            font-weight: 800;
+          }
+        }
+      }
+      .attendanceTd {
+        width: pxTorem(200px);
+        position: relative;
+        .attendance {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          top: 0;
+          span {
+            padding-left: pxTorem(10px);
+          }
+        }
+      }
+      .andon {
+        position: relative;
+        table {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+        }
+      }
+    }
+    .alsEntityList {
+      flex: 0.4;
+      table {
+        height: 100%;
+        width: 100%;
+        thead {
+          td {
+            height: pxTorem(40px);
+            text-align: center;
+            font-weight: 800;
+            background: white;
+          }
+          tr {
+            & td:nth-child(1),
+            & td:nth-child(2),
+            & td:nth-child(3),
+              {
+              background: $color03;
+            }
+            & td:nth-child(1),
+            & td:nth-child(2) {
+              width: pxTorem(200px);
+            }
+            & td:nth-child(3),
+            & td:nth-child(4) {
+              width: pxTorem(100px);
+            }
+          }
+        }
+        tbody {
+          td {
+            text-align: center;
+          }
+          tr {
+            & td:nth-child(1),
+            & td:nth-child(2),
+            & td:nth-child(3),
+              {
+              background: $color03;
+            }
+          }
+        }
+      }
+    }
+    .alsBuildChart {
+      flex: 0.3;
+    }
+    .msg {
+      height: pxTorem(75px);
+      background-color: black;
+      color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      .text {
+        letter-spacing: pxTorem(3px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+        // left: -100%;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+      }
+      @keyframes msgMove {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    }
+  }
+}

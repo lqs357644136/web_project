@@ -1,11 +1,11 @@
 <template>
     <div class="buildHzList">
-        <table class="" border="1" cellspacing="0">
+        <table class="" border="1" cellspacing="0" >
             <thead>
                 <tr>
-                    <td colspan="4">车间人数 : {{123}}</td>
-                    <td colspan="3">出勤人数 : {{123}}</td>
-                    <td colspan="3">日期 : {{date}}</td>
+                    <td colspan="4">车间人数 : {{tableList.info.actPersonQty}}</td>
+                    <td colspan="3">出勤人数 : {{tableList.info.attPersonQty}}</td>
+                    <td colspan="3">日期 : {{tableList.info.currentDate | dataFormat('yyyy-MM-dd')}}</td>
                 </tr>
                 <tr>
                     <td>线别</td>
@@ -21,77 +21,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>线别</td>
-                    <td>工单号</td>
-                    <td>客户</td>
-                    <td>料号</td>
-                    <td>产品型号</td>
-                    <td>订单数量</td>
-                    <td>标准产能</td>
-                    <td>实际产能</td>
-                    <td>总达成率</td>
-                    <td>备注</td>
-                </tr>
-                <tr>
-                    <td>线别</td>
-                    <td>工单号</td>
-                    <td>客户</td>
-                    <td>料号</td>
-                    <td>产品型号</td>
-                    <td>订单数量</td>
-                    <td>标准产能</td>
-                    <td>实际产能</td>
-                    <td>总达成率</td>
-                    <td>备注</td>
-                </tr>
-                <tr>
-                    <td>线别</td>
-                    <td>工单号</td>
-                    <td>客户</td>
-                    <td>料号</td>
-                    <td>产品型号</td>
-                    <td>订单数量</td>
-                    <td>标准产能</td>
-                    <td>实际产能</td>
-                    <td>总达成率</td>
-                    <td>备注</td>
-                </tr>
-                <tr>
-                    <td>线别</td>
-                    <td>工单号</td>
-                    <td>客户</td>
-                    <td>料号</td>
-                    <td>产品型号</td>
-                    <td>订单数量</td>
-                    <td>标准产能</td>
-                    <td>实际产能</td>
-                    <td>总达成率</td>
-                    <td>备注</td>
-                </tr>
-                <tr>
-                    <td>线别</td>
-                    <td>工单号</td>
-                    <td>客户</td>
-                    <td>料号</td>
-                    <td>产品型号</td>
-                    <td>订单数量</td>
-                    <td>标准产能</td>
-                    <td>实际产能</td>
-                    <td>总达成率</td>
-                    <td>备注</td>
-                </tr>
-                <tr>
-                    <td>线别</td>
-                    <td>工单号</td>
-                    <td>客户</td>
-                    <td>料号</td>
-                    <td>产品型号</td>
-                    <td>订单数量</td>
-                    <td>标准产能</td>
-                    <td>实际产能</td>
-                    <td>总达成率</td>
-                    <td>备注</td>
+                <tr v-for="(item,index) in tableList.list" :key="index">
+                    <td>{{item.lineDesc}}</td>
+                    <td>{{item.orderNo}}</td>
+                    <td>{{item.custNo}}</td>
+                    <td>{{item.partNo}}</td>
+                    <td>{{item.ptnm}}</td>
+                    <td>{{item.schQty}}</td>
+                    <td>{{item.uDF11}}</td>
+                    <td>{{item.actulQty}}</td>
+                    <td>{{takenNum(item.rentPercent)}}</td>
+                    <td>{{item.remark}}</td>
                 </tr>
             </tbody>
         </table>
@@ -105,22 +45,15 @@ export default {
   props: ["tableList"],
   data() {
     return {
-      date: ""
     };
   },
   mounted() {
-    this.dateUpdate();
   },
   methods: {
-    //动态刷新时间
-    dateUpdate() {
-        let date = $dataFormat(new Date(), "yyyy年MM月dd日");
-        let mydate = new Date();
-        let myddy = mydate.getDay(); //获取存储当前日期
-        let weekday = [
-          "星期日","星期一","星期二","星期三","星期四","星期五","星期六"
-        ];
-        this.date = date + " " + weekday[myddy];
+    //处理百分数
+    takenNum(str){
+        let num = str.split('%')[0]*1;
+        return num.toFixed(2)+'%';
     }
   }
 };

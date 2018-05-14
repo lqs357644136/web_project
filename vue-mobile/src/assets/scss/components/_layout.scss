@@ -1,0 +1,54 @@
+.phoneView {
+  height: 100%;
+  .phone {
+    height: 100%;
+    padding-bottom: 50px;
+    .phoneTabbar {
+      height: pxTorem(50px);
+      color: #505050;
+      .is-selected {
+        background-color: #eaeaea !important;
+        color: #26a2ff !important;
+      }
+      .mint-tab-item {
+        .mint-tab-item-label {
+          font-size: pxTorem(16px);
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          justify-content: center;
+          .icon {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    .phoneMain {
+      overflow-y: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .phoneHeader {
+        height: pxTorem(45px);
+        .is-left {
+          button {
+            display: flex;
+          }
+        }
+        .mint-header-title {
+          font-size: pxTorem(20px);
+          letter-spacing: pxTorem(2px);
+        }
+      }
+      .module-body {
+        flex: 1;
+        padding-top: pxTorem(45px);
+        .warp {
+          height: 100%;
+          width: 100%;
+          padding: pxTorem(10px);
+        }
+      }
+    }
+  }
+}

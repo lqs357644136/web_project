@@ -2,13 +2,13 @@
   <div class="ksd_line_sz">
     <div class="build_list">
 
-      <table border="1" cellspacing="0">
+      <table  cellspacing="0">
         <thead>
           <tr>
             <td colspan="2" class="logo">
               <img :src="logo" alt="">
             </td>
-            <td colspan="4" class="title">车间线看板</td>
+            <td colspan="4" class="title">{{macInfo.plant}}车间生产看板</td>
             <td rowspan="3" class="picture">
               <img :src="list_thead.picture.managerPic" alt="">
             </td>
@@ -56,7 +56,7 @@
             </td>
             <td>{{item.schQty }}</td>
             <td>{{item.finishQty }}</td>
-            <td>{{item.reachRate }}</td>
+            <td>{{item.prodschedule }}</td>
             <td>{{item.badNumber }}</td>
             <td>{{item.badRate }}</td>
           </tr>
@@ -86,7 +86,8 @@ export default {
       date: "",
       macInfo: {
         plant: "",
-        line: ""
+        line: "",
+        eachTime: 8000
       },
       list_thead: {
         info: {
@@ -112,7 +113,7 @@ export default {
     setTimeout(() => {
       setInterval(() => {
         this.get_data();
-      }, 20000);
+      }, this.macInfo.eachTime);
     }, 20000);
   },
   methods: {
@@ -123,23 +124,23 @@ export default {
         line: this.macInfo.line
       };
       this.$get_noToken({
-        url: this.$api_baseurl(url.getAttendanceScheduleList),
+        url: this.$newPro_api_baseurl(url.getKSDLine),
         params: params
       }).then(res => {
         console.log(res);
         if (res.code == 1) {
           this.list_thead.info.line = res.data.attendanceList.lineDesc; //线别
           this.list_thead.info.person =
-            res.data.manager.leader + " / " + res.data.manager.qc; //责任人
+            res.data.attendanceList.leader + " / " + res.data.attendanceList.qc; //责任人
           this.list_thead.info.att = res.data.attendanceList.attPersonQty; //定编人数
           this.list_thead.info.act = res.data.attendanceList.actPersonQty; //出勤人数
           this.list_thead.picture.managerPic =
-            res.data.manager.leaderPhoto.length > 0
-              ? this.getImgSrc(res.data.manager.leaderPhoto)
+            res.data.attendanceList.leaderPhoto.length > 0
+              ? this.getImgSrc(res.data.attendanceList.leaderPhoto)
               : picturePng; //经理照片
           this.list_thead.picture.qcPic =
-            res.data.manager.qcPhoto.length > 0
-              ? this.getImgSrc(res.data.manager.qcPhoto)
+            res.data.attendanceList.qcPhoto.length > 0
+              ? this.getImgSrc(res.data.attendanceList.qcPhoto)
               : picturePng; //qc照片
           this.list_tbody = res.data.scheduleList;
         } else {
@@ -163,13 +164,12 @@ export default {
     mac_init() {
       if (this.$route.query.plant) {
         this.macInfo.plant = this.$route.query.plant;
-      } else {
-        this.macInfo.plant = Window.GETMACINFO().plant;
       }
       if (this.$route.query.line) {
         this.macInfo.line = this.$route.query.line;
-      } else {
-        this.macInfo.line = Window.GETMACINFO().line;
+      }
+      if (this.$route.query.eachTime) {
+        this.macInfo.eachTime = parseInt(this.$route.query.eachTime);
       }
     },
     //获取图片流

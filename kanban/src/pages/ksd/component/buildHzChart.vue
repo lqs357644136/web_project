@@ -16,7 +16,8 @@ export default {
   props: ["chartData"],
   data() {
     return {
-      chart: null
+      chart01: null,
+      chart02: null,
     };
   },
   mounted() {
@@ -68,8 +69,7 @@ export default {
         xAxis: [
           {
             type: "category",
-            //data: this.chartData.xAxis,
-            data: ["1线", "2线", "3线", "4线"],
+            data: this.chartData.xAxis,
             axisLine: {
               lineStyle: {
                 color: "#fff"
@@ -97,14 +97,15 @@ export default {
           {
             name: "总产出",
             type: "bar",
-            //data: this.chartData.planNum,
-            data: [123, 234, 345, 456],
+            data: this.chartData.data01,
             label: {
               normal: {
                 show: true,
-                position: "insideTop",
+                position: "top",
                 fontWeight: 100,
-                fontSize: 20
+                fontSize: 20,
+                fontWeight:600,
+                color:'white',
               }
             },
             itemStyle: {
@@ -118,8 +119,8 @@ export default {
                   color: "#fff"
                 }
               }
-            }
-            //barWidth: "40"
+            },
+            barWidth: "40"
           }
         ]
       };
@@ -167,8 +168,7 @@ export default {
         xAxis: [
           {
             type: "category",
-            //data: this.chartData.xAxis,
-            data: ["1线", "2线", "3线", "4线"],
+            data: this.chartData.xAxis,
             axisLine: {
               lineStyle: {
                 color: "#fff"
@@ -199,14 +199,15 @@ export default {
           {
             name: "总达成率",
             type: "bar",
-            //data: this.chartData.realNum,
-            data: [20, 20, 30, 50],
+            data: this.chartData.data02,
             label: {
               normal: {
                 show: true,
-                position: "insideTop",
+                position: "top",
                 fontWeight: 100,
                 fontSize: 20,
+                fontWeight:600,
+                color:'white',
                 formatter: '{c}%'
               }
             },
@@ -221,8 +222,8 @@ export default {
                   color: "#fff"
                 }
               }
-            }
-            //barWidth: "40"
+            },
+            barWidth: "40"
           }
         ]
       };

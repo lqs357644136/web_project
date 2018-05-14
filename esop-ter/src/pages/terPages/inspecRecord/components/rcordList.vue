@@ -27,7 +27,7 @@
             </el-col>
             <el-col :xs="8" :sm="8" :md="8" :lg="8">
               <el-form-item label="产品编码">
-                <el-input :disabled="true" v-model="inputs.plant" placeholder="产品编码"></el-input>
+                <el-input :disabled="true" v-model="inputs.ptno" placeholder="产品编码"></el-input>
               </el-form-item>
             </el-col>
             <el-col :xs="16" :sm="16" :md="16" :lg="16">
@@ -170,12 +170,12 @@ export default {
     //时间初始化
     date_init() {
       let fmtStart = "yyyy-MM-dd 00:00:00";
-      let fmt = "yyyy-MM-dd hh:mm:ss";
+      let fmtEnd = "yyyy-MM-dd 23:59:59";
       let oneDay = 86400000;
       let dayBefore90 = new Date() - oneDay * 1;
       this.inputs.dates = [
         $dataFormat(new Date(), fmtStart),
-        $dataFormat(new Date(), fmt)
+        $dataFormat(new Date(), fmtEnd)
       ];
     },
     //初始化

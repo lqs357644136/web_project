@@ -9,8 +9,8 @@
               <td class="shelveNo">货架</td>
               <td colspan="24" class="noName">货位号
                 <div class="Legend">
-                  <span class="text">空闲数 : {{30}} | </span>
-                  <span class="text">满载数 : {{30}} | </span>
+                  <span class="text">空闲数 : {{noEmptyCount}} | </span>
+                  <span class="text">满载数 : {{emptyCount}} | </span>
                   <span class="full box"></span>
                   <span class="text">= 空闲</span>
                   <span class="empty box"></span>
@@ -20,22 +20,21 @@
             </tr>
           </thead>
           <tbody>
-              <tr v-for="(rowItem,rowIndex) of list" :key="rowIndex">
-                <td>
-                  {{rowItem.wareShelveNo}}
-                </td>
-                <td class="colBoxsTd">
-                  <div class="colBoxs">
-                    <div class="colBox" :style="col.emptyFlag!=1?'background:#F56C6C':'background:none'" v-for="(col,colIndex) in rowItem.locationList" :key="colIndex">
-                      {{col.locationNo}}
-                    </div>
+            <tr v-for="(rowItem,rowIndex) of list" :key="rowIndex">
+              <td>
+                {{rowItem.wareShelveNo}}
+              </td>
+              <td class="colBoxsTd">
+                <div class="colBoxs">
+                  <div class="colBox" :style="col.emptyFlag!=1?'background:#F56C6C':'background:none'" v-for="(col,colIndex) in rowItem.locationList" :key="colIndex">
+                    {{col.locationNo}}
                   </div>
-                </td>
-              </tr>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <div class="msg"></div>
     </div>
   </div>
 </template>
@@ -57,9 +56,12 @@ export default {
       date: "",
       macInfo: {
         wareHouse: "",
-        shelves: ""
+        shelves: "",
+        eachTime:8000,
       },
-      list:[],
+      list: [],
+      emptyCount:0,
+      noEmptyCount:0,
     };
   },
   mounted() {
@@ -69,7 +71,7 @@ export default {
     setTimeout(() => {
       setInterval(() => {
         this.get_data();
-      }, 20000);
+      }, this.macInfo.eachTime);
     }, 20000);
   },
   methods: {
@@ -83,10 +85,12 @@ export default {
         url: this.$api_baseurl(url.getZhiHuiElecKanban),
         params: params
       }).then(res => {
+        console.log(res);
         if (res.code == 1) {
+          this.emptyCount = res.data.emptyCount;
+          this.noEmptyCount = res.data.noEmptyCount;
           this.list = [];
           this.list = res.data.shelveLocations;
-          console.log(this.list);
         } else {
           this.$message.error(res.msg);
         }
@@ -96,10 +100,16 @@ export default {
     dateUpdate() {
       setInterval(() => {
         let date = $dataFormat(new Date(), "yyyy年MM月dd日 hh:mm:ss");
-        let mydate=new Date();
+        let mydate = new Date();
         let myddy = mydate.getDay(); //获取存储当前日期
         let weekday = [
-          "星期日","星期一","星期二","星期三","星期四","星期五","星期六"
+          "星期日",
+          "星期一",
+          "星期二",
+          "星期三",
+          "星期四",
+          "星期五",
+          "星期六"
         ];
         this.date = date + " " + weekday[myddy];
       }, 1000);
@@ -112,7 +122,10 @@ export default {
       if (this.$route.query.shelves) {
         this.macInfo.shelves = this.$route.query.shelves;
       }
-    },
+      if (this.$route.query.eachTime) {
+        this.macInfo.eachTime = parseInt(this.$route.query.eachTime);
+      }
+    }
   },
   components: {
     kanbanTitle

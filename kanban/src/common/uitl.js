@@ -26,6 +26,10 @@ export const exitFullscreen = function () {
 export const api_baseurl = function (apiUrl) {
   return 'http://' + this.$route.query.ip + '/esop' + apiUrl
 }
+//单独项目生成平板端接口请求路径
+export const newPro_api_baseurl = function (apiUrl) {
+  return 'http://' + this.$route.query.ip + '/kanban' + apiUrl
+}
 
 //日星看板请求路径
 export const kanBanUrl = function (apiUrl) {

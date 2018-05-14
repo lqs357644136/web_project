@@ -1,6 +1,6 @@
 <template>
   <div class="ksd_build_hz">
-    <kanbanTitle :logo="logo" title="车间生产管理看板" ></kanbanTitle>
+    <kanbanTitle :logo="logo" :title="titleName" ></kanbanTitle>
     <div class="kanban-body">
       <buildHzList :tableList="list"></buildHzList>
       <buildHzChart :chartData="charts"></buildHzChart>
@@ -23,44 +23,74 @@ export default {
   name: "ksd_build_hz",
   data() {
     return {
+      titleName:'车间生产管理看板',
       logo: logoPng,
       date: "",
       macInfo: {
-        plant: "",
-        line: ""
+        plant: "1000",
+        eachTime: 8000
       },
-      list: [],
-      charts: []
+      list:{
+        info:null,
+        list:[],
+      },
+      charts: {
+        xAxis:[],
+        data01:[],
+        data02:[],
+      }
     };
   },
   mounted() {
     this.mac_init();
+    this.titleName_init();
     this.dateUpdate();
     this.get_data();
-    // setTimeout(() => {
-    //   setInterval(() => {
-    //     this.get_data();
-    //   }, 20000);
-    // }, 20000);
+    setTimeout(() => {
+      setInterval(() => {
+        this.get_data();
+      }, this.macInfo.eachTime);
+    }, 20000);
   },
   methods: {
+    //初始化标题名字
+    titleName_init() {
+      this.titleName = this.macInfo.plant + "车间生产管理看板";
+    },
     //获取数据
     get_data() {
       let params = {
         plant: this.macInfo.plant,
-        line: this.macInfo.line
       };
       this.$get_noToken({
-        url: this.$api_baseurl(url.getAttendanceScheduleList),
+        url: this.$newPro_api_baseurl(url.getKeShiDarPlantKanban),
         params: params
       }).then(res => {
         console.log(res);
         if (res.code == 1) {
-
+          this.list.info = res.data.attStaff;
+          this.list.list = res.data.list;
+          let data01 = [];
+          let data02 = [];
+          let xAxis = [];
+          for(let item of res.data.list){
+            console.log(item)
+            data01.push(item.actulQty);
+            data02.push(this.takenNum(item.rentPercent));
+            xAxis.push(item.lineDesc);
+          }
+          this.charts.xAxis = xAxis;
+          this.charts.data01 = data01;
+          this.charts.data02 = data02;
         } else {
           this.$message.error(res.msg);
         }
       });
+    },
+    //处理百分数
+    takenNum(str){
+      let num = str.split('%')[0]*1;
+      return num.toFixed(2);
     },
     //动态刷新时间
     dateUpdate() {
@@ -76,13 +106,9 @@ export default {
     mac_init() {
       if (this.$route.query.plant) {
         this.macInfo.plant = this.$route.query.plant;
-      } else {
-        this.macInfo.plant = Window.GETMACINFO().plant;
       }
-      if (this.$route.query.line) {
-        this.macInfo.line = this.$route.query.line;
-      } else {
-        this.macInfo.line = Window.GETMACINFO().line;
+      if (this.$route.query.eachTime) {
+        this.macInfo.eachTime = parseInt(this.$route.query.eachTime);
       }
     }
   },

@@ -106,3 +106,11 @@ export const androidSOP = function(url){
     console.log("测试环境")
   }
 }
+//安卓环境下打开扫描
+export const androidScanner = function(){
+  try{
+    window.android.startScanActivity();
+  }catch(error){
+    console.log("测试环境")
+  }
+}

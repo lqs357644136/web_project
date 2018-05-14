@@ -1,6 +1,6 @@
 <template>
   <div class="haier_line">
-    <kanbanTitle :logo="logo" title="L1线看板" :right="date"></kanbanTitle>
+    <kanbanTitle :logo="logo" :title="titleName+'线看板'" :right="date"></kanbanTitle>
     <div class="kanban-body">
       <tables :tables="tablesList"></tables>
       <lineCanvas :lineCanvas="lineData"></lineCanvas>
@@ -28,12 +28,13 @@ export default {
   name: "haier_line",
   data() {
     return {
-      //date:$dataFormat(new Date(),'yyyy-MM-dd hh:mm:ss')
+      titleName: "",
       logo: logoPng,
       date: "",
       macInfo: {
         plant: "",
-        line: ""
+        line: "",
+        eachTime: 8000
       },
       //列表数据
       tablesList: {
@@ -53,16 +54,24 @@ export default {
     };
   },
   mounted() {
+    this.titleInit();
     this.mac_init();
     this.dateUpdate();
     this.get_data();
     setTimeout(() => {
       setInterval(() => {
         this.get_data();
-      }, 20000);
+      }, this.macInfo.eachTime);
     }, 20000);
   },
   methods: {
+    titleInit() {
+      if (this.$route.query.line) {
+        this.titleName = this.$route.query.line;
+      } else {
+        this.titleName = Window.GETMACINFO().line;
+      }
+    },
     //获取数据
     get_data() {
       let params = {
@@ -121,24 +130,36 @@ export default {
             for (let i = 0; i < num; i++) arr.push({});
             return arr;
           })(maxRow);
-          for (let i = 0; i < res.data.reasonAndData.reaDataList.length; i++) {
-            let reasonId = res.data.reasonAndData.reaDataList[i].reasonId;
-            let process = res.data.reasonAndData.reaDataList[i].process;
-            let colorCode = res.data.reasonAndData.reaDataList[i].colorCode;
-            for (let t = 0; t < table02FinallyData.length; t++) {
-              if (!table02FinallyData[t][reasonId]) {
-                table02FinallyData[t][reasonId] = {};
-                table02FinallyData[t][reasonId].reasonId = reasonId;
-                table02FinallyData[t][reasonId].process = process;
-                table02FinallyData[t][reasonId].colorCode = colorCode;
-                break;
+          if (res.data.reasonAndData.reaDataList.length>0) {
+            for (let i = 0;i < res.data.reasonAndData.reaDataList.length;i++) {
+              let reasonId = res.data.reasonAndData.reaDataList[i].reasonId;
+              let process = res.data.reasonAndData.reaDataList[i].process;
+              let colorCode = res.data.reasonAndData.reaDataList[i].colorCode;
+              for (let t = 0; t < table02FinallyData.length; t++) {
+                if (!table02FinallyData[t][reasonId]) {
+                  table02FinallyData[t][reasonId] = {};
+                  table02FinallyData[t][reasonId].reasonId = reasonId;
+                  table02FinallyData[t][reasonId].process = process;
+                  table02FinallyData[t][reasonId].colorCode = colorCode;
+                  break;
+                }
+              }
+              if (table02Title_key.indexOf(reasonId) == -1) {
+                table02Title_key.push(reasonId);
+                table02Title_keyCode[reasonId] = {
+                  name: res.data.reasonAndData.reaDataList[i].reasonId,
+                  title: res.data.reasonAndData.reaDataList[i].reasonDesc
+                };
               }
             }
-            if (table02Title_key.indexOf(reasonId) == -1) {
+          }else{
+            for (let i = 0;i < res.data.reasonTypes.length;i++) {
+              let reasonId = res.data.reasonTypes[i].reasonid;
+              let reasonDesc = res.data.reasonTypes[i].reasondesc;
               table02Title_key.push(reasonId);
               table02Title_keyCode[reasonId] = {
-                name: res.data.reasonAndData.reaDataList[i].reasonId,
-                title: res.data.reasonAndData.reaDataList[i].reasonDesc
+                name: reasonId,
+                title: reasonDesc
               };
             }
           }
@@ -184,10 +205,16 @@ export default {
     dateUpdate() {
       setInterval(() => {
         let date = $dataFormat(new Date(), "yyyy年MM月dd日 hh:mm:ss");
-        let mydate=new Date();
+        let mydate = new Date();
         let myddy = mydate.getDay(); //获取存储当前日期
         let weekday = [
-          "星期日","星期一","星期二","星期三","星期四","星期五","星期六"
+          "星期日",
+          "星期一",
+          "星期二",
+          "星期三",
+          "星期四",
+          "星期五",
+          "星期六"
         ];
         this.date = date + " " + weekday[myddy];
       }, 1000);
@@ -196,112 +223,111 @@ export default {
     mac_init() {
       if (this.$route.query.plant) {
         this.macInfo.plant = this.$route.query.plant;
-      } else {
-        this.macInfo.plant = Window.GETMACINFO().plant;
       }
       if (this.$route.query.line) {
         this.macInfo.line = this.$route.query.line;
-      } else {
-        this.macInfo.line = Window.GETMACINFO().line;
+      } 
+      if (this.$route.query.eachTime) {
+        this.macInfo.eachTime = parseInt(this.$route.query.eachTime);
       }
     },
     //生产线状态灯
     line_state() {
       return [
         {
-          name: "P01",
-          title: "P01",
+          name: "SC01",
+          title: "SC01",
           color: "",
           xAxis: 0.5,
           colorLevel: 0
         },
         {
-          name: "P02",
-          title: "P02",
+          name: "SC02",
+          title: "SC02",
           color: "",
           xAxis: 3.5,
           colorLevel: 0
         },
         {
-          name: "P03",
-          title: "P03",
+          name: "SC03",
+          title: "SC03",
           color: "",
           xAxis: 7,
           colorLevel: 0
         },
         {
-          name: "P04",
-          title: "P04",
+          name: "SC04",
+          title: "SC04",
           color: "",
           xAxis: 10,
           colorLevel: 0
         },
         {
-          name: "P05",
-          title: "P05",
+          name: "SC05",
+          title: "SC05",
           color: "",
           xAxis: 13.5,
           colorLevel: 0
         },
         {
-          name: "P06",
-          title: "P06",
+          name: "SC06",
+          title: "SC06",
           color: "",
           xAxis: 16.5,
           colorLevel: 0
         },
         {
-          name: "P07",
-          title: "P07",
+          name: "SC07",
+          title: "SC07",
           color: "",
           xAxis: 20,
           colorLevel: 0
         },
         {
-          name: "P08",
-          title: "P08",
+          name: "SC08",
+          title: "SC08",
           color: "",
           xAxis: 23,
           colorLevel: 0
         },
         {
-          name: "P09",
-          title: "P09",
+          name: "YJ01",
+          title: "YJ01",
           color: "",
           xAxis: 26.5,
           colorLevel: 0
         },
+        // {
+        //   name: "HD01",
+        //   title: "HD01",
+        //   color: "",
+        //   xAxis: 29.5,
+        //   colorLevel: 0
+        // },
         {
-          name: "P10",
-          title: "P10",
-          color: "",
-          xAxis: 29.5,
-          colorLevel: 0
-        },
-        {
-          name: "P11",
-          title: "P11",
+          name: "HD01",
+          title: "HD01",
           color: "",
           xAxis: 44.5,
           colorLevel: 0
         },
         {
-          name: "P12",
-          title: "P12",
+          name: "HD02",
+          title: "HD02",
           color: "",
           xAxis: 53.5,
           colorLevel: 0
         },
         {
-          name: "P13",
-          title: "P13",
+          name: "HD03",
+          title: "HD03",
           color: "",
           xAxis: 69.5,
           colorLevel: 0
         },
         {
-          name: "P14",
-          title: "P14",
+          name: "HD04",
+          title: "HD04",
           color: "",
           xAxis: 96.5,
           colorLevel: 0

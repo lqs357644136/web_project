@@ -224,12 +224,12 @@ export default {
     //时间初始化
     date_init() {
       let fmtStart = "yyyy-MM-dd 00:00:00";
-      let fmt = "yyyy-MM-dd hh:mm:ss";
+      let fmtEnd = "yyyy-MM-dd 23:59:59";
       let oneDay = 86400000;
       let dayBefore90 = new Date() - oneDay * 1;
       this.inputs.dates = [
         $dataFormat(new Date(), fmtStart),
-        $dataFormat(new Date(), fmt)
+        $dataFormat(new Date(), fmtEnd)
       ];
     },
     //初始化
@@ -239,19 +239,21 @@ export default {
     },
     //请求列表信息
     get_list(page) {
+      let params = {
+        plant: this.inputs.plant,
+        line: this.inputs.line,
+        process: this.inputs.process,
+        ptno: this.inputs.ptno,
+        flag: this.inputs.flag,
+        page: page,
+        pageSize: this.pageSize,
+        startTime: this.inputs.dates[0],
+        endTime: this.inputs.dates[1]=="NaN-aN-aN aN:aN:aN"?'':this.inputs.dates[1]
+      };
+      console.log(params);
       this.$get({
         url: url.getInspectRecord,
-        params: {
-          plant: this.inputs.plant,
-          line: this.inputs.line,
-          process: this.inputs.process,
-          ptno: this.inputs.ptno,
-          flag: this.inputs.flag,
-          page: page,
-          pageSize: this.pageSize,
-          startTime:this.inputs.dates[0],
-          endTime:this.inputs.dates[1],
-        }
+        params: params
       }).then(res => {
         console.log(res);
         if (res.code == 1) {

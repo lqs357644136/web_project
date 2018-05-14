@@ -23,30 +23,30 @@ export default {
           icon: "icon fa fa-object-ungroup"
         },
         {
-          path: "/ksd/ksd_line_sz?ip="+api,
-          title: "科斯达深圳线看板",
-          icon: "icon fa fa-bandcamp"
-        },
-        {
-          path: "/ksd/ksd_build_hz?ip="+api,
-          title: "科斯达惠州总看板",
-          icon: "icon fa fa-snowflake-o"
-        },
-        {
-          path: "/als/alsWare?ip="+api+'&wareHouse=01&shelves=A01_A02_A03',
+          path: "/als/alsWare?ip="+api+'&eachTime=5000&wareHouse=01&shelves=A01_A02_A03_A04_A05_A06_A07',
           title: "上海智汇货位看板",
           icon: "icon fa fa-address-book-o"
         },
         {
-          path: "/ksd/ksd_build_hz?ip="+api,
+          path: "/als/alsBuild?ip="+api+'&eachTime=8000&plant=ZJ&line=A1',
+          title: "上海智汇生产看板",
+          icon: "icon fa fa-bicycle"
+        },
+        {
+          path: "/ksd/ksd_line_sz?ip="+api+"&plant=1000&line=BC1",
+          title: "科斯达深圳线看板",
+          icon: "icon fa fa-bandcamp"
+        },
+        {
+          path: "/ksd/ksd_build_hz?ip="+api+"&plant=1000&line=BC1",
           title: "科斯达惠州总看板",
+          icon: "icon fa fa-snowflake-o"
+        },
+        {
+          path: "/ksd/ksd_line_hz?ip="+api+"&plant=1000&line=BC1",
+          title: "科斯达惠州车间看板",
           icon: "icon fa fa-area-chart"
         },
-        // {
-        //   path: "/ter/firstEntity?ip="+api,
-        //   title: "首检录入",
-        //   icon: "icon fa fa-bicycle"
-        // },
         // {
         //   path: "/ter/selfEntity?ip="+api,
         //   title: "自主检验",

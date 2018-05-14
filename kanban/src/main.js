@@ -15,9 +15,9 @@ import 'common/filiter'
 //导入axios请求方法
 import {$get_file,$post_noToken,$get_noToken } from 'common/fetch/index.js'
 //导入工具
-import { getMacINfo,api_baseurl,kanBanUrl } from 'common/uitl.js'
+import { getMacINfo,api_baseurl,kanBanUrl,newPro_api_baseurl } from 'common/uitl.js'
 //导入国际化设置
-import i18n from 'common/i18n'
+//import i18n from 'common/i18n'
 
 //导入element组件
 //import ElementUI from 'element-ui'
@@ -70,7 +70,6 @@ import i18n from 'common/i18n'
 // Vue.prototype.$prompt = MessageBox.prompt
 // Vue.prototype.$notify = Notification
 import {Message,Card} from 'element-ui'
-Vue.use(Card)
 Vue.prototype.$message = Message
 
 //发布后是否显示提示
@@ -82,6 +81,7 @@ Vue.prototype.$get_file = $get_file;
 //注册接口地址生成方法
 Vue.prototype.$api_baseurl = api_baseurl;
 Vue.prototype.$kanBanUrl = kanBanUrl;
+Vue.prototype.$newPro_api_baseurl = newPro_api_baseurl;
 //终端获取机器信息注册到全局
 Window.GETMACINFO = getMacINfo;
 
@@ -91,6 +91,5 @@ Vue.config.devtools = process.env.NODE_ENV === 'development'
 new Vue({
   router,
   store,
-  i18n,
   ...App
 }).$mount('mainbody')
