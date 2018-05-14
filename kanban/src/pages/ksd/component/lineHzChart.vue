@@ -70,8 +70,8 @@ export default {
               }
             },
             axisLabel: {
-              fontSize: 14,
-              rotate: 40
+              fontSize: 12,
+              rotate: 35
             },
             axisTick: {
               alignWithLabel: true

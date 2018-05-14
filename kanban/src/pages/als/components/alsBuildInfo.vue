@@ -41,22 +41,25 @@
                 </td>
             </tr>
         </table>
-        <table class="table02" border="1" cellspacing="0">
-            <thead>
-                <tr>
-                    <td>工位</td>
-                    <td>问题</td>
-                    <td>呼叫时间</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item,index) in info.andon" :key="index">
-                    <td>{{item.processDesc}}</td>
-                    <td>{{item.reasonDesc }}</td>
-                    <td>{{item.wanringTime | dataFormat('yyyy-MM-dd hh:mm:ss')}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table02">
+            <table class="table02" border="1" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>工位</td>
+                        <td>问题</td>
+                        <td>呼叫时间</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in info.andon" :key="index">
+                        <td>{{item.processDesc}}</td>
+                        <td>{{item.reasonDesc }}</td>
+                        <td>{{item.wanringTime | dataFormat('yyyy-MM-dd hh:mm:ss')}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </template>
 

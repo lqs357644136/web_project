@@ -22,5 +22,7 @@
 `element-ui`
 `mint-ui`
 `angular5.0`
+`fontawesome`
+`echart`
 
 ## 欢迎交流 QQ357644136 , 喜欢请给星

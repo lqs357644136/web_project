@@ -95,7 +95,7 @@ export default {
                chartData.push(reachRate);
             }
             xAxis.push(item.timeCycle);
-          }
+          } 
           this.chartData.xAxis = xAxis;
           this.chartData.data = chartData;
         } else {

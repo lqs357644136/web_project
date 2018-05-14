@@ -27,21 +27,21 @@
                     <td>
                         <div class="theadBox">
                             <span>应到人数</span>
-                            <span>attPersonQty</span>
+                            <span>AttPersonQty</span>
                         </div>
                     </td>
                     <td>{{list.attPersonQty}}</td>
                     <td>
                         <div class="theadBox">
                             <span>实到人数</span>
-                            <span>actPersonQty</span>
+                            <span>ActPersonQty</span>
                         </div>
                     </td>
                     <td>{{list.actPersonQty}}</td>
                     <td>
                         <div class="theadBox">
                             <span>日期</span>
-                            <span>date</span>
+                            <span>Date</span>
                         </div>
                     </td>
                     <td>{{list.date | dataFormat('yyyy-MM-dd')}}</td>
@@ -62,7 +62,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in listData" :key="index">
+                <tr v-for="(item,index) in listData" :key="index" :class="item.orderNo&&item.orderNo.lenght>0?'onOrderNo':''">
                     <td>{{index+1}}</td>
                     <td>{{item.timeCycle}}</td>
                     <td>{{item.orderNo}}</td>
@@ -91,7 +91,7 @@ export default {
     return {
       leaderPic: "",
       listData: [],
-      totalNum: 10
+      totalNum: 12
     };
   },
   mounted() {
@@ -119,17 +119,18 @@ export default {
     },
     //截取部分纪录
     takeSomeData(startNum, endNum) {
-      if (this.list.list.length > this.totalNum) {
-        this.listData = this.list.list.slice(startNum);
-      } else if (this.list.list.length < this.totalNum) {
-        this.listData = this.list.list;
-        let needNum = this.totalNum - this.list.list.length;
-        for (let i = 0; i < needNum; i++) {
-          this.listData.push({});
-        }
-      } else {
-        this.listData = this.list.list;
-      }
+      //   if (this.list.list.length > this.totalNum) {
+      //     this.listData = this.list.list.slice(startNum);
+      //   } else if (this.list.list.length < this.totalNum) {
+      //     this.listData = this.list.list;
+      //     let needNum = this.totalNum - this.list.list.length;
+      //     for (let i = 0; i < needNum; i++) {
+      //       this.listData.push({});
+      //     }
+      //   } else {
+      //     this.listData = this.list.list;
+      //   }
+      this.listData = this.list.list;
     }
   }
 };

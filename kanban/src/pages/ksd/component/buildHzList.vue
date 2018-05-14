@@ -3,8 +3,8 @@
         <table class="" border="1" cellspacing="0" >
             <thead>
                 <tr>
-                    <td colspan="4">车间人数 : {{tableList.info.actPersonQty}}</td>
-                    <td colspan="3">出勤人数 : {{tableList.info.attPersonQty}}</td>
+                    <td colspan="4">车间人数 : {{tableList.info.attPersonQty}}</td>
+                    <td colspan="3">出勤人数 : {{tableList.info.actPersonQty}}</td>
                     <td colspan="3">日期 : {{tableList.info.currentDate | dataFormat('yyyy-MM-dd')}}</td>
                 </tr>
                 <tr>
