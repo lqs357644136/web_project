@@ -28,13 +28,10 @@ export default {
   },
   methods: {
     scanner() {
-      if (!this.noTouch) {
-        this.noTouch = true;
-        androidScanner();
-        androidSetBarCode(res => {
-          this.cargoPositionScan(res);
-        });
-      }
+      androidScanner();
+      androidSetBarCode(res => {
+        this.cargoPositionScan(res);
+      });
     },
     //提交扫码信息
     cargoPositionScan(code) {
@@ -56,7 +53,7 @@ export default {
             duration: 2000
           });
           setTimeout(() => {
-            this.noTouch = false;
+            //this.noTouch = false;
           }, 2000);
         } else {
           this.$toast({

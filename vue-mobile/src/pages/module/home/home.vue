@@ -38,6 +38,11 @@ export default {
           title: "标签扫码",
           icon: "icon fa fa-barcode"
         },
+        {
+          path: "/andon/andonChart",
+          title: "安灯报表",
+          icon: "icon fa fa-pie-chart"
+        },
       ]
     };
   },

@@ -23,10 +23,10 @@ export default {
           icon: "icon fa fa-object-ungroup"
         },
         {
-          path: "/als/alsWare?ip="+api+'&eachTime=5000&wareHouse=01&shelves=A01_A02_A03_A04_A05_A06_A07',
+          path: "/als/alsWare?ip="+api+'&eachTime=5000&bottomInfo=true&wareHouse=01&shelves=A08_A09_A10_A11_A12_A13_A14',
           title: "上海智汇货位看板",
           icon: "icon fa fa-address-book-o"
-        },
+        },//A08_A09_A10_A11_A12_A13_A14
         {
           path: "/als/alsBuild?ip="+api+'&eachTime=8000&plant=ZJ&line=A1',
           title: "上海智汇生产看板",

@@ -7,7 +7,7 @@
   flex-direction: column;
   .build_list {
     flex: 1;
-    background-color: black;
+    background: #f1f1f1;
     table {
       width: 100%;
       thead td,
@@ -17,7 +17,7 @@
         text-align: center;
         font-weight: 800;
         color: black;
-        font-size: pxTorem(22px);
+        font-size: pxTorem(26px);
         border: 1px solid black;
       }
       thead {
