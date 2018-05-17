@@ -59,7 +59,19 @@ export const esop_module = [{
       icon: 'fa fa-asl-interpreting',
       auth: true
     },
-  }
+  },
+  {
+    //安灯图表
+    path: '/andon/andonChart',
+    name: 'andonChart',
+    component: resolve => require(['pages/module/andon/andonChart.vue'], resolve),
+    //component: andonChart,
+    meta: {
+      //title: messages.andonChart,
+      icon: 'fa fa-asl-interpreting',
+      auth: true
+    },
+  },
 ]
 
 //公共模块

@@ -6,6 +6,10 @@
     .phoneTabbar {
       height: pxTorem(50px);
       color: #505050;
+      background: -webkit-linear-gradient(#b7b7b7, #ffffff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#b7b7b7, #ffffff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#b7b7b7, #ffffff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#b7b7b7, #ffffff); /* 标准的语法 */
       .is-selected {
         background-color: #eaeaea !important;
         color: #26a2ff !important;

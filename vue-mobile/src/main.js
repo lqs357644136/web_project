@@ -3,9 +3,11 @@ import 'normalize.css'
 import 'font-awesome/scss/font-awesome.scss'
 import "assets/css/animate.min.css";
 import "mint-ui/lib/style.css";
+// import 'vc-popup/lib/style.css'
 //导入Vue框架
 import Vue from 'vue'
 import MintUI from "mint-ui";
+import PopUp from 'vc-popup'
 Vue.use(MintUI);
 //导入组件
 import router from './router'

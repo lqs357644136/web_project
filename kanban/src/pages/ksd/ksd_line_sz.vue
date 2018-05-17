@@ -2,7 +2,7 @@
   <div class="ksd_line_sz">
     <div class="build_list">
 
-      <table  cellspacing="0">
+      <table cellspacing="0">
         <thead>
           <tr>
             <td colspan="2" class="logo">
@@ -23,7 +23,7 @@
             </td>
             <td>定编人数</td>
             <td>{{list_thead.info.att}}</td>
-            <td>日期</td>
+            <td class="date">日期</td>
             <td>{{list_thead.date.plan}}</td>
           </tr>
           <tr>
@@ -31,7 +31,7 @@
             <td>{{list_thead.info.person}}</td>
             <td>出勤人数</td>
             <td>{{list_thead.info.act}}</td>
-            <td>实际时间</td>
+            <td class="date">实时时间</td>
             <td>{{list_thead.date.real}}</td>
           </tr>
           <tr class="mainTitle">
@@ -83,7 +83,6 @@ export default {
     return {
       logo: logoPng,
       picture: picturePng,
-      date: "",
       macInfo: {
         plant: "",
         line: "",
@@ -95,8 +94,8 @@ export default {
           person: ""
         },
         date: {
-          plan: $dataFormat(new Date(), "yyyy/MM/dd"),
-          real: $dataFormat(new Date(), "yyyy/MM/dd")
+          plan: "",
+          real: ""
         },
         picture: {
           managerPic: "",
@@ -108,15 +107,34 @@ export default {
   },
   mounted() {
     this.mac_init();
-    this.dateUpdate();
+    this.getSysTime();
     this.get_data();
     setTimeout(() => {
       setInterval(() => {
+        this.getSysTime();
         this.get_data();
       }, this.macInfo.eachTime);
     }, 20000);
   },
   methods: {
+    //获取系统时间
+    getSysTime() {
+      let params = {
+        format: "yyyy/MM/dd hh:mm"
+      };
+      this.$get_noToken({
+        url: this.$newPro_api_baseurl(url.getTime),
+        params: params
+      }).then(res => {
+        if (res.code == 1) {
+          let time = res.data.time;
+          this.list_thead.date.plan = time.split(" ")[0];
+          this.list_thead.date.real = time.split(" ")[1];
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
+    },
     //获取数据
     get_data() {
       let params = {
@@ -147,18 +165,6 @@ export default {
           this.$message.error(res.msg);
         }
       });
-    },
-    //动态刷新时间
-    dateUpdate() {
-      setInterval(() => {
-        let date = $dataFormat(new Date(), "yyyy年MM月dd日 hh:mm:ss");
-        let mydate=new Date();
-        let myddy = mydate.getDay(); //获取存储当前日期
-        let weekday = [
-          "星期日","星期一","星期二","星期三","星期四","星期五","星期六"
-        ];
-        this.date = date + " " + weekday[myddy];
-      }, 1000);
     },
     //获取机台信息
     mac_init() {

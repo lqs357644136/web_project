@@ -49,7 +49,19 @@
               text-align: center;
             }
             td:nth-child(1) {
-              width: 6%;
+              width: 5%;
+            }
+            td:nth-child(6) {
+              width: 17%;
+            }
+            td:nth-child(7) {
+              width: 7%;
+            }
+            td:nth-child(8) {
+              width: 10%;
+            }
+            td:nth-child(9) {
+              width: 7%;
             }
           }
           tr:nth-child(1) {
@@ -59,7 +71,7 @@
           }
           tr:nth-child(2) {
             td {
-              height: pxTorem(45px);
+              height: pxTorem(30px);
             }
           }
         }
@@ -67,11 +79,25 @@
           tr {
             td {
               text-align: center;
+              background: #f3f3f3;
             }
+          }
+          .ptnmSmall{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: pxTorem(250px);
+            font-size: pxTorem(15px);
+            line-height: pxTorem(20px);
           }
           .onOrderNo{
             td{
               background: darkgray;
+            }
+          }
+          .onWork{
+            td{
+              background: #b4ebff;
             }
           }
         }

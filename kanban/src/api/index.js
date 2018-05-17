@@ -2,6 +2,8 @@ let url = {
   //公共
   file_get:'/rest/kanban/download',//GET 获取文件
   file_POST:'/rest/kanban/upload',//POST 上传文件
+  getTime:'/rest/kanban/getTime',//GET 获取系统时间
+
   //基础信息
   check_getCompany:'/rest/kanban/getCompany',//GET 获取公司信息
   check_getPlant:'/rest/kanban/getPlant', //GET 获取车间信息

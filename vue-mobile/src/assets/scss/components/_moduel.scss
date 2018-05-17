@@ -189,7 +189,7 @@
         height: 100%;
       }
     }
-  }
+  } //标签扫码
   .scanner {
     .warp {
       display: flex;
@@ -205,6 +205,19 @@
           color: #fff;
         }
       }
+    }
+  } //安灯图表
+  .andonChart {
+    .warp {
+      display: flex;
+      flex-direction: column;
+      padding: 0 !important;
+    }
+    .chartSearch{
+
+    }
+    .chart{
+      flex:0.5;
     }
   }
 }

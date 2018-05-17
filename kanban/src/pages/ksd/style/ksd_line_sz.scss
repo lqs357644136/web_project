@@ -21,6 +21,9 @@
         border: 1px solid black;
       }
       thead {
+        .date{
+          font-size: pxTorem(24px);
+        }
         td {
           background-color: $color01;
         }

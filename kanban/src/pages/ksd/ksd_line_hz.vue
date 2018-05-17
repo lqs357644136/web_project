@@ -28,6 +28,7 @@ export default {
       macInfo: {
         plant: "1000",
         line: "BC1",
+        rowNum: 10,
         eachTime: 8000
       },
       listData: {
@@ -65,7 +66,8 @@ export default {
     get_data() {
       let params = {
         plant: this.macInfo.plant,
-        line: this.macInfo.line
+        line: this.macInfo.line,
+        rows: this.macInfo.rowNum
       };
       this.$get_noToken({
         url: this.$newPro_api_baseurl(url.getKStarLineKanban),
@@ -80,22 +82,20 @@ export default {
           this.listData.attPersonQty = res.data.attPersonQty;
           this.listData.actPersonQty = res.data.actPersonQty;
           this.listData.date = res.data.date;
-          this.listData.list = res.data.list;
+          this.listData.list = res.data.tableList;
 
           let xAxis = [];
           let chartData = [];
           for (let item of res.data.list) {
             let reachRate = 0;
             if (item.reachRate) {
-              reachRate = parseInt(
-                item.reachRate.substr(0, item.reachRate.length - 1)
-              );
+              reachRate = item.reachRate.substr(0, item.reachRate.length - 1);
               chartData.push(reachRate);
-            }else{
-               chartData.push(reachRate);
+            } else {
+              chartData.push(reachRate);
             }
             xAxis.push(item.timeCycle);
-          } 
+          }
           this.chartData.xAxis = xAxis;
           this.chartData.data = chartData;
         } else {
@@ -110,6 +110,13 @@ export default {
       }
       if (this.$route.query.line) {
         this.macInfo.line = this.$route.query.line;
+      }
+      if (this.$route.query.rowNum) {
+        if (this.$route.query.rowNum > 12) {
+          this.macInfo.rowNum = 12;
+        } else {
+          this.macInfo.rowNum = this.$route.query.rowNum;
+        }
       }
       if (this.$route.query.eachTime) {
         this.macInfo.eachTime = parseInt(this.$route.query.eachTime);

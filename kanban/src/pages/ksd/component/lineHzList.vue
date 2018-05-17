@@ -44,8 +44,8 @@
                             <span>Date</span>
                         </div>
                     </td>
-                    <td>{{list.date | dataFormat('yyyy-MM-dd')}}</td>
-                    <td>车间温湿度</td>
+                    <td>{{list.date}}</td>
+                    <td>- ℃</td>
                 </tr>
                 <tr>
                     <td>序号</td>
@@ -62,13 +62,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in listData" :key="index" :class="item.orderNo&&item.orderNo.lenght>0?'onOrderNo':''">
+                <tr v-for="(item,index) in list.list" :key="index" :class="!item.flag?'onWork':''">
                     <td>{{index+1}}</td>
                     <td>{{item.timeCycle}}</td>
                     <td>{{item.orderNo}}</td>
                     <td>{{item.cust }}</td>
                     <td>{{item.partNo}}</td>
-                    <td>{{item.partDesc}}</td>
+                    <td :class="item.partDesc&&item.partDesc.length>15?'ptnmSmall':''">{{item.partDesc}}</td>
                     <td>{{item.schQty}}</td>
                     <td>{{item.standardQty}}</td>
                     <td>{{item.outputQty}}</td>
