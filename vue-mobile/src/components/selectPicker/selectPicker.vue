@@ -1,12 +1,13 @@
 <template>
-    <div class="selectPicker">
-        <div class="group">
-            <label>下拉选择</label>
-        </div>
-        <div class="mask">
-            <mt-picker :slots="slots" @change="selectChange"></mt-picker>
-        </div>
+  <div class="selectPicker">
+    <div class="group" @click="pickerShow=!pickerShow">
+      <label>下拉选择</label>
     </div>
+    <mt-popup v-model="pickerShow" position="bottom" class="pickerShower">
+      <mt-picker :slots="slots" @change="selectChange"></mt-picker>
+    </mt-popup>
+
+  </div>
 </template>
 
 <script>
@@ -22,7 +23,7 @@ export default {
   },
   data() {
     return {
-      select: "",
+      pickerShow: false,
       slots: [
         {
           values: ["年假", "事假", "病假", "婚假", "其他"],
@@ -34,9 +35,9 @@ export default {
   mounted() {},
   computed: {},
   methods: {
-      selectChange(e,val,key){
-          console.log(e)
-      }
+    selectChange(e, val, key) {
+      console.log(e);
+    }
   }
 };
 </script>

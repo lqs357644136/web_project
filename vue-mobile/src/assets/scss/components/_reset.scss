@@ -393,15 +393,10 @@ button {
     }
   }
   .main {
-    padding: pxTorem(10px);
-    padding-bottom: pxTorem(20px);
     position: absolute;
     width: 100%;
-    background: white;
-    z-index: 2;
-    top: pxTorem(45px);
-    border-bottom-left-radius: pxTorem(5px);
-    border-bottom-right-radius: pxTorem(5px);
+    top: 45px;
+    z-index: 1;
   }
 }
 
@@ -409,6 +404,16 @@ button {
 .dateRagePicker {
   .picker-item {
     font-size: pxTorem(14px);
+  }
+  .mint-cell-value {
+    input {
+      flex: 1;
+      background: none;
+      text-align: center;
+    }
+  }
+  .mint-popup {
+    top: inherit;
   }
   .group {
     height: pxTorem(45px);
@@ -433,19 +438,10 @@ button {
 
 //下拉选择
 .selectPicker {
-  .mask {
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    height: 100%;
+  .mint-popup {
     width: 100%;
-    top: 0; //display: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    left: 0;
-    .picker {
-      width: 100%;
-      background: white;
-    }
+  }
+  .picker {
+    width: 100%;
   }
 }

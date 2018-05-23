@@ -1,6 +1,6 @@
 <template>
   <div class="ksd_build_hz">
-    <kanbanTitle :logo="logo" :title="titleName" ></kanbanTitle>
+    <kanbanTitle :logo="logo" :title="titleName"></kanbanTitle>
     <div class="kanban-body">
       <buildHzList :tableList="list"></buildHzList>
       <buildHzChart :chartData="charts"></buildHzChart>
@@ -23,21 +23,21 @@ export default {
   name: "ksd_build_hz",
   data() {
     return {
-      titleName:'车间生产管理看板',
+      titleName: "车间生产管理看板",
       logo: logoPng,
       date: "",
       macInfo: {
         plant: "1000",
         eachTime: 8000
       },
-      list:{
-        info:null,
-        list:[],
+      list: {
+        info: null,
+        list: []
       },
       charts: {
-        xAxis:[],
-        data01:[],
-        data02:[],
+        xAxis: [],
+        data01: [],
+        data02: []
       }
     };
   },
@@ -60,7 +60,7 @@ export default {
     //获取数据
     get_data() {
       let params = {
-        plant: this.macInfo.plant,
+        plant: this.macInfo.plant
       };
       this.$get_noToken({
         url: this.$newPro_api_baseurl(url.getKeShiDarPlantKanban),
@@ -70,14 +70,24 @@ export default {
         if (res.code == 1) {
           this.list.info = res.data.attStaff;
           this.list.list = res.data.list;
+          let listLength = this.list.list.length;
+          if (listLength < 5) {
+            let needMake = 5 - listLength;
+            for (let i = 0; i < needMake; i++) {
+              this.list.list.push({});
+            }
+          }
+
           let data01 = [];
           let data02 = [];
           let xAxis = [];
-          for(let item of res.data.list){
-            console.log(item)
-            data01.push(item.actulQty);
-            data02.push(this.takenNum(item.rentPercent));
-            xAxis.push(item.lineDesc);
+          for (let item of res.data.list) {
+            console.log(item);
+            if (item.lineDesc) {
+              data01.push(item.actulQty);
+              data02.push(this.takenNum(item.rentPercent));
+              xAxis.push(item.lineDesc);
+            }
           }
           this.charts.xAxis = xAxis;
           this.charts.data01 = data01;
@@ -88,18 +98,27 @@ export default {
       });
     },
     //处理百分数
-    takenNum(str){
-      let num = str.split('%')[0]*1;
+    takenNum(str) {
+      if (!str) return "";
+      let num = str.split("%")[0] * 1;
       return num.toFixed(2);
     },
     //动态刷新时间
     dateUpdate() {
       setInterval(() => {
         let date = $dataFormat(new Date(), "yyyy年MM月dd日 hh:mm:ss");
-        let mydate=new Date();
-        let myddy=mydate.getDay();//获取存储当前日期
-        let weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
-        this.date = date+' '+weekday[myddy];
+        let mydate = new Date();
+        let myddy = mydate.getDay(); //获取存储当前日期
+        let weekday = [
+          "星期日",
+          "星期一",
+          "星期二",
+          "星期三",
+          "星期四",
+          "星期五",
+          "星期六"
+        ];
+        this.date = date + " " + weekday[myddy];
       }, 1000);
     },
     //获取机台信息

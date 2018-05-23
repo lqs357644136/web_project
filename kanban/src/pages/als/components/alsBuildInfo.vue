@@ -2,41 +2,36 @@
     <div class="alsBuildInfo">
         <table class="table01" border="1" cellspacing="0">
             <tr>
-                <td class="managerTd">
-                    <b>人员信息</b>
+                <td>
+                    <span>
+                        <b>应出勤人数 : </b>{{info.attendance.attPersonQty}}</span>
                 </td>
-                <td rowspan="4" class="attendanceTd">
-                    <div class="attendance">
-                        <span>
-                            <b>应出勤人数 : </b>{{info.attendance.attPersonQty}}</span>
-                        <span>
-                            <b>实际勤人数 : </b>{{info.attendance.actPersonQty}}</span>
-                    </div>
-                </td>
-
-            </tr>
-            <tr>
-                <td class="managerTd">
-                    <div>
-                        <span class="title">leader:</span>
-                        <span>{{info.manager.leader}}</span>
-                    </div>
-
+                <td>
+                    <span>
+                        <b>实际勤人数 : </b>{{info.attendance.actPersonQty}}</span>
                 </td>
             </tr>
             <tr>
-                <td class="managerTd">
-                    <div>
-                        <span class="title">PQC:</span>
-                        <span>{{info.manager.qc}}</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="managerTd">
-                    <div>
-                        <span class="title">PT:</span>
-                        <span>{{info.manager.pt}}</span>
+                <td colspan="2" class="people">
+                    <div class="boxs">
+                        <div class="box">
+                            <b class="title">Leader : {{info.manager.leader}}</b>
+                            <div class="img">
+                                <img :src="leaderImg" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <b class="title">pt : {{info.manager.pt}}</b>
+                            <div class="img">
+                                <img :src="ptImg" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <b class="title">qc : {{info.manager.qc}}</b>
+                            <div class="img">
+                                <img :src="qcImg" alt="">
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -64,11 +59,54 @@
 </template>
 
 <script>
+import url from "api";
+import defaultPic from "../img/picture.png";
 export default {
   name: "alsBuildInfo",
   props: ["info"],
   data() {
-    return {};
+    return {
+      defaultLogo: defaultPic,
+      leaderImg: "",
+      ptImg: "",
+      qcImg: ""
+    };
+  },
+  mounted(){
+      this.img_init();
+  },
+  methods: {
+    img_init() {
+      setInterval(() => {
+        this.getLeaderImgSrc(this.info.manager.leaderPhoto);
+        this.getPtImgSrc(this.info.manager.ptPhoto);
+        this.getQcImgSrc(this.info.manager.qcPhoto);
+      }, 8000);
+    },
+    getLeaderImgSrc(path) {
+      this.$get_file({
+        url: this.$api_baseurl(url.file_get),
+        params: { path: path }
+      }).then(res => {
+        this.leaderImg = res;
+      });
+    },
+    getPtImgSrc(path) {
+      this.$get_file({
+        url: this.$api_baseurl(url.file_get),
+        params: { path: path }
+      }).then(res => {
+        this.ptImg = res;
+      });
+    },
+    getQcImgSrc(path) {
+      this.$get_file({
+        url: this.$api_baseurl(url.file_get),
+        params: { path: path }
+      }).then(res => {
+        this.qcImg = res;
+      });
+    }
   }
 };
 </script>

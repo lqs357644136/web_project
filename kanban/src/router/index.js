@@ -37,6 +37,26 @@ const routes = [{
     title: '科斯达深圳线看板',
     auth: false
   },
+},{
+  //科斯达深圳生产管理看板
+  path: '/ksd/ksd_man_sz',
+  name: 'ksd_man_sz',
+  component: r => require.ensure([], () => r(require('pages/ksd/ksd_man_sz.vue')), 'ksd_man_sz'),
+  //component: ksd_man_sz,
+  meta: {
+    title: '科斯达深圳生产管理看板',
+    auth: false
+  },
+}, {
+  //科斯达深圳每日进度看板
+  path: '/ksd/ksd_dayBuild_sz',
+  name: 'ksd_dayBuild_sz',
+  component: r => require.ensure([], () => r(require('pages/ksd/ksd_dayBuild_sz.vue')), 'ksd_dayBuild_sz'),
+  //component: ksd_dayBuild_sz,
+  meta: {
+    title: '科斯达深圳每日进度看板',
+    auth: false
+  },
 }, {
   //科斯达惠州总看板
   path: '/ksd/ksd_build_hz',

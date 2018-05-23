@@ -22,6 +22,8 @@ let url = {
   getKSDLine:'/rest/kanban/getKSDLine',//GET 深圳车间生产管理看板
   getKeShiDarPlantKanban:'/rest/kanban/getKeShiDarPlantKanban',//GET 科斯达惠州总看板
   getKStarLineKanban:'/rest/kanban/getKStarLineKanban',//GET 科斯达惠州车间看板
+  getKStarDailyProdKanban:'/rest/kanban/getKStarDailyProdKanban',//GET 科士达车间每日生产进度看板
+  getKStarProdManageKanban:'/rest/kanban/getKStarProdManageKanban',//GET 科士达生产管理看板
   //上海智汇看板
   getZhiHuiElecKanban:'/rest/kanban/getZhiHuiElecKanban',//GET 上海智汇仓库看板
   getShHaiAttenScheduleAndonData:'/rest/kanban/getShHaiAttenScheduleAndonData',//GET  上海智汇生产看板

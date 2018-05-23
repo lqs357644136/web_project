@@ -38,13 +38,23 @@ export default {
           icon: "icon fa fa-bandcamp"
         },
         {
+          path: "/ksd/ksd_dayBuild_sz?ip="+api+"&plant=1000&line=BC1",
+          title: "科斯达深圳每日进度看板",
+          icon: "icon fa fa-external-link-square"
+        },
+        {
+          path: "/ksd/ksd_man_sz?ip="+api+"&plant=1000&line=BC1",
+          title: "科斯达深圳生产管理看板",
+          icon: "icon fa fa-window-restore"
+        },
+        {
           path: "/ksd/ksd_build_hz?ip="+api+"&plant=1000&line=BC1",
           title: "科斯达惠州总看板",
           icon: "icon fa fa-snowflake-o"
         },
         {
           path: "/ksd/ksd_line_hz?ip="+api+"&plant=1000&line=BC1",
-          title: "科斯达惠州车间看板",
+          title: "科斯达惠州每日进度看板",
           icon: "icon fa fa-area-chart"
         },
         // {

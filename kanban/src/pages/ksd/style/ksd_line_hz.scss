@@ -11,7 +11,7 @@
       height: 100%;
       width: 300px;
       left: 0;
-      img{
+      img {
         width: 100%;
       }
     }
@@ -82,7 +82,7 @@
               background: #f3f3f3;
             }
           }
-          .ptnmSmall{
+          .ptnmSmall {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -90,14 +90,36 @@
             font-size: pxTorem(15px);
             line-height: pxTorem(20px);
           }
-          .onOrderNo{
-            td{
+          .onOrderNo {
+            td {
               background: darkgray;
             }
           }
-          .onWork{
-            td{
+          .onWork {
+            td {
               background: #b4ebff;
+            }
+          }
+        }
+      }
+      .wd {
+        position: relative;
+        div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          span{
+            flex:0.5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &:first-child{
+              border-bottom: 1px solid black;
             }
           }
         }

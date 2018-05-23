@@ -154,12 +154,12 @@ export default {
           this.list_thead.info.act = res.data.attendanceList.actPersonQty; //出勤人数
           this.list_thead.picture.managerPic =
             res.data.attendanceList.leaderPhoto.length > 0
-              ? this.getImgSrc(res.data.attendanceList.leaderPhoto)
-              : picturePng; //经理照片
+              ? res.data.attendanceList.leaderPhoto
+              : ""; //经理照片
           this.list_thead.picture.qcPic =
             res.data.attendanceList.qcPhoto.length > 0
-              ? this.getImgSrc(res.data.attendanceList.qcPhoto)
-              : picturePng; //qc照片
+              ? res.data.attendanceList.qcPhoto
+              : ""; //qc照片
           this.list_tbody = res.data.scheduleList;
         } else {
           this.$message.error(res.msg);

@@ -56,8 +56,8 @@ export const getMacINfo = function () {
       },
       equipNo: 'P06', //工位
       empNo: 30031, //工号
-      line: 'A', //制程
-      plant: 'ZSA', //车间
+      line: 'BC1', //制程
+      plant: '1000', //车间
       ptno: 'LEDN32D50', //产品编码
     }
   }

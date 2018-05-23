@@ -39,6 +39,8 @@ export default {
         attPersonQty: "",
         actPersonQty: "",
         date: "",
+        humidity:'',
+        temper:'',
         list: []
       },
       chartData: {
@@ -83,6 +85,8 @@ export default {
           this.listData.actPersonQty = res.data.actPersonQty;
           this.listData.date = res.data.date;
           this.listData.list = res.data.tableList;
+          this.listData.humidity = res.data.humidity;
+          this.listData.temper = res.data.temper;
 
           let xAxis = [];
           let chartData = [];

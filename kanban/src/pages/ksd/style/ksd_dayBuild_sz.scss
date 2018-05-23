@@ -1,0 +1,185 @@
+@import '~assets/scss/components/computed.scss';
+//科斯达深圳每日进度看板
+.kanbanView .ksd_dayBuild_sz {
+  $color01: #00B0F0;
+  $color02: #FFFF00;
+  .kanban-title {
+    background-color: $color01;
+    color: black;
+    height: pxTorem(100px);
+    line-height: pxTorem(100px);
+    .logo {
+      position: absolute;
+      height: 100%;
+      width: pxTorem(300px);
+      left: 0;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .kanban-body {
+    display: flex;
+    flex-direction: column;
+    background-color: $color01;
+    .dayBuildSzList {
+      flex: 1;
+      display: flex;
+      flex-direction: column; //表宽度
+      table {
+        background: $color01;
+        width: 100%;
+        tr {
+          td {
+            text-align: center;
+            height: pxTorem(30px);
+            padding: pxTorem(8px);
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+          }
+        }
+      }
+      .ptnmSmall {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: pxTorem(250px);
+        font-size: pxTorem(15px);
+        line-height: pxTorem(20px);
+      }
+      .listHead tr td,
+      .listBody tr td {
+        &:nth-child(1) {
+          max-width: 7%;
+          width: 5%;
+        }
+        &:nth-child(2) {
+          max-width: 7%;
+          width: 8%;
+        }
+        &:nth-child(3) {
+          max-width: 7%;
+          width: 8%;
+        }
+        &:nth-child(4) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(5) {
+          max-width: 15%;
+          width: 15%;
+        }
+        &:nth-child(6) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(7) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(8) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(9) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(10) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(11) {
+          max-width: 7%;
+          width: 7%;
+        }
+        &:nth-child(12) {
+          max-width: 7%;
+          width: 7%;
+        }
+      }
+      .listHead {
+        border-top: 1px solid black;
+        td {
+          background: $color02;
+        }
+        .titles {
+          font-size: pxTorem(16px);
+          font-weight: bold;
+          color: black;
+          div {}
+        }
+        .img {
+          position: relative;
+          img {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+        .wd {
+          position: relative;
+          div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            span {
+              font-weight: 800;
+              flex: 0.5;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              &:first-child {
+                border-bottom: 1px solid black;
+              }
+            }
+          }
+        }
+      }
+      .listBody {
+        flex: 1;
+        overflow-y: auto;
+      }
+    }
+    .msg {
+      height: pxTorem(75px);
+      background-color: black;
+      color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      .text {
+        letter-spacing: pxTorem(3px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+        // left: -100%;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+      }
+      marquee {
+        line-height: pxTorem(75px);
+        font-size: pxTorem(40px);
+      }
+      @keyframes msgMove {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,18 +1,24 @@
 <template>
-    <div class="dateRagePicker">
-        <div class="group" @click="beginTouch">
+  <div class="dateRagePicker">
+    <!-- <div class="group" @click="beginTouch">
             <label>开始时间</label>
             <input type="text" v-model="beginDateShow" disabled>
-        </div>
-        <div class="group" @click="endTouch">
-            <label>结束时间</label>
-            <input type="text" v-model="endDateShow" disabled>
-        </div>
-        <mt-datetime-picker @confirm="beginChange" ref="beginPicker" v-model="finaDate[0]" type="datetime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" hour-format="{value} 时" minute-format="{value} 分"> 
-        </mt-datetime-picker>
-        <mt-datetime-picker @confirm="endChange" ref="endPicker" v-model="finaDate[1]" type="datetime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" hour-format="{value} 时" minute-format="{value} 分"> 
-        </mt-datetime-picker>
+        </div> -->
+    <div @click="beginTouch()">
+      <mt-cell title="开始时间" is-link>
+        <input type="text" v-model="beginDateShow" disabled>
+      </mt-cell>
     </div>
+    <div @click="endTouch">
+      <mt-cell title="结束时间" is-link>
+        <input type="text" v-model="endDateShow" disabled>
+      </mt-cell>
+    </div>
+    <mt-datetime-picker @confirm="beginChange" ref="beginPicker" v-model="finaDate[0]" type="datetime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" hour-format="{value} 时" minute-format="{value} 分">
+    </mt-datetime-picker>
+    <mt-datetime-picker @confirm="endChange" ref="endPicker" v-model="finaDate[1]" type="datetime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" hour-format="{value} 时" minute-format="{value} 分">
+    </mt-datetime-picker>
+  </div>
 </template>
 
 <script>
@@ -29,6 +35,7 @@ export default {
   },
   data() {
     return {
+      openPop: false,
       finaDate: [this.value[0], this.value[1]]
     };
   },

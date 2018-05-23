@@ -24,7 +24,11 @@ export default {
     setTimeout(() => {
       this.buildHzChart_init01();
       this.buildHzChart_init02();
-    }, 1000);
+    }, 2000);
+    setInterval(() => {
+      this.buildHzChart_init01();
+      this.buildHzChart_init02();
+    }, 8000);
   },
   methods: {
     buildHzChart_init01() {
@@ -90,7 +94,10 @@ export default {
             },
             axisLabel: {
               fontSize: 26
-            }
+            },
+            splitLine: {
+              show: false
+            },
           }
         ],
         series: [
@@ -192,7 +199,10 @@ export default {
             axisLabel: {
               fontSize: 26,
               formatter: '{value} %'
-            }
+            },
+            splitLine: {
+              show: false
+            },
           }
         ],
         series: [

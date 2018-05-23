@@ -52,6 +52,7 @@ export default {
   methods: {
     //处理百分数
     takenNum(str){
+        if(!str) return '';
         let num = str.split('%')[0]*1;
         return num.toFixed(2)+'%';
     }

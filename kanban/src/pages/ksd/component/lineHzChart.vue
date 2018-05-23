@@ -18,7 +18,10 @@ export default {
   mounted() {
     setTimeout(() => {
       this.lineHzChart_init();
-    }, 1000);
+    }, 2000);
+    setInterval(() => {
+      this.lineHzChart_init();
+    }, 8000);
   },
   methods: {
     lineHzChart_init() {

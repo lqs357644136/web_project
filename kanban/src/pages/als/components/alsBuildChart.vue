@@ -20,6 +20,9 @@ export default {
     setTimeout(() => {
       this.alsBuildChart_init();
     }, 1000);
+    setInterval(() => {
+      this.alsBuildChart_init();
+    }, 8000);
   },
   methods: {
     alsBuildChart_init() {

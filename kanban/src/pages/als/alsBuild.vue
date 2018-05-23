@@ -1,6 +1,6 @@
 <template>
     <div class="alsBuild">
-        <kanbanTitle class="titleStyle" :logo="logo" :title="titleName" :right="date"></kanbanTitle>
+        <kanbanTitle class="titleStyle" :logo="logo" :titleColor="titleName" :right="date"></kanbanTitle>
         <div class="kanban-body">
             <alsBuildInfo :info="info"></alsBuildInfo>
             <alsEntityList :list="list"></alsEntityList>
@@ -25,7 +25,10 @@ export default {
   name: "alsWare",
   data() {
     return {
-      titleName: "",
+      titleName: {
+        name:'',
+        main:'线生产看板'
+      },
       logo: logoPng,
       date: "",
       macInfo: {
@@ -62,7 +65,7 @@ export default {
   methods: {
     //初始化标题
     titleName_init() {
-      this.titleName = this.macInfo.line + "线生产看板";
+      this.titleName.name = this.macInfo.line;
     },
     //获取数据
     get_data() {
@@ -80,6 +83,13 @@ export default {
           this.info.attendance = res.data.attendance;
           this.info.andon = res.data.reaDataList;
           this.list = res.data.scheduleList;
+          let scheduleListLength = res.data.scheduleList.length;
+          if(scheduleListLength<5){
+            let needMake = 5 - scheduleListLength;
+            for(let i = 0;i<needMake;i++){
+              this.list.push({});
+            }
+          }
           let xAxis = [];
           let plan = [];
           let real = [];

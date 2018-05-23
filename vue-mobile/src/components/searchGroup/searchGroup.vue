@@ -19,23 +19,23 @@
 export default {
   name: "searchGroup",
   props: {
-      title:{
-          type:String
-      },
-      showState:{
-          type:Boolean,
-      }
+    title: {
+      type: String
+    },
+    showState: {
+      type: Boolean
+    }
   },
   data() {
     return {
       open: this.showState
     };
   },
-  watch:{
-      open:function(val){
-          console.log(val)
-          this.$emit("input", val);
-      }
+  watch: {
+    open: function(val) {
+      console.log(val);
+      this.$emit("input", val);
+    }
   }
 };
 </script>

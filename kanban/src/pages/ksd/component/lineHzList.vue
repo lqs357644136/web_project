@@ -45,7 +45,12 @@
                         </div>
                     </td>
                     <td>{{list.date}}</td>
-                    <td>- ℃</td>
+                    <td class="wd">
+                        <div>
+                            <span>{{list.temper}}℃</span>
+                            <span>{{list.humidity}}%RH</span>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>序号</td>
@@ -62,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in list.list" :key="index" :class="!item.flag?'onWork':''">
+                <tr v-for="(item,index) in list.list" :key="index" :class="item.flag?'onWork':''">
                     <td>{{index+1}}</td>
                     <td>{{item.timeCycle}}</td>
                     <td>{{item.orderNo}}</td>
@@ -106,15 +111,16 @@ export default {
     //获取图片流
     getImgSrc(imgPath) {
       if (imgPath && imgPath.length > 0) {
-        this.$get_file({
-          url: this.$api_baseurl(url.file_get),
-          params: { path: imgPath }
-        }).then(res => {
-          console.log(res);
-          return res;
-        });
+        // this.$get_file({
+        //   url: this.$api_baseurl(url.file_get),
+        //   params: { path: imgPath }
+        // }).then(res => {
+        //   console.log(res);
+        //   return res;
+        // });
+        return imgPath;
       } else {
-        return picturePng;
+        return "";
       }
     },
     //截取部分纪录
