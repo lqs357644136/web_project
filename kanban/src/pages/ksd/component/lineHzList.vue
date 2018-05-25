@@ -47,8 +47,8 @@
                     <td>{{list.date}}</td>
                     <td class="wd">
                         <div>
-                            <span>{{list.temper}}℃</span>
-                            <span>{{list.humidity}}%RH</span>
+                            <span :style="'background:'+temperStyleSeen">{{list.temper}}℃</span>
+                            <span :style="'background:'+humidityStyleSeen">{{list.humidity}}%RH</span>
                         </div>
                     </td>
                 </tr>
@@ -96,7 +96,9 @@ export default {
     return {
       leaderPic: "",
       listData: [],
-      totalNum: 12
+      totalNum: 12,
+      temperStyleSeen: "none",
+      humidityStyleSeen: "none",
     };
   },
   mounted() {
@@ -106,6 +108,15 @@ export default {
         this.list.list.length - 1
       );
     }, 2000);
+  },
+  watch: {
+    list: {
+      handler(n, o) {
+        this.temperStyle(this.list.temper);
+        this.humidityStyle(this.list.temper);
+      },
+      deep: true
+    }
   },
   methods: {
     //获取图片流
@@ -137,6 +148,26 @@ export default {
       //     this.listData = this.list.list;
       //   }
       this.listData = this.list.list;
+    },
+    //判断温度颜色
+    temperStyle(str) {
+      let num = str * 1;
+      console.log(num);
+      if (num > 28.5 || num < 20) {
+        this.temperStyleSeen = "red";
+      } else {
+        this.temperStyleSeen = "#33CCFF";
+      }
+    },
+    //判断湿度颜色
+    humidityStyle(str) {
+       let num = str * 1;
+      console.log(num);
+      if (num > 75 || num < 35){
+        this.humidityStyleSeen = "red";
+      } else {
+        this.humidityStyleSeen = "#33CCFF";
+      }
     }
   }
 };

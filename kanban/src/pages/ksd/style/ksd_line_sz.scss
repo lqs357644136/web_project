@@ -8,6 +8,21 @@
   .build_list {
     flex: 1;
     background: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .kanbanTitle {
+      position: absolute;
+      top: 0;
+      font-size: pxTorem(36px);
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: pxTorem(5px);
+      width: 100%;
+      z-index: 2;
+      height: pxTorem(100px);
+      line-height: pxTorem(100px);
+    }
     table {
       width: 100%;
       thead td,
@@ -21,13 +36,15 @@
         border: 1px solid black;
       }
       thead {
-        .date{
+        .date {
           font-size: pxTorem(24px);
         }
         td {
           background-color: $color01;
+          min-width: pxTorem(100px);
         }
         .logo {
+          height: pxTorem(100px);
           img {
             height: 100%;
             width: pxTorem(300px);
@@ -45,6 +62,7 @@
           border-left: 0px;
         }
         .picture {
+          width: pxTorem(190px);
           position: relative;
           img {
             top: 0;
@@ -54,62 +72,66 @@
             width: 100%;
           }
         }
+      }
+    }
+  }
+  .mainBodyTable {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: pxTorem(10px);
+    table {
+      tbody {
+        .ptnmSmall {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          line-height: pxTorem(20px);
+          padding: 0 pxTorem(5px);;
+        }
+        td {
+          background-color: white;
+        }
         .mainTitle {
           td {
             background-color: $color02;
           }
         }
-        tr:nth-child(4) {
+        tr {
           & td:nth-child(1) {
-            width: pxTorem(120px);
+            width: 5%;
           }
           & td:nth-child(2) {
-            width: pxTorem(300px);
+            width: 10%;
+          }
+          & td:nth-child(3) {
+            width: pxTorem(200px);
+            max-width: pxTorem(200px);
+            min-width: pxTorem(200px);
           }
           & td:nth-child(4) {
-            width: pxTorem(120px);
+            width: pxTorem(600px);
+            max-width: pxTorem(600px);
+            min-width: pxTorem(600px);
           }
-          & td:nth-child(5) {
-            width: pxTorem(120px);
-          }
-          & td:nth-child(6) {
-            width: pxTorem(150px);
-          }
+          & td:nth-child(5),
+          & td:nth-child(6),
           & td:nth-child(7),
-          & td:nth-child(8) {
-            width: pxTorem(200px);
+          & td:nth-child(8),
+          & td:nth-child(9) {
+            width: 10%;
           }
         }
       }
-      tbody {
-        td {
-          background-color: white;
-        }
-        .tdLong {
-          div {
-            position: absolute;
-            top: 0;
-            text-align: left;
-            height: 100%;
-            width: 100%;
-            padding: 0 pxTorem(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-          }
-        } // tr td:nth-child(1) {
-        //     width: 7%;
-        // }
-        // tr td:nth-child(2),
-        // tr td:nth-child(3) {
-        //     width: 18%;
-        // }
-      }
+    }
+    .mainBodytBody {
+      flex: 1;
+      overflow: hidden;
+      overflow-y: auto;
     }
   }
   .msg {
-    height: pxTorem(75px);
+    height: pxTorem(0px);
     background-color: black;
     color: yellow;
     display: flex;

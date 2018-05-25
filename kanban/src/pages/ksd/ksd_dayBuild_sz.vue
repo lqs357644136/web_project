@@ -70,11 +70,11 @@ export default {
         if (res.code == 1) {
           this.lists = res.data;
           this.planList = res.data.planList;
-          // let plantListLength = this.plantList.length;
-          // if(plantListLength<8){
-          //   let needCreate = 8 - plantListLength;
+          // let planListLength = this.planList.length;
+          // if(planListLength<8){
+          //   let needCreate = 8 - planListLength;
           //   for(let i = 0;i<needCreate;i++){
-          //      this.plantList.push({});
+          //      this.planList.push({});
           //   }
           // }
           this.scrollText= res.data.scrollText;

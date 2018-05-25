@@ -1,0 +1,76 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+//蓝色点点菊花
+@-webkit-keyframes halo {
+  0% {
+      opacity: 0;
+      -webkit-transform: scale(0.1);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      -webkit-transform: scale(1.2);
+  }
+}
+
+@-moz-keyframes halo {
+  0% {
+      opacity: 0;
+      -moz-transform: scale(0.1);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      -moz-transform: scale(1.2);
+  }
+}
+
+@-ms-keyframes halo {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+@-o-keyframes halo {
+  0% {
+      opacity: 0;
+      -o-transform: scale(0.1);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      -o-transform: scale(1.2);
+  }
+}
+
+@keyframes halo {
+  0% {
+      opacity: 0;
+      transform: scale(0.1);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: scale(1.2);
+  }
+}

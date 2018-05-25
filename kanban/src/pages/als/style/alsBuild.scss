@@ -56,10 +56,12 @@
                 line-height:pxTorem(40px);
               }
               .img {
-                height:calc(100% - #{pxTorem(40px)});
+                flex:1;
                 text-align: center;
+                display: flex;
+                justify-content: center;
                 img {
-                  height: 100%;
+                  width: 60%;
                 }
               }
             }

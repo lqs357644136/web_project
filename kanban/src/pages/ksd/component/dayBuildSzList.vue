@@ -34,9 +34,9 @@
                         <div>Workshop environment temperature</div>
                     </td>
                     <td class="wd">
-                        <div style="background:red">
-                            <span>{{lists.temper}}℃</span>
-                            <span>{{lists.humidity}}%RH</span>
+                        <div>
+                            <span :style="'background:'+temperStyleSeen">{{lists.temper}}℃</span>
+                            <span :style="'background:'+humidityStyleSeen">{{lists.humidity}}%RH</span>
                         </div>
                     </td>
                 </tr>
@@ -126,17 +126,49 @@ Vue.use(TableColumn);
 /////////////////////////////
 export default {
   name: "dayBuildSzList",
-  props: ["lists","plantList"],
+  props: ["lists", "plantList"],
   data() {
     return {
-      tableList: (this.lists.list = this.lists.list)
+      tableList: this.lists.list,
+      temperStyleSeen: "none",
+      humidityStyleSeen: "none",
     };
   },
   mounted() {
-
-    setInterval(()=> {
+    setInterval(() => {
       this.$refs.listBody.scrollTop = this.$refs.listBody.scrollHeight;
     }, 5000);
+  },
+  watch: {
+    lists: {
+      handler(n, o) {
+        this.temperStyle(this.lists.temper);
+        this.humidityStyle(this.lists.temper);
+      },
+      deep: true
+    }
+  },
+  methods: {
+    //判断温度颜色
+    temperStyle(str) {
+      let num = str * 1;
+      console.log(num);
+      if (num > 28.5 || num < 20) {
+        this.temperStyleSeen = "red";
+      } else {
+        this.temperStyleSeen = "#33CCFF";
+      }
+    },
+    //判断湿度颜色
+    humidityStyle(str) {
+       let num = str * 1;
+      console.log(num);
+      if (num > 75 || num < 35){
+        this.humidityStyleSeen = "red";
+      } else {
+        this.humidityStyleSeen = "#33CCFF";
+      }
+    }
   }
 };
 </script>

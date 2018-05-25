@@ -1,14 +1,14 @@
 <template>
   <div class="ksd_line_sz">
     <div class="build_list">
-
+      <div class="kanbanTitle">{{list_thead.info.plant}}生产看板</div>
       <table cellspacing="0">
         <thead>
           <tr>
             <td colspan="2" class="logo">
               <img :src="logo" alt="">
             </td>
-            <td colspan="4" class="title">{{macInfo.plant}}车间生产看板</td>
+            <td colspan="4" class="title"></td>
             <td rowspan="3" class="picture">
               <img :src="list_thead.picture.managerPic" alt="">
             </td>
@@ -18,9 +18,7 @@
           </tr>
           <tr>
             <td>线别</td>
-            <td class="tdLong">
-              <div>{{list_thead.info.line}}</div>
-            </td>
+            <td>{{list_thead.info.line}}</td>
             <td>定编人数</td>
             <td>{{list_thead.info.att}}</td>
             <td class="date">日期</td>
@@ -34,35 +32,44 @@
             <td class="date">实时时间</td>
             <td>{{list_thead.date.real}}</td>
           </tr>
-          <tr class="mainTitle">
-            <td>序号</td>
-            <td>生产工单号</td>
-            <td>产品料号</td>
-            <td>计划数量</td>
-            <td>完成数量</td>
-            <td>生产进度</td>
-            <td>不良数</td>
-            <td>不良率</td>
-          </tr>
         </thead>
-        <tbody>
-          <tr v-for="(item,index) of list_tbody" :key="index">
-            <td class="index">{{index+1}}</td>
-            <td class="tdLong">
-              <div>{{item.orderNo}}</div>
-            </td>
-            <td class="tdLong">
-              <div>{{item.partNo }}</div>
-            </td>
-            <td>{{item.schQty }}</td>
-            <td>{{item.finishQty }}</td>
-            <td>{{item.prodschedule }}</td>
-            <td>{{item.badNumber }}</td>
-            <td>{{item.badRate }}</td>
-          </tr>
-
-        </tbody>
       </table>
+      <div class="mainBodyTable">
+        <div class="mainBodyTitle">
+          <table class="main" border="1" cellspacing="0">
+            <tbody>
+              <tr class="mainTr mainTitle">
+                <td>序号</td>
+                <td>工单号</td>
+                <td>料号</td>
+                <td>产品型号</td>
+                <td>计划数量</td>
+                <td>完成数量</td>
+                <td>生产进度</td>
+                <td>不良数</td>
+                <td>合格率</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mainBodytBody" ref="mainBodytBody">
+          <table class="main" border="1" cellspacing="0">
+            <tbody>
+              <tr v-for="(item,index) of list_tbody" :key="index">
+                <td class="index">{{index+1}}</td>
+                <td>{{item.orderNo}}</td>
+                <td class="ptnmSmall">{{item.partNo}}</td>
+                <td class="ptnmSmall">{{item.ptnm}}</td>
+                <td>{{item.schQty }}</td>
+                <td>{{item.finishQty }}</td>
+                <td>{{item.prodschedule }}</td>
+                <td>{{item.badNumber }}</td>
+                <td>{{item.badRate }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <div class="msg"></div>
   </div>
@@ -115,12 +122,15 @@ export default {
         this.get_data();
       }, this.macInfo.eachTime);
     }, 20000);
+    setInterval(() => {
+      this.$refs.mainBodytBody.scrollTop = this.$refs.mainBodytBody.scrollHeight;
+    }, 5000);
   },
   methods: {
     //获取系统时间
     getSysTime() {
       let params = {
-        format: "yyyy/MM/dd hh:mm"
+        format: "yyyy/MM/dd HH:mm"
       };
       this.$get_noToken({
         url: this.$newPro_api_baseurl(url.getTime),
@@ -148,6 +158,7 @@ export default {
         console.log(res);
         if (res.code == 1) {
           this.list_thead.info.line = res.data.attendanceList.lineDesc; //线别
+          this.list_thead.info.plant = res.data.attendanceList.plantDesc; //线别
           this.list_thead.info.person =
             res.data.attendanceList.leader + " / " + res.data.attendanceList.qc; //责任人
           this.list_thead.info.att = res.data.attendanceList.attPersonQty; //定编人数
