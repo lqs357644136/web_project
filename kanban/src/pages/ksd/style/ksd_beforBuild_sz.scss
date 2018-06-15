@@ -1,0 +1,270 @@
+@import '~assets/scss/components/computed.scss';
+//科斯达深圳每日进度看板
+.kanbanView .ksd_beforBuild_sz {
+  $color01: #007dfe;
+  $color07: rgb(255, 255, 255);
+  $color02: rgb(99, 234, 252);
+  $color03: rgb(0, 0, 0);
+  $color04: rgb(189, 229, 235);
+  $color05: rgb(0, 0, 0);
+  $color06: rgb(0, 0, 0);
+  // thead字体大小
+  $fontsize01:pxTorem(26px);
+  $fontsize02:pxTorem(16px);
+  // tbody字体大小
+  $fontsize03:pxTorem(30px);
+  // 标题字体大小
+  $fontsize04:pxTorem(50px);
+  .kanban-title {
+    background-color: $color01;
+    color: $color07;
+    height: pxTorem(100px);
+    line-height: pxTorem(100px);
+    .title{
+      font-size: $fontsize04;
+    }
+    .logo {
+      position: absolute;
+      height: 100%;
+      width: pxTorem(260px);
+      left:pxTorem(0px);
+      img {
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+  .kanban-body {
+    display: flex;
+    flex-direction: column;
+    background-color: $color01;
+    .dayBuildSzList {
+      flex: 1;
+      display: flex;
+      flex-direction: column; //表宽度
+      table {
+        background: $color01;
+        width: 100%;
+        tr {
+          td {
+            text-align: center;
+            height: pxTorem(30px);
+            padding: pxTorem(8px);
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+          }
+        }
+        .titles {
+          font-weight: bold;
+          color: black;
+          div {
+            font-size: $fontsize02;
+            &:nth-child(1){
+            font-size: $fontsize01;
+            }
+          }
+        }
+        .partId{
+          text-align: left;
+         
+          div{
+            font-size: pxTorem(20px);
+          }
+        }
+      }
+      .ptnmSmall {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding:0 pxTorem(10px);
+      }
+      .listMoreHead {
+        tr {
+          td {
+            background: $color02;
+            font-weight: 800;
+          }
+        }
+      }
+      .listMoreHead tr td,
+      .listBody tr td {
+        padding: pxTorem(20px) 0;
+        &:nth-child(1) {
+          width: pxTorem(50px) !important;
+          max-width: pxTorem(50px) !important;
+          min-width: pxTorem(50px) !important;
+        }
+        &:nth-child(2) {
+          width: pxTorem(100px) !important;
+          max-width: pxTorem(100px) !important;
+          min-width: pxTorem(100px) !important;
+        }
+        &:nth-child(3) {
+          width: pxTorem(100px) !important;
+          max-width: pxTorem(100px) !important;
+          min-width: pxTorem(100px) !important;
+        }
+        &:nth-child(4) {
+          width: pxTorem(300px) !important;
+          max-width: pxTorem(300px) !important;
+          min-width: pxTorem(300px) !important;
+        }
+        &:nth-child(5) {
+          width: pxTorem(80px) !important;
+          max-width: pxTorem(80px) !important;
+          min-width: pxTorem(80px) !important;
+        }
+        &:nth-child(6) {
+          width: pxTorem(80px) !important;
+          max-width: pxTorem(80px) !important;
+          min-width: pxTorem(80px) !important;
+        }
+        &:nth-child(7) {
+          width: pxTorem(200px) !important;
+          max-width: pxTorem(200px) !important;
+          min-width: pxTorem(200px) !important;
+        }
+      }
+      .listHead {
+        border-top: 1px solid black;
+        border-bottom: 5px solid black;
+        td {
+          background: $color02;
+          min-width: pxTorem(100px);
+          &:nth-child(1) {
+            max-width: 5%;
+            width: 5%;
+          }
+          &:nth-child(2) {
+            max-width: 5%;
+            width: 5%;
+          }
+          &:nth-child(3) {
+            max-width: 8%;
+            width: 8%;
+          }
+          &:nth-child(4) {
+            max-width: 8%;
+            width: 8%;
+          }
+          &:nth-child(5) {
+            max-width: 8%;
+            width: 8%;
+          }
+          &:nth-child(6) {
+            max-width: 9%;
+            width: 9%;
+          }
+          &:nth-child(7) {
+            max-width: 5%;
+            width: 5%;
+          }
+          &:nth-child(8) {
+            max-width: 10%;
+            width: 10%;
+          }
+          &:nth-child(9) {
+            max-width: 5%;
+            width: 5%;
+          }
+          &:nth-child(10) {
+            max-width: 5%;
+            width: 5%;
+          }
+          &:nth-child(11) {
+            max-width: 8%;
+            width: 8%;
+          }
+          &:nth-child(12) {
+            max-width: 11%;
+            width: 11%;
+          }
+        }
+        .img {
+          position: relative;
+          img {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+        .wd {
+          position: relative;
+          div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            span {
+              font-weight: 800;
+              flex: 0.5;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              &:first-child {
+                border-bottom: 1px solid black;
+              }
+            }
+          }
+        }
+      }
+      .listBody {
+        flex: 1;
+        overflow-y: auto;
+        td {
+          background: $color04;
+          font-size: $fontsize03;
+        }
+        .fg {
+          td {
+            background: rgb(196, 239, 255);
+          }
+        }
+        .over {
+          background: rgb(0, 167, 14);
+          color: white;
+        }
+      }
+    }
+    .msg {
+      height: pxTorem(75px);
+      background-color: black;
+      color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      .text {
+        letter-spacing: pxTorem(3px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+        // left: -100%;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+      }
+      marquee {
+        line-height: pxTorem(75px);
+        font-size: pxTorem(40px);
+      }
+      @keyframes msgMove {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    }
+  }
+}

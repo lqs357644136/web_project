@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- 响应式设置 -->
+  <meta name="viewport" id="viewport" content="width=device-width,user-scalable=no,initial-scale=1, maximum-scale=1" />
+  <!-- 设置字符集格式 -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- 设置网站标题 -->
+  <title>ESOP</title>
+  <!-- 设置关键字 -->
+  <meta name="Keywords" content="ESOP" />
+  <!-- 设置描述 -->
+  <meta name="Description" content="ESOP" />
+  <!-- 启用360浏览器的极速模式(webkit) -->
+  <meta name="renderer" content="webkit">
+  <!-- 避免IE使用兼容模式 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<style>
+  .mainLoading {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+</style>
+
+<body>
+  <div class="mainLoading">
+    <span>loading</span>
+  </div>
+  <mainbody></mainbody>
+</body>
+
+</html>
+
+<script>
+  if (window.screen.availWidth <= 720) {
+    document.getElementById("viewport").setAttribute('content',
+      'width=device-width,user-scalable=no,initial-scale=1, maximum-scale=0.4');
+  }
+
+</script>

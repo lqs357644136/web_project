@@ -1,0 +1,118 @@
+@import '~assets/scss/components/computed.scss';
+.kanbanView .sopTop {
+  $color01: #C3D69B;
+  $color02: rgb(252, 252, 252);
+  $color03: #5082bd;
+  $fontSize01: pxTorem(28px);
+  $fontSize02: pxTorem(24px);
+  table {
+    border-color: $color03;
+    width: 100%;
+    height: 100%;
+    .ptnmSmall {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0 pxTorem(10px);
+    }
+    .btns {
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: pxTorem(1px);
+      span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: $fontSize01;
+        border-radius: 999px;
+        width: pxTorem(40px);
+        box-shadow: 3px 3px 3px black;
+        &:nth-child(1) {
+          background-color: rgb(0, 146, 172);
+        }
+        &:nth-child(2) {
+          background-color: rgb(0, 146, 172);
+        }
+        &:active {
+          font-size: $fontSize02;
+          color: $color02;
+          box-shadow: 0px 0px 0px black;
+          background-color: rgb(0, 0, 0);
+          transition: 0.15s all ease;
+        }
+        &:hover {
+          color: $color02;
+          transition: 0.15s all ease;
+        }
+      }
+    }
+    tr {
+      td {
+        text-align: center;
+        background-color: $color01;
+        font-size: $fontSize01;
+        &:nth-child(1) {
+          width: pxTorem(90px) !important;
+          max-width: pxTorem(90px) !important;
+          min-width: pxTorem(90px) !important;
+        }
+        &:nth-child(2) {
+          width: pxTorem(300px) !important;
+          max-width: pxTorem(300px) !important;
+          min-width: pxTorem(300px) !important;
+        }
+        &:nth-child(3) {
+          width: pxTorem(140px) !important;
+          max-width: pxTorem(140px) !important;
+          min-width: pxTorem(140px) !important;
+        }
+        &:nth-child(4) {
+          width: pxTorem(90px) !important;
+          max-width: pxTorem(90px) !important;
+          min-width: pxTorem(90px) !important;
+        }
+        &:nth-child(5) {
+          width: pxTorem(150px) !important;
+          max-width: pxTorem(150px) !important;
+          min-width: pxTorem(150px) !important;
+        }
+        &:nth-child(6) {
+          width: pxTorem(90px) !important;
+          max-width: pxTorem(90px) !important;
+          min-width: pxTorem(90px) !important;
+        }
+        &:nth-child(7) {
+          width: pxTorem(130px) !important;
+          max-width: pxTorem(130px) !important;
+          min-width: pxTorem(130px) !important;
+        }
+        &:nth-child(8) {
+          width: pxTorem(150px) !important;
+          max-width: pxTorem(150px) !important;
+          min-width: pxTorem(150px) !important;
+        }
+        &:nth-child(9) {
+          width: pxTorem(90px) !important;
+          max-width: pxTorem(90px) !important;
+          min-width: pxTorem(90px) !important;
+        }
+        &:nth-child(10) {
+          width: pxTorem(150px) !important;
+          max-width: pxTorem(150px) !important;
+          min-width: pxTorem(150px) !important;
+        }
+        &:nth-child(11) {
+          width: pxTorem(90px) !important;
+          max-width: pxTorem(90px) !important;
+          min-width: pxTorem(90px) !important;
+        }
+        &:nth-child(12) {
+          width: pxTorem(90px) !important;
+          max-width: pxTorem(90px) !important;
+          min-width: pxTorem(90px) !important;
+        }
+      }
+    }
+  }
+}

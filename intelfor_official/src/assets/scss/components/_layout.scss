@@ -1,0 +1,561 @@
+$width-large: pxTorem(1024px);
+$width-center: pxTorem(1200px);
+$width-big: pxTorem(1440px);
+.official {
+    height: 100%;
+    .tel {
+        font-size: pxTorem(18px);
+        margin-left: pxTorem(30px);
+        a {
+            color: #007a9b;
+            font-size: pxTorem(18px);
+            font-weight: 800;
+        }
+        .icon {
+            position: relative;
+            top: pxTorem(-3px);
+        }
+        @media screen and (max-width: $width-large) {
+            margin-left: pxTorem(0px);
+            a {
+                color: #007a9b;
+                font-size: pxTorem(14px);
+                font-weight: 800;
+            }
+            i {
+                color: #00156e;
+                font-size: 16px;
+            }
+        }
+    }
+    .navbar {
+        background: rgba(255, 255, 255, 0.84);
+        position: fixed;
+        width: 100%;
+        z-index: 11;
+        border-bottom: 1px solid #dfdfdf;
+        &:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+        .warp {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+        }
+        @media screen and (max-width: $width-large) {
+            height: pxTorem(45px);
+            line-height: pxTorem(45px);
+            padding: 0 pxTorem(2px);
+            .navbar-right .mobile {
+                display: block !important;
+            }
+            .warp {
+                width: 100%;
+                justify-content: space-between;
+                padding: 0 pxTorem(20px);
+            }
+        }
+        @media screen and (min-width: $width-large) {
+            height: pxTorem(60px);
+            line-height: pxTorem(60px);
+            padding: 0 pxTorem(40px);
+            .navbar-right .disktop {
+                display: block !important;
+            }
+            .warp {
+                max-width: pxTorem(1280px);
+                width: 100%;
+                margin: auto;
+            }
+        }
+        @media screen and (min-width: $width-big) {
+            height: pxTorem(80px);
+            line-height: pxTorem(80px);
+            padding: 0 pxTorem(40px);
+            .navbar-right .disktop {
+                display: block !important;
+            }
+            .warp {
+                max-width: pxTorem(1440px);
+                width: 100%;
+                margin: auto;
+            }
+        }
+        .navbar-brand {
+            width: pxTorem(300px);
+            @media screen and (max-width: $width-center) {
+                width: pxTorem(160px);
+            }
+            @media screen and (max-width: $width-large) {
+                width: pxTorem(208px);
+            }
+            .disktopLogo {
+                display: none;
+                .text01 {
+                    font-size: pxTorem(28px);
+                    font-weight: 800;
+                    color: #0e0e6f;
+                    line-height: pxTorem(55px);
+                }
+                .text02 {
+                    font-size: pxTorem(28px);
+                    line-height: pxTorem(55px);
+                    color: #31317f;
+                    margin-left: pxTorem(5px);
+                }
+                @media screen and (max-width: $width-center) {
+                    .text02 {
+                        display: none;
+                    }
+                }
+                @media screen and (min-width: $width-big) {
+                    .text01 {
+                        font-size: pxTorem(28px);
+                        line-height: pxTorem(80px);
+                    }
+                    .text02 {
+                        font-size: pxTorem(28px);
+                        line-height: pxTorem(80px);
+                    }
+                }
+            }
+            .mobileLogo {
+                display: none;
+                .text01 {
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: #0e0e6f;
+                }
+            }
+            @media screen and (max-width: $width-large) {
+                height: pxTorem(45px);
+                .mobileLogo {
+                    display: block;
+                }
+            }
+            @media screen and (min-width: $width-large) {
+                height: pxTorem(60px);
+                .disktopLogo {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+            @media screen and (min-width: $width-big) {
+                height: pxTorem(80px);
+                .disktopLogo {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+        }
+        .navbar-right {
+            //flex:1;
+        }
+        .disktop {
+            display: none;
+            .navbar-menu {
+                display: flex;
+                flex-direction: row;
+                .nav-menu-box {
+                    margin-left: pxTorem(15px);
+                    cursor: pointer;
+                }
+                @media screen and (max-width: $width-center) {
+                    .nav-menu-box {
+                        margin-left: pxTorem(20px);
+                        .text {
+                            font-size: pxTorem(18px);
+                        }
+                    }
+                }
+                @media screen and (min-width: $width-large) {
+                    .nav-menu-box {
+                        margin-left: pxTorem(20px);
+                        .text {
+                            font-size: pxTorem(18px);
+                        }
+                    }
+                }
+                @media screen and (min-width: $width-big) {
+                    .nav-menu-box {
+                        margin-left: pxTorem(30px);
+                        .text {
+                            font-size: pxTorem(20px);
+                        }
+                    }
+                }
+                .nav-menu-box:hover {
+                    color: #BA0511;
+                    .more {
+                        display: block;
+                    }
+                }
+                .isChoose {
+                    .text {
+                        color: #BA0511;
+                    }
+                }
+                .more {
+                    padding: pxTorem(10px) pxTorem(10px);
+                    position: absolute;
+                    display: none;
+                    width: 100%;
+                    background-color: white;
+                    left: 0;
+                }
+                .plant {
+                    display: flex;
+                    flex-direction: row;
+                    .plantImg {
+                        padding: pxTorem(20px) pxTorem(20px);
+                        padding-right: pxTorem(20px) pxTorem(20px);
+                        border-right: 1px solid #dfdfdf;
+                        height: pxTorem(220px);
+                        width: pxTorem(220px);
+                        margin-right: pxTorem(20px);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        img {
+                            height: 100%;
+                        }
+                    }
+                    .ptBoxs {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        .ptBox {
+                            display: flex;
+                            flex-direction: column;
+                            width: 25%;
+                            margin-bottom: pxTorem(10px);
+                            .img {
+                                text-align: center;
+                                img {
+                                    position: relative;
+                                    top: 0;
+                                    height: pxTorem(80px);
+                                    width: pxTorem(80px);
+                                    border-radius: 999px;
+                                }
+                            }
+                            .text {
+                                height: pxTorem(30px);
+                                line-height: pxTorem(30px);
+                                text-align: center;
+                                font-weight: 800;
+                                color: initial;
+                            }
+                            &:hover {
+                                .text {
+                                    color: inherit;
+                                }
+                                .img {
+                                    img {
+                                        position: relative;
+                                        top: pxTorem(-5px);
+                                        transition: top 0.2s ease;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .success {
+                    display: flex;
+                    flex-direction: row;
+                    .plantImg {
+                        padding: pxTorem(20px) pxTorem(20px);
+                        padding-right: pxTorem(20px) pxTorem(20px);
+                        border-right: 1px solid #dfdfdf;
+                        height: pxTorem(220px);
+                        width: pxTorem(220px);
+                        margin-right: pxTorem(20px);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        img {
+                            height: 100%;
+                        }
+                    }
+                    .ptBoxs {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        .ptBox {
+                            display: flex;
+                            flex-direction: column;
+                            width: 28%;
+                            margin-bottom: pxTorem(5px);
+                            margin-right: pxTorem(5px);
+                            .img {
+                                text-align: center;
+                                img {
+                                    position: relative;
+                                    top: 0;
+                                    height: pxTorem(60px);
+                                    width: pxTorem(150px);
+                                }
+                            }
+                            .text {
+                                height: pxTorem(20px);
+                                line-height: pxTorem(20px);
+                                text-align: center;
+                                font-weight: 800;
+                                color: initial;
+                            }
+                            &:hover {
+                                .text {
+                                    color: inherit;
+                                }
+                                .img {
+                                    img {
+                                        position: relative;
+                                        top: pxTorem(-5px);
+                                        transition: top 0.2s ease;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mobile {
+            display: none;
+            .btn {
+                font-size: pxTorem(26px);
+                line-height: pxTorem(45px);
+            }
+            .rightMenu {
+                position: fixed;
+                right: 0;
+                background-color: white;
+                top: 0;
+                min-width: pxTorem(150px);
+                height: 100%;
+                border-left: 1px solid #dfdfdf;
+                border-bottom: 1px solid #dfdfdf;
+                box-shadow: -1px 0px 24px black;
+                .cancel {
+                    font-size: pxTorem(30px);
+                    padding: pxTorem(5px) pxTorem(15px);
+                    border-bottom: 1px solid #dfdfdf;
+                    .text {}
+                }
+                .menuBox {
+                    padding: pxTorem(0px) pxTorem(15px);
+                    border-bottom: 1px solid #dfdfdf;
+                    text-align: center;
+                    font-weight: 800;
+                    text-align: left;
+                    .fa {
+                        margin-right: pxTorem(10px);
+                    }
+                }
+                .menuBoxChilds {
+                    border-bottom: 1px solid #dfdfdf;
+                    padding-left: pxTorem(35px);
+                    border-bottom: 1px solid #dfdfdf;
+                    font-size: pxTorem(16px);
+                    text-align: left;
+                    max-height: pxTorem(250px);
+                    overflow-y: auto;
+                    .menuBoxChild {
+                        height: pxTorem(40px);
+                        line-height: pxTorem(40px);
+                        border-bottom: 1px solid #dfdfdf;
+                        &:last-child {
+                            border-bottom: 0px solid #dfdfdf;
+                        }
+                    }
+                    @media screen and (max-height: pxTorem(400px)) {
+                        max-height: pxTorem(80px);
+                    }
+                }
+            }
+            .ewm {
+                position: absolute;
+                bottom: pxTorem(40px);
+                height: pxTorem(107px);
+                width: pxTorem(100px);
+                left: pxTorem(28px);
+                @media screen and (max-height: pxTorem(560px)) {
+                    display: none;
+                }
+            }
+            .tel {
+                position: absolute;
+                bottom: 0;
+                left: pxTorem(10px);
+                @media screen and (max-height: pxTorem(320px)) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .body-warp {
+        height: 100%;
+        @media screen and (max-width: $width-large) {
+            padding-top: pxTorem(45px);
+        }
+        @media screen and (min-width: $width-large) {
+            padding-top: pxTorem(60px);
+        }
+        @media screen and (min-width: $width-big) {
+            padding-top: pxTorem(80px);
+        }
+    }
+    .footerMod {
+        background: #333333;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        p {
+            color: #999999;
+            display: flex;
+            flex-direction: row;
+            padding: pxTorem(20px) 0;
+            justify-content: center;
+        }
+        @media screen and (max-width: $width-large) {
+            p {
+                flex-wrap: wrap;
+            }
+        }
+        @media screen and (min-width: $width-large) {}
+        @media screen and (min-width: $width-big) {
+            p {
+                font-size: pxTorem(26px);
+            }
+        }
+    }
+    .bottom {
+        background-color: white;
+        border-top: 1px solid #dfdfdf;
+        display: flex;
+        flex-direction: row;
+        .info {
+            flex: 1;
+            .compyInfo {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                .phone {
+                    p {
+                        margin-bottom: pxTorem(5px);
+                        color: #666;
+                    }
+                    .phoneNum {
+                        color: #007a9b;
+                        font-size: pxTorem(18px);
+                        font-weight: 800;
+                    }
+                    .email {
+                        color: initial;
+                    }
+                    .icon {
+                        position: relative;
+                        top: pxTorem(-3px);
+                    }
+                }
+                .logos {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    flex: 1;
+                    .logo {
+                        .text01 {
+                            font-size: pxTorem(35px);
+                            color: #31317f;
+                            font-weight: 800;
+                            top: pxTorem(-8px);
+                            position: relative;
+                        }
+                        .text02 {
+                            font-size: pxTorem(12px);
+                            top: pxTorem(-8px);
+                            position: relative;
+                            letter-spacing: pxTorem(4.5px);
+                        }
+                    }
+                }
+            }
+            .planInfo {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: pxTorem(20px);
+                .planInfoBox {
+                    width: 85%;
+                    @media screen and (min-width: $width-big) {
+                        width: 50%;
+                    }
+                    .title {
+                        border-bottom: 1px solid #dfdfdf;
+                        padding-bottom: pxTorem(5px);
+                    }
+                    table {
+                        width: 100%;
+                        tr {
+                            td {
+                                height: pxTorem(30px);
+                                line-height: pxTorem(30px);
+                                text-align: left;
+                                a {
+                                    color: initial;
+                                }
+                                a:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .ewm {
+            width: pxTorem(180px);
+            margin-left: pxTorem(30px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        @media screen and (max-width: $width-large) {
+            .info {
+                display: none;
+            }
+            .ewm {
+                display: none;
+            }
+            .mobileImg {
+                display: block;
+                margin: auto;
+                height: pxTorem(160px)
+            }
+        }
+        @media screen and (min-width: $width-large) {
+            padding: pxTorem(20px) pxTorem(150px);
+            .mobileImg {
+                display: none;
+            }
+        }
+        @media screen and (min-width: $width-big) {
+            padding: pxTorem(20px) pxTorem(300px);
+            .mobileImg {
+                display: none;
+            }
+        }
+    }
+}

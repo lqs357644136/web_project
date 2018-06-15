@@ -1,0 +1,193 @@
+@import '~assets/scss/components/computed.scss';
+//科斯达惠州生产管理看板
+.kanbanView .ksd_build_hz {
+  $color01: #00B0F0;
+  $color07: rgb(255, 255, 255);
+  $color02: #FFFF00;
+  $color03: rgb(0, 0, 0);
+  $color04: rgb(189, 229, 235);
+  $color05: rgb(0, 0, 0);
+  $color06: rgb(0, 0, 0);
+  $color08: rgb(236, 236, 236);
+  // thead字体大小
+  $fontsize01: pxTorem(26px);
+  $fontsize02: pxTorem(16px); // tbody字体大小
+  $fontsize03: pxTorem(24px); // 标题字体大小
+  $fontsize04: pxTorem(50px);
+  .kanban-title {
+    background-color: $color01;
+    color: $color07;
+    height: pxTorem(100px);
+    line-height: pxTorem(100px);
+    .title {
+      font-size: $fontsize04;
+    }
+    .logo {
+      position: absolute;
+      height: 100%;
+      width: pxTorem(260px);
+      left: pxTorem(0px);
+      img {
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+  .kanban-body {
+    display: flex;
+    flex-direction: column;
+    .buildHzList {
+      flex: 0.7;
+      display: flex;
+      flex-direction: column;
+      table {
+        background: $color01;
+        width: 100%;
+        td {
+          text-align: center;
+          height: pxTorem(45px);
+          padding: pxTorem(8px);
+        }
+        .titles {
+          font-weight: bold;
+          color: black;
+          font-size: $fontsize01;
+        }
+      }
+      .buildInfo {
+        table {
+          tr {
+            td {
+              background-color: $color02;
+              width: 10%;
+            }
+          }
+        }
+        border-bottom:5px solid #000;
+      }
+      .buildList {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: $color01;
+        .buildListHead {
+          table {
+            tr {
+              td {
+                background-color: $color02;
+              }
+            }
+          }
+        }
+        .buildListBody {
+          flex: 1;
+          overflow-y: auto;
+          background-color: $color08;
+          table {
+            tr {
+              td {
+                font-size:$fontsize03;
+                background-color: $color04;
+              }
+            }
+          }
+          .ptnmSmall {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding: 0 pxTorem(10px);
+          }
+        }
+        .buildListHead tr td,
+        .buildListBody tr td {
+          padding: pxTorem(20px) 0;
+          &:nth-child(1) {
+            width: pxTorem(200px) !important;
+            max-width: pxTorem(200px) !important;
+            min-width: pxTorem(200px) !important;
+          }
+          &:nth-child(2) {
+            width: pxTorem(140px) !important;
+            max-width: pxTorem(140px) !important;
+            min-width: pxTorem(140px) !important;
+          }
+          &:nth-child(3) {
+            width: pxTorem(150px) !important;
+            max-width: pxTorem(150px) !important;
+            min-width: pxTorem(150px) !important;
+          }
+          &:nth-child(4) {
+            width: pxTorem(140px) !important;
+            max-width: pxTorem(140px) !important;
+            min-width: pxTorem(140px) !important;
+          }
+          &:nth-child(5) {
+            width: pxTorem(350px) !important;
+            max-width: pxTorem(350px) !important;
+            min-width: pxTorem(350px) !important;
+          }
+          &:nth-child(6) {
+            width: pxTorem(120px) !important;
+            max-width: pxTorem(120px) !important;
+            min-width: pxTorem(120px) !important;
+          }
+          &:nth-child(7) {
+            width: pxTorem(120px) !important;
+            max-width: pxTorem(120px) !important;
+            min-width: pxTorem(120px) !important;
+          }
+          &:nth-child(8) {
+            width: pxTorem(120px) !important;
+            max-width: pxTorem(120px) !important;
+            min-width: pxTorem(120px) !important;
+          }
+          &:nth-child(9) {
+            width: pxTorem(120px) !important;
+            max-width: pxTorem(120px) !important;
+            min-width: pxTorem(120px) !important;
+          }
+        }
+      }
+    }
+    .buildHzChart {
+      flex: 0.3;
+      background-color: black;
+      display: flex;
+      flex-direction: row;
+      .chart {
+        width: 50%;
+      }
+    }
+    .msg {
+      height: pxTorem(75px);
+      background-color: black;
+      color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      .text {
+        letter-spacing: pxTorem(3px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        font-size: pxTorem(30px); // animation: msgMove 90s infinite;
+        // left: -100%;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+      }
+      @keyframes msgMove {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    }
+  }
+}

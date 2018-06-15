@@ -1,0 +1,1284 @@
+//登录
+// 检查清单
+.padView {
+  .checkList {
+    .deteTable,
+    .deteCheck {
+      height: 100%;
+    }
+    .tableBox {
+      height: calc(100% - #{pxTorem(205px)});
+      .el-card__body {
+        padding: 0;
+      }
+      .el-table {
+        height: 100%;
+        border: 0;
+      }
+      .el-form-item:last-child {
+        margin-bottom: 0;
+      }
+      .edit {
+        display: flex;
+        justify-content: center;
+      }
+      .cell {
+        text-align: center;
+      }
+    }
+    .detectionBtn {
+      height: pxTorem(40px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      button {
+        width: pxTorem(150px);
+      }
+    }
+  } //产品履历
+  .product {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .formImg {
+      display: flex;
+      flex-direction: row;
+      height: calc(100% - #{pxTorem(60px)});
+      margin-bottom: pxTorem(10px);
+      &>.el-row {
+        height: 100%;
+        width: 100%;
+      }
+      .productFroms {
+        height: 100%;
+        &>* {
+          height: 100%;
+        }
+        .productFromsItem {
+          .productFromsItem-body {
+            .norm {
+              .el-form-item {
+                margin-bottom: pxTorem(22px);
+                display: flex;
+                .el-form-item__label {
+                  width: pxTorem(100px);
+                }
+              }
+            }
+          }
+        }
+        .el-input.is-disabled .el-input__inner {
+          color: initial;
+        }
+        .el-textarea.is-disabled .el-textarea__inner {
+          color: initial;
+        }
+      }
+      .productImg {
+        height: 100%;
+        &>* {
+          height: 100%;
+        }
+        .imgInfo,
+        .imgUpdate {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          justify-content: space-between;
+          .el-card__header {
+            height: pxTorem(42px);
+            line-height: pxTorem(42px);
+            text-align: center;
+            padding: 0;
+          }
+          .el-card__body {
+            height: calc(100% - #{pxTorem(42px)}) !important;
+            padding: 0;
+            .imgItemBody {
+              height: 100%;
+            }
+            img {
+              height: 100%;
+              width: 100%;
+            }
+          }
+          .imgViewBox {
+            .imageBox {
+              li {
+                text-align: center;
+              }
+            }
+          }
+        }
+        .imgUpdate {
+          .imgItem {
+            display: flex;
+            flex-direction: column;
+          }
+          .avatar-uploader .el-upload {
+            border-radius: pxTorem(6px);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            i {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+          }
+          .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+          }
+          .avatar-uploader-icon {
+            font-size: pxTorem(28px);
+            color: #8c939d;
+            text-align: center;
+          }
+          .avatar {
+            width: pxTorem(178px);
+            height: pxTorem(178px);
+            display: block;
+          }
+          .el-card__body,
+          .avatar-uploader,
+          .el-upload {
+            height: 100%;
+          }
+        }
+        .imgItem {
+          height: calc(50% - #{pxTorem(10px)});
+        }
+      }
+    }
+    .subBtn {
+      height: pxTorem(50px);
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      .el-form-item__content {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        button {
+          padding: pxTorem(10px) pxTorem(60px);
+        }
+        .el-button+.el-button {
+          margin-left: pxTorem(20px);
+        }
+      }
+    }
+    .subBtn .el-form-item__content {
+      margin-left: 0 !important;
+    }
+  } //产品履历信息列表
+  .productList {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .listForm {
+      margin-bottom: pxTorem(20px);
+      .el-form-item {
+        margin-bottom: 0;
+      }
+    }
+    .listTable {
+      flex: 1;
+      width: 100%;
+    }
+  } //批次录入
+  .batchEnter {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .deteTable,
+    .deteCheck {
+      height: 100%;
+    }
+    .detectionFrom {
+      margin-bottom: pxTorem(20px);
+      .detectionFrom-header {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        .name {
+          font-weight: 800;
+        }
+        .btn {
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .el-form-item__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+        }
+      }
+      .el-card__body {
+        .el-col {
+          margin-bottom: pxTorem(20px);
+        }
+        .el-col:last-child {
+          margin-bottom: 0;
+        }
+      }
+      .el-form-item {
+        .el-form-item__label {
+          width: pxTorem(70px) !important;
+        }
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+    }
+    .tableBox {
+      flex: 1;
+      .el-card__body {
+        padding: 0;
+      }
+      .el-table {
+        height: 100%;
+        border: 0;
+      }
+      .el-form-item:last-child {
+        margin-bottom: 0;
+      }
+      .edit {
+        display: flex;
+        justify-content: center;
+      }
+      .cell {
+        text-align: center;
+      }
+    }
+    .detectionBtn {
+      height: pxTorem(40px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      button {
+        width: pxTorem(150px);
+      }
+    }
+  } //上岗纪录
+  .workonoff {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    .workonoff-list {
+      overflow: hidden;
+      height: calc(100% - 3.75rem);
+    }
+    .workonoff-list-goPage {
+      height: pxTorem(60px);
+    }
+  } //电子看板
+  .signage {
+    padding: 0; //达成率颜色
+    .reachRate {
+      height: pxTorem(60px);
+      line-height: pxTorem(60px);
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      .rh {
+        height: 100%;
+        width: 100%;
+        color: white;
+      }
+      .rhColor01 {
+        background-color: #67C23A;
+      }
+      .rhColor02 {
+        background-color: #E6A23C;
+      }
+      .rhColor03 {
+        background-color: #F56C6C;
+      }
+    }
+  } //检验规范
+  .specification {
+    display: flex;
+    flex-direction: column;
+    .el-dialog__wrapper {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .specForm {
+      display: flex;
+      flex-direction: row;
+      margin: 1.25rem 0;
+      padding: 0 pxTorem(20px);
+      .el-form-item {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        .el-select {
+          display: block;
+        }
+      }
+      .plant {
+        .el-form-item__label {
+          width: pxTorem(50px);
+        }
+      }
+      .line {
+        .el-form-item__label {
+          width: pxTorem(50px);
+        }
+      }
+      .ptno {
+        .el-form-item__label {
+          width: pxTorem(80px);
+        }
+      }
+      .selectForm {
+        flex: 1;
+      }
+      .subBtn {
+        margin-left: pxTorem(20px); //width: pxTorem(70px);
+      }
+    }
+    .specTable {
+      border-top: 1px solid #dfdfdf;
+      .edit {
+        justify-content: left;
+        padding-left: pxTorem(15px);
+      }
+    }
+    .specInfo {
+      .el-collapse-item__header {
+        height: pxTorem(60px);
+        line-height: pxTorem(60px);
+        font-size: pxTorem(18px);
+      }
+      .el-collapse-item__content {
+        p {
+          height: pxTorem(40px);
+          line-height: pxTorem(40px);
+          display: flex;
+          flex-direction: row;
+          margin-bottom: pxTorem(5px);
+          .name {
+            width: pxTorem(80px);
+            text-align: right;
+            margin-right: pxTorem(10px);
+            font-weight: 800;
+          }
+          .value {
+            flex: 1;
+            padding: 0 10px;
+            border-bottom: 1px solid #dfdfdf;
+          }
+        }
+      }
+      .type {
+        .el-collapse-item__content {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        }
+        .yes {
+          color: green;
+        }
+        .no {
+          color: red;
+        }
+      }
+    }
+    .xbarDialog {
+      .el-select {
+        margin-bottom: pxTorem(25px);
+      }
+      .dialog-footer {
+        display: flex;
+      }
+    }
+    .dialog-footer {
+      button {
+        width: 100%;
+      }
+    }
+  } //注意事项
+  .precautions {
+    .panel-body {
+      display: flex;
+      flex-direction: column;
+      .listForm {
+        .el-card__body {
+          padding-bottom: 0;
+        }
+      }
+      .tabelList {
+        flex: 1;
+        .listPreContent {
+          text-align: left;
+          display: block;
+          padding: 0 pxTorem(10px);
+        }
+      }
+    }
+  } //消息推送
+  .messagePush {
+    .panel-body {
+      display: flex;
+      flex-direction: column;
+      .listForm {
+        .el-card__body {
+          padding-bottom: 0;
+          .el-form-item .el-form-item__label {
+            width: inherit;
+          }
+        }
+      }
+      .tabelList {
+        flex: 1;
+        .el-table__expanded-cell {
+          background-color: #efefef;
+          padding: pxTorem(20px);
+          .el-form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            label {
+              color: #99a9bf;
+            }
+            .el-form-item {
+              margin: 0;
+              width: 50%;
+            }
+            .listInfoContent {
+              display: block;
+              text-align: left;
+            }
+          }
+        }
+        .listContent {
+          text-align: left;
+          display: block;
+          padding: 0 pxTorem(10px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap
+        }
+      }
+    }
+    .messagePushInfo {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .forms {
+        flex: 1;
+        box-shadow: 0px 0px;
+        border: 0;
+        .el-row {
+          margin: 0 !important;
+        }
+        .el-form-item {
+          .el-form-item__label {
+            width: pxTorem(80px);
+          }
+        }
+      }
+      .subBtn {
+        margin: pxTorem(20px) 0;
+        .el-form-item__content {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .flagCloud {
+        .el-form-item__content {
+          display: flex;
+          flex-direction: row;
+          .el-textarea {
+            flex: 1;
+          }
+          .el-button {
+            margin-left: pxTorem(20px);
+          }
+        }
+      }
+      .el-dialog {
+        .el-dialog__body {
+          padding-top: 0;
+          padding-bottom: 0;
+          .mainBody {
+            max-height: pxTorem(300px);
+            overflow-y: auto;
+            .el-form-item__label {
+              width: pxTorem(60px);
+            }
+          }
+        }
+        .el-dialog__footer {
+          text-align: center;
+        }
+      }
+    }
+  } //x-r管制图
+  .x-r {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    .tabs {
+      flex: 1;
+      .el-tab-pane {
+        height: 100%;
+      }
+      .el-tabs__content {
+        padding: 0;
+      }
+      .baseInfo {
+        padding: pxTorem(15px);
+        .el-input.is-disabled .el-input__inner {
+          color: inherit;
+        }
+        .baseInfo-table {
+          border: 1px solid #dfdfdf;
+          border-collapse: collapse;
+          width: 100%;
+          tr,
+          td {
+            text-align: center;
+            border: 1px solid #dfdfdf;
+          }
+          td {
+            padding: pxTorem(5px) pxTorem(10px);
+          }
+        }
+      }
+      .checkTable {
+        height: 100%;
+        .table-row {
+          display: flex;
+          flex-direction: row;
+          height: pxTorem(60px);
+          line-height: pxTorem(60px);
+          border: 1px solid #dfdfdf;
+          label {
+            width: pxTorem(80px);
+            min-width: pxTorem(80px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            .line {
+              position: absolute;
+              border-top: 1px solid #dfdfdf;
+              width: pxTorem(150px);
+              transform: rotate(216deg);
+              -o-transform: rotate(216deg);
+              -moz-transform: rotate(216deg);
+              -webkit-transform: rotate(216deg);
+              top: pxTorem(45px);
+              left: pxTorem(-12px);
+            }
+            .text01,
+            .text02 {
+              position: absolute;
+              font-size: pxTorem(12px);
+            }
+            .text01 {
+              bottom: pxTorem(-10px);
+              left: pxTorem(5px);
+            }
+            .text02 {
+              top: pxTorem(-10px);
+              right: pxTorem(5px);
+            }
+          }
+          .values {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            span {
+              border: 1px solid #dfdfdf;
+              border-top: 0px;
+              border-bottom: 0px;
+              padding: pxTorem(0px) pxTorem(5px);
+              width: pxTorem(40px);
+              text-align: center;
+            }
+          }
+        }
+      }
+      .chartInfo {
+        height: 100%;
+        .xChart {
+          height: 50%;
+        }
+        .rChart {
+          height: 50%;
+        }
+      }
+    }
+    .backBtn {
+      height: pxTorem(60px);
+      line-height: pxTorem(65px);
+      text-align: center;
+      button {
+        padding: pxTorem(12px) pxTorem(80px);
+      }
+    }
+  } //检查录入
+  .checkEntity {
+    height: 100%;
+    .entityList {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .listForm {
+        display: flex;
+        flex-direction: row;
+        padding: 0 pxTorem(20px);
+        padding-top: pxTorem(20px);
+        margin-bottom: pxTorem(0px);
+        background-color: white;
+        border-bottom: 1px solid #dfdfdf;
+        .selectForm {
+          flex: 1;
+          .el-form-item {
+            .el-form-item__label {
+              width: pxTorem(60px);
+            }
+          }
+        }
+        .subBtn {
+          margin-left: pxTorem(10px);
+        }
+      }
+      .prodschTable {
+        .el-table__expanded-cell {
+          background-color: #efefef;
+          padding: pxTorem(20px);
+          .el-form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            label {
+              color: #99a9bf;
+            }
+            .el-form-item {
+              margin: 0;
+              width: 50%;
+            }
+            .listInfoContent {
+              display: block;
+              text-align: left;
+            }
+          }
+        }
+        .listInfoContent {
+          display: block;
+          text-align: left;
+        }
+      }
+    } //检查主体
+    .checkMain {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .checkInfo {
+        //margin-bottom:pxTorem(10px);
+        box-shadow: 0px;
+        border-radius: 0px;
+        .infoItem .is-disabled input {
+          color: initial;
+        }
+      }
+      .checkProject {
+        flex: 1;
+        .el-card__body {
+          padding: 0;
+          height: 100%;
+        }
+        .checkProjectBody {
+          height: 100%; //----tabs 头部样式----
+          .el-tab-pane {
+            height: 100%;
+          }
+          .isPassIcon {
+            color: #67C23A !important;
+          }
+          .failPassIcon {
+            color: #F56C6C !important;
+          }
+          .isPass {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            color: #67C23A;
+            height: 100%;
+            justify-content: center;
+            .icon {
+              font-size: pxTorem(120px)
+            }
+            .text {
+              font-size: pxTorem(24px)
+            }
+          }
+        }
+      }
+    } //检查步骤
+    .checkStep {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .stepMsg {
+        border-bottom: 1px solid #dfdfdf;
+        margin-bottom: pxTorem(20px);
+        display: flex;
+        flex-direction: row;
+        padding: pxTorem(10px) pxTorem(0px);
+        .infoGroup {
+          display: flex;
+          flex-direction: row;
+          margin-right: pxTorem(20px);
+          &>* {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          label {}
+          span {}
+        }
+        .info {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          .checkNum {
+            display: flex;
+            flex-direction: row;
+            .total {}
+            .needCheck {}
+          }
+          .methodDesc {}
+          .deviation {}
+        }
+        .crlBtn {}
+        .fileWatch {
+          display: flex;
+          flex-direction: row;
+          .el-button {
+            overflow: initial;
+            margin-left: pxTorem(10px);
+          }
+          .el-select {
+            width: pxTorem(160px);
+          }
+        }
+      }
+      .stepMain {
+        flex: 1;
+        overflow-y: auto;
+        .positionRow {
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 20px;
+          border-bottom: 1px dashed #dfdfdf;
+          &:last-child {
+            border-bottom: 0px solid #dfdfdf;
+          }
+          .name {
+            width: pxTorem(80px);
+            font-weight: 800;
+            display: flex;
+            flex-direction: column;
+          }
+          .inputs {
+            flex: 1;
+            .el-col {
+              display: flex;
+              flex-direction: row;
+              margin-bottom: pxTorem(10px);
+              .inputForm {
+                input {
+                  height: 100%;
+                  text-align: center;
+                  font-size: pxTorem(18px);
+                  min-height: 45px;
+                  width: 95%;
+                }
+              }
+              .airFlag {
+                margin: 0 pxTorem(10px);
+                i {
+                  font-size: pxTorem(24px);
+                }
+                .none {
+                  color: #6a6a6a;
+                }
+              }
+              .airFlagNotNum {
+                display: flex;
+                flex-direction: row;
+                border: 1px solid #000;
+                margin: auto;
+                width: 90%;
+                justify-content: space-around;
+                padding: pxTorem(2px);
+                border-radius: pxTorem(10px);
+                i {
+                  font-size: pxTorem(36px);
+                }
+                .none {
+                  color: #6a6a6a;
+                }
+              }
+              .inputSuccess {
+                input {
+                  color: white;
+                  background-color: #67C23A;
+                  height: 100%;
+                  text-align: center;
+                }
+              }
+              .inputFail {
+                input {
+                  color: white;
+                  background-color: #F56C6C;
+                  height: 100%;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+      .stepSubmit {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: pxTorem(50px);
+        button {
+          width: pxTorem(408px);
+        }
+      }
+      .el-dialog__wrapper {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  } //检验纪录
+  .inspecRcord {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .rcordList {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .el-dialog__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .listForm {}
+      .tabelList {
+        flex: 1;
+        .el-table__expanded-cell {
+          background-color: #efefef;
+          padding: pxTorem(20px);
+          .el-form {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            label {
+              color: #99a9bf;
+            }
+            .el-form-item {
+              margin: 0;
+              width: 50%;
+            }
+            .listInfoContent {
+              display: block;
+              text-align: left;
+            }
+          }
+        }
+        .listContent {
+          text-align: left;
+          display: block;
+          padding: 0 pxTorem(10px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap
+        }
+        .tourErrorRow {
+          td {
+            background-color: #f56c6c;
+            color: white;
+            i {
+              color: white;
+            }
+          }
+          td:nth-child(2) {
+            .cell {
+              span {
+                color: white !important;
+              }
+            }
+          }
+        }
+        .beforError {
+          background-color: #fffcce;
+        }
+      }
+      .inspecRecord-list-goPage {
+        height: pxTorem(60px);
+      }
+    }
+    .rcordInfo {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .backBtn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 20px 0px;
+        button {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          width: pxTorem(200px);
+          height: pxTorem(50px);
+          span {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+      .checkMain {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .checkInfo {
+          //margin-bottom:pxTorem(10px);
+          box-shadow: 0px;
+          border-radius: 0px;
+          .infoItem .is-disabled input {
+            color: initial;
+          }
+        }
+        .checkProject {
+          flex: 1;
+          .el-card__body {
+            padding: 0;
+            height: 100%;
+          }
+          .checkProjectBody {
+            height: 100%; //----tabs 头部样式----
+            .el-tab-pane {
+              height: 100%;
+            }
+            .isPassIcon {
+              color: #67C23A !important;
+            }
+            .failPassIcon {
+              color: #F56C6C !important;
+            }
+            .isPass {
+              display: flex;
+              flex-direction: column;
+              text-align: center;
+              color: #67C23A;
+              height: 100%;
+              justify-content: center;
+              .icon {
+                font-size: pxTorem(120px)
+              }
+              .text {
+                font-size: pxTorem(24px)
+              }
+            }
+          }
+        }
+      } //检查步骤
+      .checkStep {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .stepMsg {
+          border-bottom: 1px solid #dfdfdf;
+          margin-bottom: pxTorem(20px);
+          display: flex;
+          flex-direction: row;
+          padding: pxTorem(10px) pxTorem(0px);
+          .infoGroup {
+            display: flex;
+            flex-direction: row;
+            margin-right: pxTorem(20px);
+            &>* {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+            label {}
+            span {}
+          }
+          .info {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            .checkNum {
+              display: flex;
+              flex-direction: row;
+              .total {}
+              .needCheck {}
+            }
+            .methodDesc {}
+            .deviation {}
+          }
+          .crlBtn {}
+          .fileWatch {
+            display: flex;
+            flex-direction: row;
+            .el-button {
+              overflow: initial;
+              margin-left: pxTorem(10px);
+            }
+            .el-select {
+              width: pxTorem(160px);
+            }
+          }
+        }
+        .stepMain {
+          flex: 1;
+          overflow-y: auto;
+          .positionRow {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #dfdfdf;
+            &:last-child {
+              border-bottom: 0px solid #dfdfdf;
+            }
+            .name {
+              width: pxTorem(80px);
+              font-weight: 800;
+              display: flex;
+              flex-direction: column;
+            }
+            .inputs {
+              flex: 1;
+              .el-col {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: pxTorem(10px);
+                .inputForm {
+                  input {
+                    height: 100%;
+                    text-align: center;
+                    font-size: pxTorem(18px);
+                    min-height: 45px;
+                    width: 95%;
+                  }
+                }
+                .airFlag {
+                  margin: 0 pxTorem(10px);
+                  i {
+                    font-size: pxTorem(24px);
+                  }
+                  .none {
+                    color: #6a6a6a;
+                  }
+                }
+                .airFlagNotNum {
+                  display: flex;
+                  flex-direction: row;
+                  border: 1px solid #000;
+                  margin: auto;
+                  width: 90%;
+                  justify-content: space-around;
+                  padding: pxTorem(2px);
+                  border-radius: pxTorem(10px);
+                  i {
+                    font-size: pxTorem(36px);
+                  }
+                  .none {
+                    color: #6a6a6a;
+                  }
+                }
+                .inputSuccess {
+                  input {
+                    color: white;
+                    background-color: #67C23A;
+                    height: 100%;
+                    text-align: center;
+                  }
+                }
+                .inputFail {
+                  input {
+                    color: white;
+                    background-color: #F56C6C;
+                    height: 100%;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .stepSubmit {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          height: pxTorem(50px);
+          button {
+            width: 100%;
+          }
+        }
+        .el-dialog__wrapper {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+    .rcordTable {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .tableMain {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .checkInfo {
+          .el-input.is-disabled .el-input__inner {
+            color: initial;
+          }
+          margin-bottom: pxTorem(20px);
+        }
+        .mainTable {
+          //common start
+          $color01: #555555;
+          $color02: #357cff;
+          $color03: #ffffff;
+          $color04: #fc7575;
+          $color05: #00b445;
+          $color06: #4851a4;
+          $fontSize01: pxTorem(24px); //common end
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          table {
+            width: 100%;
+            border: 0;
+            margin: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            tr {
+              td {
+                height: pxTorem(60px);
+                border: 3px solid $color01;
+                border-bottom: 5px solid $color01;
+                border-top: 0;
+                border-left: 0;
+                background: #fff;
+                text-align: center;
+                position: relative;
+              }
+            }
+          }
+          .tableHead {
+            table {
+              border-top: 1px solid $color01;
+              tr {
+                td {
+                  background: $color02;
+                  color: $color03;
+                  font-size: $fontSize01;
+                  font-weight: 800;
+                }
+              }
+            }
+          }
+          .tableBody {
+            flex: 1;
+            overflow: hidden;
+            overflow-y: auto;
+            .valBoxs {
+              display: flex;
+              flex-direction: column;
+              .valGroup {
+                display: flex;
+                flex-direction: column;
+                .valName {
+                    height: pxTorem(40px);
+                    line-height: pxTorem(40px);
+                    background: $color06;
+                    font-size: $fontSize01;
+                    color:white;
+                    letter-spacing: pxTorem(10px);
+                }
+                .vals {
+                  display: flex;
+                  flex-wrap: wrap;
+                  .valBox {
+                    display: flex;
+                    width: 20%;
+                    height: pxTorem(40px);
+                    border-right: 2px solid $color01;
+                    border-bottom: 2px solid $color01;
+                    .fail {
+                      background-color: $color04;
+                    }
+                    .pass {
+                      background-color: $color05;
+                    }
+                    span {
+                      flex: 1;
+                      color: white;
+                      font-size: pxTorem(22px);
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .tableHead,
+          .tableBody {
+            table {
+              tr {
+                td {
+                  &:nth-child(1) {
+                    width: pxTorem(90px);
+                    min-width: pxTorem(90px);
+                    max-width: pxTorem(90px);
+                  }
+                  &:nth-child(2) {
+                    width: pxTorem(90px);
+                    min-width: pxTorem(90px);
+                    max-width: pxTorem(90px);
+                  }
+                  &:nth-child(3) {
+                    width: pxTorem(90px);
+                    min-width: pxTorem(90px);
+                    max-width: pxTorem(90px);
+                  }
+                  &:nth-child(4) {
+                    width: pxTorem(300px);
+                    min-width: pxTorem(300px);
+                    max-width: pxTorem(300px);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .backBtn {
+        margin: pxTorem(20px) 0;
+        text-align: center;
+        >* {
+          text-align: center;
+          width: pxTorem(200px);
+        }
+      }
+    }
+  }
+}
