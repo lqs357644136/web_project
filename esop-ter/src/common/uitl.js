@@ -56,19 +56,19 @@ export const getMacINfo = function () {
       },
       equipNo: 'P01', //工位
       empNo: 30031, //工号
-      line: 'L01', //制程
+      line: 'L04', //制程
       plant: 'F1', //车间
-      ptno: 'LEDN32D50', //产品编码
+      ptno: 'ApplePad', //产品编码
     }
   }
 }
 
 //安卓环境下打开预览
-export const androidSOP = function(url){
+export const androidSOP = function (url) {
   console.log(url)
-  try{
+  try {
     window.android.openSOP(url);
-  }catch(error){
+  } catch (error) {
     console.log("测试环境")
   }
 }
